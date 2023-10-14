@@ -1,4 +1,4 @@
-/* MVP.css v1.14 - https://github.com/andybrewer/mvp */
+/* Modified from MVP.css v1.14 - https://github.com/andybrewer/mvp */
 
 :root {
     --active-brightness: 0.85;
@@ -51,20 +51,15 @@ html {
 }
 
 /* Layout */
-article aside {
-    background: var(--color-secondary-accent);
-    border-left: 4px solid var(--color-secondary);
-    padding: 0.01rem 0.8rem;
-}
 
 body {
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-family);
     line-height: var(--line-height);
-    margin: 0.1 rem;
+    margin: 0rem;
     overflow-x: hidden;
-    padding: 0;
+    padding: 0rem;
 }
 
 footer,
@@ -119,7 +114,8 @@ section aside:hover {
 article header,
 div header,
 main header {
-    padding-top: 0;
+    padding: 0;
+	margin: 0;
 }
 
 header {
@@ -132,72 +128,6 @@ header a i,
 header a strong {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-}
-
-header nav img {
-    margin: 1rem 0;
-}
-
-section header {
-    padding-top: 0;
-    width: 100%;
-}
-
-/* Nav */
-nav {
-    align-items: center;
-    display: flex;
-    font-weight: bold;
-    justify-content: space-between;
-    margin-bottom: 7rem;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline-block;
-    margin: 0 0.5rem;
-    position: relative;
-    text-align: left;
-}
-
-/* Nav Dropdown */
-nav ul li:hover ul {
-    display: block;
-}
-
-nav ul li ul {
-    background: var(--color-bg);
-    border: 1px solid var(--color-bg-secondary);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow) var(--color-shadow);
-    display: none;
-    height: auto;
-    left: -2px;
-    padding: .5rem 1rem;
-    position: absolute;
-    top: 1.7rem;
-    white-space: nowrap;
-    width: auto;
-    z-index: 1;
-}
-
-nav ul li ul::before {
-    /* fill gap above to make mousing over them easier */
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -0.5rem;
-    height: 0.5rem;
-}
-
-nav ul li ul li,
-nav ul li ul li a {
-    display: block;
 }
 
 /* Typography */
@@ -514,22 +444,41 @@ blockquote footer {
     padding: 1.5rem 0;
 }
 
-/* Scrollbars */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: rgb(202, 202, 232) auto;
+
+/* The side navigation menu */
+#navigation {
+	margin: 0;
+	padding: 0;
+	width: 16rem;
+	background-color: #f1f1f1;
+	position: fixed;
+	height: 100%;
+	overflow: hidden;
 }
 
-*::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+/* Navigation image */
+#navigation img {
+	margin: 0.5rem 0.5rem 0rem 0.5rem;
 }
 
-*::-webkit-scrollbar-track {
-    background: transparent;
+/* navigation links */
+#navigation a {
+  display: block;
+  color: black;
+  padding: 0.5rem 0rem 0.5rem 1rem;
+  text-decoration: none;
+  font-size: large;
 }
 
-*::-webkit-scrollbar-thumb {
-    background-color: rgb(202, 202, 232);
-    border-radius: 10px;
+/* Links on mouse-over */
+#navigation a:hover:not(.active) {
+	background-color: #555;
+	color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the navigation's width property */
+#content {
+  margin-left: 16rem;
+  padding: 0rem 1rem;
+  overflow: hidden;
 }
