@@ -11,7 +11,7 @@ function layout(depth) {
 		<a href="'+depth+'graphics/index.html">Graphics</a>\
 		<a href="'+depth+'audio/index.html">Audio</a>\
 		<a href="'+depth+'/contributors/index.html">Contributors</a>\
-		<a href="#links">Links</a>\
+		<a href="'+depth+'/links/index.html">Links</a>\
 	';
 	
 	let footdata = '\
