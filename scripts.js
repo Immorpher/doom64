@@ -1,4 +1,4 @@
-// Script to generate lauout for website with appropriate folder depth
+// Script to generate layout for website with appropriate folder depth
 
 function layout(depth) {
 	
@@ -18,6 +18,10 @@ function layout(depth) {
 		<p>The Doom 64 Compendum is collaboratively constructed by the <a href="'+depth+'/contributors/index.html">contributors</a>.</p>\
 	';
 	
+	// Add the doom 64 compendium title
+	document.getElementsByTagName("title")[0].innerHTML = document.getElementsByTagName("title")[0].innerHTML + " (Doom 64 Compendium)";
+	
+	//Process the document to add the layout
 	document.getElementById("navigation").innerHTML = navdata;
 	document.getElementById("footer").innerHTML = footdata;
 	return;

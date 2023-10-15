@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Doom 64 Compendium: Mapping: Macros</title>
-	<script src="../scripts.js" type="text/JavaScript"></script>
-	<link rel="stylesheet" href="../style.css" />
+	<title>Macros</title>
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
 </head>
 <body>
 	<div id="navigation"></div>
@@ -11,6 +11,8 @@
 	<div id="content">
 		<h1>Macros</h1>
 		<p>Macros are used to script multiple actions at a time. The actions can happen all at once or delays can be used to create a sequence. Only one macro can be run at a time within the engine, and all other macros will be blocked until the current macro is finished. The majority of actions will target a specific line, sector, or thing with a specified <i>tag</i>.</p>
+		
+		<p>Macros will need to be compiled in Doom Builder 64 before they can be used in-game. A good way to learn how macros function is to look at the decompiled macros for the original Doom 64 maps which can be downloaded <a href="decompiled.zip">here</a>.</p>
 		
 		<h2>Sector Height Changes</h2>
 		<p>Only one height-change action can be operated on a sector at a time. Thus it is recommended to use the <i>wait</i> action before doing another action on a sector.</p>
@@ -200,7 +202,7 @@
 
 	<div id="footer"></div>
 	<script>
-	layout("../");
+	layout("../../");
 	</script>
 </body>
 </html>
