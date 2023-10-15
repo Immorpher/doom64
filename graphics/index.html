@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Graphics</title>
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Graphics</h1>
+		
+			<p>Unlike other id Software games at the time, Doom 64 did not have a global palette. Instead each graphic has its own palette. This has allowed Doom 64 to have a large color variation compared to other Doom engine games of the era.</p>
+			
+		<h2>PC Engines</h2>
+		
+			<p>For the PC engines of Doom 64, the graphics are stored in PNG format. For the majority of textures, sprites, and graphics, true color graphics are supported. However sprites which have palette swap variants (Bull demons, Imps, and Hell nobles), require specific palettes otherwise the palette swap variants will look like the originals. Partial alpha transparencies are supported too in most cases, however Doom 64 EX, Doom 64 EX+, and Doom 64 SEX+ do not support partial transparencies for wall textures.</p>
+			
+		<h2>Nintendo 64</h2>
+		
+			<p>On the Nintendo 64, each graphic for Doom 64 has a specific palette that is either stored with the graphic or externally. Each enemy sprite has a unique 256-color palette it reffers to. While the textures are 16-color paletted, thus they are 4-bit images. The graphics lump images each have their own 256-color palettes. The d64make utility by Nova can convert appropriately-formatted PNGs to the format for the Nintendo 64.<p>
+			
+				<ul><li><a href="https://github.com/d64u/d64make/">d64make</a></li></ul>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
