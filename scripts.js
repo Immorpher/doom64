@@ -9,7 +9,7 @@ function layout(depth) {
 		<a href="'+depth+'engines/index.html">Engines</a>\
 		<a href="'+depth+'mapping/index.html">Mapping</a>\
 		<a href="'+depth+'graphics/index.html">Graphics</a>\
-		<a href="#audio">Audio</a>\
+		<a href="'+depth+'audio/index.html">Audio</a>\
 		<a href="'+depth+'/contributors/index.html">Contributors</a>\
 		<a href="#links">Links</a>\
 	';
