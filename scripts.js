@@ -6,7 +6,7 @@ function layout(depth) {
 	let navdata = '\
 		<img src="'+depth+'title.svg" alt="Doom 64 Compendium" style="width: 15rem; height: 12rem;" />\
 		<a href="'+depth+'index.html">Directory</a>\
-		<a href="#engines">Engines</a>\
+		<a href="'+depth+'engines/index.html">Engines</a>\
 		<a href="'+depth+'mapping/index.html">Mapping</a>\
 		<a href="#graphics">Graphics</a>\
 		<a href="#audio">Audio</a>\
