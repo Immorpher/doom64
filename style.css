@@ -463,11 +463,11 @@ blockquote footer {
 
 /* navigation links */
 #navigation a {
-  display: block;
-  color: black;
-  padding: 0.5rem 0rem 0.5rem 1rem;
-  text-decoration: none;
-  font-size: large;
+	display: block;
+	color: black;
+	padding: 0.5rem 0rem 0.5rem 1rem;
+	text-decoration: none;
+	font-size: large;
 }
 
 /* Links on mouse-over */
@@ -478,7 +478,26 @@ blockquote footer {
 
 /* Page content. The value of the margin-left property should match the value of the navigation's width property */
 #content {
-  margin-left: 16rem;
-  padding: 0rem 1rem;
-  overflow: hidden;
+	margin-left: 16rem;
+	padding: 0rem 1rem;
+	overflow: hidden;
+}
+
+/*Footer content*/
+#footer {
+	margin-left: 16rem;
+	padding: 0rem 0rem;
+	overflow: hidden;
+}
+
+#footer p {
+	text-align: center;
+	padding: 0rem 0rem;
+	overflow: hidden;
+	color: #555;
+}
+
+#footer a {
+	color: #555;
+	font-weight: normal;
 }

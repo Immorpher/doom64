@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doom 64 Compendium: Mapping: Macros</title>
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+		<h1>Macros</h1>
+		<p>Macros are used to script multiple actions at a time. The actions can happen all at once or delays can be used to create a sequence. Only one macro can be run at a time within the engine, and all other macros will be blocked until the current macro is finished. The majority of actions will target a specific line, sector, or thing with a specified <i>tag</i>.</p>
+		
+		<h2>Sector Height Changes</h2>
+		<p>Only one height-change action can be operated on a sector at a time. Thus it is recommended to use the <i>wait</i> action before doing another action on a sector.</p>
+		
+		<h3>Floor Movement</h3>
+		
+		<h4>Floor Raise</h4>
+		<ul>
+			<li>Floor_Raise(<i>tag</i>) - Raises tagged sector's floor to highest neighboring floor?</li>
+			<li>Floor_RaiseCrush(<i>tag</i>)</li>
+			<li>Floor_RaiseToNearest(<i>tag</i>)</li>
+			<li>Floor_RaiseToNearest2(<i>tag</i>)</li>
+			<li>Floor_Raise24(<i>tag</i>) - Raises by 24 units</li>
+			<li>Floor_Raise24Change(<i>tag</i>) - Raises by 24 units and changes floor to surrounding texture.</li>
+		</ul>
+		
+		<h4>Floor Lower</h4>
+		<ul>
+			<li>Floor_Lower(<i>tag</i>) - Lowers tagged sector's floor to highest neighboring floor?</li>
+			<li>Floor_LowerChange(<i>tag</i>)</li>
+			<li>Floor_LowerFast(<i>tag</i>)</li>
+			<li>Floor_LowerToLowest(<i>tag</i>)</li>
+		</ul>
+		
+		<h4>Floor Raise or Lower</h4>
+		<ul>
+			<li>Floor_MoveByValue(<i>tag</i>, <i>value</i>) - Moves floor by amount specified in "value". Negative numbers will lower, positive will raise.</li>
+			<li>Floor_MoveByValueFast(<i>tag</i>, <i>value</i>)</li>
+			<li>Floor_MoveByValueInstant(<i>tag</i>, <i>value</i>) - Instantly moves floor by amount specified in "value".</li>
+			<li>Floor_MoveByHeight(<i>tag</i>, <i>height</i>) - Moves floor to a specific height. Negative numbers can be used. Will raise or lower depending if the height is above or below where the floor starts.</li>
+			<li>Floor_SetHeight(<i>tag</i>, <i>height</i>) - Instantly moves floor to a specific height.</li>
+		</ul>
+
+		<h4>Stairs</h4>
+		<ul>
+			<li>Stairs_Build(<i>tag</i>) - Makes steps 8 high, starting from tagged sector.</li>
+			<li>Stairs_Build16Fast(<i>tag</i>) - Makes steps 16 high, starting from tagged sector.</li>
+		</ul>
+		
+		<h4>Platforms</h4>
+		<ul>
+			<li>Plat_DownWaitUp(<i>tag</i>) - Lowers tagged sector to neighboring floor, waits a few seconds, and raises back up.</li>
+			<li>Plat_DownWaitUpFast(<i>tag</i>)</li>
+			<li>Plat_DownWaitUp24(<i>tag</i>) - Lowers by 24 units, waits a few seconds, and raises back up.</li>
+			<li>Plat_DownWaitUp32(<i>tag</i>) - Lowers by 32 units, waits a few seconds, and raises back up.</li>
+			<li>Plat_DownUpByValue(<i>tag</i>, <i>value</i>)</li>
+			<li>Plat_DownUpFastByValue(<i>tag</i>, <i>value</i>)</li>
+			<li>Plat_UpWaitDown(<i>tag</i>)</li>
+			<li>Plat_UpWaitDownFast(<i>tag</i>)</li>
+			<li>Plat_UpDownByValue(<i>tag</i>, <i>value</i>)</li>
+			<li>Plat_UpDownFastByValue(<i>tag</i>, <i>value</i>)</li>
+			<li>Plat_RaiseChange(<i>tag</i>)</li>
+			<li>Plat_PerpetualRaise(<i>tag</i>)</li>
+			<li>Plat_Stop(<i>tag</i>)</li>
+		</ul>
+
+		<h3>Ceiling Movement</h3>
+		
+		<h4>Doors</h4>
+		<ul>
+			<li>Door_Open(<i>tag</i>) - Door opens temporarily.</li>
+			<li>Door_OpenFast(<i>tag</i>) - Door opens temporarily.</li>
+			<li>Door_Raise(<i>tag</i>) - Door stays open.</li>
+			<li>Door_RaiseFast(<i>tag</i>) - Door stays open.</li>
+			<li>Door_Close(<i>tag</i>) - Door stays closed.</li>
+			<li>Door_CloseFast(<i>tag</i>) - Door stays closed.</li>
+			<li>Door_CloseWait30Open(<i>tag</i>)</li>
+		</ul>
+
+		<h4>Crushers</h4>
+		<ul>
+			<li>Ceiling_RaiseCrush(<i>tag</i>)</li>
+			<li>Ceiling_RaiseCrush2(<i>tag</i>)</li>
+			<li>Ceiling_RaiseCrushOnce(<i>tag</i>)</li>
+			<li>Ceiling_RaiseCrushOnceFast(<i>tag</i>)</li>
+			<li>Ceiling_SilentCrusher(<i>tag</i>)</li>
+			<li>Ceiling_StopCrusher(<i>tag</i>)</li>
+		</ul>
+
+
+		<h4>Ceiling Move</h4>
+		<ul>
+			<li>Ceiling_LowerToFloor(<i>tag</i>)</li>
+			<li>Ceiling_MoveByValue(<i>tag</i>, <i>value</i>) - Moves ceiling by amount specified in "value". Negative numbers will lower, positive will raise.</li>
+			<li>Ceiling_MoveByValueFast(<i>tag</i>, <i>value</i>)</li>
+			<li>Ceiling_MoveByValueInstant(<i>tag</i>, <i>value</i>) - Instantly moves ceiling by amount specified in "value".</li>
+			<li>Ceiling_MoveByHeight(<i>tag</i>, <i>height</i>) - Moves ceiling to a specific height. Negative numbers can be used. Will raise or lower depending if the height is above or below where the floor starts.</li>
+			<li>Ceiling_SetHeight(<i>tag</i>, <i>height</i>) - Instantly ceiling floor to a specific height.</li>
+		</ul>
+
+		<h3>Pillars and Elevators</h3>
+		<ul>
+			<li>Elevator_MoveByValue(<i>tag</i>, <i>value</i>) - Lowers or raises the floor and ceiling at the same time, by the amount specified in "value". Negative numbers will lower, positive will raise.</li>
+			<li>Pillar_OpenByValue(<i>tag</i>, <i>value</i>) - Moves apart floor and ceiling, by the amount specified in "value". Negative values will move the floor and ceiling together.
+			<ul><li>For example: if the floor and ceiling were touching to start with, a value of 15 would separate them by 30 units. The floor would go down 15 and the ceiling would go up 15, totaling 30.</li></ul></li>
+		</ul>
+
+		<h2>Teleport Actions</h2>
+		<p>These actions can only teleport the player. Here <i>tid</i> is the teleport destination's tag number.</p>
+		<ul>
+			<li>Teleport_ToDest(<i>tid</i>) - Teleport player normally (with sound and green glow).</li>
+			<li>Teleport_Stomp(<i>tid</i>) - Teleport player with no sound or glow.</li>
+		</ul>
+
+		<h2>Thing/Actor Actions</h2>
+		<p>Here <i>tid</i> is the thing tag number.</p>
+		<ul>
+			<li>Thing_Spawn(<i>tid</i>) - Tagged thing must have "Spawner" checked.</li>
+			<li>Thing_SpawnDart(<i>tid</i>) - Tagged thing must be a Projectile Spot (thing type 2050), and must not have "Spawner" checked. Shoots a dart in the direction the projectile spot is facing.</li>
+			<li>Thing_SpawnTracer(<i>tid</i>) - Tagged thing must be a Projectile Spot (thing type 2050), and must not have "Spawner" checked. Spawns a meteor which homes in on the player.</li>
+			<li>Thing_Dissolve(<i>tid</i>) - Tagged thing fades away and is removed. Most often used to remove corpses.</li>
+			<li>Thing_Alert(<i>tid</i>) - Alerts all things with this tag. On corpses it will cause things to resurrect on the Doom 64 Remaster, while it will crash Doom 64 EX.</li>
+			<li>Thing_SetReactionTime(<i>tics</i>) - 30 tics is one second</li>
+			<li>Thing_ModifyFlags(<i>tid</i>)</li>
+		</ul>
+
+		<h2>Sector Actions</h2>
+		
+		<h3>Copy Sector Properties</h3>
+		<p>Here <i>dsttag</i> is the tag of the sector to copy to (destination tag)
+		and <i>srctag</i> is the tag of the sector to copy from (source tag).</p>
+		<ul>
+			<li>Sector_CopyFlags(<i>dsttag</i>, <i>srctag</i>) - Copies the flags from one sector to another one. In Doombuilder 64 the flags are the Settings checkboxes found on the Edit Sector Properties dialog. For example: Echo Effect, Liquid Effect, etc.</li>
+			<li>Sector_CopySpecials(<i>dsttag</i>, <i>srctag</i>) - Copies the sector special from one sector to another. For example: Light Blinks, Very Slow Pulse, etc.</li>
+			<li>Sector_CopyTextures(<i>dsttag</i>, <i>srctag</i>) - Copies the floor and ceiling textures of one sector to another one.</li>
+			<li>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>) - Instantly copies the lighting of one sector to another one. The lights change abruptly.</li>
+			<li>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>) - Smoothly transition the lighting of one sector to another one. This action operates on the "LIGHTS" lump and will change the color of any sector which has the same color as the destination tag. Thus its recommended to give the destination sector a unique sector color.</li>
+		</ul>
+		
+		<h3>Unused Sector Actions</h3>
+			<p>These actions are obsoleted by Sector_CopyLights only included for completeness: SetLightID(<i>dst</i>, <i>src</i>), Sector_SetFloorColorID(<i>tag</i>, <i>id</i>), Sector_SetCeilingColorID(<i>tag</i>, <i>id</i>), Sector_SetCeilingColorID(<i>tag</i>, <i>id</i>), Sector_SetUpperWallColorID(<i>tag</i>, <i>id</i>), Sector_SetLowerWallColorID(<i>tag</i>, <i>id</i>).
+			</p>
+		
+		<h2>Line Actions</h2>
+		<p>Here <i>dsttag</i> is the tag of the line to copy to (destination tag)
+		and <i>srctag</i> is the tag of the line to copy from (source tag). Copying attributes between single-sided and double-sided linedefs will cause most engines to crash.</p>
+		<ul>
+			<li>Line_CopyFlags(<i>dsttag</i>, <i>srctag</i>) - Copies the flags from one line to another one. For example: Impassable, Block Sound, etc.</li>
+			<li>Line_CopyTextures(<i>dsttag</i>, <i>srctag</i>) - Copies upper, middle, and lower textures from one line to another.</li>
+			<li>Line_CopySpecials(<i>dsttag</i>, <i>srctag</i>) - Copies the Action (door raise, floor lower, etc), Activation Type (use, cross, blue key, etc), and Switch Setup properties from one line to another.</li>
+			<li>Line_TriggerRandomLinesByTag(<i>tag</i>) - If there are multiple linedefs with the same tag, this will randomly activate one of them.</li>
+		</ul>
+
+		<h2>Cameras</h2>
+		<ul>
+			<li>Camera_Set(<i>tid</i>) - Set camera view to camera with <i>tid</i>.</li>
+			<li>Camera_Clear(<i>tid</i>)</li>
+			<li>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>) - Move camera view from position at camera with <i>tid</i> to camera with <i>nexttid</i>. Each movement takes the same amount of time and will adjust the velocity accordingly.</li>
+		</ul>
+
+		<h2>Macro Action Control</h2>
+		<ul>
+			<li>wait - If used the macro will complete all preceding actions before continuing the subsequent actions.</li>
+			<li>delay(<i>tics</i>) - If used the macro will delay the start of the subsequent actions by <i>tics</i> (30 tics is 1 second).</li>
+			<li>loop(<i>times</i>){ } - Loop actions within the brackets a given amount of <i>times</i> (see the following example).
+			<ul><li>A looping macro can be canceled early by line action 248: Macro Suspend.</li></ul></li>
+		</ul>
+
+		<h3>Looping Actions Example</h3>
+		<p>Actions can be looped within a macro. The format of a loop is much like the format of a macro itself.</p>
+<pre>macro 1
+{
+  non looping action;
+  loop(<i>times</i>)
+  {
+	  <i>action to loop;</i>
+	  <i>action to loop;</i>
+  }
+  non looping action;
+} //end of macro
+</pre>
+
+		<h3>Unused Macro Actions</h3>
+			<p>Some macro actions exist which do not function, and are believed to be once used in the removed Breakdown easter egg secret. For completeness they are listed here: Macro_Suspend(<i>id</i>). Macro_Enable(<i>id</i>), Macro_Disable(<i>id</i>).
+
+		<h2>Miscellaneous Actions</h2>
+		<ul>
+			<li>Player_Freeze(<i>tics</i>) - Freezes the player in place for the specified number of <i>tics</i> (30 tics is one second). Player can still turn on the Doom 64 Remaster while they cannot turn on Doom 64 EX.</li>
+			<li>Quake(<i>tics</i>) - Shakes the screen for the specified number of tics (30 tics is one second) with sound. This sound can bug if played during a level exit.</li>
+			<li>Exit - Exits to the next level.</li>
+			<li>ExitToLevel(<i>map</i>) - Exits to the specified map number.</li>
+			<li>UnlockCheatMenu - Unlocks the cheat menu. Same as what happens when Hectic is beaten.</li>
+			<li>DisplaySkyLogo - Used in the Doom 64 intro to display the background "EVIL" logo at the end. This only works on skies with the "fadeinbackground" designation.</li>
+		</ul>
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
