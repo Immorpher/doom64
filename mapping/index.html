@@ -15,7 +15,7 @@
 			<p>The Doom 64 level format is an iteration of the original Doom format with additional features for enhanced 3D rendering, colored lighting, and scripting. The latest iteration of Doom Builder 64, by Kovic, supports the official Doom 64 Remaster, Doom 64 EX, Doom 64 EX+, Super EX+, and the original Nintendo 64 engines.</p>
 			
 			<ul>
-				<li><a href="https://github.com/thekovic/DoomBuilder64/releases/">Kovic's Doom Builder 64</a></li>
+				<li><a href="https://github.com/thekovic/DoomBuilder64/releases/">Doom Builder 64</a></li>
 				<li><a href="db64/index.html">Doom Builder 64 Setup Guide</a></li>
 			</ul>
 		
@@ -27,6 +27,19 @@
 				<li><a href="things.html">Things</a></li>
 				<li><a href="macros/index.html">Macros</a></li>
 			</ul>
+			
+		<h2>Nintendo 64 Considerations</h2>
+		
+		<p>The official Doom 64 Remaster and the original Nintendo 64 code are surprisingly close in terms of compatibilities and limitations. Maps made for the Doom 64 Remaster tend to work on the Nintendo 64 as well. So if you are planing to make Nintendo 64 compatible maps, its recommended that you playtest them on the official Doom 64 Remaster. Then afterwards you can convert them to the Nintendo 64 format. Doom Builder 64 has an option when loading maps to convert them to the Nintendo 64 format, but you can also use Erick194's d64 tool to do this.</p>
+		
+		<ul>
+			<li><a href="https://github.com/Erick194/D64TOOL/releases/">d64tool</a></li>
+		</ul>
+		
+		</p>The funadmental difference with the Nintendo 64 format is the textures are referred to by their order in the WAD rather than hash representations of the texture names. Both Doom Builder 64 and d64tool handle this conversion process automatically.</p>
+		
+		<p>The base Doom 64 engine on the Nintendo 64, like Doom 64 RE, has limits in terms of how much geometry can be shown on screen at once and the size of maps it can load (about 900 kb in size maximum). However later forks on the modern SDK drastically raise one or both of these limits.</p>
+		
 	</div>
 
 	<div id="footer"></div>
