@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MAPINFO Text Lump</title>
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>MAPINFO Text Lump</h1>
+		
+			<p>MAPINFO is used to define properties of a map and is used to define text screens as well for the PC engines of Doom 64. It is defined as a text file, specifically "MAPINFO.txt".</p>
+	
+		<h2>Map Definitions</h2>
+		
+			<p>A map definition begins with the keyword "map", followed by the map lump name, actual name of level and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for a map.</p>
+			<dl><dd>Example: <b>map &lt;maplump&gt; &lt;name&gt; { properties }</b></dd></dl>
+			
+		<h3>Properties</h3>
+			<p>Here are properties which can be assigned to each map.</p>
+			
+			<ul><li><b>levelnum = &lt;levelnumber&gt;</b></li></ul>
+			<dl><dd>This is the map's identification number. If the map's name is of the form MAPxx, then it will automatically have a levelnum of xx unless you specify differently. (i.e. MAP23's levelnum will be 23 unless you set it to something else.).</dd></dl>
+			
+			<ul><li><b>music = "&lt;musiclump&gt;"</b></li></ul>
+			<dl><dd>&lt;musiclump&gt; is the name of the song to play while the player is playing the level</dd></dl>
+			
+			<ul><li><b>cluster = &lt;number&gt;</b></li></ul>
+			<dl><dd>&lt;number&gt; is the cluster that this map belongs to. See cluster definitions below for more details</dd></dl>
+			
+			<ul><li><b>classtype = &lt;number&gt;</b></li></ul>
+			<dl><dd>Specifies the type of level this belongs to. This has no useful purpose other than acting as a label for the 'Warp To Level' cheat in the features menu.</dd>
+			<dd>0 = normal, 1 = fun, 2 = user level, 3 = lost level</dd></dl>
+			
+			<ul><li><b>exitdelay = &lt;number&gt;</b></li></ul>
+			<dl><dd>&lt;number&gt; is the delay in tics before the level ends once the player hits an exit switch or trigger. 30 tics = 1 second</dd></dl>
+			
+			<ul><li><b>allowjump = &lt;boolean&gt;</b></li></ul>
+			<dl><dd>(Unused) Forces jumping in the level to be either enabled or disabled. The user's setting for jumping will be ignored for the level.</dd>
+			<dd>0 = no jumping, 1 = jumping allowed</dd></dl>
+			
+			<ul><li><b>clearcheats</b></li></ul>
+			<dl><dd>Disables all cheats when the level starts</dd></dl>
+			
+			<ul><li><b>nointermission</b></li></ul>
+			<dl><dd>This indicates that when the current level is finished, the game should continue immediately to the next level without showing the intermission screen</dd></dl>
+			
+			<ul><li><b>continuemusiconexit</b></li></ul>
+			<dl><dd>This indicates that the music will continue to play, even after the level has ended</dd></dl>
+			
+			<ul><li><b>forcegodmode</b></li></ul>
+			<dl><dd>Force god mode to be enabled when level begins</dd></dl>
+			
+			<ul><li><b>compat_collision = &lt;boolean&gt;</b></li></ul>
+			<dl><dd>(Unused) If 1 is set, then Doom64 EX will force collision compatibility to true, even if the user tries to disable it. Visa versa if 0 is set, collision compatibility will be forced to stay as false.</dd></dl>
+			
+		<h3>Examples</h3>
+		
+<pre>map MAP01 "Staging Area"
+{
+   levelnum = 1
+   music = "MUSAMB04"
+   classtype = 0
+   cluster = 0
+   exitdelay = 15
+}
+</pre>
+<pre>map MAP33 "TITLE"
+{
+   levelnum = 33
+   music = "MUSINTRO"
+   classtype = 0
+   cluster = 0
+   exitdelay = 15
+   compat_collision = 1
+   nointermission
+   continuemusiconexit
+   forcegodmode
+}
+</pre>
+
+		<h2>Cluster Definitions</h2>
+			<p>A cluster definition begins with the keyword "cluster". Clusters are used to display text screens when moving between maps.</p>
+			
+			<dl><dd>Example: <b>cluster &lt;value&gt; { properties }</b>
+			</dd><dd>&lt;value&gt; is the cluster number that this definition defines.</dd></dl>
+			
+		<h3>Properties</h3>
+			
+			<p>The following properties are supported within a cluster definition:</p>
+			
+			<ul><li><b>entertext = "&lt;message&gt;"</b></li></ul>
+			<dl><dd>&lt;message&gt; is a message to be displayed when the player has just finished a level in another cluster and is entering a level in this cluster.</dd></dl>
+			
+			<ul><li><b>exittext = "&lt;message&gt;"</b></li></ul>
+			<dl><dd>&lt;message&gt; is a message to be displayed when the player has just finished a level in a different cluster from the next one. If the next level's cluster has an entertext defined, then it will be shown instead of this cluster's exittext.</dd></dl>
+			
+			<ul><li><b>music = "&lt;musiclump&gt;"</b></li></ul>
+			<dl><dd>This is the music to play while either the entertext or exittext of this cluster is displayed</dd></dl>
+			
+			<ul><li><b>pic = "&lt;piclump&gt;"</b></li></ul>
+			<dl><dd>This is the pic to use as a background while this cluster's entertext or exittext is displayed</dd></dl>
+			
+			<ul><li><b>pic_x = &lt;offset&gt;</b></li></ul>
+			<dl><dd>Set x offset for displayed background pic</dd></dl>
+			
+			<ul><li><b>pic_y = &lt;offset&gt;</b></li></ul>
+			<dl><dd>Set y offset for displayed background pic</dd></dl>
+			
+			<ul><li><b>nointermission</b></li></ul>
+			<dl><dd>If this is set and entertext or exittext is going to be displayed, then no intermission is shown when the level is completed</dd></dl>
+			
+			<ul><li><b>scrolltextend</b></li></ul>
+			<dl><dd>After entertext or exittext is displayed, it will scroll off screen</dd></dl>
+			
+		<h3>Examples</h3>
+<pre>cluster 2
+{
+   pic = "EVIL"
+   pic_x = 64
+   pic_y = 30
+   entertext = "The vast silence reminds",
+               "you of the military morgue.",
+               "",
+               "You knew the installation",
+               "had a classified level.",
+               "",
+               "The U.A.C. had some good",
+               "reason to hide this place.",
+               "",
+               "You wonder what it",
+               "could be..."
+}
+</pre>
+<pre>cluster 5
+{
+   pic = "EVIL"
+   pic_x = 64
+   pic_y = 30
+   nointermission
+   entertext = "Congratulations!",
+               "You found...",
+               "",
+               "HECTIC",
+               "",
+               "Only the best will reap",
+               "its rewards."
+}
+</pre>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
