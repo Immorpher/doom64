@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SKYDEFS Text Lump</title>
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>SKYDEFS Text Lump</h1>
+		
+			<p>SKYDEFS is used to define properties of a sky background for the PC engines of Doom 64. It is defined as a text file, specifically "SKYDEFS.txt". Each sky definition must have a corresponding texture of the same name to be usable in-game. The contents of the texture is not important.</p>
+	
+		<h2>Sky Definitions</h2>
+		
+			<p>A sky definition begins with the keyword "sky", followed by the sky texture name, and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for a map.</p>
+			<dl><dd>Example: <b>sky "&lt;skytexture&gt;" { properties }</b></dd></dl>
+			
+		<h2>Properties</h2>
+			<p>Here are properties which can be assigned to each sky.</p>
+			
+			<ul><li><b>pic = "&lt;graphic&gt;"</b></li></ul>
+			<dl><dd>&lt;graphic&gt; is the name of a background graphic or a cloud graphic to be used. It is unused for the fire sky which instead exclusively points to the "FIRE" graphic</dd></dl>
+			
+			<ul><li><b>backpic = "&lt;graphic&gt;"</b></li></ul>
+			<dl><dd>&lt;graphic&gt; is the name of a graphic to overlay on the sky. This is used for mountains in Doom 64 and the graphic is placed 75 sky pixels above the bottom of the screen.</dd></dl>
+			
+			<ul><li><b>fogcolor = &lt;hexnumber&gt;</b></li></ul>
+			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the color of fog. Most original Doom 64 skies have a "black" fog, however levels such as "Watch Your Step" and "In The Void" define a different color</dd></dl>
+			
+			<ul><li><b>fogfactor = &lt;number&gt;</b></li></ul>
+			<dl><dd>&lt;number&gt; is a number to define how close the fog is to the player. Lower the number, the closer the fog is</dd></dl>
+			
+			<ul><li><b>basecolor = &lt;hexnumber&gt;</b></li></ul>
+			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the background color of the sky. Sky graphics tend to cover this up, but it is particularly useful for the void sky type</dd></dl>
+			
+			<ul><li><b>highcolor = &lt;hexnumber&gt;</b></li></ul>
+			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the color of the clouds or fire at the top of the screen</dd></dl>
+			
+			<ul><li><b>lowcolor = &lt;hexnumber&gt;</b></li></ul>
+			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the color of the clouds or fire at the bottom of the effect</dd></dl>
+			
+			<ul><li><b>cloud</b></li></ul>
+			<dl><dd>Enables the cloud sky effect</dd></dl>
+			
+			<ul><li><b>fire</b></li></ul>
+			<dl><dd>Enables the fire sky effect</dd></dl>
+			
+			<ul><li><b>void</b></li></ul>
+			<dl><dd>Enables the void sky</dd></dl>
+			
+			<ul><li><b>thunder</b></li></ul>
+			<dl><dd>Enables the thunder effect</dd></dl>
+			
+			<ul><li><b>fadeinbackground</b></li></ul>
+			<dl><dd>Sets the "pic" graphic to the bottom of the screen and allows a linedef action to fade it with the "EVIL" graphic.</dd></dl>
+			
+		<h2>Original Sky Definitions</h2>
+		
+			<p>Doom 64 used eleven different skies associated with the textures below.</p>
+			
+			<ul>
+				<li>F_SKYA - Violet colored clouds with thunder</li>
+				<li>F_SKYB - Red colored clouds</li>
+				<li>F_SKYC - Orange colored clouds with mountain backdrop</li>
+				<li>F_SKYD - Dynamic fire sky</li>
+				<li>F_SKYE - Orange colored clouds with heavy fog</li>
+				<li>F_SKYF - Space backdrop</li>
+				<li>F_SKYG - Space backdrop with Doom 64 logo (used for intro)</li>
+				<li>F_SKYH - Foggy teal void sky</li>
+				<li>F_SKYI - Dynamic green fire sky</li>
+				<li>F_SKYJ - Violet colored clouds with thunder and mountain backdrop</li>
+				<li>F_SKYK - Space and mountain backdrop</li>
+
+			</ul>
+			
+		<h2>Examples</h2>
+		
+<pre>sky "F_SKYA"
+{
+    pic = "CLOUD"
+    fogcolor = 0 0 0
+    basecolor = b0 80 ff
+    highcolor = 0 0 0
+    lowcolor = 0 0 15
+    cloud
+    thunder
+    fogfactor = 985
+}</pre>
+<pre>sky "F_SKYH"
+{
+    fogcolor = 0 40 40
+    basecolor = 0 38 38
+    highcolor = 0 0 0
+    lowcolor = 0 0 0
+    void
+    fogfactor = 975
+}</pre>
+
+		<h2>Sky Rendering Bugs</h2>
+		
+		<h3>Doom 64 Remaster Color Bug</h3>
+		
+			<p>There is a bug in sky colors on the Doom 64 Remaster due to how it was translated over from EX to the KEX engine. Numbers like 1F are read as two different token types because of KEX's letter system (difference between how it reads numbers and letters). So fog colors like "8F 00 FF" will bug out because of the "8F". However, "89 00 FF" and "AF 00 FF" work just fine as they do not mix tokens. Token order matters too. If the hex value begins with a letter, it should be fine. It is only if it begins with a number and then a letter that causes a bug.</p>
+			
+			
+		<h3>Doom 64 EX Sky Reference Bug</h3>
+		
+			<p>Doom 64 EX seems to be particular how skies are named. Sometimes it will render the texture for the sky and not the sky itself. Changing the name of a bugged sky in EX will often fix this issue.</p>
+		
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
