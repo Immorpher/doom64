@@ -11,16 +11,19 @@ function layout(depth) {
 		<a href="'+depth+'mapping/index.html">Mapping</a>\
 		<a href="'+depth+'graphics/index.html">Graphics</a>\
 		<a href="'+depth+'audio/index.html">Audio</a>\
-		<a href="'+depth+'/contributors/index.html">Contributors</a>\
-		<a href="'+depth+'/links/index.html">Links</a>\
+		<a href="'+depth+'contributors/index.html">Contributors</a>\
+		<a href="'+depth+'links/index.html">Links</a>\
 	';
 	
 	let footdata = '\
 		<p>The Doom 64 Compendum is collaboratively constructed by the <a href="'+depth+'/contributors/index.html">contributors</a>.</p>\
 	';
 	
-	// Add the doom 64 compendium title
-	document.getElementsByTagName("title")[0].innerHTML = document.getElementsByTagName("title")[0].innerHTML + " (Doom 64 Compendium)";
+	// Add the doom 64 compendium title to pages which need it
+	var titleid = document.getElementById("title");
+	if (titleid) {
+		document.getElementById("title").innerHTML = document.getElementById("title").innerHTML + " (Doom 64 Compendium)";
+	}
 	
 	//Process the document to add the layout
 	document.getElementById("navigation").innerHTML = navdata;
