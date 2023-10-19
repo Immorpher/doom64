@@ -36,7 +36,11 @@
 			
 		<h2>Switch and Decal Textures</h2>
 		
+			<p>Switch textures, when not used as decals, come in pairs offset by one sequential character at the end. For example "SWITCHA" and "SWITCHB" are one such pair. When a switch is defined, one of the pair is selected, and when activated by a player, it will switch to the other of the pair.</p>
+		
 			<p>On the PC engines, switch textures are resized to a 32 by 32 unit area. Thus the original Doom 64 switch textures are 32 by 32 pixels to keep a consistent texture resolution. However higher resolution textures can be used, which may be useful for effects like text screens on the wall. Also the use of the switch setup properties on a linedef can be used to add other decals to walls, like graffiti and stains, without using the full switch setup process.</p>
+			
+			<p>There is an unusual bug concerning switch textures on the Doom 64 Remaster. When using custom switch textures, sometimes activating them in game causes the switch texture to switch to an incorrect texture, that is not in the pair. Even if it was correct prior, adding new textures to a WAD can cause this issue to happen. The exact remedy to this bug is unknown, however changing the switch placement in the WAD or adding the original switch textures to the WAD has sometimes fixed this issue.</p>
 			
 		<h2>Nintendo 64</h2>
 		
