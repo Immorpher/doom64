@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">ANIMDEFS Text Lump</title>
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>ANIMDEFS Text Lump</h1>
+		
+			<p>ANIMDEFS is used to define the animated textures for the PC engines of Doom 64. It is defined as a text file, specifically "ANIMDEFS.txt". Each animation frame in the sequence must have a sequential character such as: "ANIMA", "ANIMB", "ANIMC", and ect. However palette animations work differently as described below.</p>
+	
+		<h2>Animation Definitions</h2>
+		
+			<p>An animation definition begins with the keyword "animpic", followed by the animation first frame texture name, and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for an animation.</p>
+			<dl><dd>Example: <b>animpic "&lt;texture&gt;" { properties }</b></dd></dl>
+			
+		<h2>Properties</h2>
+			<p>Here are properties which can be assigned to each animation.</p>
+			
+			<ul><li><b>restartdelay = "&lt;number&gt;"</b></li></ul>
+			<dl><dd>&lt;number&gt; is how much delay in engine tics (30 tics = 1 second) after an animation is finished until it starts again</dd></dl>
+			
+			<ul><li><b>frames = "&lt;number&gt;"</b></li></ul>
+			<dl><dd>&lt;number&gt; is the number of animation frames the animation has</dd></dl>
+			
+			<ul><li><b>speed = &lt;number&gt;</b></li></ul>
+			<dl><dd>&lt;number&gt; is the number of tics (30 tics = 1 second) to spend on each animation frame</dd></dl>
+			
+			<ul><li><b>rewind</b></li></ul>
+			<dl><dd>This reverses the animation once it reaches the last frame</dd></dl>
+			
+			<ul><li><b>cyclepalettes</b></li></ul>
+			<dl><dd>This uses the internal palette of the texture for animation</dd></dl>
+			
+		<h2>Palette Animations</h2>
+		
+			<p>Palette animations are enabled by the "cyclepalettes" definition. This was used as a memory saving technique for Doom 64 initially. Here the animation refers to a single texture, and this texture can have up to 256 colors. However only the first 16 colors of the palette are used initially. Then it will swap to the subsequent sets of 16 colors to create an animation. Thus, for a 256 color palette, there is a maximum of 16 frames.</p>
+			
+			<p>As memory tends to be not an issue with Doom 64 anymore, engines like Doom 64 EX+ no longer support palette animations.</p>
+			
+		<h2>Examples</h2>
+		
+<pre>animpic "CFACEA"
+{
+    restartdelay = 90
+    frames = 3
+    speed = 3
+    rewind
+}</pre>
+<pre>animpic "CTEL"
+{
+    restartdelay = 0
+    frames = 8
+    speed = 3
+    cyclepalettes
+}
+</pre>
+		
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
