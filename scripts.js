@@ -16,7 +16,7 @@ function layout(depth) {
 	';
 	
 	let footdata = '\
-		<p>The Doom 64 Compendum is collaboratively constructed by the <a href="'+depth+'/contributors/index.html">contributors</a>.</p>\
+		<p>The Doom 64 Compendum is collaboratively constructed by the <a href="'+depth+'contributors/index.html">contributors</a>.</p>\
 	';
 	
 	// Add the doom 64 compendium title to pages which need it
