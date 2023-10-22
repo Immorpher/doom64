@@ -12,17 +12,17 @@
 	
 		<h1>Textures</h1>
 		
-			<p>Although the Doom engine originally made a distinction between textures used on the walls and the floors/ceilings, the same textures can be used for each in Doom 64. There are rendering differences however.</p>
+			<p>Although the Doom engine originally made a distinction between textures used on the walls and the floors/ceilings, the same textures can be used for either in Doom 64. There are rendering differences however.</p>
 			
 		<h2>The BLANK Texture</h2>
 		
-			<p>A big feature of Doom 64's 3D rendering is the blank texture. This inconspicuous texture is fully transparent, allowing geometry behind it to become visible. This is used to trim the top of bridges and floating objects by lowering sectors with the blank texture around the structure.</p>
+			<p>A big feature of Doom 64's 3D rendering is the BLANK texture. This texture is fully transparent, allowing geometry behind it to become visible. This is used to trim the top of bridges and floating objects by lowering sectors with the blank texture around the structure.</p>
 			
-			<p>For rendering efficiency, the Doom 64 engine will not send sectors it believes not visible to the player to render. Thus, even with the blank texture being used, sectors behind it may not be shown to the player. Luckily the "no occlusion" flag on obscuring linedefs can be used to fix this.</p>
+			<p>For rendering efficiency, the Doom 64 engine will not send sectors it believes not visible to the player to render. Thus, even with the blank texture being used, sectors behind it may not be shown to the player. The "No Occlusion" flag can be used on obscuring linedefs to fix this.</p>
 			
 		<h2>Floor/Ceiling Rendering</h2>
 		
-			<p>On the floor and ceilings textures are streched to match a 64 unit square. For textures larger than 64 by 64 pixels it can result in inconsistent texture resolution with the walls. However higher resolution textures can work with water effects.</p>
+			<p>On the floor and ceilings, textures are streched to match a 64 unit square. For textures larger than 64x64 pixels it can result in inconsistent texture resolution with the walls. However higher resolution textures can work with water effects.</p>
 			
 			<p>For PC Engines, textures on the floors and ceilings will render partial transparencies. This can be used for ice and glass effects.</p>
 	
@@ -38,9 +38,9 @@
 		
 			<p>Switch textures, when not used as decals, come in pairs offset by one sequential character at the end. For example "SWITCHA" and "SWITCHB" are one such pair. When a switch is defined, one of the pair is selected, and when activated by a player, it will switch to the other of the pair.</p>
 		
-			<p>On the PC engines, switch textures are resized to a 32 by 32 unit area. Thus the original Doom 64 switch textures are 32 by 32 pixels to keep a consistent texture resolution. However higher resolution textures can be used, which may be useful for effects like text screens on the wall. Also the use of the switch setup properties on a linedef can be used to add other decals to walls, like graffiti and stains, without using the full switch setup process.</p>
+			<p>On the PC engines, switch textures are resized to a 32x32 unit area. Thus the original Doom 64 switch textures are 32x32 pixels to keep a consistent texture resolution. However higher resolution textures can be used, which may be useful for effects like text screens on the wall. Also the use of the switch setup properties on a linedef can be used to add other decals to walls, like graffiti and stains, without using the full switch setup process.</p>
 			
-			<p>There is an unusual bug concerning switch textures on the Doom 64 Remaster. When using custom switch textures, sometimes activating them in game causes the switch texture to switch to an incorrect texture, that is not in the pair. Even if it was correct prior, adding new textures to a WAD can cause this issue to happen. The exact cause of this bug is unknown. Sometimes switching the texture order is enough to fix this. A more consistent fix is to put all of the switch textures (including the originals) at the top of the texture lump (before any other texture) and this seems to help maintain the proper order in engine.</p>
+			<p>There is an unusual bug concerning switch textures on the Doom 64 Remaster. When using custom switch textures, sometimes activating them in game causes the switch texture to switch to an incorrect texture, that is not in the pair. Even if it was correct prior, adding new textures to a WAD can cause this issue to happen. The exact cause of this bug is currently unknown. Sometimes switching the texture order is enough to fix this. A more consistent fix is to put all of the switch textures (including the originals) at the top of the texture lump (before any other texture) and this seems to help maintain the proper order in the engine.</p>
 			
 		<h2>Nintendo 64</h2>
 		
@@ -50,9 +50,9 @@
 				
 			<p>Most graphics software do not have a specific option to save PNGs as a 4-bit format. However you can palette the graphic as an 8 bit image and reduce the palette to 16 colors only. Often d64make will recognize this as a 4 bit image and process it appropriately.</p>
 			
-			<p>For the Nintendo 64, due to the loading algorithm, each texture can only be 4096 pixels total maximum. This includes texture sizes such as: 64 by 64 pixels, 128 by 32 pixels, and 256 by 16 pixels.</p>
+			<p>Due to hardware limitations relating to the texture cache (TMEM) size, each individual (CI4) texture on the Nintendo 64 can only be 4096 pixels total maximum. Furthermore, the textures must be 8-byte aligned. This includes texture sizes such as: 64x64 pixels, 128x32 pixels, and 256x16 pixels.</p>
 			
-			<p>On the original Doom 64 engine, switch textures are not resized to a 32 by 32 unit size. Instead they are allowed to expand like a wall texture. However some engines, like Complete Edition, switch textures will be resized like the PC engines.</p>
+			<p>On the original Doom 64 engine, switch textures are not resized to a 32x32 unit size. Instead, they are allowed to expand like a wall texture. However some engines, like Complete Edition, switch textures will be resized like the PC engines.</p>
 			
 	</div>
 
