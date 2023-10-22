@@ -9,8 +9,10 @@
 	<div id="navigation"></div>
 	
 	<div id="content">
-		<h1>Map Things</h1>
+		<h1>Things</h1>
 		<p>"Things" are objects, monsters, items, and decorations which appear in levels as sprites. This includes the player start position, which all maps require.</p>
+		
+		<h2>Thing List</h2>
 		
 		<table>
 			<tr>
@@ -365,7 +367,55 @@
 				<td>1049</td><td>Hanging Ribs</td><td>Decoration</td><td>Doom 64</td>
 			</tr>
 		</table>
-
+		
+		<h2>Thing Flags</h2>
+		
+		<p>Here are properties assignable to any thing in Doom 64. However not all properties will have an effect on all things. Introduced by Doom 64 EX, the "Nightmare Creature" flag gives enemies a combat boost and green color. For other things, they will only inherit the green color. This flag is supported on all PC engines, and some recent Nintendo 64 engines as well.</p>
+		
+		<table>
+			<tr>
+				<th>Flag Bit</th><th>Editor Setting</th><th>Description</th>
+			</tr>
+			<tr>
+				<td>0x1</td><td>Easy Difficulty</td><td>Thing is on skill levels 1 & 2</td>
+			</tr>
+			<tr>
+				<td>0x2</td><td>Medium Difficulty</td><td>Thing is on skill level 3</td>
+			</tr>
+			<tr>
+				<td>0x4</td><td>Hard Difficulty</td><td>Thing is on skill levels 4 & 5</td>
+			</tr>
+			<tr>
+				<td>0x8</td><td>Ambush Players</td><td>Do not react to player attack sound (deaf)</td>
+			</tr>
+			<tr>
+				<td>0x10</td><td>Multiplayer Only</td><td>Thing is not in single player</td>
+			</tr>
+			<tr>
+				<td>0x20</td><td>Spawned by Special</td><td>Don't spawn until triggered with action or macro</td>
+			</tr>
+			<tr>
+				<td>0x40</td><td>Trigger On Pick Up</td><td>Trigger tagged linedef with matching TID when picked up</td>
+			</tr>
+			<tr>
+				<td>0x80</td><td>Trigger On Death</td><td>Trigger tagged linedef with matching TID when killed</td>
+			</tr>
+			<tr>
+				<td>0x100</td><td>Count Secret On Pick Up</td><td>Count as secret for intermission when picked up</td>
+			</tr>
+			<tr>
+				<td>0x200</td><td>No Infighting</td><td>Never fight other monsters</td>
+			</tr>
+			<tr>
+				<td>(new)</td><td>Nightmare Creature</td><td>Give monster double health, fast speed, and green color</td>
+			</tr>
+			<tr>
+				<td>(unused)</td><td>No Spawn in Deathmatch</td><td>Do not spawn thing in deathmatch mode</td>
+			</tr>
+			<tr>
+				<td>(unused)</td><td>No Spawn in Multiplayer</td><td>Do not spawn thing in any multiplayer mode</td>
+			</tr>
+		</table>
 	</div>
 
 	<div id="footer"></div>
