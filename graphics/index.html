@@ -12,7 +12,7 @@
 	
 		<h1>Graphics</h1>
 		
-			<p>Unlike other id Software games at the time, Doom 64 did not have a global palette. Instead each graphic has its own palette. This has allowed Doom 64 to have a large color variation compared to other Doom engine games of the era. The guide below describes how textures are rendered.</p>
+			<p>Unlike other id Software games at the time, Doom 64 did not have a global palette. Instead, each graphic has its own palette. This allowed Doom 64 to have a larger color variation compared to other contemporary Doom engine games. The guide below describes how textures are rendered.</p>
 			
 			<ul><li><a href="textures/index.html">Texture Guide</a></li></ul>
 			
@@ -22,13 +22,13 @@
 			
 		<h2>Nintendo 64</h2>
 		
-			<p>On the Nintendo 64, each graphic for Doom 64 has a specific palette that is either stored with the graphic or externally. Each enemy sprite has a unique 256-color palette it reffers to. While the textures are 16-color paletted, thus they are 4-bit images. The graphics lump images each have their own 256-color palettes. The d64make utility by Nova can convert appropriately-formatted PNGs to the format for the Nintendo 64.<p>
+			<p>On the Nintendo 64, each graphic for Doom 64 has a specific palette that is either stored with the graphic or externally. Each enemy sprite has a unique 256-color palette it refers to (CI8 texture format), whereas the textures are 16-color paletted (CI4 texture format). The graphics lump images each have their own 256-color palette. The d64make utility by Nova can convert appropriately-formatted PNGs to the format for the Nintendo 64.<p>
 			
 				<ul><li><a href="https://github.com/d64u/d64make/">d64make</a></li></ul>
 				
 		<h2>Filtering and Fringes</h2>
 			
-			<p>The Nintendo 64 was famous for introducing smooth graphics filtering to the home console market. This technique allows graphics to look smooth when really close to the player's view and it dominates the AAA gaming industry today. The particular style of smooth filtering which the Nintendo 64 was capable of is called a 3-point filter. Although bilinear filtering dominates modern graphics rendering, 3-point filtering could render some diagonal pixels smoother.</p>
+			<p>The Nintendo 64 was famous for introducing smooth graphics filtering to the home console market. This technique allows graphics to look smooth when really close to the player's view and it dominates the AAA gaming industry today. The particular style of texture filtering the Nintendo 64 was capable of is called a 3-point bilinear filter. Although 4-point bilinear filtering dominates graphics rendering today, 3-point filtering was cheaper and could render some diagonal lines of pixels smoother but at the cost of potential visual artifacts when a texture is viewed under specific camera angles.</p>
 			
 			<p>Transparency in graphics can introduce fringes around transparent areas when being rendered with filtering. When interpolating nearby pixels, the color of the opaque pixel and transparent pixel are mixed, and this is what results in a fringe. And yes transparent pixels do have a color, even if you can not see it. All original Doom 64 graphics are palleted, and the transparent color is set to black, so all filtered Doom 64 graphics have a black fringe. Since most Doom 64 maps fade to black at a distance, these fringes aren't very noticeable. If your graphics editing program supports palettes, it will likely let you choose any transparent color. Just like the original Doom 64 graphics, black is recommended.</p>
 			
