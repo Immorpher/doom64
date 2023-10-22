@@ -25,7 +25,19 @@
 			<p>On the Nintendo 64, each graphic for Doom 64 has a specific palette that is either stored with the graphic or externally. Each enemy sprite has a unique 256-color palette it reffers to. While the textures are 16-color paletted, thus they are 4-bit images. The graphics lump images each have their own 256-color palettes. The d64make utility by Nova can convert appropriately-formatted PNGs to the format for the Nintendo 64.<p>
 			
 				<ul><li><a href="https://github.com/d64u/d64make/">d64make</a></li></ul>
+				
+		<h2>Filtering and Fringes</h2>
 			
+			<p>The Nintendo 64 was famous for introducing smooth graphics filtering to the home console market. This technique allows graphics to look smooth when really close to the player's view and it dominates the AAA gaming industry today. The particular style of smooth filtering which the Nintendo 64 was capable of is called a 3-point filter. Although bilinear filtering dominates modern graphics rendering, 3-point filtering could render some diagonal pixels smoother.</p>
+			
+			<p>Transparency in graphics can introduce fringes around transparent areas when being rendered with filtering. When interpolating nearby pixels, the color of the opaque pixel and transparent pixel are mixed, and this is what results in a fringe. And yes transparent pixels do have a color, even if you can not see it. All original Doom 64 graphics are palleted, and the transparent color is set to black, so all filtered Doom 64 graphics have a black fringe. Since most Doom 64 maps fade to black at a distance, these fringes aren't very noticeable. If your graphics editing program supports palettes, it will likely let you choose any transparent color. Just like the original Doom 64 graphics, black is recommended.</p>
+			
+			<p>Doom 64 engines for PC support true color images. This allows the transparent space to be of multiple colors instead of a single color. By choosing colors which match the nearest opaque pixels, fringes become effectively unnoticeable. This called defringing and requires extra work to achieve manually. Fortunately, the software below can defringe true color PNG images automatically.</p>
+			
+				<ul>
+					<li><a href="https://github.com/thekovic/png_defringe_rs/releases/">PNG Defringe (Rust)</a></li>
+					<li><a href="https://github.com/Immorpher/PNG-Defringe/releases/">PNG Defringe (MATLAB)</a></li>
+				</ul>
 	</div>
 
 	<div id="footer"></div>
