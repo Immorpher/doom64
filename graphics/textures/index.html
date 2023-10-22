@@ -32,7 +32,7 @@
 			
 			<p>To get the Remaster to show the transparency properly for lower textures, set the mid texture as blank. Otherwise their transparent parts will be black. This is why some Doom 64 textures have unusual transparent pixels, but show up as solid in the original game, because their transparent pixels were rendered as black.</p>
 			
-			<img src="textrans.png" style="width: 31rem; height: 22rem; image-rendering: pixelated;" />
+			<img src="textrans.png" style="width: 620px; height: 440px; image-rendering: pixelated;" />
 			
 		<h2>Switch and Decal Textures</h2>
 		
@@ -40,7 +40,7 @@
 		
 			<p>On the PC engines, switch textures are resized to a 32x32 unit area. Thus the original Doom 64 switch textures are 32x32 pixels to keep a consistent texture resolution. However higher resolution textures can be used, which may be useful for effects like text screens on the wall. Also the use of the switch setup properties on a linedef can be used to add other decals to walls, like graffiti and stains, without using the full switch setup process.</p>
 			
-			<p>There is an unusual bug concerning switch textures on the Doom 64 Remaster. When using custom switch textures, sometimes activating them in game causes the switch texture to switch to an incorrect texture, that is not in the pair. Even if it was correct prior, adding new textures to a WAD can cause this issue to happen. The exact cause of this bug is currently unknown. Sometimes switching the texture order is enough to fix this. A more consistent fix is to put all of the switch textures (including the originals) at the top of the texture lump (before any other texture) and this seems to help maintain the proper order in the engine.</p>
+			<p>There is an unusual bug concerning switch textures on the Doom 64 Remaster. When using custom switch textures, sometimes activating them in game causes the switch texture to switch to an incorrect texture, that is not in the pair. Even if it was correct prior, adding new textures to a WAD can cause this issue to happen. The exact cause of this bug is currently unknown. Sometimes switching the texture order is enough to fix this. A more consistent fix is to put all of the switch textures (including the originals) at the top of the texture lump (before any other texture) and this seems to help maintain the proper order in the engine.  Also it has been found cutting out the switch textures from the WAD, saving the WAD, and pasting the textures back into the WAD can fix this bug.</p>
 			
 		<h2>Nintendo 64</h2>
 		
