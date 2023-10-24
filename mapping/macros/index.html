@@ -157,11 +157,16 @@
 		</ul>
 
 		<h2>Cameras</h2>
+		
+		<p>The camera will move from the current position to <i>camera thing</i> tagged (<i>tid</i> +1), then to camera tagged (<i>tid</i> +2), then camera tagged (<i>tid</i> +3), and so forth. This will continue sequentially until there is no camera tagged 1 higher than the last one. The same target (<i>tid</i>) will be looked at the whole time, and camera movement speed is automatic and can't affected in any way. It is very hard to predict exactly how long a Camera_MoveAndAim will take to complete, using <b>wait;</b> right after a Camera_MoveAndAim is <i>strongly</i> recommended.</p>
+		
 		<ul>
 			<li>Camera_Set(<i>tid</i>) - Set camera view to camera with <i>tid</i>.</li>
 			<li>Camera_Clear(<i>tid</i>)</li>
-			<li>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>) - Move camera view from position at camera with <i>tid</i> to camera with <i>nexttid</i>. Each movement takes the same amount of time and will adjust the velocity accordingly.</li>
+			<li>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>) - Start moving camera at "Camera_Set" position and aim view at <i>tid</i>.  <i>nexttid</i> is not used.</li>
 		</ul>
+		
+		<p>To change to a new target being looked at, a new Camera_MoveAndAim must be used, with the new target <i>tid</i>. Technically, <i>tid</i> can be any type of <i>thing</i>, not just cameras. Using a moving monster or the player as a target will often end up freezing/crashing the game. It will move around whatever <i>thing</i> is used for the target, as if the thing itself was a camera. That means using a key as a target, the key will get to where the camera stops at the very end.</p>
 
 		<h2>Macro Action Control</h2>
 		<ul>
