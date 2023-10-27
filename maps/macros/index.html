@@ -72,7 +72,7 @@
 			<li>Floor_LowerToNearest(<i>tag</i>) - Lowers the floor to the height of the highest neighboring floor.</li>
 			<li>Floor_LowerToNearestFast(<i>tag</i>) - Lowers the floor at turbo speed to 8 units above the height of the highest neighboring floor.</li>
 			<li>Floor_LowerToLowest(<i>tag</i>) - Lowers the floor to the height of the highest neighboring floor.</li>
-			<li>Floor_LowerToLowestChange(<i>tag</i>) - Same as above, and changes the floor texture and sector special to match the neighboring sector.</li>
+			<li>Floor_LowerToLowestChange(<i>tag</i>) - Lowers the floor to the height of the highest neighboring floor, and changes the floor texture and sector special to match the neighboring sector.</li>
 		</ul>
 		
 		<h4>Floor Raise</h4>
@@ -117,14 +117,14 @@
 		<h2>Teleport Actions</h2>
 		<p>These actions can only teleport the player. Here <i>tid</i> is the teleport destination's tag number.</p>
 		<ul>
-			<li>Teleport_Normal(<i>tid</i>) - Teleports the player normally (with sound and green glow).</li>
-			<li>Teleport_Silent(<i>tid</i>) - Teleports the player without any sound and glow.</li>
+			<li>Teleport_Normal(<i>tid</i>) - Teleports the player normally (with sound and green glow) to tagged destination.</li>
+			<li>Teleport_Silent(<i>tid</i>) - Teleports the player without any sound and glow to tagged destination.</li>
 		</ul>
 
 		<h2>Thing Actions</h2>
 		<p>Here <i>tid</i> is the thing tag number.</p>
 		<ul>
-			<li>Thing_Spawn(<i>tid</i>) - Tagged thing must have "Spawner" checked.</li>
+			<li>Thing_Spawn(<i>tid</i>) - Spawns things tagged with <i>tid</i>, they must have "Spawner" checked.</li>
 			<li>Thing_FadeOut(<i>tid</i>) - Tagged thing fades away and is removed. Most often used to remove corpses.</li>
 			<li>Thing_Alert(<i>tid</i>) - Alerts all things with this tag. Causes tagged corpses to resurrect in the Doom 64 Remaster, but causes a crash in Doom 64 EX.</li>
 			<li>Thing_SetReactionTime(<i>tics</i>) - 30 tics is one second</li>
@@ -173,7 +173,7 @@
 			<li>Exit - Exits to the next level.</li>
 			<li>ExitToLevel(<i>map</i>) - Exits to the specified map number.</li>
 			<li>UnlockCheatMenu - Unlocks the Features (cheat) menu. Used at the end of MAP32: Hectic.</li>
-			<li>DisplaySkyLogo - Used in the Doom 64 intro to display the background "EVIL" logo at the end. This only works on skies with the "fadeinbackground" designation.</li>
+			<li>DisplaySkyLogo - Used in the Doom 64 intro to display the backpic logo at the end on the sky. This only works on skies with the "fadeinbackground" designation.</li>
 		</ul>
 
 		<h2>Macro Action Control</h2>
