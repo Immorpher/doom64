@@ -93,6 +93,8 @@
 			<tr><td>242</td><td>Thing Fade Out</td><td>Tagged thing fades away and is removed. Most often used to remove corpses.</td></tr>
 			<tr><td>202</td><td>Spawn Dart</td><td> Tagged thing must be a Projectile Spot (thing type 2050) and must not have<br/>"Spawner" checked. Shoots a dart in the direction the projectile spot is facing.</td></tr>
 			<tr><td>231</td><td>Spawn Tracer</td><td>Tagged thing must be a Projectile Spot (thing type 2050) and must not have<br/>"Spawner" checked. Spawns an explosive projectile which homes in on the player.</td></tr>
+			<tr><td>211</td><td>Thing Spawn Silent</td><td>(Doom 64 EX+) Spawns things of same tag without sound, they must have "Spawner" checked.</td></tr>
+			<tr><td>255</td><td>Spawn Projectile (Global Integer = Type#)</td><td>(Doom 64 EX+) Use action 204 to set global integer, which will spawn that particular enemy projectile.</td></tr>
 		</table>
 
 		<h2>Light Specials</h2>
@@ -143,6 +145,10 @@
 		<table>
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
 			<tr><td>0</td><td>(default) None</td><td>No action</td></tr>
+			<tr><td>213</td><td>Play Sound (Tag = Sound#)</td><td>(Doom 64 EX+) Play specific in-game sound effect based on sound load order</td></tr>
+			<tr><td>215</td><td>Stop Music</td><td>(Doom 64 EX+) Stops the music currently playing</td></tr>
+			<tr><td>216</td><td>Change Music (Tag = Music#)</td><td>(Doom 64 EX+) Plays music track corresponding to MUSAMB##</td></tr>
+			<tr><td>217</td><td>Change Sky (Tag = Sky#)</td><td>(Doom 64 EX+) Changes sky based on sky load order in SKYDEFS</td></tr>
 			<tr><td>253</td><td>Unlock Cheat Menu</td><td>Unlock the "features" cheat menu</td></tr>
 			<tr><td>254</td><td>Draw D64 Logo on F_SKYG flat</td><td>Displays the backpic graphic on the sky. This only<br/>works on skies with the "fadeinbackground" designation.</td></tr>
 			<tr><td>256 - 511</td><td>Macro #</td><td>Activate specific macro.</td></tr>
