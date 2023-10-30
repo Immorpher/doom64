@@ -9,197 +9,155 @@
 	<div id="navigation"></div>
 	
 	<div id="content">
+	
+
 		<h1>Macros</h1>
-		<p>Macros are used to execute a multiple actions with just a single linedef special activation. The actions can happen all at once or delays can be added between them to create a sequence. Only one macro can be run at a time within the engine - all other macros will be blocked until the current macro is finished. The majority of actions target a specific line, sector, or thing with a specified <i>tag</i>.</p>
-		
-		<p>Macros need to be compiled in Doom Builder 64 before they can be used in-game. A good way to learn how macros function is to look at decompiled macros from maps of the original Doom 64 campaign, which can be downloaded <a href="decompiled.zip">here</a>.</p>
-		
-		<h2>Sector Height Affecting Actions</h2>
-		<p>Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector.</p>
-		
-		<h3>Customizable Actions</h3>
-		<p>These actions can be customized by the mapper with arguments that determine how exactly the given sector will move. They are very powerful and are therefore used most often in macros.</p>
+			<p>Macros are a unique scripting system used in Doom 64 which allow the you to script events to make the gameplay feel more dynamic and open ended. Macros are basically a series of line actions executed in batches, which provides the flexibility to move sectors separately, simultaneously, in the same or opposite directions, and to any height or depth. It also allows the you to modify walls, flags, textures and even how switches can be interacted with as well as spawning or removing actors. Only one macro can be executed at a time.</p>
 
-		<h4>Floors</h4>
-		<ul>
-			<li>Floor_MoveBy(<i>tag</i>, <i>value</i>) - Moves the floor by the amount specified by the <i>value</i> argument. Positive values raise the floor, negative values lower it.</li>
-			<li>Floor_MoveByFast(<i>tag</i>, <i>value</i>) - Same as above, but the floor moves at turbo speed.</li>
-			<li>Floor_MoveByInstant(<i>tag</i>, <i>value</i>) - Same as above, but the floor moves instantly.</li>
-			<li>Floor_MoveTo(<i>tag</i>, <i>height</i>) - Moves the floor to a specific height value. Direction of the movement depends on the floor's starting height.</li>
-			<li>Floor_Set(<i>tag</i>, <i>height</i>) - Same as above, but the floor moves instantly. Effectively sets the floor's height value.</li>
-		</ul>
+			<p>BLAM is used to compile macros into a executable format for Doom 64. It is included with and automatically used by Doom Builder 64, so no separate download or setup is needed. The page icon on Doom Builder 64 will open the script editor where you can add macros. This script editor can also be found from the "View" menu. In the script editor, the page icon with the lightning bolt will compile the macro scripts.</p>
+			
 
-		<h4>Ceilings</h4>
-		<ul>
-			<li>Ceiling_MoveBy(<i>tag</i>, <i>value</i>) - Moves the ceiling by the amount specified by the <i>value</i> argument. Positive values raise the ceiling, negative values lower it.</li>
-			<li>Ceiling_MoveByFast(<i>tag</i>, <i>value</i>) - Same as above, but the ceiling moves at turbo speed.</li>
-			<li>Ceiling_MoveByInstant(<i>tag</i>, <i>value</i>) - Same as above, but the ceiling moves instantly.</li>
-			<li>Ceiling_MoveTo(<i>tag</i>, <i>height</i>) - Moves the ceiling to a specific height value. Direction of the movement depends on the ceiling's starting height.</li>
-			<li>Ceiling_Set(<i>tag</i>, <i>height</i>) - Same as above, but the ceiling moves instantly. Effectively sets the ceiling's height value.</li>
-		</ul>
+			<p>All available macro actions can be found on the page below, along with the types of values they take (height, thing tag, etc). It's recommended to have the list of actions open while scripting, for reference and to copy action names so as to avoid typos in your script.</p>
+			
+			<ul><li><a href="macrolist.html">Macro List</a></li></ul>
+			
+			<p>Decompiled macros from maps of the original Doom 64 campaign can be downloaded <a href="decompiled.zip">here</a>.</p>
 
-		<h4>Platforms</h4>
-		<ul>
-			<li>Plat_DownWaitUpBy(<i>tag</i>, <i>value</i>) - Lowers the floor by the amount specified by the <i>value</i> argument, waits for 3 seconds, and raises back up. Positive values only, negative values will cause undefined behaviour.</li>
-			<li>Plat_DownWaitUpByFast(<i>tag</i>, <i>value</i>) - Same as above, but the platform moves at turbo speed.</li>
-			<li>Plat_UpWaitDownBy(<i>tag</i>, <i>value</i>) - Raises the floor by the amount specified by the <i>value</i> argument, waits for 3 seconds, and lowers back up. Positive values only, negative values will cause undefined behaviour.</li>
-			<li>Plat_UpWaitDownByFast(<i>tag</i>, <i>value</i>) - Same as above, but the platform moves at turbo speed.</li>
-		</ul>
+		<h2>Getting Started</h2>
 
-		<h4>Pillars and Elevators</h4>
-		<ul>
-			<li>Elevator_MoveBy(<i>tag</i>, <i>value</i>) - Moves the floor and ceiling in the tagged sector in the same direction at the same time by the amount specified in <i>value</i>. Positive values raise, negative values lower.</li>
-			<li>Pillar_OpenBy(<i>tag</i>, <i>value</i>) - Moves the floor and ceiling in the tagged sector in opposite directions at the same time by the amount specified in <i>value</i>. Positive values move the floor and the ceiling apart, negative values move them closer together.
-			<ul><li>Example: Imagine a floor and ceiling that are touching at the start. A <i>value</i> of 15 would separate them by 30 units. The floor would lower by 15 units and the ceiling would raise by 15 units, making a gap of 30 units in total between them.</li></ul></li>
-		</ul>
+			<p>A macro script has three parts. The "includes" at the start, the "macros" themselves, and the "actions" within each macro.</p>
 
-		<h3>Special Actions</h3>
-		<p>These actions have hardcoded behaviour that cannot be altered. Despite that, they can be very useful and convenient.</p>
+			<p>The following is a basic overview of a script:</p>
 
-		<h4>Doors</h4>
-		<ul>
-			<li>Door_OpenWaitClose(<i>tag</i>) - Opens the door, waits for a few seconds, and closes it again.</li>
-			<li>Door_OpenWaitCloseFast(<i>tag</i>) - Door stays open.</li>
-			<li>Door_Open(<i>tag</i>) - Opens the door. The door won't close by itself.</li>
-			<li>Door_OpenFast(<i>tag</i>) - Same as above, but the door opens at turbo speed.</li>
-			<li>Door_Close(<i>tag</i>) - Closes the door. The door won't open by itself.</li>
-			<li>Door_CloseFast(<i>tag</i>) - Same as above, but the door closes at turbo speed.</li>
-			<li>Door_CloseWaitLongOpen(<i>tag</i>) - Closes the door, waits for 30 seconds, and opens it again.</li>
-		</ul>
+<pre>
+includes
 
-		<h4>Floor Lower</h4>
-		<ul>
-			<li>Floor_LowerToNearest(<i>tag</i>) - Lowers the floor to the height of the highest neighboring floor.</li>
-			<li>Floor_LowerToNearestFast(<i>tag</i>) - Lowers the floor at turbo speed to 8 units above the height of the highest neighboring floor.</li>
-			<li>Floor_LowerToLowest(<i>tag</i>) - Lowers the floor to the height of the highest neighboring floor.</li>
-			<li>Floor_LowerToLowestChange(<i>tag</i>) - Lowers the floor to the height of the highest neighboring floor, and changes the floor texture and sector special to match the neighboring sector.</li>
-		</ul>
-		
-		<h4>Floor Raise</h4>
-		<ul>
-			<li>Floor_RaiseToNearest(<i>tag</i>) - Raises the floor to the height of the lowest neighboring floor.</li>
-			<li>Floor_RaiseToNearestChange(<i>tag</i>) - Same as above, and changes the floor texture and sector special to match the sector adjacent to the front side of the linedef that triggered this action. Makes a sound when movement is finished.</li>
-			<li>Floor_RaiseToCeiling(<i>tag</i>) - Raises the floor to the height of the lowest neighboring ceiling.</li>
-			<li>Floor_RaiseCrush(<i>tag</i>) - Raises the floor to 8 units below the height of the lowest neighboring ceiling. Things are allowed to be crushed by this movement.</li>
-			<li>Floor_RaiseTwentyFour(<i>tag</i>) - Raises the floor by 24 units.</li>
-			<li>Floor_RaiseTwentyFourChange(<i>tag</i>) - Same as above, and changes the floor texture and sector special to match the sector adjacent to the front side of the linedef that triggered this action.</li>
-			<li>Floor_RaiseTwentyFourChangeSlow(<i>tag</i>) - Same as above, but moves slowly and makes a sound when movement is finished.</li>
-			<li>Floor_RaiseThirtyTwoChangeSlow(<i>tag</i>) - Same as above, except moves by 32 units.</li>
-		</ul>
-
-		<h4>Ceilings and Crushers</h4>
-		<ul>
-			<li>Ceiling_LowerToFloor(<i>tag</i>) - Lowers the ceiling to the height of the floor.</li>
-			<li>Ceiling_LowerToFloorTwo(<i>tag</i>) - Lowers the ceiling to 8 units above the height of the floor.</li>
-			<li>Ceiling_CrushFastLoop(<i>tag</i>) - Activates fast crusher moving up and down. Won't stop by itself.</li>
-			<li>Ceiling_CrushSlowLoop(<i>tag</i>) - Activates slow crusher moving up and down. Won't stop by itself.</li>
-			<li>Ceiling_CrushRaiseFastOnce(<i>tag</i>) - Performs one cycle of a fast crusher, then stops.</li>
-			<li>Ceiling_InstantKill(<i>tag</i>) - Activates a silent crusher which instakills anything it crushes. Requires the sector to have set the special flag 666, otherwise a normal crusher is activated instead.</li>
-			<li>Ceiling_StopCrusher(<i>tag</i>) - Stops the current crusher in the tagged sector, if applicable.</li>
-		</ul>
-		
-		<h4>Platforms</h4>
-		<ul>
-			<li>Plat_DownWaitUp(<i>tag</i>) - Lowers the floor to the lowest neighboring floor, waits for 3 seconds, and raises back up.</li>
-			<li>Plat_DownWaitUpFast(<i>tag</i>) - Same as above, but the platform moves at turbo speed.</li>
-			<li>Plat_DownWaitUpLoop(<i>tag</i>) - Lowers the floor to the lowest neighboring floor at slow speed, waits for 3 seconds, and raises back up. Then, repeats forever.</li>
-			<li>Plat_UpWaitDown(<i>tag</i>) - Raises the floor to the highest neighboring floor, waits for 3 seconds, and lowers back down.</li>
-			<li>Plat_UpWaitDownFast(<i>tag</i>) - Same as above, but the platform moves at turbo speed.</li>
-			<li>Plat_Stop(<i>tag</i>) - Stops the platform, if it is moving.</li>
-		</ul>
-
-		<h4>Stairs</h4>
-		<ul>
-			<li>Stairs_BuildEight(<i>tag</i>) - Builds steps 8 units high, starting from tagged sector.</li>
-			<li>Stairs_BuildSixteenFast(<i>tag</i>) - Builds steps 16 units high, starting from tagged sector. The building process moves at turbo speed.</li>
-		</ul>
-
-		<h2>Teleport Actions</h2>
-		<p>These actions can only teleport the player. Here <i>tid</i> is the teleport destination's tag number.</p>
-		<ul>
-			<li>Teleport_Normal(<i>tid</i>) - Teleports the player normally (with sound and green glow) to tagged destination.</li>
-			<li>Teleport_Silent(<i>tid</i>) - Teleports the player without any sound and glow to tagged destination.</li>
-		</ul>
-
-		<h2>Thing Actions</h2>
-		<p>Here <i>tid</i> is the thing tag number.</p>
-		<ul>
-			<li>Thing_Spawn(<i>tid</i>) - Spawns things tagged with <i>tid</i>, they must have "Spawner" checked.</li>
-			<li>Thing_FadeOut(<i>tid</i>) - Tagged thing fades away and is removed. Most often used to remove corpses.</li>
-			<li>Thing_Alert(<i>tid</i>) - Alerts all things with this tag. Causes tagged corpses to resurrect in the Doom 64 Remaster, but causes a crash in Doom 64 EX.</li>
-			<li>Thing_SetReactionTime(<i>tics</i>) - 30 tics is one second</li>
-			<li>Thing_ModifyFlags(<i>tid</i>)</li>
-			<li>Thing_SpawnDart(<i>tid</i>) - Tagged thing must be a Projectile Spot (thing type 2050) and must not have "Spawner" checked. Shoots a dart in the direction the projectile spot is facing.</li>
-			<li>Thing_SpawnTracer(<i>tid</i>) - Tagged thing must be a Projectile Spot (thing type 2050) and must not have "Spawner" checked. Spawns an explosive projectile which homes in on the player.</li>
-		</ul>
-
-		<h2>Sector Actions</h2>
-		<p>Here <i>dsttag</i> is the tag of the sector to copy to (destination tag)
-		and <i>srctag</i> is the tag of the sector to copy from (source tag).</p>
-		<ul>
-			<li>Sector_CopyFlags(<i>dsttag</i>, <i>srctag</i>) - Copies the flags from one sector to another one. In Doom Builder 64, the flags are the Settings checkboxes found on the Edit Sector Properties dialog. For example: Echo Effect, Liquid Effect, etc.</li>
-			<li>Sector_CopySpecials(<i>dsttag</i>, <i>srctag</i>) - Copies sector specials of one sector to another. For example: Light Blinks, Very Slow Pulse, etc.</li>
-			<li>Sector_CopyTextures(<i>dsttag</i>, <i>srctag</i>) - Copies floor and ceiling textures of one sector to another.</li>
-			<li>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>) - Copies the lighting of one sector to another. The lights change abruptly.</li>
-			<li>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>) - Smoothly transitions the lighting of one sector to the lighting of another. This action operates on the "LIGHTS" lump and will change the color of any sector that has the same color as the destination tag. Therefore, it is recommended to give the destination sector a unique sector color.</li>
-		</ul>
-		
-		<h2>Line Actions</h2>
-		<p>Here <i>dsttag</i> is the tag of the line to copy to (destination tag)
-		and <i>srctag</i> is the tag of the line to copy from (source tag). Copying attributes between single-sided and double-sided linedefs will cause most engines to crash.</p>
-		<ul>
-			<li>Line_CopyFlags(<i>dsttag</i>, <i>srctag</i>) - Copies flags from one linedef to another. For example: Impassable, Block Sound, etc.</li>
-			<li>Line_CopyTextures(<i>dsttag</i>, <i>srctag</i>) - Copies upper, middle, and lower textures from one linedef to another.</li>
-			<li>Line_CopySpecials(<i>dsttag</i>, <i>srctag</i>) - Copies the Action Special (Door Open, Floor Lower, etc.), Activation Type (Use, Cross, Blue Key, etc.), and Switch Setup properties from one linedef to another.</li>
-			<li>Line_TriggerRandomLinesByTag(<i>tag</i>) - If there are multiple linedefs with the same tag, this will randomly activate one of them.</li>
-		</ul>
-
-		<h2>Cameras</h2>
-		
-		<p>The camera will move from the current position to <i>camera thing</i> tagged (<i>tid</i> +1), then to camera tagged (<i>tid</i> +2), then camera tagged (<i>tid</i> +3), and so forth. This will continue sequentially until there is no camera tagged 1 higher than the last one. The same target (<i>tid</i>) will be looked at the whole time, and camera movement speed is automatic and can't affected in any way. It is very hard to predict exactly how long a Camera_MoveAndAim will take to complete, using <b>wait;</b> right after a Camera_MoveAndAim is <i>strongly</i> recommended.</p>
-		
-		<ul>
-			<li>Camera_Set(<i>tid</i>) - Set camera view to camera with <i>tid</i>.</li>
-			<li>Camera_Clear(<i>tid</i>)</li>
-			<li>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>) - Start moving camera at "Camera_Set" position and aim view at <i>tid</i>.  <i>nexttid</i> is not used.</li>
-		</ul>
-		
-		<p>To change to a new target being looked at, a new Camera_MoveAndAim must be used, with the new target <i>tid</i>. Technically, <i>tid</i> can be any type of <i>thing</i>, not just cameras. Using a moving monster or the player as a target will often end up freezing/crashing the game. It will move around whatever <i>thing</i> is used for the target, as if the thing itself was a camera. That means using a key as a target, the key will get to where the camera stops at the very end.</p>
-
-		<h2>Miscellaneous Actions</h2>
-		<ul>
-			<li>Player_Freeze(<i>tics</i>) - Freezes the player in place for the specified number of <i>tics</i> (30 tics = 1 second). Player can still turn in the Doom 64 Remaster but can't turn in Doom 64 EX.</li>
-			<li>Quake(<i>tics</i>) - Shakes the screen for the specified number of tics (30 tics = 1 second) with sound. This sound can bug out if it is playing during a level exit.</li>
-			<li>Exit - Exits to the next level.</li>
-			<li>ExitToLevel(<i>map</i>) - Exits to the specified map number.</li>
-			<li>UnlockCheatMenu - Unlocks the Features (cheat) menu. Used at the end of MAP32: Hectic.</li>
-			<li>DisplaySkyLogo - Used in the Doom 64 intro to display the backpic logo at the end on the sky. This only works on skies with the "fadeinbackground" designation.</li>
-		</ul>
-
-		<h2>Macro Action Control</h2>
-		<ul>
-			<li>wait - If used the macro will complete all preceding actions before continuing the subsequent actions.</li>
-			<li>delay(<i>tics</i>) - If used the macro will delay the start of the subsequent actions by <i>tics</i> (30 tics is 1 second).</li>
-			<li>Macro_Suspend(<i>id</i>) - (unused)</li>
-			<li>Macro_Enable(<i>id</i>) - (unused)</li>
-			<li>Macro_Disable(<i>id</i>) - (unused)</li>
-			<li>loop(<i>times</i>){ } - Loop actions within the brackets a given amount of <i>times</i> (see the following example).
-			<ul><li>A looping macro can be canceled early by line action 248: Macro Suspend.</li></ul></li>
-		</ul>
-
-		<h3>Looping Actions Example</h3>
-		<p>Actions can be looped within a macro. The format of a loop is much like the format of a macro itself.</p>
-<pre>macro 1
+macro 1
 {
-  non looping action;
-  loop(<i>times</i>)
-  {
-	  <i>action to loop;</i>
-	  <i>action to loop;</i>
-  }
-  non looping action;
-} //end of macro
+	action;
+	action;
+}
+
+macro 2
+{
+	action;
+	action;
+	action;
+}
 </pre>
+
+		<h2>Structure of a Macro</h2>
+
+			<p>A basic macro script in looks something like this:</p>
+<pre>
+// my first macro script
+
+#setdir "c:\Doom Builder 64\Compilers\Doom64\"
+#include "common.txt"
+
+macro 1
+{
+	Door_Open(20);
+	wait;
+	Door_Open(40);
+}
+</pre>
+
+			<p>The following items are explained below:</p>
+
+			<tt>// my first macro script</tt>
+
+			</p>This is a comment line. Comments don't affect the behavior of the script, they serve only as notes or short explanations of what the script does.</p>
+
+
+			<tt>#setdir "c:\Doom Builder 64\Compilers\Doom64\"</tt>
+
+			<p>This tells BLAM (the script compiler) "where" to look for files when using #include. #setdir 'must' be used before #include, otherwise #include will look in the folder where the wad itself is located. #setdir must also begin and end with quotes.</p>
+
+			<tt>#include "common.txt"</tt>
+
+			<p>The "#include" command instructs the compiler to open the given file and process it's contents before continuing on through the rest of the script. #include Must begin and end with quotes. In essense #setdir defines "where" to look for files, and #include tells "what" files to look for.</p>
+
+			<p>The file "common.txt" is a standard file which contains all basic macro definitions, for use with Doom Builder 64's scripting system. It's required for Doom Builder 64 to know what macro commands are available. Always #include the file in your script.</p>
+
+			<p>Common.txt can be found at: "('where you installed Doom Builder 64')\Compilers\Doom64\"</p>
+
+			<p>Common.txt does not need to be distributed with your wad however, as it is just a list of commands for use with Doom Builder 64's script compiler (BLAM). For those who are curious common.txt contains human readable translations for the numerical macro scripting commands used by Doom 64. It would be possible to make macro scripts in Doom Builder 64 without common.txt, but would be quite painful as everything would just be different sets of numbers. Doom 64 itself does not use common.txt at all.</p>
+
+
+			<tt>macro 1<br/>{</tt>
+
+			<p>This is the beginning of a macro definition. This macro's identification number is 1. Script numbers can be 1-255, and is referenced by line types 256-511. You must have an open bracket "{" at the start of each macro, and must use a close bracket "}" to end each macro definition. Forgetting either bracket will result in errors.</p>
+
+			<tt>Door_Open(20);</tt>
+
+			<p>This is an action statement. "Door_Open" is the pre-defined name that executes the door open action. Inside the parenthesis "()" is where you put information needed for the action. In this case the "20" is the tag number for the sector(s) that should be treated as a door. Finally, a semicolon ";" ends the action. Note that "all actions 'must' end with a semicolon". Forgetting a semicolon will cause errors, and is also one of the most common causes of errors.</p>
+
+			<p>Note that #include and #setdir are different from actions, and do not need semicolons.</p>
+
+			<tt>wait;</tt>
+
+			<p>This is a built-in statement that tells the script to wait until the most-recent action that was executed is finished. The rest of the macro will only continue running after that action completes.</p>
+
+			<tt>Door_Open(40);</tt>
+
+			<p>Any sector(s) with a tag of 40 will open like a door. In the example above, because of the 'wait;' statement before it, the door tagged 40 will not open until the door tagged 20 has opened completely. If the 'wait;' statement had not been there, both doors would open simultaneously. This means that without a 'wait;' command, actions within a macro will happen right after each other without delay.</p>
+
+			<tt>}</tt>
+
+			<p>And this closing bracket is the end of the macro definition. The macro is now complete.</p>
+
+		<h2>Comments</h2>
+
+			<p>Comments are parts of the macro script which are ignored by the script compiler (aka BLAM). They simply do nothing. Their purpose is to allow macro writers to insert notes, descriptions, or reminders into their scripts.</p>
+
+			<p>BLAM supports 2 styles of comments:</p>
+		
+			<ul>
+
+				<li>// line comment</li>
+				<li>/* block comment */</li>
+			</ul>
+
+			<p>The first one, known as line comment, begins with a pair of slash signs (//) and ends at the end of the line. This means that the next line 'will not' be ignored when using a line comment. Unless that line contains a comment as well. The second one, known as block comment, starts at "/*" characters and ends at the first appearance of "*/" characters.</p>
+	
+<pre>
+/* As you can see this is a block comment so it can continue through
+   more than
+   just one line */
+   
+#include "common.txt"
+macro 1
+{
+	Door_Open(20);
+	wait;
+	Door_Open(40);
+}
+</pre>
+
+			<p>When using a block comment 'always' make sure not to forget the "*/" at the end, or the entire rest of the script will get ignored.</p>
+
+		<h2>Decompiling a Macro</h2>
+
+			<p>It's possible to decompile already compiled macros from a map.</p>
+
+			<p>The first step is to extract the MACROS lump from the map where <a href="http://slade.mancubus.net/">Slade</a> is recommended. The extracted MACROS.lmp will not be editable text, so it must be decompiled to make it a script which can be edited.</p>
+
+			<p>Blam.exe is used to decompile a macros lump into editable text. Blam is found in the same folder as common.txt: "(install path)\Doom Builder 64\Compilers\Doom64". Now put MACROS.lmp into that folder. From here, there's a couple ways to make blam.exe decompile the lump.</p>
+
+		<h3>Using a Batch file</h3>
+
+			<p>Create a new text file (in the same folder as blam.exe and the macros.lmp) and open it. Copy this into the text file:</p>
+
+<pre>cd /d %~dp0
+
+START cmd /c "blam.exe macros.lmp macros.01.txt -d"</pre>
+
+			<p>After saving, rename the text file to "decompile.bat". Running the batch file (it can be double clicked to run) should now decompile macros.lmp to the "macros.01.txt" file.</p>
+
+		<h3>Creating a Shortcut</h3>
+
+			<p>Create a shortcut to blam.exe (right click and choose "create shortcut"). Then right click the shortcut and choose "properties". In the properties window that comes up, select the "Shortcut" tab, if it isn't already. In the "Target:" field, go to the end (after where it says "...\blam.exe") and type " macros.lmp macros.txt -d" (minus the quotes). Then hit "Okay". Running the shortcut with "macros.lmp" in the folder should now decompile the script to the "macros.txt" file.</p>
 
 	</div>
 
