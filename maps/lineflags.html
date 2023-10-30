@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Line Flags</title>
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+		<h1>Line Flags</h1>
+		
+		<p>Line flags are settings and properties you can apply to linedefs. These change how the textures on them are rendered and how players, monsters, and projectiles interact with them.</p>
+
+		<table>
+			<tr>
+				<th>Flag Bit</th>
+				<th>Editor Setting</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>0x1</td>
+				<td>Impassable</td>
+				<td>Monsters, players, and projectiles can't cross</td>
+			</tr>
+			<tr>
+				<td>0x2</td>
+				<td>Block Monsters</td>
+				<td>Monsters can't cross</td>
+			</tr>
+			<tr>
+				<td>0x4</td>
+				<td>Double Sided</td>
+				<td>Textures can be defined for both sides</td>
+			</tr>
+			<tr>
+				<td>0x8</td>
+				<td>Upper Unpegged</td>
+				<td>Align upper texture from ceiling origin</td>
+			</tr>
+			<tr>
+				<td>0x10</td>
+				<td>Lower Unpegged</td>
+				<td>Align lower texture from ceiling origin</td>
+			</tr>
+			<tr>
+				<td>0x20</td>
+				<td>Show 1-sided on Automap</td>
+				<td>Show line as one-sided with automap (good for secrets)</td>
+			</tr>
+			<tr>
+				<td>0x40</td>
+				<td>Block Sound</td>
+				<td>Prevent sound from alerting monsters across this linedef (sound can still be heard)</td>
+			</tr>
+			<tr>
+				<td>0x80</td>
+				<td>Never Show on Automap</td>
+				<td>Never show the linedef on automap</td>
+			</tr>
+			<tr>
+				<td>0x100</td>
+				<td>Always Show on Automap</td>
+				<td>Always show the linedef on automap</td>
+			</tr>
+			<tr>
+				<td>0x200</td>
+				<td>Render Middle Texture</td>
+				<td>Show middle texture (good for windows and cages)</td>
+			</tr>
+			<tr>
+				<td>0x400</td>
+				<td>No Occlusion</td>
+				<td>Explicitly allow geometry behind linedef to be rendered</td>
+			</tr>
+			<tr>
+				<td>0x800</td>
+				<td>Block Projectiles</td>
+				<td>Block all projectiles, but not hitscans, from passing</td>
+			</tr>
+			<tr>
+				<td>0x1000</td>
+				<td>Trigger By Dead Thing</td>
+				<td>Activate lineaction by monster death or sometimes monster crossing</td>
+			</tr>
+			<tr>
+				<td>0x10000</td>
+				<td>Switch Check Height</td>
+				<td>Enable linedef to behave as a switch</td>
+			</tr>
+			<tr>
+				<td>0x20000</td>
+				<td>Scroll Left</td>
+				<td>Scroll texture to the left</td>
+			</tr>
+			<tr>
+				<td>0x40000</td>
+				<td>Scroll Right</td>
+				<td>Scroll texture to the right</td>
+			</tr>
+			<tr>
+				<td>0x80000</td>
+				<td>Scroll Up</td>
+				<td>Scroll texture upward</td>
+			</tr>
+			<tr>
+				<td>0x100000</td>
+				<td>Scroll Down</td>
+				<td>Scroll texture downward</td>
+			</tr>
+			<tr>
+				<td>0x200000</td>
+				<td>Peg Upper Wall Color</td>
+				<td>Begin upper wall gradient from bottom of upper wall</td>
+			</tr>
+			<tr>
+				<td>0x400000</td>
+				<td>Peg Lower Wall Color</td>
+				<td>End lower wall gradient at the top of the lower wall</td>
+			</tr>
+			<tr>
+				<td>0x800000</td>
+				<td>Use Wall Color Blending</td>
+				<td>Enable colored gradients on wall</td>
+			</tr>
+			<tr>
+				<td>0x1000000</td>
+				<td>Trigger Only Front Side</td>
+				<td>Linedef action can only be activated from the front side</td>
+			</tr>
+			<tr>
+				<td>0x2000000</td>
+				<td>Hide Special on Automap</td>
+				<td>Hide that the linedef can be activated on automap</td>
+			</tr>
+			<tr>
+				<td>0x4000000</td>
+				<td>Flip Upper Pegged Color</td>
+				<td>Flip upper wall gradient direction</td>
+			</tr>
+			<tr>
+				<td>0x40000000</td>
+				<td>Mirror Texture Horizontal</td>
+				<td>Mirror every other texture tile horizontally</td>
+			</tr>
+			<tr>
+				<td>0x80000000</td>
+				<td>Mirror Texture Vertical</td>
+				<td>Flip every other texture tile vertically</td>
+			</tr>
+
+		
+		</table>
+		
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
