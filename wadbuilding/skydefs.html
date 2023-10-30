@@ -17,46 +17,48 @@
 		<h2>Sky Definitions</h2>
 		
 			<p>A sky definition begins with the keyword "sky", followed by the sky texture name, and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for a sky.</p>
-			<dl><dd>Example: <b>sky "&lt;skytexture&gt;" { properties }</b></dd></dl>
+			<dl><dd>Example: <b>sky "&lt;texturename&gt;" { properties }</b></dd></dl>
+			
+			<p>&lt;texturename&gt; is the name of the corresponding sky texture used in a level. When a ceiling or floor uses that texture, it will draw the sky.</p>
 			
 		<h2>Properties</h2>
 			<p>Here are properties which can be assigned to each sky.</p>
 			
 			<ul><li><b>pic = "&lt;graphic&gt;"</b></li></ul>
-			<dl><dd>&lt;graphic&gt; is the name of a background graphic or a cloud graphic to be used. It is unused for the fire sky which instead exclusively points to the "FIRE" graphic</dd></dl>
+			<dl><dd>&lt;graphic&gt; is the name of a background graphic or a cloud graphic  between the <b>G_</b> markers in the WAD to be used. It is unused for the fire sky which instead exclusively points to the "FIRE" graphic</dd></dl>
 			
 			<ul><li><b>backpic = "&lt;graphic&gt;"</b></li></ul>
-			<dl><dd>&lt;graphic&gt; is the name of a graphic to overlay on the sky. This is used for mountains in Doom 64 and the graphic is placed 75 sky pixels above the bottom of the screen.</dd></dl>
+			<dl><dd>&lt;graphic&gt; is the name of a graphic between the <b>G_</b> markers in the WAD to overlay on the sky. This is used for mountains in Doom 64 and the graphic is placed 75 sky pixels above the bottom of the screen.</dd></dl>
 			
-			<ul><li><b>fogcolor = &lt;hexnumber&gt;</b></li></ul>
-			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the color of fog. Most original Doom 64 skies have a "black" fog, however levels such as "Watch Your Step" and "In The Void" define a different color</dd></dl>
+			<ul><li><b>fogcolor = &lt;r g b&gt;</b></li></ul>
+			<dl><dd>&lt;r g b&gt; are three <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color numbers</a> to define the color of fog. Most original Doom 64 skies have a "black" fog, however levels such as "Watch Your Step" and "In The Void" define a different color</dd></dl>
 			
 			<ul><li><b>fogfactor = &lt;number&gt;</b></li></ul>
-			<dl><dd>&lt;number&gt; is a number to define how close the fog is to the player. Lower the number, the closer the fog is</dd></dl>
+			<dl><dd>&lt;number&gt; is a number to define how close the fog is to the player. Lower the number, the closer the fog is. Maximum value is 999 (no fog) while 0 (complete fog) is the lowest.</dd></dl>
 			
-			<ul><li><b>basecolor = &lt;hexnumber&gt;</b></li></ul>
-			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the background color of the sky. Sky graphics tend to cover this up, but it is particularly useful for the void sky type</dd></dl>
+			<ul><li><b>basecolor = &lt;r g b&gt;</b></li></ul>
+			<dl><dd>&lt;r g b&gt; are three <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color numbers</a> to define the background color of the sky. Sky graphics tend to cover this up, but it is particularly useful for the void sky type</dd></dl>
 			
-			<ul><li><b>highcolor = &lt;hexnumber&gt;</b></li></ul>
-			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the color of the clouds or fire at the top of the screen</dd></dl>
+			<ul><li><b>highcolor = &lt;r g b&gt;</b></li></ul>
+			<dl><dd>&lt;r g b&gt; are three <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color numbers</a> to define the color of the clouds or fire at the top of the screen</dd></dl>
 			
-			<ul><li><b>lowcolor = &lt;hexnumber&gt;</b></li></ul>
-			<dl><dd>&lt;hexnumber&gt; is in the <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color format</a> to define the color of the clouds or fire at the bottom of the effect</dd></dl>
+			<ul><li><b>lowcolor = &lt;r g b&gt;</b></li></ul>
+			<dl><dd>&lt;r g b&gt; are three <a href="https://www.w3schools.com/colors/colors_hexadecimal.asp">hexadecimal color numbers</a> to define the color of the clouds or fire at the bottom of the effect</dd></dl>
 			
 			<ul><li><b>cloud</b></li></ul>
-			<dl><dd>Enables the cloud sky effect</dd></dl>
+			<dl><dd>Renders a semi-3D cloud plane which uses the "pic" definition for the  cloud texture.</dd></dl>
 			
 			<ul><li><b>fire</b></li></ul>
-			<dl><dd>Enables the fire sky effect</dd></dl>
+			<dl><dd>Displays the fire sky effect. Here "pic" and "basecolor" definitions are ignored.</dd></dl>
 			
 			<ul><li><b>void</b></li></ul>
-			<dl><dd>Enables the void sky</dd></dl>
+			<dl><dd>Displays no special sky effect rather a solid color is shown. Here "pic", "highcolor", and "lowcolor" values are ignored.</dd></dl>
 			
 			<ul><li><b>thunder</b></li></ul>
-			<dl><dd>Enables the thunder effect</dd></dl>
+			<dl><dd>Causes random thunder sound effect and randomly flickers the "highcolor" and "lowcolor" values. Some color choices on the Doom 64 Remaster cause green-colored flashes.</dd></dl>
 			
 			<ul><li><b>fadeinbackground</b></li></ul>
-			<dl><dd>Sets the "pic" graphic to the bottom of the screen and allows a linedef action to fade it with the "backpic" graphic.</dd></dl>
+			<dl><dd>Sets the "pic" graphic to the bottom of the screen and allows linedef action type 254 to fade it with the "backpic" graphic.</dd></dl>
 			
 		<h2>Original Sky Definitions</h2>
 		
