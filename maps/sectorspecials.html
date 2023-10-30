@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Sector Specials</title>
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+		<h1>Sector Specials</h1>
+		
+		<p>Sector specials determine lighting effects and instant death for crushers. In contrast, sector flags are settings and properties that tend to affect textures, sounds, and the player. All light effects are additive to each color channel.</p>
+		
+		<table>
+			<tr>
+				<th>Flag Bit</th>
+				<th>Editor Setting</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td>Normal</td>
+				<td>(default) No special effect</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Light Blinks (randomly)</td>
+				<td>Consistent additive light which dims randomly</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Light Blinks (0.5 sec)</td>
+				<td>Light which brightens every half-second</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Light Blinks (1 sec)</td>
+				<td>Light which brightens every second</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>Light Glows (normal)</td>
+				<td>Light which fades in and out</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>Light Glows (slow)</td>
+				<td>Light which fades in and out slowly</td>
+			</tr>
+			<tr>
+				<td>11</td>
+				<td>Light Glows (randomly)</td>
+				<td>Light which fades in and out randomly</td>
+			</tr>
+			<tr>
+				<td>17</td>
+				<td>Light Flickers (randomly)</td>
+				<td>Random light brightness flicker</td>
+			</tr>
+			<tr>
+				<td>202</td>
+				<td>Light Strobes (very fast)</td>
+				<td>Very bright light flashes very quickly</td>
+			</tr>
+			<tr>
+				<td>204</td>
+				<td>Light Strobes (slow)</td>
+				<td>Very bright light flashes slowly</td>
+			</tr>
+			<tr>
+				<td>205</td>
+				<td>Sequence Starter</td>
+				<td>Starts a sequence of glowly lights (used in Staging Area)</td>
+			</tr>
+			<tr>
+				<td>206</td>
+				<td>Light Blinks (2 sec)</td>
+				<td>Light which brightens every two seconds</td>
+			</tr>
+			<tr>
+				<td>208</td>
+				<td>Light Strobes (fast)</td>
+				<td>Very bright light flashes quickly</td>
+			</tr>
+			<tr>
+				<td>666</td>
+				<td>Instant Kill (linedef special 141)</td>
+				<td>Instantly kills any thing which gets crushed</td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
