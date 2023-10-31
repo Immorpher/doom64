@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Macro Tutorial</title>
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Macro Tutorial</h1>
+
+				<p>This tutorial will help you get started with Doom 64's macro scripting. Here we'll take the example macro from the <a href="index.html">macros page</a>, put it into a map, and make sure the script is compiling and running correctly.</p>
+
+			<h2>Making the Map</h2>
+
+				<p>Start a new map in Doom Builder 64. Make a room for a tech base with the Player 1 Start in it. Now, make a closed door leading out of the room. Behind that make a short hallway, followed by another closed door. Make an area behind the second door with some zombies or imps. Add some ammo and a weapon in the starting room. Now run the game and play it.</p>
+
+				<p>It's all very standard for Doom, of course. But macro scripting could add some uniqueness to even such a small area.</p>
+
+			<h2>Adding the Macro</h2>
+
+			<h3>Setting up the Map</h3>
+
+				<p>First of all, remove the door activations from the two doors. We won't be needing those. Instead, give the near door (by the player) a tag of 20 and the far door (by the monsters) a tag of 40.</p>
+
+				<p>Add a switch to the side of the near door. Make it reusable and give it an action of 256. Notice that this is the action number for <i>macro 1</i>. Now we just have to add the macro to the script.</p>
+
+			<h3>Using the Macro Script Editor</h3>
+
+				<p>In case you don't know how to bring up the macro script editor, look at the top of Doom Builder 64's screen, where it says "File, Edit, View", etc. Under view there's two buttons. The first has a hand. That's map options. We want the other one, which looks like a piece of paper. Click on that to bring up the script editor.</p>
+
+				<p>Now there's a blank script. If you've never scripted before this is where getting started can be hard. Fortunately there's an overview of how macro scripting works at the <a href="index.html">macros page</a>. If you haven't read it already, do that now as it explains exactly what the Macro script we're about to use is doing.</p>
+
+				<p>Now let's add a macro which we can fix later. Copy the following into the script editor:</p>
+
+<pre>
+// my first macro script
+
+#setdir "c:\Doom Builder 64\Compilers\Doom64\"
+#include "common.txt"
+
+macro 1
+{
+	Door_Open(20);
+	wait
+	Door_Open(40);
+</pre>
+
+				<p>In the Doom Builder 64 script editor there will be color to some of the script now. Lines with begin with // are text comments, and will be ignored by the compiler. If you ever have half your script turn gray, it means you forgot to close a block comment somewhere. Lines that turn blue are macro actions that have been recognized by the script editor. If you ever have a black macro action, that means it was spelled wrong. Text that turns green is a value for a macro. For example the number of a macro, or the tag number for a macro action. Then black is the normal color for everything but comments, actions, and values.</p>
+
+				<p>There is one thing you probably have to change right now in your script, however. If you have Doom Builder 64 installed somewhere else than is listed in the #setdir line of the macro, you will have to change that line to the correct path for your installation. Otherwise you will get an error when you try to compile the script.</p>
+
+			<h2>Compiling the Script</h2>
+
+				<p>The macro script you write can be read by a person, but not by Doom 64 itself. It needs to be translated to something that Doom 64 can understand, which is what compiling does. Compiling will also tell you if there's errors in the syntax (scripting grammar) of your script.</p>
+
+			<h3>How to Compile</h3>
+
+				<p>At the top right of the script editor window, there's a button with a lighting symbol. Clicking that compiles the script. Click on it now, and compile your first script.</p>
+
+				<p>...Whoops, looks like there was an error.</p>	
+
+			<h3>Fixing Compiler Errors</h3>
+
+				<p>No matter how good someone is at scripting, errors are going to show up eventually. Learning how to deal with them now will help you greatly.</p>
+
+				<p>The important part of an error message is in the <i>Description</i> section, usually after the first colon. The Description area can be resized, if you ever get an error message which is too long to fully fit into the Description area. Move the mouse cursor a little to the left of the File section of the error message. The cursor turns into a double arrow with a line through it. Now you can make the Description area larger by clicking and dragging to the right.</p>
+
+				<p>There's two possibilities right now. If you have an error about "common.txt not found" it means you didn't properly set your path in the #setdir line. Make sure you set that to "<i>(where you actually have Doom Builder 64 installed)</i>\Compilers\Doom64\" and compile again. That needs to be fixed before we can move on.</p>
+
+				<p>If you don't have the common.txt not found error, then you should have the error "Expected a semicolon, but found: Door_Open".</p>
+
+				<p>Let's take a look at the script again.</p>
+
+<pre>
+// my first macro script
+
+#setdir "c:\Doom Builder 64\Compilers\Doom64\"
+#include "common.txt"
+
+macro 1
+{
+	Door_Open(20);
+	wait
+	Door_Open(40);
+</pre>
+
+				<p>Can you figure out what's causing that error? Here's a hint: Keep in mind that all macro actions need to have a semicolon at the end. Look it over again and see if you can figure it out.</p>
+
+				<p>The error mentions Door_Open, and also says "Expected a semicolon" but instead what it found was Door_Open. So that means the error actually had to happen sometime <i>before</i> a Door_Open action.</p>
+
+				<p>Here's the answer: The "wait" line is missing a semicolon. Give it one, and compile. The error is gone.</p>
+
+				<p>In fact the compiler says there's no errors! That's great, right? Except there is still one more problem. It's tricky too, because the problem here won't give you an error when you try to compile.</p>
+
+				<p>Let's look at the script one more time:</p>
+
+<pre>
+// my first macro script
+
+#setdir "c:\Doom Builder 64\Compilers\Doom64\"
+#include "common.txt"
+
+macro 1
+{
+	Door_Open(20);
+	wait;
+	Door_Open(40);
+</pre>
+
+				<p>Once again, something is missing. Did you figure it out? It's the } which is needed to end the macro definition. Put it at the end so that your script now looks like this:</p>
+
+<pre>
+// my first macro script
+
+#setdir "c:\Doom Builder 64\Compilers\Doom64\"
+#include "common.txt"
+
+macro 1
+{
+	Door_Open(20);
+	wait;
+	Door_Open(40);
+}
+</pre>
+
+				<p>Now the macro is properly closed! While there was no compiler error in this particular case, if there had been other macros after this one, the unclosed macro would have cause the error "Unknown token in macro block: macro". If you ever do see it know that you forgot to close a macro somewhere.</p>
+
+				<p>With the macro properly closed, compile once more and we can see it in action.</p>
+
+				<p>Run the map and flip the switch. The two doors should open one after another. You've successfully gotten your first macro script up and running.</p>
+
+				<p>There is much more than can be done with macros. For a list of all macro actions, see the <a href="macrolist.html">macros list</a>.</p>
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
