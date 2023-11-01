@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Animated Textures</title>
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Animated Textures</h1>
+
+			<p>For simeple scrolling textures, these animations can be defined in the linedef and sector properties. For more complicated animations, they must be built with individual frames. These type of animations are defined with the ANIMDEFS text lump for the PC engines of Doom 64.</p>
+
+			<ul><li><a href="../../wadbuilding/animdefs.html">ANIMDEFS text lump</a></li></ul>
+
+			<p>Only the ANIMDEFS from the "last loaded" wad will be used. If you want to use some new animations and some of the original animations in the same wad, you must include the definitions for the original animations in your ANIMDEFS.</p>
+
+			<p>There are two types of animations that can be defined in Doom 64.</p>
+
+			<ol>
+				<li>Sequential animations which require that the textures to be animated are located one after another in the wad, just like in the original Doom.</li>
+				<li>Palette animations which cycle the palette within the texture itself to make the animation. Only one texture is used per palette animation.</li>
+			</ol>
+
+			<p>Textures can be used in more than one animation.</p>
+
+		<h2>Examples</h2>
+
+		<h3>Basic Example</h3>
+		
+			<p>Let's look at a basic new animation, as found in <a href="animbasic.wad">this example</a>.</p>
+			
+<pre>animpic "FACE1"
+{
+	restartdelay = 30
+	frames = 2
+	speed = 8
+}</pre>
+
+			<p><i>Animpic</i> defines the first texture in the sequence of textures to be animated. <i>Restartdelay</i> defines how much of a pause there is between when the animation completes and when it starts over from the beginning. In this case one second. <i>Frames</i> indicates how many textures total there are in the animation. In this particular animation the texture FACE1 and the texture right after it in the wad will be used. <i>Speed</i> is the delay between individual frames of the animation.</p>
+
+			<p>If you run the example wad above, you'll notice that the texture on the left animates, while the texture on the right does not. This is because the texture on the left (FACE1) has an ANIMDEF, but the texture on the right (FACE2) does not. Though FACE2 is used in an animation (because it is the next texture in the wad after FACE1), it will still not be animated when used, because it has no ANIMDEF itself. FACE2 could have an ANIMDEF however, assuming there was another texture after it in the wad. There is nothing that prevents a texture used within a different animation from having it's own animation. The next example will take a look at that.
+
+		<h3>Moderate Example</h3>
+		
+			<p>Now let's look at a <a href="animmoderate.wad">more complicated example</a> with two animations, which share some of the same textures.</p>
+		
+<pre>animpic "FACE1"
+{
+	restartdelay = 60
+	frames = 3
+	speed = 5
+}
+
+animpic "FACE2"
+{
+	restartdelay = 30
+	frames = 2
+	speed = 8
+}</pre>
+
+			<p>The animation FACE1 uses textures FACE1, FACE2, and FACE3 in the example wad which is shown in the leftmost texture in the example map. Here FACE1's animation blinks less often than FACE2's animation because of the longer restart delay. The animation FACE2 uses textures FACE2 and FACE3 which is the central texture in the example map. Then texture FACE3 is not animated, the rightmost texture in the example map, as there is no animation definition for it.</p>
+
+		<h3>Advanced Example</h3>
+		
+			<p>Finally, let's take a look at the true potential for flexibility with animations. In <a href="animadvanced.wad">this example</a> there's a new waterfall that can be used in game in four different ways (long animation, medium animation, short animation, and no animation), all by using the same five textures.</p>
+
+ <pre>animpic "WATERFLA"
+{
+	restartdelay = 0
+	frames = 5
+	speed = 4
+	rewind
+}
+
+animpic "WATERFLB"
+{
+	restartdelay = 0
+	frames = 3
+	speed = 5
+	rewind
+}
+
+animpic "WATERFLC"
+{
+	restartdelay = 0
+	frames = 2
+	speed = 4
+	rewind
+}</pre>
+
+			<p>There's a few things of note here. There's a new command used, <i>rewind</i>. This makes the animation run backwards when it reaches the end, allowing for smoother animations. You may notice that the third animation only has 2 frames. It may seem like there is no use for rewind in this case, but take a look at the restartdelay. It is 0, meaning no delay. If rewind was not used in that animation, there would be only way to have the textures change at an even pace. <i>Restartdelay</i> would have to be set the same as <i>speed</i> (4). If you were to alter the speed at any point, both <i>speed</i> and <i>restartdelay</i> would have to be changed. Otherwise the animation would become uneven. Using <i>rewind</i> and setting <i>restartdelay</i> to 0 always ensures that the animation will be evenly paced throughout, making it useful even if there are only two frames in the animation.</p>
+
+			<p>In this <a href="animadvanced.wad">advanced example wad</a> there are five textures present: WATERFLA, WATERFLB, WATERFLC, WATERFLD, and WATERFLE, in that order. When you run the map this is also the order the textures are shown before you. Animated textures can also be used with the <i>liquid effect</i> sector flag. In the example map there are some pools where the center pool is the original water liquid effect. The four pools along the back edge of the map are the new textures used in combination with the <i>liquid effect</i> sector flag. From right to left these are using (animated) WATERFLA, WATERFLB, WATERFLC, and (not animated) WATERFLD. The first three have only subtle differences from each other, as they all use animated textures. Then the rightmost one, WATERFLD, shows what the effect is like without the animation.</p>
+
+		<h2>Palette Animations</h2>
+
+			<p>Palette animations are enabled by the <i>cyclepalettes</i> definition. This was used as a memory saving technique for Doom 64 to save space on the ROM cartridge. As memory tends to be not an issue with Doom 64 anymore, engines like Doom 64 EX+ no longer support palette animations. Below is the animation used for some teleports found in the hell levels.</p>
+			
+<pre>animpic "CTEL"
+{
+    restartdelay = 0
+    frames = 8
+    speed = 3
+    cyclepalettes
+}
+</pre>
+			
+			<p>Here the animation refers to a single texture, defined by <i>animpic</i>, and this texture can have up to 256 colors. However only the first 16 colors of the palette are used initially. Then it will swap to the subsequent sets of 16 colors to create an animation. Thus this technique animates by changing colors and has some limits. Since there is a maximum of a 256 color palette, there is a maximum of 16 frames.</p>
+			
+			<p>To create a palette animation create a texture with a palette of 16 colors in a graphics editing program such as Photoshop or GIMP. Then expand that palette into 256 colors. If you know what colors you want to alter, you can begin editing the subsequent sets of 16 palette colors. Keep in mind, for the next animation frame, the 17th palette color will replace the 1st palette color, the 18th palette color will replace the 2nd palette color, and so forth. Also you can duplicate the image and edit the palette in that image to see the effects of the animation, then copy the new set of 16 colors to the next row of 16 colors of the original palette.</p>
+	
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
