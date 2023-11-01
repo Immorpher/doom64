@@ -450,6 +450,15 @@ blockquote footer {
 }
 
 
+/* Side stacking divs */
+.sidestack {
+  display: flex;
+}
+
+.sidestack div {
+  padding: 0rem 1rem 0rem 0rem;
+}
+
 /* The side navigation menu */
 #navigation {
 	margin: 0;
