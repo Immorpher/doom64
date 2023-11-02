@@ -12,40 +12,27 @@
 	
 		<h1>Audio</h1>
 		
-		<p>Doom 64's sound system was built upon the William's Entertainment Sound System (WESS) but adapted for the Nintendo 64 and went by the name of NESS (affectionately known as nessy). The engine ran at a sound quality of 22.05 kHz sample rate, although the sounds themselves were at 11.025 kHz sample rate. The Nintendo 64 interpreted those sounds at 22.05 kHz, thus the raw sounds play back at double the original sample rate. In-engine, however, the sounds were down-pitched by half via nearest-neighbor interpolation to restore their original pitch. For the official Doom 64 Remaster, the 11.05 kHz sounds were upscaled to 22.05 kHz using an interpolation method. Unlike other id Tech engine games of the time, the Doom 64 sounds are 16 bit rather than 8 bit.</p>
+			<p>Doom 64's sound system was built upon the William's Entertainment Sound System (WESS) but adapted for the Nintendo 64 and went by the name of NESS (affectionately known as nessy). The engine ran at a sound quality of 22.05 kHz sample rate, although the sounds themselves were at 11.025 kHz sample rate. The Nintendo 64 interpreted those sounds at 22.05 kHz, thus the raw sounds play back at double the original sample rate. In-engine, however, the sounds were down-pitched by half via nearest-neighbor interpolation to restore their original pitch. For the official Doom 64 Remaster, the 11.05 kHz sounds were upscaled to 22.05 kHz using an interpolation method. Unlike other id Tech engine games of the time, the Doom 64 sounds are 16 bit rather than 8 bit.</p>
 		
 		<h2>Music</h2>
 		
-		<p>The original Doom 64 music is in MIDI format but uses a custom soundset. For most PC Doom 64 engines, MIDIs can be placed between "DM_START" and "DM_END" markers of the "DM" lump of a WAD. However, in the original Doom 64 EX, music is placed between "DS_START" and "S_END" markers of the "DS" lump of a WAD. Then specific tracks can be assigned to levels with the <a href="../wadbuilding/mapinfo.html">MAPINFO text lump</a>. An archive of custom Doom 64 MIDIs can be found below.</p>
+			<p>For the most part, Nintendo 64 games were MIDI driven. But they did not use the general MIDI soundset definitions, rather any set of sounds the developer wanted could be used. This MIDI structure is very much alive in Doom 64 engines to this day. The guide below describes how to use and make custom music for the variety of Doom 64 engines.</p>
 		
-		<ul>
-			<li><a href="https://www.dropbox.com/sh/b96qzg6r4sow4uz/AAArv5qzvMQIQxLXEzAJr40Fa">Doom 64 MIDI Archive</a></li>
-		</ul>
-		
-		<p>Composing MIDI requires a custom soundset to be loaded where <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtual MIDI Synth</a> can be used to load a soundfont. You can use the wadgen utility from <a href="https://doom64ex.wordpress.com/">Doom 64 EX</a> or <a href="https://github.com/9nova/d64make">d64make</a> to extract the Doom 64 soundfont from the Doom 64 ROM. Once you obtain the soundfont you can use the programs below to compose MIDIs for Doom 64.</p>
-		
-		<ul>
-			<li><a href="https://openmidiproject.osdn.jp/Sekaiju_en.html">Sekaiju</a></li>
-			<li><a href="http://www.synthfont.com/">SynthFont1</a></li>
-		</ul>
-		
-		<p>Most PC engines can play MIDIs without alteration from this programs, however Doom 64 EX requires additional formatting which can be done with the <a href="https://www.doomworld.com/forum/topic/121602/">MIDI 64nicator</a>. This engine also suffers from tracks going out of sync when a high density of midi events occur. Doom 64 EX and engines based on it can recognize reverb and chorus MIDI events to give the music more depth.</p>
-		
-		<p>The official Doom 64 Remaster is based on the FMOD sound effects engine. This allows this engine to load other music formats such as MP3, OGG, Impulse Tracker and others. The caveat is the MIDI music is based around the DLS format which has lost the stereo panning of the original Doom 64 Soundset. This can be remedied by adding the stereo information to the MIDI files themselves. When replacing music on the Doom 64 Remaster, replacing single tracks (such as MUSDONE) can cause a bug where music gets played out of order or simple is not replaced. However, replacing the entire soundtrack seems to remedy this bug.</p>
-		
-		<p>For Doom 64 EX based engines, changing the music sounds require editing the soundfont. Soundfont editing can be done with the <a href="https://www.polyphone-soundfonts.com/">Polyphone Soundfont Editor</a> software.</p>
+			<ul>
+				<li><a href="music/index.html">Music Guide</a></li>
+			</ul>
 		
 		<h2>Nintendo 64 Considerations</h2>
 		
-		<p>Nova's <a href="https://github.com/9nova/d64make">d64make</a> can convert sounds, MIDIs, and soundfonts to formats compatible with the Nintendo 64. None of these assets are stored in the WAD on the Nintendo 64, rather they are stored in three files for the WESS sound system.</p>
-		
-		<ul>
-			<li>WDD - Audio files</li>
-			<li>WSD - Sound playback definitions</li>
-			<li>WMD - MIDI music</li>
-		</ul>
-		
-		<p>Although the original Doom 64 sounds are 11.025 kHz, 16 bit, the base engine supports 22.05 kHz, 16 bit. Also the engine can be updated to go as high as 44.1 kHz, 16 bit.</p>
+			<p>Nova's <a href="https://github.com/9nova/d64make/releases/">d64make</a> can convert sounds, MIDIs, and soundfonts to formats compatible with the Nintendo 64. None of these assets are stored in the WAD on the Nintendo 64, rather they are stored in three files for the WESS sound system.</p>
+			
+			<ul>
+				<li>WDD - Audio files</li>
+				<li>WSD - Sound playback definitions</li>
+				<li>WMD - MIDI music</li>
+			</ul>
+			
+			<p>Although the original Doom 64 sounds are 11.025 kHz, 16 bit, the base engine supports 22.05 kHz, 16 bit. Also the engine can be updated to go as high as 44.1 kHz, 16 bit.</p>
 			
 	</div>
 

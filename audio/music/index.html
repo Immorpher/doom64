@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Music</title>
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Music</h1>
+		
+			<p>The original Doom 64 music is in MIDI format but uses a custom soundset. Specific tracks can be assigned to levels with the <a href="../wadbuilding/mapinfo.html">MAPINFO text lump</a>. An archive of custom Doom 64 MIDIs can be found below.</p>
+		
+			<ul>
+				<li><a href="https://www.dropbox.com/sh/b96qzg6r4sow4uz/AAArv5qzvMQIQxLXEzAJr40Fa">Doom 64 MIDI Archive</a></li>
+			</ul>
+			
+			<p>MIDIs are added to different files depending on the engine used as described below.</p>
+			
+		<h2>MIDI Composition</h2>
+		
+			<p>Composing MIDI requires a custom soundset to be loaded where <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtual MIDI Synth</a> can be used to load a soundfont. You can use the wadgen utility from <a href="https://doom64ex.wordpress.com/">Doom 64 EX</a> or <a href="https://github.com/9nova/d64make/releases/">d64make</a> to extract the Doom 64 soundfont from the Doom 64 ROM. Once you obtain the soundfont you can use the programs below to compose MIDIs for Doom 64.</p>
+		
+			<ul>
+				<li><a href="https://openmidiproject.osdn.jp/Sekaiju_en.html">Sekaiju</a></li>
+				<li><a href="http://www.synthfont.com/">SynthFont1</a></li>
+			</ul>
+			
+			<p>Some engines can load these MIDIs directly in appropriate lumps, however other engines require these MIDIs to be futher formatted as described in the following sections.</p>
+			
+		<h2>Doom 64 Remaster</h2>
+		
+			<p>The official Doom 64 Remaster is based on the FMOD sound effects engine. This allows this engine to load other music formats such as MP3, OGG, Impulse Tracker and others. The caveat is the MIDI music is based around the DLS format which has lost the stereo panning of the original Doom 64 Soundset. This can be remedied by adding the stereo information to the MIDI files themselves. When replacing music on the Doom 64 Remaster, replacing single tracks (such as MUSDONE) can cause a bug where music gets played out of order or simple is not replaced. However, replacing the entire soundtrack seems to remedy this bug. And adding new music to custom WAD does not seem to cause this bug. Custom music can be placed between "DM_START" and "DM_END" markers.</p>
+			
+			<p>If you wish to use MIDI style music with custom sounds, it is recommended that you use tracker formats. <a href="https://openmpt.org/">Open MPT</a> is software in which you can compose tracker music, but perhaps more importantly, you can convert MIDIs into tracker music with custom soundfonts. In particular, the Doom 64 Remaster supports the impulse tracker (IT) format.</p>
+			
+			<p>It is possible to edit the Doom 64 Remaster soundfont for custom music. In particular the DOOMSND.DLS file is the soundfont. This is in the somewhat obscure DLS (downloadable sound) format, however, it is the only soundfont that the FMOD sound effects engine currently supports. Aging and expensive software such as <a href="https://www.fmjsoft.com/awavestudio.html">Awave Studio</a> can edit this file.</p>
+			
+		<h2>Doom 64 EX Engines</h2>
+		
+			<p>The sound system for Doom 64 EX based engines utilize the FluidSynth sound system. Fundamentally this system is based upon MIDI architecture and all of its music and in-game sounds are in a soundfont. These engines only support MIDI music. For Doom 64 EX+, music can be placed between "DM_START" and "DM_END" markers, while for the original Doom EX, music is placed between the "DS_START" and "DS_END" markers, of a custom WAD.</p>
+
+			<p>The original Doom 64 EX requires additional formatting which can be done with the <a href="https://www.doomworld.com/forum/topic/121602/">MIDI 64nicator</a>. This is due to many MIDI events causing the engine to crash and must be cleaned from the files. This engine also suffers from tracks going out of sync when a high density of midi events occur, however this is not noticeable with low-density ambient tracks.</p>
+			
+			<p>FluidSynth supports chorus and reverb effects, thus Doom 64 EX based engines do as well. These are controlled by specific MIDI events in the music files and can give the music more depth. If you decide to use these effects, it is recommended you set the amplitude of these effects to zero in MIDI channels that do not use them. Otherwise the reverb and chorus settings from a previous music track can bleed over.</p>
+			
+			<p>If you would like to change the sounds used in the music in these engines, you will need to edit the soundfound, DOOMSND.SF2. This soundfont is based on the common SF2 format. Soundfont editing can be done with the <a href="https://www.polyphone-soundfonts.com/">Polyphone Soundfont Editor</a> software and many other modern applications.</p>
+		
+		<h2>Nintendo 64</h2>
+		
+			<p>For the Nintendo 64 engines, none of the sound and music assets are stored in the WAD, rather they are stored in three files for the WESS/NESS sound system.</p>
+			
+			<ul>
+				<li>WDD - Audio files</li>
+				<li>WSD - Sound playback definitions</li>
+				<li>WMD - MIDI music</li>
+			</ul>
+			
+			<p>These aren't standard formats, however Nova's <a href="https://github.com/9nova/d64make/releases/">d64make</a> can convert standard sounds, MIDIs, and soundfonts to these files. At the moment, it does seem that custom MIDIs do work, however not much testing has been done to see what limits there are.</p>
+			
+			<p>Although the original Doom 64 sounds are 11.025 kHz, 16 bit, the base engine supports 22.05 kHz, 16 bit. Also the engines themselves can be updated to go as high as 44.1 kHz, 16 bit at the cost of some performance.</p>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
