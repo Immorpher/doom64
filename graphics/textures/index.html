@@ -12,21 +12,25 @@
 	
 		<h1>Textures</h1>
 		
+			<p>Textures are graphics that tile along geometry of levels.
+			
+		<h2>Texture Rendering</h2>
+			
 			<p>Although the Doom engine originally made a distinction between textures used on the walls and the floors/ceilings, the same textures can be used for either in Doom 64. There are rendering differences however.</p>
 			
-		<h2>The BLANK Texture</h2>
+		<h3>The BLANK Texture</h3>
 		
 			<p>A big feature of Doom 64's 3D rendering is the BLANK texture. This texture is fully transparent, allowing geometry behind it to become visible. This is used to trim the top of bridges and floating objects by lowering sectors with the blank texture around the structure.</p>
 			
 			<p>For rendering efficiency, the Doom 64 engine will not send sectors it believes not visible to the player to render. Thus, even with the blank texture being used, sectors behind it may not be shown to the player. The "No Occlusion" flag can be used on obscuring linedefs to fix this.</p>
 			
-		<h2>Floor/Ceiling Rendering</h2>
+		<h3>Floor/Ceiling Rendering</h3>
 		
 			<p>On the floor and ceilings, textures are streched to match a 64 unit square. For textures larger than 64x64 pixels it can result in inconsistent texture resolution with the walls. However higher resolution textures can work with water effects.</p>
 			
 			<p>For PC Engines, textures on the floors and ceilings will render partial transparencies. This can be used for ice and glass effects.</p>
 	
-		<h2>Wall Rendering</h2>
+		<h3>Wall Rendering</h3>
 		
 			<p>Walls are all rendered with consistent resolution. Thus the bigger the texture, the more of the wall it will extend across. Partial transparencies for walls are supported on the Doom 64 Remaster, however for Doom 64 EX and EX+ only the full transparency is rendered, while partial transparency is fully opaque.</p>
 			
@@ -34,15 +38,27 @@
 			
 			<img src="textrans.png" style="width: 620px; height: 440px; image-rendering: pixelated;" />
 			
-		<h2>Switch and Decal Textures</h2>
+		<h3>Switch and Decal Textures</h3>
 		
 			<p>Switch textures, when not used as decals, come in pairs offset by one sequential character at the end. For example "SWITCHA" and "SWITCHB" are one such pair. When a switch is defined, one of the pair is selected, and when activated by a player, it will switch to the other of the pair.</p>
 		
 			<p>On the PC engines, switch textures are resized to a 32x32 unit area. Thus the original Doom 64 switch textures are 32x32 pixels to keep a consistent texture resolution. However higher resolution textures can be used, which may be useful for effects like text screens on the wall. Also the use of the switch setup properties on a linedef can be used to add other decals to walls, like graffiti and stains, without using the full switch setup process.</p>
 			
+		<h2>Custom Textures</h2>
+		
+			<p>For all Doom 64 engines, textures are added to WAD files between the markers <i>T_START</i> and <i>T_END</i>. Due to the legacy of hardware rendering, the texture pixel sizes must be in a power of 2. This means they can be sizes of 2 pixels, 4 pixels, 8, 16, 32, 64, 128, 256, and so on. For all engines, the textures must be made in the PNG format initially.</p>
+			
+		<h3>PC Engines</h3>
+		
+			<p>PC engines support textures at any color depth. Partial transparencies are supported but only will be rendered properly depending on the engine and surface its rendered on as described in the prior sections. Below is an example WAD for your reference with a custom texture.</p>
+			
+			<ul><li><a href="exampletexture.wad">Custom Texture WAD</a></li></ul>
+			
+			<p>To allow for a large number of custom textures that can be re-ordered in a WAD at any time, the textures names are hashed for the PC engines. What this means is that each texture name is converted to a number which the map references to. The code which calculates the hash numbers can be found in this <a href="lump_hash.c">Doom 64 EX code snippet</a>. Unfortunately not all hash numbers are unique, so multiple textures can result into the same hash number. This increasingly becomes a problem when large amount of textures are being used. If two textures share the same hash number, the later loaded texture will be shown for all textures of that hash number. To remedy this, one of the textures must have its name changed to represent a different hash number.</p>
+		
 			<p>There is an unusual bug concerning switch textures on the Doom 64 Remaster. When using custom switch textures, sometimes activating them in game causes the switch texture to switch to an incorrect texture, that is not in the pair. Even if it was correct prior, adding new textures to a WAD can cause this issue to happen. The exact cause of this bug is currently unknown. Sometimes switching the texture order is enough to fix this. A more consistent fix is to put all of the switch textures (including the originals) at the top of the texture lump (before any other texture) and this seems to help maintain the proper order in the engine.  Also it has been found cutting out the switch textures from the WAD, saving the WAD, and pasting the textures back into the WAD can fix this bug.</p>
 			
-		<h2>Nintendo 64</h2>
+		<h3>Nintendo 64</h3>
 		
 			<p>On the Nintendo 64 engines, textures are paletted with a total of 16 colors thus they are 4-bit images. The d64make utility by Nova can convert appropriately-formatted PNGs to the format for the Nintendo 64.<p>
 			
@@ -53,6 +69,8 @@
 			<p>Due to hardware limitations relating to the texture cache (TMEM) size, each individual (CI4) texture on the Nintendo 64 can only be 4096 pixels total maximum. Furthermore, the textures must be 8-byte aligned. This includes texture sizes such as: 64x64 pixels, 128x32 pixels, and 256x16 pixels.</p>
 			
 			<p>On the original Doom 64 engine, switch textures are not resized to a 32x32 unit size. Instead, they are allowed to expand like a wall texture. However some engines, like Complete Edition, switch textures will be resized like the PC engines.</p>
+			
+			<p>Instead of hashing texture names, maps refer to the textures based on their order in the WAD. Thus if you re-order textures in the WAD, it will scramble which textures appear in the maps. Doom Builder 64 has a specific Nintendo 64 map format to number textures in order based upon the Doom 64 IWAD you choose. You can also use Erick194's <a href="https://github.com/Erick194/D64TOOL/releases/">D64Tool</a> to convert Doom 64 Remaster maps to the Nintendo 64 format automatically with the right texture numbering. Here you can add the custom textures you have added to the text file it references to. You will need to edit the Doom 64 source code, however, because it specifically references where the sky textures are and this will need to be accounted for when changing the total number of textures.</p>
 			
 	</div>
 
