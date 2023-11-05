@@ -64,7 +64,7 @@
 			
 				<ul><li><a href="https://github.com/d64u/d64make/">d64make</a></li></ul>
 				
-			<p>Most graphics software do not have a specific option to save PNGs as a 4-bit format. However you can palette the graphic as an 8 bit image and reduce the palette to 16 colors only. Often d64make will recognize this as a 4 bit image and process it appropriately.</p>
+			<p>Most graphics software do not have a specific option to save PNGs as a 4-bit format. However in GIMP you can set the texture to 16 colors by going to "Image" then "Mode", and then "Indexed...". You can select a custom palette of 16 colors or have it auto-generate one of 16 colors. Make sure to disable the option of "Remove unused and duplicate colors", as the final palette has to be exactly 16 colors. Now when you export the image in GIMP as a PNG it should be the right format.</p>
 			
 			<p>Due to hardware limitations relating to the texture cache (TMEM) size, each individual (CI4) texture on the Nintendo 64 can only be 4096 pixels total maximum. Furthermore, the textures must be 8-byte aligned. This includes texture sizes such as: 64x64 pixels, 128x32 pixels, and 256x16 pixels.</p>
 			
