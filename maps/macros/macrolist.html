@@ -146,7 +146,7 @@
 		<p>Here <i>dsttag</i> is the tag of the line to copy to (destination tag) and <i>srctag</i> is the tag of the line to copy from (source tag). Copying attributes, settings, and textures between single-sided and double-sided linedefs will cause most engines to crash sometimes unpredictably.</p>
 		<ul>
 			<li>Line_CopyFlags(<i>dsttag</i>, <i>srctag</i>) - Copies flags from one linedef to another. For example: Impassable, Block Sound, etc.</li>
-			<li>Line_CopyTextures(<i>dsttag</i>, <i>srctag</i>) - Copies upper, middle, and lower textures from one linedef to another.</li>
+			<li>Line_CopyTextures(<i>dsttag</i>, <i>srctag</i>) - Copies upper, middle, and lower textures from one linedef to another. On some Nintendo 64 ports, it only copies the texture of the front sides.</li>
 			<li>Line_CopySpecials(<i>dsttag</i>, <i>srctag</i>) - Copies the Action Special (Door Open, Floor Lower, etc.), Activation Type (Use, Cross, Blue Key, etc.), and Switch Setup properties from one linedef to another.</li>
 			<li>Line_TriggerRandomLinesByTag(<i>tag</i>) - If there are multiple linedefs with the same tag, this will randomly activate one of them.</li>
 		</ul>
