@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Passwords</title>
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+	<script type="text/javascript" src="d64pw.js"></script>
+	
+		<h1>Passwords</h1>
+
+			<p>When Doom 64 was released gaming consoles did not have internal memory dedicated for storage. Memory cards and packs were also a new concept as well. Thus to accomodate players who did not have a memory pack, Doom 64 implemented a password system. These days it isn't as useful, but many engines still support passwords and you can get yourself out of bad or corrupted saves with them!</p>
+			
+			<h2>Password Generator</h2>
+			
+			<p>The Doom 64 password generator was original designed by <a href="https://eternity.mancubus.net/d64pw/">Quasar</a> as free software under a GNU license. The password generator below is built upon that given some engines have expanded limits now. Be sure to read the notes at the end for additional information and distribution licensing.</p>
+			
+			<form method="get" action="javascript:void(0);" onreset="QForm.onResetForm();" onsubmit="" name="pwform" id="pwform">
+				<fieldset id="control">
+					<legend>Password Controls</legend>
+					<label for="password">Password:
+					<input type="text" value="" size="25" name="password" id="password" /></label>
+					<div id="errormsg"></div>
+					<button name="encode" id="encode" type="button" onclick="QForm.onEncode();">Encode Password</button>
+					<button name="decode" id="decode" type="button" onclick="QForm.onDecode();">Decode Password</button>
+					<button name="giveall" id="giveall" type="button" onclick="QForm.onGiveAll();">Give Everything</button>
+					<button name="reset" id="reset" type="reset">Reset</button>
+				</fieldset>
+				<fieldset id="levelskill">
+					<legend>Level and Skill</legend>
+					<label for="nextmap">Level <input type="number" value="1" min="1" max="128" step="1" name="nextmap" id="nextmap" onchange="QForm.onChangeMap();" /></label>
+					<label for="gameskill">Skill
+						<select name="gameskill" id="gameskill">
+						<option value="0">Be Gentle!</option>
+						<option value="1">Bring It On!</option>
+						<option value="2">I Own Doom!</option>
+						<option value="3">Watch Me Die!</option>
+					</select></label>
+					<div id="levelname">Level Name: Staging Area</div>
+				</fieldset>
+				<fieldset id="weapons">
+					<legend>Weapons and Ammo</legend>
+
+					<label for="backpack"><input type="checkbox" name="backpack" id="backpack" onclick="QForm.onClickBackpack();" /> Have Backpack</label>
+					<label for="chainsaw"><input type="checkbox" value="0" name="chainsaw" id="chainsaw" /> Chainsaw</label>  
+					<label for="shotgun"><input type="checkbox" value="2" name="shotgun" id="shotgun" /> Shotgun</label>
+					<label for="ssg"><input type="checkbox" value="3" name="ssg" id="ssg" /> Super Shotgun</label>
+					<label for="chaingun"><input type="checkbox" value="4" name="chaingun" id="chaingun" /> Chaingun</label>
+					<label for="missile"><input type="checkbox" value="5" name="missile" id="missile" /> Missile Launcher</label>
+					<label for="plasma"><input type="checkbox" value="6" name="plasma" id="plasma" /> Plasma Gun</label>
+					<label for="bfg"><input type="checkbox" value="7" name="bfg" id="bfg"/> BFG9000</label>
+					<label for="laser"><input type="checkbox" value="8" name="laser" id="laser"/> Unmaker</label><br/>
+
+					<label for="clip">Bullets: <input type="number" value="50" min="0" step="1" name="clip" id="clip" max="400"/> /<input type="text" value="200" readonly="" name="maxclip" id="maxclip"/>
+					</label>           
+					<label for="shell">Shells: <input type="number" value="0" min="0" step="1" name="shell" id="shell" max="100"/> /<input type="text" value="50" readonly="" name="maxshell" id="maxshell"/>
+					</label>
+					<label for="misl">Rockets: <input type="number" value="0" min="0" step="1" name="misl" id="misl" max="100"/> /<input type="text" value="50" readonly="" name="maxmisl" id="maxmisl"/>
+					</label>
+					<label for="cell">Cells: <input type="number" value="0" min="0" step="1" name="cell" id="cell" max="600"/> /<input type="text" value="300" readonly="" name="maxcell" id="maxcell"/>
+					</label>
+				</fieldset>
+				<fieldset id="healtharmor">
+					<legend>Health and Armor</legend>
+					<label for="health">Health
+					<input type="number" value="100" min="0" max="200" step="1" name="health" id="health"/></label>
+					<label for="armortype">Armor Type
+					<select name="armortype" id="armortype">
+						<option value="0">None</option>
+						<option value="1">Green</option>
+						<option value="2">Blue</option>
+					</select></label>
+					<label for="armorpoints">Armor Points
+					<input type="number" value="0" min="0" max="200" step="1" name="armorpoints" id="armorpoints" /></label>
+				</fieldset>
+				<fieldset id="artifacts">
+					<legend>Artifacts</legend>
+					<label for="fast"><input type="checkbox" value="1" name="fast" id="fast"/>
+					First Artifact (from <i>Outpost Omega</i>)</label>
+					<label for="double"><input type="checkbox" value="4" name="double" id="double"/>
+					Second Artifact (from <i>The Lair</i>)</label>
+					<label for="triple"><input type="checkbox" value="2" name="triple" id="triple" />
+					Third Artifact (from <i>In The Void</i>)</label>
+				</fieldset>
+			</form>
+			<ul>
+				<li>Note 1: Set Level to 1 to enable the Features menu.</li>
+				<li>Note 2: Ammo, Health, and Armor values may be rounded up in the calculated password. This is vanilla accurate.</li>
+				<li>Note 3: Artifacts are additive. The first acquired gives double speed, the second double lasers, and the third triple lasers.It does not matter which of the three artifacts are acquired, only how many are possessed.</li>
+				<li>Note 4: Level naming is assumed to be that of the original Doom 64 and rereleases (for Lost Levels). Some engines can support passwords for up to 128 levels.</li>
+				<li>Hypertext and JavaScript code are available under the terms of the <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License v2.0</a> or higher.</li>
+			</ul>
+	
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
