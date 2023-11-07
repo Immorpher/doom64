@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Sky Graphics</title>
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Sky Graphics</h1>
+		
+			<p>On PC engines the <a href="../../wadbuilding/skydefs.html">SKYDEFS text lump</a> holds the definitions for all skies in the wad. Only the SKYDEFS from the last loaded wad will be used. If you want to use some new skies and some of the original skies in the same wad, you must include the definitions for the original skies in your SKYDEFS.<p>
+
+			<p>Each sky requires its own unique texture to be included in the wad. It doesn't matter what image the texture contains, as the texture is only used to assign the sky to the ceiling/floor of sectors. Assigning a sky texture to a ceiling or floor is what determines which sky will be used in that map. There can only be one sky used per map unless you are using an engine like EX+, which has a special <a href="../../maps/lineactions.html">linedef action</a> to change the sky.</p>
+			
+		<h2>Custom Sky Definitions</h2>
+		
+			<p>Settings and options for skies can be found on the <a href="../../wadbuilding/skydefs.html">SKYDEFS text lump</a> page. Many of these settings allow you to change the colors of the sky without changing the graphics. Use the following steps to define a custom sky.</p>
+
+			<ul>
+				<li>Set up your <a href="../../wadbuilding/skydefs.html">SKYDEFS text lump</a> and add it to the wad with <a href="http://slade.mancubus.net/">Slade</a>.</li>
+				<li>Add a <a href="../textures/index.html">custom texture</a> to the wad with the texture name you used in the SKYDEFS.</li>
+				<li>Use that texture on a floor/ceiling of your map.</li>
+			</ul>
+
+			<p><a href="skyexamp1.wad">Here's</a> a wad you can use as an example with a new Earth-like sky.</p>
+		
+		<h2>Custom Sky Graphics</h2>
+		
+			<p>In general custom sky graphics are in PNG format or are converted from PNG format. Sky backgrounds, clouds, and other sky graphics must be added between the markers <i>G_START</i> and <i>G_END</i>. Sky backgrounds can have transparency. The mountains in various skies use this. And for PC engines, partial transparencies are supported which give even more options for overlays. Sky graphics must be paletted to 256 colors for the Nintendo 64.</p>
+
+		<h3>Custom Clouds</h3>
+
+			<p>Although the original sky cloud texture is 64x64, sky clouds do not need to be that size, nor do they need to be square. This can be used for high-resolution clouds. You can follow the steps below to add custom cloud graphics.</p>
+		
+			<ul>
+				<li>Make a new cloud texture, save it as an 8-bit png, and import into your wad between <i>G_START</i> and <i>G_END</i>.</li>
+				<li>In the SKYDEF, use the name of the new cloud texture for <i>pic</i>, and use <i>cloud</i> to make the sky render clouds.</li>
+			</ul>
+			
+			<p><a href="skyexamp2cloud.wad">Here's</a> an example wad with an Earth sky that uses a new cloud texture. Notice how the clouds in game are more subtle than they are in the sky using the original cloud texture in <a href="skyexamp1.wad">this wad</a>. That's one example of how new clouds can be used for new effects in skies.</p>
+
+		<h3>Custom Backgrounds</h3>
+
+			<p>Background graphics, such as static skies and mountains, must be 256 pixels wide. Other widths will still load, however they will scroll oddly when the player rotates. Follow the steps below to add custom background graphics.</p>
+			
+			<ul>
+				<li>Make a new sky background, save it as a png, and import into your wad between <i>G_START</i> and <i>G_END</i>.</li>
+				<li>In the SKYDEF, use the name of the new background texture for <i>backpic</i>.</li>
+				<li>If your background has transparency, like in the mountain textures, then use <i>cloud</i> and <i>pic</i> to render clouds as well.</li>
+			</ul>
+			
+			<p><a href="skyexamp3bg.wad">Here's</a> an example wad with a new Hell sky background (based off the finale pic at the end of the game).</p>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
