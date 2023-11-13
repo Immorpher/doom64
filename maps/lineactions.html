@@ -25,8 +25,8 @@
 			<tr><td>108</td><td>Door (Classic) Fast Open Wait Close Tagged</td><td>Quickly opens the door of tagged sector, waits for a few seconds, and closes it again.</td></tr>
 			<tr><td>109</td><td>Door (Classic) Fast Open Tagged</td><td>Quickly opens the door of tagged sector. The door won't close by itself.</td></tr>
 			<tr><td>110</td><td>Door (Classic) Fast Close Tagged</td><td>Quickly closes the door of tagged sector. The door won't re-open by itself.</td></tr>
-			<tr><td>117</td><td>Door (Split) Fast Open Wait Close</td><td></td></tr>
-			<tr><td>118</td><td>Door (Split) Fast Open</td><td></td></tr>
+			<tr><td>117</td><td>Door (Split) Fast Open Wait Close</td><td>Opens a split door of adjoining sector, waits for a few seconds, and closes it again.</td></tr>
+			<tr><td>118</td><td>Door (Split) Fast Open</td><td>Opens a split door of adjoining sector. The door won't close by itself.</td></tr>
 		</table>
 
 		<h2>Floors</h2>
@@ -89,7 +89,7 @@
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
 			<tr><td>224</td><td>Thing Spawn</td><td>Spawns things of same tag, they must have "Spawner" checked.</td></tr>
 			<tr><td>94</td><td>Thing Alert</td><td>Alerts all things with this tag. Causes tagged corpses to resurrect<br/>in the Doom 64 Remaster, but causes a crash in Doom 64 EX.</td></tr>
-			<tr><td>93</td><td>Thing Disable Infighting</td><td></td></tr>
+			<tr><td>93</td><td>Thing Disable Infighting</td><td>Stops monsters of same tag from infighting.</td></tr>
 			<tr><td>242</td><td>Thing Fade Out</td><td>Tagged thing fades away and is removed. Most often used to remove corpses.</td></tr>
 			<tr><td>202</td><td>Spawn Dart</td><td> Tagged thing must be a Projectile Spot (thing type 2050) and must not have<br/>"Spawner" checked. Shoots a dart in the direction the projectile spot is facing.</td></tr>
 			<tr><td>231</td><td>Spawn Tracer</td><td>Tagged thing must be a Projectile Spot (thing type 2050) and must not have<br/>"Spawner" checked. Spawns an explosive projectile which homes in on the player.</td></tr>
@@ -101,7 +101,7 @@
 		<table>
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
 			<tr><td>17</td><td>Start Light Strobing</td><td></td></tr>
-			<tr><td>234</td><td>Change Light by Tag</td><td></td></tr>
+			<tr><td>234</td><td>Change Light by Tag</td><td>Copies lights from sector with the line tag, to the sector with the tag defined by global integer (action 204).</td></tr>
 		</table>
 
 		<h2>Macro Control</h2>
@@ -119,19 +119,19 @@
 			<tr><td>201</td><td>Camera Set</td><td></td></tr>
 			<tr><td>243</td><td>Camera Move</td><td></td></tr>
 			<tr><td>200</td><td>Camera Clear</td><td></td></tr>
-			<tr><td>225</td><td>Quake</td><td></td></tr>
-			<tr><td>233</td><td>Freeze Player</td><td></td></tr>
+			<tr><td>225</td><td>Quake (Tag = Tics)</td><td>Shakes the screen for the specified number of tics (30 tics = 1 second) with sound.<br/>This sound can bug out if it is playing during a level exit.</td></tr>
+			<tr><td>233</td><td>Freeze Player (Tag = Tics)</td><td>Freezes the activating thing (i.e. player) for a specified number of tics (30 tics = 1 second).</td></tr>
 			<tr><td>203</td><td>Delay</td><td></td></tr>
-			<tr><td>204</td><td>Set Global Integer (value = tag)</td><td></td></tr>
-			<tr><td>240</td><td>Trigger Line Group (Pick random of group)</td><td></td></tr>
+			<tr><td>204</td><td>Set Global Integer / Macro Integer (value = tag)</td><td>Used in combination with other actions and sets the value used in them.</td></tr>
+			<tr><td>240</td><td>Trigger Line Group (Pick random of group)</td><td>Will trigger a random line out of a set of lines with the same tag.</td></tr>
 		</table>
 
 		<h2>Artifact Switches</h2>
 		<table>
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
-			<tr><td>90</td><td>Artifact Switch 1 (Orange)</td><td></td></tr>
-			<tr><td>91</td><td>Artifact Switch 2 (Blue)</td><td></td></tr>
-			<tr><td>92</td><td>Artifact Switch 3 (Purple)</td><td></td></tr>
+			<tr><td>90</td><td>Artifact Switch 1 (Orange)</td><td>Will check if player has the orange artifact and will activate line with the tag one higher than the current line.</td></tr>
+			<tr><td>91</td><td>Artifact Switch 2 (Blue)</td><td>Will check if player has the blue artifact and will activate line with the tag one higher than the current line.</td></tr>
+			<tr><td>92</td><td>Artifact Switch 3 (Purple)</td><td>Will check if player has the purple artifact and will activate line with the tag one higher than the current line.</td></tr>
 		</table>
 
 		<h2>Exits</h2>
