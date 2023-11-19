@@ -127,6 +127,7 @@
 			<tr><td>248</td><td>Macro Suspend</td><td></td></tr>
 			<tr><td>250</td><td>Macro Toggle On</td><td></td></tr>
 			<tr><td>251</td><td>Macro Toggle Off</td><td></td></tr>
+			<tr><td>256 - 511</td><td>Macro #</td><td>Activate specific macro.</td></tr>
 		</table>
 
 		<h2>Specials</h2>
@@ -142,6 +143,14 @@
 			<tr><td>240</td><td>Trigger Line Group (Pick random of group)</td><td>Will trigger a random line out of a set of lines with the same tag.</td></tr>
 		</table>
 
+		<h2>Sector Properties</h2>
+		<table>
+			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
+			<tr><td>220</td><td>(undefined) / Change Sector Flags</td><td>Changes the sector flags at sector with the line tag,<br/>from the sector with the tag defined by global integer (action 204).</td></tr>
+			<tr><td>221</td><td>(undefined) / Change Sector Specials</td><td>Changes the sector special (light effects) at sector with the line tag,<br/>from the sector with the tag defined by global integer (action 204).</td></tr>
+			<tr><td>235</td><td>(undefined) / Change Floor and Ceiling Textures</td><td>Replaces floor and ceiling textures at sector with the line tag,<br/>from the sector with the tag defined by global integer (action 204).</td></tr>
+		</table>
+		
 		<h2>Artifact Switches</h2>
 		<table>
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
@@ -167,7 +176,6 @@
 			<tr><td>217</td><td>Change Sky (Tag = Sky#)</td><td>(Doom 64 EX+) Changes sky based on sky load order in SKYDEFS</td></tr>
 			<tr><td>253</td><td>Unlock Cheat Menu</td><td>Unlock the "features" cheat menu</td></tr>
 			<tr><td>254</td><td>Draw D64 Logo on F_SKYG flat</td><td>Displays the backpic graphic on the sky. This only<br/>works on skies with the "fadeinbackground" designation.</td></tr>
-			<tr><td>256 - 511</td><td>Macro #</td><td>Activate specific macro.</td></tr>
 		</table>
 		
 	</div>
