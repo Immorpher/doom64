@@ -41,6 +41,11 @@
 			<tr><td>56</td><td>Floor Raise to 8 Below Ceiling Crush</td><td>Raises the tagged floor to 8 units below the height of the lowest neighboring ceiling.<br/>Things are allowed to be crushed by this movement.</td></tr>
 			<tr><td>58</td><td>Floor Raise by 24</td><td>Raises the tagged floor by 24 units.</td></tr>
 			<tr><td>59</td><td>Floor Raise by 24 and Change</td><td>Raises the tagged floor by 24 units and changes the floor texture and sector special<br/>to match the sector adjacent to the front side of the linedef that triggered this action.</td></tr>
+			<tr><td>212</td><td>(undefined) / Floor Raise by Value</td><td>Raises the floor to the distance set by the global integer (action 204).</td></tr>
+			<tr><td>228</td><td>(undefined) / Floor Quick Raise by Value</td><td>Quickly raises the floor to the distance set by the global integer (action 204).</td></tr>
+			<tr><td>229</td><td>(undefined) / Floor Instant Raise by Value</td><td>Instantly raises the floor to the distance set by the global integer (action 204).</td></tr>
+			<tr><td>247</td><td>(undefined) / Floor Move to Value</td><td>Moves the floor to the value set by the global integer (action 204).</td></tr>
+			<tr><td>244</td><td>(undefined) / Floor Instant Move to Value</td><td>Instantly moves the floor to the value set by the global integer (action 204).</td></tr>
 		</table>
 
 		<h2>Ceilings</h2>
@@ -53,12 +58,17 @@
 			<tr><td>57</td><td>Ceiling Stop Crusher</td><td>Stops the current crusher in the tagged sector, if applicable</td></tr>
 			<tr><td>232</td><td>Ceiling Crush and Raise Fast Once</td><td>Performs one cycle of a fast crusher on tagged sector, then stops.</td></tr>
 			<tr><td>141</td><td>Silent Crush and Instant Kill (needs sector special 666)</td><td>Activates a silent crusher on tagged sector which instakills anything it crushes. Requires the<br/>sector to have set the special flag 666, otherwise a normal crusher is activated instead.</td></tr>
+			<tr><td>210</td><td>(undefined) / Ceiling Raise by Value</td><td>Raises the ceiling to the distance set by the global integer (action 204).</td></tr>
+			<tr><td>226</td><td>(undefined) / Ceiling Quick Raise by Value</td><td>Quickly raises the ceiling to the distance set by the global integer (action 204).</td></tr>
+			<tr><td>227</td><td>(undefined) / Ceiling Instant Raise by Value</td><td>Instantly raises the ceiling to the distance set by the global integer (action 204).</td></tr>
+			<tr><td>252</td><td>(undefined) / Ceiling Move to Value</td><td>Moves the ceiling to the value set by the global integer (action 204).</td></tr>
+			<tr><td>245</td><td>(undefined) / Ceiling Instant Move to Value</td><td>Instantly moves the ceiling to the value set by the global integer (action 204).</td></tr>
 		</table>
 
 		<h2>Platforms</h2>
 		<table>
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
-			<tr><td>10</td><td>Plat Down Wait Up</td><td>Lowers the tagged floor to the lowest neighboring floor, waits for 3 seconds, and raises back up. Monsters can activate this.</td></tr>
+			<tr><td>10</td><td>Plat Down Wait Up</td><td>Lowers the tagged floor to the lowest neighboring floor, waits for 3 seconds, and raises back up.<br/>Monsters can activate this.</td></tr>
 			<tr><td>121</td><td>Plat Down Wait Up Fast</td><td>Quickly lowers the tagged floor to the lowest neighboring floor, waits for 3 seconds, and raises back up.</td></tr>
 			<tr><td>53</td><td>Plat Down Wait Up Loop</td><td>Lowers the tagged floor to the lowest neighboring floor at slow speed, waits for 3 seconds,<br/>and raises back up. Then, repeats forever.</td></tr>
 			<tr><td>54</td><td>Plat Stop Moving</td><td>Stops the tagged platform, if it is moving.</td></tr>
@@ -67,10 +77,10 @@
 			<tr><td>22</td><td>Plat Raise and Change</td><td></td></tr>
 			<tr><td>66</td><td>Plat Raise by 24 Units and Change</td><td></td></tr>
 			<tr><td>67</td><td>Plat Raise by 32 Units and Change</td><td></td></tr>
-			<tr><td>236</td><td>(undefined) / Plat Down Wait Up</td><td>Lowers the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and raises back up. Monsters can activate this.</td></tr>
-			<tr><td>237</td><td>(undefined) / Plat Down Wait Up Fast</td><td>Quickly lowers the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and raises back up.</td></tr>
-			<tr><td>238</td><td>(undefined) / Plat Up Wait Down</td><td>Raises the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and lowers back down.</td></tr>
-			<tr><td>239</td><td>(undefined) / Plat Up Wait Down Fast</td><td>Quickly raises the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and lowers back down.</td></tr>
+			<tr><td>236</td><td>(undefined) / Plat Custom Down Wait Up</td><td>Lowers the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and raises back up. Monsters can activate this.</td></tr>
+			<tr><td>237</td><td>(undefined) / Plat Custom Down Wait Up Fast</td><td>Quickly lowers the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and raises back up.</td></tr>
+			<tr><td>238</td><td>(undefined) / Plat Custom Up Wait Down</td><td>Raises the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and lowers back down.</td></tr>
+			<tr><td>239</td><td>(undefined) / Plat Custom Up Wait Down Fast</td><td>Quickly raises the tagged floor to the distance set by the global integer (action 204),<br/>waits for 3 seconds, and lowers back down.</td></tr>
 		</table>
 
 		<h2>Stairs</h2>
