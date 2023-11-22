@@ -1,4 +1,5 @@
 # Doom 64 Compendium
+![Doom 64 Compendium Graphic](d64c.png)
 Doom 64 Compendium is a project to document the Doom 64 engine, its forks, and how to modify it. This focuses on the engines based on Doom 64 code and support the Doom 64 mapping format. Adaptations to other engines are not the focus, although they can be referenced to with external links. The Doom 64 Compendium currently resides on https://www.doom64.com/
 
 ## Contribution Guide
