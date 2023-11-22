@@ -120,6 +120,8 @@
 			<tr><td>235</td><td>(undefined) / Blend Light</td><td>Smoothly blends all lights at sector with the line tag,<br/>from the sector with the tag defined by global integer (action 204).</td></tr>
 		</table>
 
+		<p>There are these additional actions to smoothly control sector lighting: 205 (floor), 206 (ceiling), 207 (thing), 208 (upper wall), 209 (lower wall). However they do not function as expected with tags.</p>
+		
 		<h2>Macro Control</h2>
 		<table>
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
@@ -150,7 +152,15 @@
 			<tr><td>221</td><td>(undefined) / Change Sector Specials</td><td>Changes the sector special (light effects) at sector with the line tag,<br/>from the sector with the tag defined by global integer (action 204).</td></tr>
 			<tr><td>235</td><td>(undefined) / Change Floor and Ceiling Textures</td><td>Replaces floor and ceiling textures at sector with the line tag,<br/>from the sector with the tag defined by global integer (action 204).</td></tr>
 		</table>
-		
+
+		<h2>Linedef Properties</h2>
+		<table>
+			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
+			<tr><td>218</td><td>(undefined) / Change Line Flags</td><td>Changes the flags at linedef with the line tag,<br/>from the linedef with the tag defined by global integer (action 204).</td></tr>
+			<tr><td>230</td><td>(undefined) / Change Line Specials</td><td>Changes the line actions, activation type, and switch setup at linedef with the line tag,<br/>from the linedef with the tag defined by global integer (action 204).</td></tr>
+			<tr><td>219</td><td>(undefined) / Change Wall Textures</td><td>Replaces wall textures at linedef with the linedef tag,<br/>from the linedef with the tag defined by global integer (action 204).</td></tr>
+		</table>
+
 		<h2>Artifact Switches</h2>
 		<table>
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
@@ -171,6 +181,8 @@
 			<tr><th>Action #</th><th>Editor Name</th><th>Description</th></tr>
 			<tr><td>0</td><td>(default) None</td><td>No action</td></tr>
 			<tr><td>213</td><td>Play Sound (Tag = Sound#)</td><td>(Doom 64 EX+) Play specific in-game sound effect based on sound load order</td></tr>
+			<tr><td>214</td><td>(undefined) / Sector Elevator by Value</td><td>Raises the ceiling and floor (elevator) to the distance set by the global integer (action 204).</td></tr>
+			<tr><td>241</td><td>(undefined) / Sector Split by Value</td><td>Raises the ceiling and lowers the floor (split) to the distance set by the global integer (action 204).</td></tr>
 			<tr><td>215</td><td>Stop Music</td><td>(Doom 64 EX+) Stops the music currently playing</td></tr>
 			<tr><td>216</td><td>Change Music (Tag = Music#)</td><td>(Doom 64 EX+) Plays music track corresponding to MUSAMB##</td></tr>
 			<tr><td>217</td><td>Change Sky (Tag = Sky#)</td><td>(Doom 64 EX+) Changes sky based on sky load order in SKYDEFS</td></tr>
