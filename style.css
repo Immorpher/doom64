@@ -470,22 +470,25 @@ blockquote footer {
 	margin: 0;
 	padding: 0;
 	width: 16rem;
-	background-color: var(--color-bg-secondary);
-	position: fixed;
+	background-image: linear-gradient(var(--color-bg-secondary), var(--color-bg));
+	position: absolute;
 	height: 100%;
+	min-height: 40rem;
 	overflow: hidden;
 }
 
 /* Navigation image */
 #navigation img {
 	margin: 0.5rem 0.5rem 0rem 0.5rem;
+	width: 15rem;
+	height: 14.25rem;
 }
 
 /* navigation links */
 #navigation a {
 	display: block;
 	color: var(--color-text);
-	padding: 0.5rem 0rem 0.5rem 1rem;
+	padding: 0.5rem 1rem 0.5rem 1rem;
 	text-decoration: none;
 	font-size: large;
 }
@@ -520,4 +523,36 @@ blockquote footer {
 #footer a {
 	color: var(--color-footer);
 	font-weight: normal;
+}
+
+
+
+/* Vertical orientation */
+@media only screen and (orientation: portrait) {
+
+    #navigation {
+		position: static;
+		height: auto;
+		width: 100%;
+		min-height: 0rem;
+		background-color: var(--color-bg-secondary);
+		background-image: none;
+	}
+	
+	#navigation img {
+		display: block;
+		width: 6rem;
+		height: 5.7rem;
+		float: left;
+	}
+	
+	#navigation a {
+		display: inline-block;
+	}
+	
+	#content {
+		margin-left: 0rem;
+		padding: 1rem 1rem;
+		overflow: hidden;
+	}
 }
