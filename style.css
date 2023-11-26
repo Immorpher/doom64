@@ -560,5 +560,10 @@ blockquote footer {
 	margin-left: 0rem;
 	padding: 0rem 0rem;
 	overflow: hidden;
-}
+	}
+	
+	.sidestack {
+		display: inline;
+	}
+
 }
