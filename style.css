@@ -555,4 +555,10 @@ blockquote footer {
 		padding: 1rem 1rem;
 		overflow: hidden;
 	}
+	
+	#footer {
+	margin-left: 0rem;
+	padding: 0rem 0rem;
+	overflow: hidden;
+}
 }
