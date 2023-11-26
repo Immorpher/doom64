@@ -9,6 +9,8 @@
 	--color-footer: #555;
     --color-bg-secondary: #e9e9e9;
     --color-link: #118bee;
+    --color-link-accent: #54a97f;
+    --color-link-tertiary: #a0904f;
     --color-secondary: #920de9;
     --color-secondary-accent: #920de90b;
     --color-shadow: #f4f4f4;
@@ -234,6 +236,14 @@ input[type="submit"] {
     line-height: var(--line-height);
     margin: 0.5rem 0;
     padding: 0.25rem 0.5rem;
+}
+
+li li a {
+    color: var(--color-link-accent);
+}
+
+li li li a {
+    color: var(--color-link-tertiary);
 }
 
 button,
@@ -469,7 +479,7 @@ blockquote footer {
 #navigation {
 	margin: 0;
 	padding: 0;
-	width: 16rem;
+	width: 11rem;
 	background-image: linear-gradient(var(--color-bg-secondary), var(--color-bg));
 	position: absolute;
 	height: 100%;
@@ -480,8 +490,8 @@ blockquote footer {
 /* Navigation image */
 #navigation img {
 	margin: 0.5rem 0.5rem 0rem 0.5rem;
-	width: 15rem;
-	height: 14.25rem;
+	width: 10rem;
+	height: 9.5rem;
 }
 
 /* navigation links */
@@ -501,14 +511,14 @@ blockquote footer {
 
 /* Page content. The value of the margin-left property should match the value of the navigation's width property */
 #content {
-	margin-left: 16rem;
+	margin-left: 11rem;
 	padding: 0rem 1rem;
 	overflow: hidden;
 }
 
 /*Footer content*/
 #footer {
-	margin-left: 16rem;
+	margin-left: 11rem;
 	padding: 0rem 0rem;
 	overflow: hidden;
 }
