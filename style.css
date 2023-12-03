@@ -17,7 +17,7 @@
     --color-table: #118bee;
     --color-text: #000;
     --color-text-secondary: #222;
-    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    --font-family: Arial, sans-serif;
     --hover-brightness: 1.2;
     --justify-important: center;
     --justify-normal: left;
@@ -31,14 +31,14 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --color-accent: #0097fc10;
-        --color-bg: #050505;
-        --color-bg-secondary: #101010;
+        --color-bg: #101010;
+        --color-bg-secondary: #202020;
         --color-link: #88aaee;
         --color-secondary: #e20de9;
         --color-secondary-accent: #e20de94f;
         --color-shadow: #bbbbbb20;
         --color-table: #0097fc;
-        --color-text: #ccc;
+        --color-text: #ddd;
         --color-text-secondary: #aaa;
     }
 }
@@ -81,58 +81,6 @@ hr {
     width: 100%;
 }
 
-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: var(--justify-important);
-}
-
-section img,
-article img {
-    max-width: 100%;
-}
-
-section pre {
-    overflow: auto;
-}
-
-section aside {
-    border: 1px solid var(--color-bg-secondary);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow) var(--color-shadow);
-    margin: 1rem;
-    padding: 1.25rem;
-    width: var(--width-card);
-}
-
-section aside:hover {
-    box-shadow: var(--box-shadow) var(--color-bg-secondary);
-}
-
-[hidden] {
-    display: none;
-}
-
-/* Headers */
-article header,
-div header,
-main header {
-    padding: 0;
-	margin: 0;
-}
-
-header {
-    text-align: var(--justify-important);
-}
-
-header a b,
-header a em,
-header a i,
-header a strong {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-}
-
 /* Typography */
 code,
 samp {
@@ -144,15 +92,6 @@ samp {
     padding: 0 0.5rem;
 }
 
-details {
-    margin: 1.3rem 0;
-}
-
-details summary {
-    font-weight: bold;
-    cursor: pointer;
-}
-
 h1,
 h2,
 h3,
@@ -160,10 +99,19 @@ h4,
 h5,
 h6 {
     line-height: var(--line-height);
+	margin: 0.5rem 0rem 0rem 0rem;
 }
 
-mark {
-    padding: 0.1rem;
+h2 {
+	margin: 2rem 0rem 0rem 0rem;
+}
+
+h3 {
+	margin: 1.5rem 0rem 0rem 0rem;
+}
+
+h4 {
+	margin: 1rem 0rem 0rem 0rem;
 }
 
 ol li,
@@ -172,7 +120,7 @@ ul li {
 }
 
 p {
-    margin: 0.75rem 0;
+    margin: 0.5rem 0;
     padding: 0;
     width: 100%;
 }
@@ -211,7 +159,7 @@ sup {
 a {
     color: var(--color-link);
     display: inline-block;
-    font-weight: bold;
+    font-weight: normal;
     text-decoration: underline;
 }
 
@@ -232,7 +180,7 @@ input[type="submit"] {
     border-radius: var(--border-radius);
     display: inline-block;
     font-size: medium;
-    font-weight: bold;
+    font-weight: normal;
     line-height: var(--line-height);
     margin: 0.5rem 0;
     padding: 0.25rem 0.5rem;
@@ -278,24 +226,6 @@ a i {
     color: var(--color-link);
     display: inline-block;
     padding: 1rem 2rem;
-}
-
-article aside a {
-    color: var(--color-secondary);
-}
-
-/* Images */
-figure {
-    margin: 0;
-    padding: 0;
-}
-
-figure img {
-    max-width: 100%;
-}
-
-figure figcaption {
-    color: var(--color-text-secondary);
 }
 
 /* Forms */
@@ -383,18 +313,6 @@ label {
 	margin: 0.3rem 2rem 0.4rem 0;
 }
 
-/* Popups */
-dialog {
-    border: 1px solid var(--color-bg-secondary);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow) var(--color-shadow);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    z-index: 999;
-}
 
 /* Tables */
 table {
@@ -501,6 +419,7 @@ blockquote footer {
 	padding: 0.5rem 1rem 0.5rem 1rem;
 	text-decoration: none;
 	font-size: large;
+	text-transform: uppercase;
 }
 
 /* Links on mouse-over */
@@ -511,8 +430,8 @@ blockquote footer {
 
 /* Page content. The value of the margin-left property should match the value of the navigation's width property */
 #content {
-	margin-left: 11rem;
-	padding: 0rem 1rem;
+	padding: 0rem 1rem 0rem 1rem;
+	margin: 0rem 0rem 0rem 11rem;
 	overflow: hidden;
 }
 
@@ -544,7 +463,7 @@ blockquote footer {
 		position: static;
 		height: auto;
 		width: 100%;
-		min-height: 0rem;
+		min-height: 6.5rem;
 		background-color: var(--color-bg-secondary);
 		background-image: none;
 	}
@@ -562,14 +481,14 @@ blockquote footer {
 	
 	#content {
 		margin-left: 0rem;
-		padding: 1rem 1rem;
+		padding: 0rem 1rem 0rem 1rem;
 		overflow: hidden;
 	}
 	
 	#footer {
-	margin-left: 0rem;
-	padding: 0rem 0rem;
-	overflow: hidden;
+		margin-left: 0rem;
+		padding: 0rem 0rem;
+		overflow: hidden;
 	}
 	
 	.sidestack {
