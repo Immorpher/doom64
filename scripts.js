@@ -7,7 +7,7 @@ function layout(depth) {
 		<img src="'+depth+'title.svg" alt="Doom 64 Compendium" />\
 		<a href="'+depth+'index.html">Directory</a>\
 		<a href="'+depth+'engines/index.html">Engines</a>\
-		<a href="'+depth+'wadbuilding/index.html">WAD Building</a>\
+		<a href="'+depth+'structures/index.html">Structures</a>\
 		<a href="'+depth+'maps/index.html">Maps</a>\
 		<a href="'+depth+'graphics/index.html">Graphics</a>\
 		<a href="'+depth+'audio/index.html">Audio</a>\

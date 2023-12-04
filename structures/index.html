@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Structures</title>
+	<meta property="og:title" content="Structures" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+	<link rel="icon" type="image/x-icon" href="../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Structures</h1>
+		
+			<p>The way Doom 64 is structured as software is into two main sections: the code and assets. Sometimes information can be hardcoded into the code, but generally assets are stored in other files. Below is a list of software which can add assets to the various file formats you will encounter with Doom 64.</p>
+			
+			<ul>
+				<li>WAD (PC)
+					<ul>
+						<li><a href="https://slade.mancubus.net/">Slade</a></li>
+					</ul></li>
+				<li>WAD (N64)
+					<ul>
+						<li><a href="https://github.com/azamorapl/SLADE/releases/">Slade 64</a></li>
+						<li><a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a></li>
+						<li><a href="https://github.com/immorpher/d64make">d64make</a></li>
+						<li><a href="https://github.com/Erick194/D64TOOL/releases/">d64tool</a></li>
+					</ul></li>
+				<li>SF2
+					<ul>
+						<li><a href="https://www.polyphone-soundfonts.com/">Polyphone</a></li>
+					</ul></li>
+				<li>DLS
+					<ul>
+						<li><a href="https://www.fmjsoft.com/awavestudio.html">Awave Studio</a></li>
+					</ul></li>
+				<li>WDD/WMD/WSD
+					<ul>
+						<li><a href="https://github.com/immorpher/d64make">d64make</a></li>
+						<li><a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a></li>
+					</ul></li>
+			</ul>
+			
+		<h2>Asset Organization</h2>
+		
+			<p>How the assets of Doom 64 is stored varies amongst the various ports. In general, WAD files are where the majority of the Doom 64 assets are stored, which includes the graphics and levels, and the Nintendo 64 ROM has one embeded. The information, music, and sound file locations vary from engine to engine. Below is a list of where each asset type is stored.</p>
+			
+			<ul>
+				<li>Graphics Assets
+					<ul>
+					<li>Sprites
+						<ul>
+						<li>All Engines - In WAD file between lump S_START and S_END markers</li>
+						<li>Doom 64 EX (Optional) - In WAD file between lump SS_START and SS_END markers</li>
+						</ul></li>
+					<li>Palettes
+						<ul>
+						<li>PC Engines - In WAD file outside lumps between the WAD S_END and T_START lump</li>
+						<li>N64 Engines - In WAD file between lump S_START and S_END markers before corresponding sprites</li>
+						</ul></li>
+					<li>Textures
+						<ul>
+						<li>All Engines - In WAD file between lump T_START and T_END markers</li>
+						<li>Doom 64 EX (Optional) - In WAD file between lump TT_START and TT_END markers</li>
+						</ul></li>
+					<li>Other Graphics
+						<ul>
+						<li>PC Engines - In WAD file between lump G_START and G_END markers</li>
+						<li>N64 Engines - In WAD file outside lumps after T_END marker</li>
+						</ul></li>
+					</ul></li>
+				<li>Audio Assets
+					<ul>
+					<li>Gameplay Sounds
+						<ul>
+						<li>Doom 64 Remaster - In WAD file between lump DS_START and DS_END markers</li>
+						<li>Doom 64 EX Engines - In the DOOMSND.SF2 soundfont file</li>
+						<li>N64 Engines - In the WDD/WSD files</li>
+						</ul></li>
+					<li>Music Sound Assets
+						<ul>
+						<li>Doom 64 Remaster - In the DOOMSND.DLS soundfont file for MIDI music sounds</li>
+						<li>Doom 64 EX Engines - In the DOOMSND.SF2 soundfont file</li>
+						<li>N64 Engines - In the WDD/WSD files</li>
+						</ul></li>
+					<li>Music and MIDI
+						<ul>
+						<li>Doom 64 EX  - In WAD file between lump DS_START and DS_END markers</li>
+						<li>Doom 64 Remaster / Doom 64 EX+ - In WAD file between lump DM_START and DM_END markers</li>
+						<li>N64 Engines - In the WMD/WSD files</li>
+						</ul></li>
+					</ul></li>
+				<li>Other Assets/Information
+					<ul>
+					<li>Maps
+						<ul>
+						<li>All Engines - Embedded as individual WADs within the main WAD file</li>
+						<li>PC Engines - In the WAD file dilineated by map markers</li>
+						</ul></li>
+					<li>Definitions (Maps/Skies/Animations)
+						<ul>
+						<li>PC Engines - In the WAD file as text lumps (<a href="animdefs.html">ANIMDEFS Lump</a>, <a href="mapinfo.html">MAPINFO Lump</a>, & <a href="skydefs.html">SKYDEFS Lump</a>)</li>
+						<li>N64 Engines - Hardcoded in source code</li>
+						</ul></li>
+					<li>CHECKSUM (this is a MD5 hash of the IWAD generated by Wadgen)
+						<ul>
+						<li>PC Engines (optional) - End of WAD</li>
+						</ul></li>
+					</ul></li>
+			</ul>
+		
+		<h2>WAD Structure</h2>
+			
+			<p>For the PC Engines, WADs can be made and opened with any Doom WAD editor, and the file structure is very similar to the other Doom games. Here asset types are stored in lumps designated by markers, and each map is in its own lump. For Doom 64, maps can also be stored in WADs and placed into the main WAD. One of the more popular WAD editors for this is Slade.</p>
+			
+			<p>The Nintendo 64 format of the WAD file is very similar to the PC format. However, the algorithm used for loading data from the catridge into memory requires assets and lumps of a specific length (divisible by 2 bytes). This means these assets must be padded, and the aforementioned N64 WAD utilities will do this.</p>
+			
+		<h3>Text Lumps (PC Engines)</h3>
+		
+			<p>Text lumps were introduced by Doom 64 EX to define texture animations (ANIMDEFS), map properties (MAPINFO), and sky effect properties (SKYDEFS). These have been utilized in all other PC engines of Doom 64. The pages below define which properties can be used.</p>
+			
+			<ul>
+				<li><a href="animdefs.html">ANIMDEFS Lump</a></li>
+				<li><a href="mapinfo.html">MAPINFO Lump</a></li>
+				<li><a href="skydefs.html">SKYDEFS Lump</a></li>
+			</ul>
+			
+		<h2>Nintendo 64 Compression</h2>
+		
+			<p>The Doom 64 engines for the Nintendo 64 come with a utility to rip a assets from the Doom 64 ROM. Although general Doom WAD editors can open up this WAD, they cannot view and properly save the assets. This is because these assets are compressed to save space and are padded for Nintendo 64 loading purposes (must to be divisible by two bytes). To decompress assets, you can either use Kovic's <a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a>, Nova's <a href="https://github.com/immorpher/d64make">d64make</a>, or Erick194's <a href="https://github.com/Erick194/D64TOOL/releases/">d64tool</a>.</p>
+			
+			<p>Interestingly the Doom 64 engines can load uncompressed assets. So it is not required to recompress the assets. However most flashcarts can't load N64 ROMs above 64 MB, so it may be helpful to recompress the assets. Erick194's <a href="https://github.com/Erick194/D64TOOL/releases/">d64tool</a> can do this recompression; it can reduce the WAD size by nearly a half of its original size in many cases.</p>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
