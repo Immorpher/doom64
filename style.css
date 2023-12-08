@@ -475,6 +475,7 @@ blockquote footer {
 		width: 6rem;
 		height: 5.7rem;
 		float: left;
+		margin: 0.5rem 0rem 0rem 0.5rem;
 	}
 	
 	#navigation a {
