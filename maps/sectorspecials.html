@@ -83,7 +83,7 @@
 			<tr>
 				<td>205</td>
 				<td>Sequence Starter</td>
-				<td>Starts a sequence of glowing lights (used in Staging Area and Altar of Pain)</td>
+				<td>Starts a sequence of glowing lights.</td>
 			</tr>
 			<tr>
 				<td>206</td>
@@ -101,6 +101,10 @@
 				<td>Instantly kills any thing which gets crushed</td>
 			</tr>
 		</table>
+		
+		<h2>Sequenced Lights (205)</h2>
+		
+		<p>Sequenced lights are used in Staging Area and Altar of Pain of the original Doom 64 campaign. These are the "rotating" glowing light effects. To construct this light sequence, the first sector is an un-tagged sector with one of the light specials (glowing/strobing/flickering). The next adjoining sector is a sector with a tag and the 205 Sequence Starter special; this is the start of the light sequence. The subsequent adjoining sectors have incrementally increasing tags (no specials required) for which then the effect propigates. After 16 sectors (including the sequence starter), the effect repeats. See this <a href="sectors\sequencedlights.wad">example WAD</a> to see it in action.</p>
 
 	</div>
 
