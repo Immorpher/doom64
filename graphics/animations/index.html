@@ -23,9 +23,27 @@
 	
 		<h1>Animated Textures</h1>
 
-			<p>For simeple scrolling textures, these animations can be defined in the linedef and sector properties. For more complicated animations, they must be built with individual frames. These type of animations are defined with the ANIMDEFS text lump for the PC engines of Doom 64.</p>
-
+			<p>For simple scrolling textures, these animations can be defined in the linedef and sector properties. For more complicated animations, they must be built with individual frames. These type of animations are defined with the ANIMDEFS text lump for the PC engines of Doom 64.</p>
+			
 			<ul><li><a href="../../structures/animdefs.html">ANIMDEFS text lump</a></li></ul>
+
+		<h2>Inbuilt Animations</h2>
+
+			<p>In built into the engine is a set of texture scrolling animations that can be activated by setting the appropriate flags on the linedef or sector. This allows any texture to be scrolled without having to define it in the <a href="../../structures/animdefs.html">ANIMDEFS</a> text lump (PC engines) or source code (N64 engines). This is particularly good for waterfalls and flowing liquids, but can be used for other hellish effects.</p>
+
+		<h3>Wall Scroll</h3>
+			
+			<p>Wall scrolling is defined on the linedef with these flags: Scroll Up, Sroll Down, Scroll Left, Scroll Right. In some instances you will also need either "Upper Unpegged", "Lower Unpegged", or both.</p>
+			
+		<h3>Floor Scroll</h3>
+
+			<p>Floor scrolling is defined on the sector with these flags: Scroll Up, Sroll Down, Scroll Left, Scroll Right. You can additionally enable "Toggle Fast Scrolling" to increase its speed. This scroll will move the player but not other things. You can also combine this with the "Liquid Effect".</p>
+
+		<h3>Liquid Effect</h3>
+
+			<p>The "Liquid Effect" is a special flag for a sector. This effect is created in game by taking two sequential textures from the wad, superimposing them over each other, and scrolling them in different directions. This means that when adding new liquid textures, they must be located next to each other in the wad. The names do not matter, only the texture order within the wad. As the liquid effect can only used on floors, liquid textures will be stretched to fit into 64 by 64 map units.</p>
+
+		<h2>ANIMDEFS Examples</h2>
 
 			<p>Only the ANIMDEFS from the "last loaded" wad will be used. If you want to use some new animations and some of the original animations in the same wad, you must include the definitions for the original animations in your ANIMDEFS.</p>
 
@@ -37,8 +55,6 @@
 			</ol>
 
 			<p>Textures can be used in more than one animation.</p>
-
-		<h2>Examples</h2>
 
 		<h3>Basic Example</h3>
 		
