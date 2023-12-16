@@ -8,7 +8,7 @@
     --color-bg: #fff;
     --color-bg-secondary: #d0d0d0;
 	--color-bg-tertiary: #e0e0e0;
-	--color-footer: #555;
+	--color-footer: #999;
     --color-link: #118bee;
     --color-link-accent: #54a97f;
     --color-link-tertiary: #a0904f;
@@ -26,7 +26,6 @@
     --width-card: 285px;
     --width-card-medium: 460px;
     --width-card-wide: 800px;
-    --width-content: 1080px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -71,7 +70,6 @@ footer,
 header,
 main {
     margin: 0 auto;
-    max-width: var(--width-content);
     padding: 3rem 1rem;
 }
 
@@ -406,13 +404,6 @@ blockquote footer {
 	border-radius: 2rem;
 }
 
-/* Navigation image */
-#navigation img {
-	margin: 0.5rem 0.5rem 0rem 0.5rem;
-	width: 10rem;
-	height: 9.5rem;
-}
-
 /* navigation links */
 #navigation a {
 	display: block;
@@ -456,6 +447,17 @@ blockquote footer {
 	font-weight: normal;
 }
 
+/* Navigation image */
+
+#navgraphic a {
+	margin: 0;
+	padding: 0.5rem 0.5rem 0rem 0.5rem;
+}
+
+#navgraphic img {
+	width: 10rem;
+	height: 9.5rem;
+}
 
 
 /* Vertical orientation */
@@ -468,14 +470,6 @@ blockquote footer {
 		min-height: 6.5rem;
 		margin: 0.5rem;
 		padding: 0;
-	}
-	
-	#navigation img {
-		display: block;
-		width: 6rem;
-		height: 5.7rem;
-		float: left;
-		margin: 0.5rem 0rem 0rem 0.5rem;
 	}
 	
 	#navigation a {
@@ -494,6 +488,16 @@ blockquote footer {
 		overflow: hidden;
 	}
 	
+	#navgraphic a {
+		display: block;
+		float: left;
+	}
+	
+	#navgraphic img {
+		width: 6rem;
+		height: 5.7rem;
+	}
+
 	.sidestack {
 		display: inline;
 	}
