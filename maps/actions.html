@@ -109,12 +109,12 @@
 			</table>
 
 		<h2>Teleports</h2>
-			<p>These actions can only teleport the thing which activates them (with some caveats). Here <i>tid</i> is the teleport destination's tag number.</p>
+			<p>These actions can only teleport the thing which activates them (with some caveats). Here <i>tid</i> is the teleport destination's tag number. On the Doom 64 Remaster, only one teleport action per macro is permitted on the player.</p>
 			<table>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
-				<tr><td>39</td><td>Teleport</td><td>Teleport_Normal(<i>tid</i>)<br/>Teleport_ToDest(<i>tid</i>)</td><td>Teleports the player normally (with sound and green glow) to tagged destination.<br/>Will teleport monsters as well.</td></tr>
+				<tr><td>39</td><td>Teleport</td><td>Teleport_Normal(<i>tid</i>)<br/>Teleport_ToDest(<i>tid</i>)</td><td>Teleports the activating thing normally (with sound and green glow) to tagged destination. On<br/>the Doom 64 Remaster you can not teleport via a switch whether it is a line action or in a macro.</td></tr>
 				<tr><td>125</td><td>Teleport (monsters only)</td><td>(undefined)</td><td>Teleports monsters only (with sound and green glow) to tagged destination.</td></tr>
-				<tr><td>249</td><td>Silent Teleport (player only)</td><td>Teleport_Silent(<i>tid</i>)<br/>Teleport_Stomp(<i>tid</i>)</td><td>Teleports the player without any sound and glow to tagged destination.</td></tr>
+				<tr><td>249</td><td>Silent Teleport (player only)</td><td>Teleport_Silent(<i>tid</i>)<br/>Teleport_Stomp(<i>tid</i>)</td><td>Teleports the player without any sound and glow to tagged destination. On the Doom 64<br/>Remaster you can not use this via a switch if it is a single action but it works with a macro.</td></tr>
 			</table>
 
 		<h2>Thing Specials</h2>
