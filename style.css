@@ -41,6 +41,7 @@
         --color-table: #0097fc;
         --color-text: #ddd;
         --color-text-secondary: #aaa;
+		--color-footer: #555;
     }
 }
 
@@ -467,13 +468,14 @@ blockquote footer {
 		position: static;
 		height: auto;
 		width: auto;
-		min-height: 6.5rem;
+		min-height: 0;
 		margin: 0.5rem;
 		padding: 0;
 	}
 	
 	#navigation a {
 		display: inline-block;
+		padding: 0.3rem 0.5rem 0.1rem 0.5rem;
 	}
 	
 	#content {
@@ -488,8 +490,7 @@ blockquote footer {
 		overflow: hidden;
 	}
 	
-	#navgraphic a {
-		display: block;
+	#navgraphic {
 		float: left;
 	}
 	
