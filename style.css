@@ -15,7 +15,7 @@
     --color-secondary: #920de9;
     --color-secondary-accent: #920de90b;
     --color-shadow: #f4f4f4;
-    --color-table: #118bee;
+    --color-table: #80C0ff;
     --color-text: #000;
     --color-text-secondary: #222;
     --font-family: Lato, sans-serif;
@@ -38,7 +38,7 @@
         --color-secondary: #e20de9;
         --color-secondary-accent: #e20de94f;
         --color-shadow: #bbbbbb20;
-        --color-table: #0097fc;
+		--color-table: #102040;
         --color-text: #ddd;
         --color-text-secondary: #aaa;
 		--color-footer: #555;
@@ -343,7 +343,6 @@ table thead {
     background-color: var(--color-table);
     border-collapse: collapse;
     border-radius: var(--border-radius);
-    color: var(--color-bg);
     margin: 0;
     padding: 0;
 }
