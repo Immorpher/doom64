@@ -6,7 +6,6 @@
   Copyright 2007-2012 Samuel Villarreal
   Copyright 2013 James Haley
   Additions by Immorpher
-  Additions by Immorpher
 
   This program is free software; you can redistribute it and/or
   modify it under the terms of the GNU General Public License
@@ -48,7 +47,7 @@ QGlobals.maxAmmoCtrlForIdx = [ "maxclip", "maxshell", "maxmisl", "maxcell" ];
 QGlobals.normMaxAmmo = [ 200,  50,  50, 300 ];
 QGlobals.backMaxAmmo = [ 400, 100, 100, 600 ];
 
-QGlobals.maxLevel = 128;
+QGlobals.maxLevel = 127; // Levels can go up to 127 on GEC RE engines
 
 QGlobals.levelNames = [
   'Staging Area',
@@ -201,14 +200,22 @@ QEncoder.encodePassword = function () {
     encode[i] = 0;
   for(i = 0; i < 16; i++)
     QGlobals.passwordData[i] = 0;
-  
-  // map and skill  
+
+	// map and skill  
   
   var nextmap   = QUtils.getFormValue("nextmap");
   var gameskill = QUtils.getFormValue("gameskill");
   
+  if (nextmap >= 64) { // [Immorpher] Expanded map support from GEC engines
+        encode[5] |= 0x20;
+    }
+  
   encode[0] = (((nextmap & 0x3f) << 2) & 0xff) | (gameskill & 3);
-
+  
+  	if(gameskill == 4) { // Nightmare / Hardcore difficulty of RE engines
+        encode[5] |= 0x40;
+    }
+  
   // weapons
   
   for(i = 0; i < QGlobals.numWeapons; i++) {
@@ -274,6 +281,7 @@ QEncoder.encodePassword = function () {
     artifacts |= 2;
     
   encode[5] |= artifacts << 2;
+  
   
   // encoding
   
@@ -492,7 +500,15 @@ QDecoder.decodePassword = function () {
    
   // verify map
   var map = (decode[0] >> 2);
-  if(map > QGlobals.maxLevel || map === 33) {
+  
+  // [Immorpher] Increased upper limit of GEC engines
+    if (decode[5] & 0x20)
+    {
+        decode[5] &= ~0x20;
+        map |= 64;
+    }
+  
+  if(map > QGlobals.maxLevel) {
     QUtils.showError("Invalid destination level!");
     return false;
   }
@@ -510,6 +526,7 @@ QDecoder.decodePassword = function () {
     return false;
   }
   
+  
   // verify health/armor
   if((decode[4] & 0x0f) >= 9 || (decode[4] >> 4) >= 9) {
     QUtils.showError("Invalid health or armor amount!");
@@ -525,10 +542,15 @@ QDecoder.decodePassword = function () {
   bit = 0;
   
   // get map
-  QUtils.setFormValue("nextmap", decode[0] >> 2);
+  QUtils.setFormValue("nextmap", map);
   
   // get skill
-  QUtils.setFormValue("gameskill", decode[0] & 3);
+  
+	if(decode[5] & 0x40) { // [Immorpher] Nightmare / Hardcore difficulty of RE engines
+		QUtils.setFormValue("gameskill", 4);
+    } else {
+		QUtils.setFormValue("gameskill", decode[0] & 3);
+	}
   
   // get weapons
   for(i = 0; i < QGlobals.numWeapons; i++) {
@@ -620,11 +642,6 @@ QForm.validateControls = function () {
   var nextmap = parseInt(QUtils.getFormValue("nextmap"));
   if(isNaN(nextmap) || nextmap < 1 || nextmap > QGlobals.maxLevel) {
     QUtils.showError("Destination level must be between 1 and " + QGlobals.maxLevel + "!");
-    return false;
-  }
-  
-  if(nextmap === 33) {
-    QUtils.showError("Title map is not allowed as a destination level!");
     return false;
   }
 
