@@ -21,7 +21,7 @@
 	<div id="content">
 		<h1>Actions</h1>
 		
-		<p>Doom 64 has various actions which cause levels to transform, doors to operate, lights to change, and other events. These actions can be assigned to linedefs and activated in many ways such as crossing, shooting, the use button, or another type of trigger. Monsters will be able to activate linedefs they cross if those linedefs have the "Trigger By Dead Thing" flag; this does not work on the original Doom 64 EX.</p>
+		<p>Doom 64 has various actions which cause levels to transform, doors to operate, lights to change, and other events. These actions can be assigned to linedefs and activated in many ways such as crossing, shooting, the use button, or another type of trigger. Monsters will be able to activate most linedefs they cross if those linedefs have the "Trigger By Dead Thing" flag; this does not work on the original Doom 64 EX.</p>
 		
 		<p>Additionally, macros are used to execute a multiple actions with just a single linedef activation. The actions can happen all at once or delays can be added between them to create a sequence. Only one macro can be run at a time within the engine - all other macros will be blocked until the current macro is finished. Initially not all macro actions were understood, so the names in which the compiler has refered to them has changed over time. For convenience of looking at older macros, additional names are included.
 		
@@ -191,7 +191,7 @@
 				<tr><td>225</td><td>Quake (Tag = Tics)</td><td>Quake(<i>tics</i>)</td><td>Shakes the screen for the specified number of tics (30 tics = 1 second) with sound.<br/>This sound can bug out if it is playing during a level exit.</td></tr>
 				<tr><td>203</td><td>Delay (Tag = Tics)</td><td>delay(<i>tics</i>)</td><td>If used in a macro, it will delay the start of the subsequent actions by <i>tics</i> (30 tics is 1 second).</td></tr>
 				<tr><td>204</td><td>Set Global Integer<br/>Macro Integer (value = tag)</td><td>PushVar(<i>var</i>)</td><td>Used in combination with other actions and sets the value used in them.</td></tr>
-				<tr><td>240</td><td>Trigger Line Group<br/>(Pick random of group)</td><td>Line_TriggerRandomLinesByTag(<i>tag</i>)</td><td>Will trigger a random line out of a set of lines with the same tag.</td></tr>
+				<tr><td>240</td><td>Trigger Line Group<br/>(Pick random of group)</td><td>Line_TriggerRandomLinesByTag(<i>tag</i>)</td><td>Will trigger a random line out of a set of lines with the same tag. This is not compatible<br/>with the "Trigger By Dead Thing" flag on the Doom 64 Remaster.</td></tr>
 			</tbody></table>
 
 			<p>When using the camera actions, to change to a new target being looked at, a new Camera_MoveAndAim must be used, with the new target <i>tid</i>. Technically, <i>tid</i> can be any type of <i>thing</i>, not just cameras. Using a moving monster or the player as a target will often end up freezing/crashing the game. It will move around whatever <i>thing</i> is used for the target, as if the thing itself was a camera. That means using a key as a target, the key will get to where the camera stops at the very end.</p>
