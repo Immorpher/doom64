@@ -156,14 +156,16 @@
 			</tbody></table>
 					
 		<h2>Macro Control</h2>
+			<p>When controlling macros the <i>id</i> does not refer to the macro number itself but how it is referenced to in linedef actions, where 255 is added to the macro number. Thus the <i>id</i> for macro 1 would be 256. For linedef actions the <i>id</i> is set by the line <i>tag</i>.</p>
+			
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
 				<tr><td>246</td><td>Macro Restart at Batch ID</td><td>(undefined)</td><td></td></tr>
-				<tr><td>248</td><td>Macro Suspend</td><td>Macro_Suspend(<i>id</i>)</td><td></td></tr>
-				<tr><td>250</td><td>Macro Toggle On</td><td>Macro_Enable(<i>id</i>)</td><td></td></tr>
-				<tr><td>251</td><td>Macro Toggle Off</td><td>Macro_Disable(<i>id</i>)</td><td></td></tr>
-				<tr><td>256 - 511</td><td>Macro #</td><td>(undefined)</td><td>Activate specific macro.</td></tr>
+				<tr><td>248</td><td>Macro Suspend</td><td>Macro_Suspend(<i>id</i>)</td><td>Stops the macro that is currently active. Any actions that were started prior will still finish,<br/>such as camera movements. The <i>id</i> is not used.</td></tr>
+				<tr><td>250</td><td>Macro Toggle On</td><td>Macro_Enable(<i>id</i>)</td><td>Enables the macro referenced to by the <i>id</i> to be activated when triggered.<br/>By default this is the stated the macros are in.</td></tr>
+				<tr><td>251</td><td>Macro Toggle Off</td><td>Macro_Disable(<i>id</i>)</td><td>Disables the macro referenced to by the <i>id</i> from being activated. Use action 250 to re-enable a macro.</td></tr>
+				<tr><td>256 - 511</td><td>Macro #</td><td>(undefined)</td><td>Activate specific macro where the macro number added to 255.<br/>For example macro 1 is activated by action 256.</td></tr>
 				<tr><td>(none)</td><td>(not available)</td><td>wait</td><td>If used the macro will complete all preceding actions before continuing the subsequent actions.</td></tr>
 				<tr><td>(none)</td><td>(not available)</td><td>loop(<i>times</i>){ }</td><td>Loop actions within the brackets a given amount of <i>times</i> (see the following example).<br/>A looping macro can be canceled early by line action 248: Macro Suspend.</td></tr>
 			</tbody></table>
