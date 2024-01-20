@@ -161,17 +161,16 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>246</td><td>Macro Restart at Batch ID</td><td>(undefined)</td><td></td></tr>
+				<tr><td>246</td><td>Macro Restart at Batch ID</td><td>loop(<i>times</i>){ }</td><td>In a macro this loops actions within the brackets a given amount of <i>times</i> (see the example). If used as a line action,<br/>the line <i>tag</i> will determine the number of <i>times</i> to loop, although it will not loop until this action is triggered again.<br/>Use action 204 to set the line of the macro to restart the macro in powers of 10. First set of actions is 10, then if a<br/>wait is used the the following actions begin at 20, and ect...</td></tr>
 				<tr><td>248</td><td>Macro Suspend</td><td>Macro_Suspend(<i>id</i>)</td><td>Stops the macro that is currently active. Any actions that were started prior will still finish,<br/>such as camera movements. The <i>id</i> is not used.</td></tr>
 				<tr><td>250</td><td>Macro Toggle On</td><td>Macro_Enable(<i>id</i>)</td><td>Enables the macro referenced to by the <i>id</i> to be activated when triggered.<br/>By default this is the state the macros are in.</td></tr>
 				<tr><td>251</td><td>Macro Toggle Off</td><td>Macro_Disable(<i>id</i>)</td><td>Disables the macro referenced to by the <i>id</i> from being activated. Use action 250 to re-enable the macro.</td></tr>
 				<tr><td>256 - 511</td><td>Macro #</td><td>(undefined)</td><td>Activate specific macro where the macro number added to 255.<br/>For example macro 1 is activated by action 256.</td></tr>
-				<tr><td>(none)</td><td>(not available)</td><td>wait</td><td>If used the macro will complete all preceding actions before continuing the subsequent actions.</td></tr>
-				<tr><td>(none)</td><td>(not available)</td><td>loop(<i>times</i>){ }</td><td>Loop actions within the brackets a given amount of <i>times</i> (see the following example).<br/>A looping macro can be canceled early by line action 248: Macro Suspend.</td></tr>
+				<tr><td>(none)</td><td>(not available)</td><td>wait</td><td>The macro will complete all preceding actions before continuing the subsequent actions when used.<br/>This is a macro-specific action which sets a new line of actions in a macro.</td></tr>
 			</tbody></table>
 			
 		<h3>Looping Actions Example</h3>
-		<p>Actions can be looped within a macro. The format of a loop is much like the format of a macro itself.</p>
+		<p>Actions can be looped within a macro. The format of a loop is much like the format of a macro itself. A looping macro can be canceled early by line action 248: Macro Suspend.</p>
 <pre>macro 1
 {
   non looping action;
