@@ -96,9 +96,9 @@
 				<tr><td>54</td><td>Plat Stop Moving</td><td>Plat_Stop(<i>tag</i>)</td><td>Stops the tagged platform, if it is moving.</td></tr>
 				<tr><td>122</td><td>Plat Up Wait Down</td><td>Plat_UpWaitDown(<i>tag</i>)</td><td>Raises the tagged floor to the highest neighboring floor, waits for 3 seconds, and lowers back down.</td></tr>
 				<tr><td>123</td><td>Plat Up Wait Down Fast</td><td>Plat_DownWaitUpFast(<i>tag</i>)</td><td>Quickly raises the tagged floor to the highest neighboring floor,<br/>waits for 3 seconds, and lowers back down.</td></tr>
-				<tr><td>22</td><td>Plat Raise and Change</td><td>Plat_RaiseChange(tag)</td><td></td></tr>
-				<tr><td>66</td><td>Plat Raise by 24 Units and Change</td><td>Plat_RaiseByTwentyFourChange(tag)</td><td></td></tr>
-				<tr><td>67</td><td>Plat Raise by 32 Units and Change</td><td>Plat_RaiseByThirtyTwoChange(tag) </td><td></td></tr>
+				<tr><td>22</td><td>Plat Raise and Change</td><td>Plat_RaiseChange(tag)</td><td>Changes the tagged floor texture to that of the neighboring floor<br/>and raises the floor to the highest neighboring floor.</td></tr>
+				<tr><td>66</td><td>Plat Raise by 24 Units and Change</td><td>Plat_RaiseByTwentyFourChange(tag)</td><td>Changes the tagged floor texture to that of the neighboring floor<br/>and raises the floor by 24 map units.</td></tr>
+				<tr><td>67</td><td>Plat Raise by 32 Units and Change</td><td>Plat_RaiseByThirtyTwoChange(tag)</td><td>Changes the tagged floor texture to that of the neighboring floor<br/>and raises the floor by 32 map units.</td></tr>
 				<tr><td>236</td><td>(undefined)</td><td>Plat_DownWaitUpBy(<i>tag</i>, <i>value</i>)<br/>Plat_DownUpByValue(<i>tag</i>, <i>value</i>)</td><td>Lowers the floor by the amount specified by the <i>value</i> argument, waits for 3 seconds, and raises back up.<br/>Negative values will cause undefined behaviour. If used as a line action, use action 204 to set the value.</td></tr>
 				<tr><td>237</td><td>(undefined)</td><td>Plat_DownWaitUpFastBy(<i>tag</i>, <i>value</i>)<br/>Plat_DownUpFastByValue(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the platform moves at turbo speed.<br/>If used as a line action, use action 204 to set the value.</td></tr>
 				<tr><td>238</td><td>(undefined)</td><td>Plat_UpWaitDownBy(<i>tag</i>, <i>value</i>)<br/>Plat_UpDownByValue(<i>tag</i>, <i>value</i>)</td><td>Raises the floor by the amount specified by the <i>value</i> argument, waits for 3 seconds, and lowers back up.<br/>Negative values will cause undefined behaviour. If used as a line action, use action 204 to set the value.</td></tr>
@@ -144,7 +144,7 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>17</td><td>Start Light Strobing</td><td>(undefined)</td><td></td></tr>
+				<tr><td>17</td><td>Start Light Strobing</td><td>(undefined)</td><td>Starts a light which brightens every second on the tagged sector which matches the linedef <i>tag</i>.</td></tr>
 				<tr><td>222</td><td>(undefined)</td><td>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>)</td><td>Instantly copies the lights at sector with the line tag / <i>dsttag</i>, from<br/>the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>234</td><td>Change Light by Tag<br/>Blend High Light</td><td>SetLightID(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly blends upper wall and ceiling lights at sector with the line tag / <i>dsttag</i>,<br/>from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>235</td><td>(undefined)</td><td>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly transitions the lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag<br/>defined by <i>srctag</i> or global integer (action 204). This action operates on the "LIGHTS" lump and<br/>will change the color of any sector that has the same color as the destination tag. Therefore,<br/>it is recommended to give the destination sector a unique sector color.</td></tr>
@@ -187,8 +187,8 @@
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
 				<tr><td>201</td><td>Camera Set</td><td>Camera_Set(<i>tid</i>)</td><td>Set camera view to camera with <i>tid</i>.</td></tr>
-				<tr><td>243</td><td>Camera Move</td><td>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>)</td><td>Start moving camera at "Camera_Set" position and aim view at <i>tid</i>.  <i>nexttid</i> is not used.</td></tr>
-				<tr><td>200</td><td>Camera Clear</td><td>Camera_Clear(<i>tid</i>)</td><td></td></tr>
+				<tr><td>243</td><td>Camera Move</td><td>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>)</td><td>Start moving camera at "Camera_Set" position and aim view at thing with <i>tid</i>.  <i>nexttid</i> is not used.</td></tr>
+				<tr><td>200</td><td>Camera Clear</td><td>Camera_Clear(<i>tid</i>)</td><td>Aim camera at thing with <i>tid</i>.</td></tr>
 				<tr><td>225</td><td>Quake (Tag = Tics)</td><td>Quake(<i>tics</i>)</td><td>Shakes the screen for the specified number of tics (30 tics = 1 second) with sound.<br/>This sound can bug out if it is playing during a level exit.</td></tr>
 				<tr><td>203</td><td>Delay (Tag = Tics)</td><td>delay(<i>tics</i>)</td><td>If used in a macro, it will delay the start of the subsequent actions by <i>tics</i> (30 tics is 1 second).</td></tr>
 				<tr><td>204</td><td>Set Global Integer<br/>Macro Integer (value = tag)</td><td>PushVar(<i>var</i>)</td><td>Used in combination with other actions and sets the value used in them.</td></tr>
