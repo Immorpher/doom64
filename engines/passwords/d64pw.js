@@ -640,8 +640,8 @@ QForm.validateControls = function () {
   
   // map
   var nextmap = parseInt(QUtils.getFormValue("nextmap"));
-  if(isNaN(nextmap) || nextmap < 1 || nextmap > QGlobals.maxLevel) {
-    QUtils.showError("Destination level must be between 1 and " + QGlobals.maxLevel + "!");
+  if(isNaN(nextmap) || nextmap < 0 || nextmap > QGlobals.maxLevel) {
+    QUtils.showError("Destination level must be between 0 and " + QGlobals.maxLevel + "!");
     return false;
   }
 
