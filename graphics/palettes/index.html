@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Palettes</title>
+	<meta property="og:title" content="Palettes" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Palettes</h1>
+	
+		<p>Although Doom 64 originally rendered in true-color (24 bit), its individual graphics are paletted. Unlike other id Tech engines of the time, there is no global palette. Most of the graphics have their own internal palettes which are unique to them. But some sets of graphics (enemies and marines) refer to external palettes. For PC engines, there is no longer a requirement for palettes except for enemies with palette swaps.</p>
+
+		<p>Doom 64's graphics are split into three categories. Textures, projectiles, and decorative sprites are 4 bit, 16-color, with internal palettes. Enemy sprite sets are 8 bit, 256-color, with external palette files. Sky graphics and splash screens are 8 bit, 256-color, with internal palettes.</p>
+
+		<p>All of the Doom 64 enemies have external palette files. This allows the palettes to be changed to create different enemy types which saves memory. These palettes are mostly generated automatically by software in order of decreasing luminosity. When transparencies are used, the first color is the transparent color and it is set to black. Many palettes are then edited to enhance blood and fire for some animations. Palettes for the marines and zombiemen are mostly manually arranged to swap out for different clothing colors. Below is a list of the external palette files in Doom 64.</p>
+
+		<table>
+		<thead>
+			<tr><th>Palette</th><th>Sprite Set</th><th>Construction</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>PALBOSS0</td><td>Hell Knight</td><td>Software</td></tr>
+			<tr><td>PALBOSS1</td><td>Baron of Hell</td><td>Software</td></tr>
+			<tr><td>PALBSPI0</td><td>Arachnotron</td><td>Nearly All Software</td></tr>
+			<tr><td>PALCYBR0</td><td>Cyberdemon</td><td>Mostly Software</td></tr>
+			<tr><td>PALFATT0</td><td>Mancubus</td><td>Software</td></tr>
+			<tr><td>PALHEAD0</td><td>Cacodemon</td><td>Nearly All Software</td></tr>
+			<tr><td>PALPAIN0</td><td>Pain Elemental</td><td>Software</td></tr>
+			<tr><td>PALPLAY0</td><td>Green Marine (Player)</td><td>Manual</td></tr>
+			<tr><td>PALPLAY1</td><td>Red Marine</td><td>Manual</td></tr>
+			<tr><td>PALPLAY2</td><td>Aqua Marine</td><td>Manual</td></tr>
+			<tr><td>PALPLAY3</td><td>Blue Marine (Not Used)</td><td>Manual</td></tr>
+			<tr><td>PALPOSS0</td><td>Zombieman</td><td>Manual</td></tr>
+			<tr><td>PALPOSS1</td><td>Shotgun Guy</td><td>Manual</td></tr>
+			<tr><td>PALPOW10</td><td>Small Explosion (Doom 64 Alpha)</td><td>Nearly All Software</td></tr>
+			<tr><td>PALPOW20</td><td>Large Explosion (Doom 64 Alpha)</td><td>Software</td></tr>
+			<tr><td>PALRECT0</td><td>Mother Demon</td><td>Nearly All Software</td></tr>
+			<tr><td>PALSARG0</td><td>Bull Demon</td><td>Mostly Software</td></tr>
+			<tr><td>PALSARG1</td><td>Spectre</td><td>Mostly Software</td></tr>
+			<tr><td>PALSKUL0</td><td>Lost Soul</td><td>Nearly All Software</td></tr>
+			<tr><td>PALTROO0</td><td>Imp</td><td>Mostly Software</td></tr>
+			<tr><td>PALTROO1</td><td>Nightmare Imp</td><td>Mostly Software</td></tr>
+		</tbody></table>
+		
+		<p>The alpha version of Doom 64 has two extra palettes for large and small explosions. Likely these were going to have other palettes to change the color of the explosions for other effects. Also, in the alpha version, the mother demon sprites were different and have a different palette as well. This palette seems to be manually constructed.</p>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
