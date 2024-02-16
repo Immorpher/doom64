@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Occlusion</title>
+	<meta property="og:title" content="Occlusion" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+
+		<h1>Occlusion</h1>
+
+		<p>An important aspect of Doom 64 rendering is occlusion. By default the engine will not attempt to render any level geometry it suspects the player cannot see; it becomes occluded. This is particularly important for high frame rates and is one of the reasons why Doom 64 ran relatively smoothly on the Nintendo 64, when it was known that other games did not.</p>
+
+		<p>One consequence to this is even when sky textures or the "blank" texture is used, geometry behind it may not be rendered. This can cause missing and flickering geometry above bridges, beams, and at distant towers. To remedy this, you can set the linedefs for any objects which may occlude the player's view with the setting of "no occlusion". Although not much of an issue for modern PCs, the use of the "no occlusion" setting will result in more graphical processing that can produce noticeable slowdowns on the Nintendo 64 if overused.</p>
+
+		<p>Another consequence of occlusion is that geometry at far off distances will not be rendered. Even with the "no occlusion" setting, far-off geometry will not render. Thus, for large maps, sometimes you can see geometry pop in at the far distance. A solution to this is to make the fog color the same color as the lower part of the sky. Thus when the distant geometry pops in it will match the sky and will be unnoticed.</p>
+
+		<p>If there are no sky sectors in the player's view, the sky will not be rendered. Typically, in such cases, this causes no visual issues as there tends to be geometry always obstructing the player's view. However if there a voids in the geometry, due to the "blank" texture or distance occlusion, visual glitches can occur. On PC engines a black void will appear while on the Nintendo 64 a "hall of mirrors" effect will happen. By setting a sector in the player's view with a sky texture at the top will render the sky instead, and if the sky color matches the fog color it can mask the void. It is possible to hide these sky sectors in walls as well, by assigning the wall in front of the sky sector with the "Render Middle Texture", "Block Sound", and "Impassible" settings.</p>
+
+		<p>The Nintendo 64 engines are a bit more liberal with occlusion than PC engines. Sectors with an upper sky texture will not render the upper wall textures of adjoining lines. Also if the top of a sky sector meets a corner of a floor sector, any geometry behind will not render (use no occlusion in this case).</p>
+		
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
