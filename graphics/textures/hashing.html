@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Texture Hashing</title>
+	<meta property="og:title" content="Texture Hashing" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+	<script type="text/javascript" src="d64hash.js"></script>
+	
+		<h1>Texture Hashing</h1>
+		
+			
+			<p>On the Nintendo 64, Doom 64 maps refered to the textures by number in the order they appeared in the WAD. This is not particularly convenient when working with custom textures on PC as the order can change. Thus, on PC engines, the texture names are hashed into a number which the map references to. This simplifies the use of custom textures and the order of them no longer matters. Unfortunately not all hash numbers are unique, so multiple textures can result into the same hash number. This increasingly becomes a problem when large amount of textures are being used. If two textures share the same hash number, the later loaded texture will be shown for all textures of that hash number. To remedy this, one of the textures must have its name changed to represent a different hash number. For your convenience, the following form will generate the corresponding hash number for any given texture.</p>
+			
+			<h2>Texture Hash Generator</h2>
+			
+			<form method="get" action="javascript:void(0);" onreset="" onsubmit="" name="pwform" id="pwform">
+				<fieldset id="control">
+					<label for="texname">Texture Name: 
+						<input type="text" value="?" size="15" name="texname" id="texname" />
+					</label><br/>
+					<label for="hashnum">Hash Number: 
+						<input type="text" value="111" size="15" name="hashnum" id="hashnum" />
+					</label><br/>
+					<button name="encode" id="encode" type="button" onclick="QForm.onEncode();">Hash Texture</button>
+					<button name="reset" id="reset" type="reset">Reset</button>
+				</fieldset>
+			</form>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>

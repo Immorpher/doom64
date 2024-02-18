@@ -67,7 +67,9 @@
 			
 			<ul><li><a href="exampletexture.wad">Custom Texture WAD</a></li></ul>
 			
-			<p>To allow for a large number of custom textures that can be re-ordered in a WAD at any time, the textures names are hashed for the PC engines. What this means is that each texture name is converted to a number which the map references to. The code which calculates the hash numbers can be found in this <a href="lump_hash.c">Doom 64 EX code snippet</a>. Unfortunately not all hash numbers are unique, so multiple textures can result into the same hash number. This increasingly becomes a problem when large amount of textures are being used. If two textures share the same hash number, the later loaded texture will be shown for all textures of that hash number. To remedy this, one of the textures must have its name changed to represent a different hash number.</p>
+			<p>To allow for a large number of custom textures, that can be re-ordered in a WAD at any time, the textures names are hashed into numbers for the PC engines. Not all texture hash numbers are unique which can result in a texture showing up as another texture. The following page describes hashing in more detail and has a hash number generator to test texture names.</p>
+			
+			<ul><li><a href="hashing.html">Texure Hashing</a></li></ul>
 		
 			<p>There is an unusual bug concerning switch textures on the Doom 64 Remaster. When using custom switch textures, sometimes activating them in game causes the switch texture to switch to an incorrect texture, that is not in the pair. Even if it was correct prior, adding new textures to a WAD can cause this issue to happen. The exact cause of this bug is currently unknown. Sometimes switching the texture order is enough to fix this. A more consistent fix is to put all of the switch textures (including the originals) at the top of the texture lump (before any other texture) and this seems to help maintain the proper order in the engine.  Also it has been found cutting out the switch textures from the WAD, saving the WAD, and pasting the textures back into the WAD can fix this bug.</p>
 			
