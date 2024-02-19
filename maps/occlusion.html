@@ -28,9 +28,13 @@
 
 		<p>Another consequence of occlusion is that geometry at far off distances will not be rendered. Even with the "no occlusion" setting, far-off geometry will not render. Thus, for large maps, sometimes you can see geometry pop in at the far distance. A solution to this is to make the fog color the same color as the lower part of the sky. Thus when the distant geometry pops in it will match the sky and will be unnoticed.</p>
 
-		<p>If there are no sky sectors in the player's view, the sky will not be rendered. Typically, in such cases, this causes no visual issues as there tends to be geometry always obstructing the player's view. However if there a voids in the geometry, due to the "blank" texture or distance occlusion, visual glitches can occur. On PC engines a black void will appear while on the Nintendo 64 a "hall of mirrors" effect will happen. By setting a sector in the player's view with a sky texture at the top will render the sky instead, and if the sky color matches the fog color it can mask the void. It is possible to hide these sky sectors in walls as well, by assigning the wall in front of the sky sector with the "Render Middle Texture", "Block Sound", and "Impassible" settings.</p>
-
-		<p>The Nintendo 64 engines are a bit more liberal with occlusion than PC engines. Sectors with an upper sky texture will not render the upper wall textures of adjoining lines. Also if the top of a sky sector meets a corner of a floor sector, any geometry behind will not render (use no occlusion in this case).</p>
+		<p>The Nintendo 64 engines are a bit more liberal with occlusion than PC engines. Sectors with an upper sky texture will not render the upper wall textures of adjoining lines. Also if the top of a sky sector meets a corner of a floor sector, any geometry behind will not render (use no occlusion setting on linedefs in this case).</p>
+		
+		<h2>Sky Occlusion</h2>
+		
+		<p>If there are no sky sectors in the player's view, the sky will not be rendered. Typically, in such cases, this causes no visual issues as there tends to be geometry always obstructing the player's view. However if there a voids in the geometry, due to the "blank" texture or distance occlusion, visual glitches can occur. On PC engines a black void will appear while on the Nintendo 64 a "hall of mirrors" effect will happen.</p>
+		
+		<p>By setting a sector in the player's view with a sky texture at the top will cause the sky to render. Even if the sky sector is one map unit square, it will render. It is possible to hide these sky sectors in walls as well, by assigning the wall in front of the sky sector with the "Render Middle Texture", "Block Sound", and "Impassible" settings.</p>
 		
 	</div>
 
