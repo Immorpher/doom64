@@ -163,20 +163,22 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>246</td><td>Macro Restart at Batch ID</td><td>loop(<i>times</i>){ }</td><td>In a macro this loops actions within the brackets a given amount of <i>times</i> (see the example). If used as a line action,<br/>the line <i>tag</i> will determine the number of <i>times</i> to loop, although it will not loop until this action is triggered again.<br/>Use action 204 to set the line of the macro to restart the macro in powers of 10. First set of actions is 10, then if a<br/>wait is used the the following actions begin at 20, and ect...</td></tr>
+				<tr><td>246</td><td>Macro Restart at Batch ID</td><td>loop(<i>times</i>){ }</td><td>In a macro this loops actions within the brackets a given amount of <i>times</i> (see the example). If used as a line<br/>action, the line <i>tag</i> will determine the number of <i>times</i> to loop, although it will not loop until this action is<br/>triggered again. Use action 204 to set the line of the macro to restart the macro in powers of 10. First set<br/>of actions is 10, then if a wait is used the the following actions begin at 20, and ect...</td></tr>
 				<tr><td>248</td><td>Macro Suspend</td><td>Macro_Suspend(<i>id</i>)</td><td>Stops the macro that is currently active. Any actions that were started prior will still finish,<br/>such as camera movements. The <i>id</i> is not used.</td></tr>
 				<tr><td>250</td><td>Macro Toggle On</td><td>Macro_Enable(<i>id</i>)</td><td>Enables the macro referenced to by the <i>id</i> to be activated when triggered.<br/>By default this is the state the macros are in.</td></tr>
 				<tr><td>251</td><td>Macro Toggle Off</td><td>Macro_Disable(<i>id</i>)</td><td>Disables the macro referenced to by the <i>id</i> from being activated. Use action 250 to re-enable the macro.</td></tr>
 				<tr><td>256 - 511</td><td>Macro #</td><td>(undefined)</td><td>Activate specific macro where the macro number added to 255.<br/>For example macro 1 is activated by action 256.</td></tr>
 				<tr><td>(none)</td><td>(not available)</td><td>wait</td><td>The macro will complete all preceding actions before continuing the subsequent actions when used.<br/>This is a macro-specific action which sets a new line of actions in a macro.</td></tr>
+				<tr><td>203</td><td>Delay (Tag = Tics)</td><td>delay(<i>tics</i>)</td><td>If used in a macro, it will delay the start of the subsequent<br/>actions by <i>tics</i> (30 tics is 1 second) and set a new line of actions.</td></tr>
 			</tbody></table>
 			<p>When controlling macros the <i>id</i> does not refer to the macro number itself but how it is referenced to in linedef actions, where 255 is added to the macro number. Thus the <i>id</i> for macro 1 would be 256. For linedef actions the <i>id</i> is set by the line <i>tag</i>.</p>
 			
-		<h3>Looping Actions Example</h3>
-		<p>Actions can be looped within a macro. The format of a loop is much like the format of a macro itself. A looping macro can be canceled early by line action 248: Macro Suspend.</p>
+		<h3>Looping Specifics</h3>
+		<p>Actions can be looped within a macro with action 246. It will loop back to the line of actions where it started, thus it is recommended to use wait or delay actions to set new lines. A looping macro can be canceled early by line action 248: Macro Suspend. Below is an example of how a loop is formatted.</p>
 <pre>macro 1
 {
   non looping action;
+  delay(0);
   loop(<i>times</i>)
   {
 	  <i>action to loop;</i>
@@ -193,7 +195,6 @@
 				<tr><td>243</td><td>Camera Move</td><td>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>)</td><td>Start moving camera at "Camera_Set" position and aim view at thing with <i>tid</i>.  <i>nexttid</i> is not used.</td></tr>
 				<tr><td>200</td><td>Camera Clear</td><td>Camera_Clear(<i>tid</i>)</td><td>Aim camera at thing with <i>tid</i>.</td></tr>
 				<tr><td>225</td><td>Quake (Tag = Tics)</td><td>Quake(<i>tics</i>)</td><td>Shakes the screen for the specified number of tics (30 tics = 1 second) with sound.<br/>This sound can bug out if it is playing during a level exit.</td></tr>
-				<tr><td>203</td><td>Delay (Tag = Tics)</td><td>delay(<i>tics</i>)</td><td>If used in a macro, it will delay the start of the subsequent actions by <i>tics</i> (30 tics is 1 second).</td></tr>
 				<tr><td>204</td><td>Set Global Integer<br/>Macro Integer (value = tag)</td><td>PushVar(<i>var</i>)</td><td>Used in combination with other actions and sets the value used in them.</td></tr>
 				<tr><td>240</td><td>Trigger Line Group<br/>(Pick random of group)</td><td>Line_TriggerRandomLinesByTag(<i>tag</i>)</td><td>Will trigger a random line out of a set of lines with the same tag. This is not compatible<br/>with the "Trigger By Dead Thing" flag on the Doom 64 Remaster.</td></tr>
 			</tbody></table>
