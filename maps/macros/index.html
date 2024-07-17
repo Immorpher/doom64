@@ -22,7 +22,7 @@
 	<div id="content">
 
 		<h1>Macros</h1>
-			<p>Macros are a unique scripting system used in Doom 64 which allow the you to script events to make the gameplay feel more dynamic and open ended. Macros are basically a series of line actions executed in batches, which provides the flexibility to move sectors separately, simultaneously, in the same or opposite directions, and to any height or depth. It also allows the you to modify walls, flags, textures and even how switches can be interacted with as well as spawning or removing actors. Only one macro can be executed at a time.</p>
+			<p>Macros are a unique scripting system used in Doom 64 which allow the you to script events to make the gameplay more dynamic. Macros are a series of actions executed in batches which can transform geometry, modify walls, and spawn or remove actors. Only one macro can be executed at a time.</p>
 
 			<p>BLAM is used to compile macros into a executable format for Doom 64. It is included with and automatically used by Doom Builder 64. The page icon on Doom Builder 64 will open the script editor where you can add macros. This script editor can also be found from the "View" menu. In the script editor, the page icon with the lightning bolt will compile the macro scripts. All available macro actions can be found on the page below, along with the types of values they take (height, thing tag, etc).</p>
 			
@@ -30,9 +30,9 @@
 			
 			<p>Each macro action corresponds to a line action. When referencing a macro from a line action, that macro must exist (even if it has no actions within) or a map can crash while loading. There is an undetermined maxmimum for the number of actions that one macro can be done on some engines; it is somewhere above 100. After this point macros tend to lose predictability. Decompiled macros from maps of the original Doom 64 campaign can be downloaded <a href="decompiled.zip">here</a>.</p>
 
-		<h2>Getting Started</h2>
+		<h2>Macro Basics</h2>
 
-			<p>A macro script has three parts. The "includes" at the start, the "macros" themselves, and the "actions" within each macro.</p>
+			<p>A macro script has three parts: the "includes" at the start, the "macros" themselves, and the "actions" within each macro. Macros are referenced numerically, i.e. "macro 1", "macro 2", and ect. In EX-based engines, macros must be sequential without skipping any numbers. In Remaster-based engines, macros can skip numbers. </p>
 
 			<p>The following is a basic overview of a script:</p>
 
