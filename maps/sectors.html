@@ -24,190 +24,196 @@
 		<h1>Sectors</h1>
 		
 		<p>Sectors are a group of lines that define an area. Thus the majority of time sectors are enclosed geometric shapes, which can be connected to other shapes. It is not a strict requirement that sectors are closed, however when they are not closed it can result in graphical glitches. Sectors define the moveable area, lighting, room sizes, and floor/ceiling textures. Additional sector properties can be assigned via flags and specials as defined in the subsequent sections.</p>
+		
+		<h2>Lighting</h2>
+		
+			<p>Doom 64 is known for its gradient colored lighting, where you can control the color of the ceiling, floors, walls, and even sprites individually and dynamically. This can cause gradients along the walls to simulate light sources and ambient occlusion.</p>
+			
+			<p>Each sector has five hexadecimal values which define the lighting of the sector: ceiling, top half wall, thing, bottom half wall, and floor. The top half wall and bottom half wall will blend in a gradient along walls. For upper linedefs, there is a flag to flip the gradient direction. Sprites, objects, and things can be colored separately from the walls, floors, and ceilings. This can shade textures specific colors without affecting sprites like a light would.</p>
 	
 		<h2>Sector Flags</h2>
 		
-		<p>Sector flags are settings and properties you can apply to sectors. These tend to affect textures, sounds, and the player. In contrast, sector specials determine lighting effects and instant death for crushers.</p>
-		
-		<table>
-		<thead>
-			<tr>
-				<th>Flag Bit</th>
-				<th>Editor Setting</th>
-				<th>Description</th>
-			</tr>
-		</thead><tbody>
-			<tr>
-				<td>0x01</td>
-				<td>Echo sounds</td>
-				<td>Reverb effect applied to sounds while in sector</td>
-			</tr>
-			<tr>
-				<td>0x02</td>
-				<td>Heavy Echo Sounds</td>
-				<td>Heavy reverb effect applied to sounds while in sector</td>
-			</tr>
-			<tr>
-				<td>0x04</td>
-				<td>Liquid Effect</td>
-				<td>Water effect (floors only). Blends two floor textures together (next texture is selected).</td>
-			</tr>
-			<tr>
-				<td>0x08</td>
-				<td>Sync Specials</td>
-				<td>All flagged sectors sync with unflagged lowest-numbered sector of same special type</td>
-			</tr>
-			<tr>
-				<td>0x10</td>
-				<td>Toggle Fast Scrolling</td>
-				<td>Scrolling floors/ceilings will scroll at twice the speed</td>
-			</tr>
-			<tr>
-				<td>0x20</td>
-				<td>Secret</td>
-				<td>Count as secret when entering this sector</td>
-			</tr>
-			<tr>
-				<td>0x40</td>
-				<td>Damage x5</td>
-				<td>Damage player x5 (additive with other damage flags)</td>
-			</tr>
-			<tr>
-				<td>0x80</td>
-				<td>Damage x10</td>
-				<td>Damage player x10 (additive with other damage flags)</td>
-			</tr>
-			<tr>
-				<td>0x100</td>
-				<td>Damage x20</td>
-				<td>Damage player x20 (additive with other damage flags)</td>
-			</tr>
-			<tr>
-				<td>0x200</td>
-				<td>Hide on Automap</td>
-				<td>Hide sector in automap (hidden in the textured map mode)</td>
-			</tr>
-			<tr>
-				<td>0x400</td>
-				<td>Set Ceiling Scroll</td>
-				<td>Enable ceiling scrolling</td>
-			</tr>
-			<tr>
-				<td>0x800</td>
-				<td>Set Floor Scroll</td>
-				<td>Enable floor scrolling</td>
-			</tr>
-			<tr>
-				<td>0x1000</td>
-				<td>Scroll Left</td>
-				<td>Scroll floor/ceiling west</td>
-			</tr>
-			<tr>
-				<td>0x2000</td>
-				<td>Scroll Right</td>
-				<td>Scroll floor/ceiling east</td>
-			</tr>
-			<tr>
-				<td>0x4000</td>
-				<td>Scroll Up</td>
-				<td>Scroll floor/ceiling north</td>
-			</tr>
-			<tr>
-				<td>0x8000</td>
-				<td>Scroll Down</td>
-				<td>Scroll floor/ceiling south</td>
-			</tr>
-		</tbody>
-		</table>
-		
+			<p>Sector flags are settings and properties you can apply to sectors. These tend to affect textures, sounds, and the player. In contrast, sector specials determine lighting effects and instant death for crushers.</p>
+			
+			<table>
+			<thead>
+				<tr>
+					<th>Flag Bit</th>
+					<th>Editor Setting</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0x01</td>
+					<td>Echo sounds</td>
+					<td>Reverb effect applied to sounds while in sector</td>
+				</tr>
+				<tr>
+					<td>0x02</td>
+					<td>Heavy Echo Sounds</td>
+					<td>Heavy reverb effect applied to sounds while in sector</td>
+				</tr>
+				<tr>
+					<td>0x04</td>
+					<td>Liquid Effect</td>
+					<td>Water effect (floors only). Blends two floor textures together (next texture is selected).</td>
+				</tr>
+				<tr>
+					<td>0x08</td>
+					<td>Sync Specials</td>
+					<td>All flagged sectors sync with unflagged lowest-numbered sector of same special type</td>
+				</tr>
+				<tr>
+					<td>0x10</td>
+					<td>Toggle Fast Scrolling</td>
+					<td>Scrolling floors/ceilings will scroll at twice the speed</td>
+				</tr>
+				<tr>
+					<td>0x20</td>
+					<td>Secret</td>
+					<td>Count as secret when entering this sector</td>
+				</tr>
+				<tr>
+					<td>0x40</td>
+					<td>Damage x5</td>
+					<td>Damage player x5 (additive with other damage flags)</td>
+				</tr>
+				<tr>
+					<td>0x80</td>
+					<td>Damage x10</td>
+					<td>Damage player x10 (additive with other damage flags)</td>
+				</tr>
+				<tr>
+					<td>0x100</td>
+					<td>Damage x20</td>
+					<td>Damage player x20 (additive with other damage flags)</td>
+				</tr>
+				<tr>
+					<td>0x200</td>
+					<td>Hide on Automap</td>
+					<td>Hide sector in automap (hidden in the textured map mode)</td>
+				</tr>
+				<tr>
+					<td>0x400</td>
+					<td>Set Ceiling Scroll</td>
+					<td>Enable ceiling scrolling</td>
+				</tr>
+				<tr>
+					<td>0x800</td>
+					<td>Set Floor Scroll</td>
+					<td>Enable floor scrolling</td>
+				</tr>
+				<tr>
+					<td>0x1000</td>
+					<td>Scroll Left</td>
+					<td>Scroll floor/ceiling west</td>
+				</tr>
+				<tr>
+					<td>0x2000</td>
+					<td>Scroll Right</td>
+					<td>Scroll floor/ceiling east</td>
+				</tr>
+				<tr>
+					<td>0x4000</td>
+					<td>Scroll Up</td>
+					<td>Scroll floor/ceiling north</td>
+				</tr>
+				<tr>
+					<td>0x8000</td>
+					<td>Scroll Down</td>
+					<td>Scroll floor/ceiling south</td>
+				</tr>
+			</tbody>
+			</table>
+			
 		<h2>Sector Specials</h2>
+			
+			<p>Sector specials determine lighting effects and instant death for crushers. In contrast, sector flags are settings and properties that tend to affect textures, sounds, and the player. All light effects are additive to each color channel.</p>
 		
-		<p>Sector specials determine lighting effects and instant death for crushers. In contrast, sector flags are settings and properties that tend to affect textures, sounds, and the player. All light effects are additive to each color channel.</p>
-		
-		<table>
-		<thead>
-			<tr>
-				<th>Flag Bit</th>
-				<th>Editor Setting</th>
-				<th>Description</th>
-			</tr>
-		</thead><tbody>
-			<tr>
-				<td>0</td>
-				<td>Normal</td>
-				<td>(default) No special effect</td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Light Blinks (randomly)</td>
-				<td>Consistent additive light which dims randomly</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Light Blinks (0.5 sec)</td>
-				<td>Light which brightens every half-second</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Light Blinks (1 sec)</td>
-				<td>Light which brightens every second</td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td>Light Glows (normal)</td>
-				<td>Light which fades in and out</td>
-			</tr>
-			<tr>
-				<td>9</td>
-				<td>Light Glows (slow)</td>
-				<td>Light which fades in and out slowly</td>
-			</tr>
-			<tr>
-				<td>11</td>
-				<td>Light Glows (randomly)</td>
-				<td>Light which fades in and out randomly</td>
-			</tr>
-			<tr>
-				<td>17</td>
-				<td>Light Flickers (randomly)</td>
-				<td>Random light brightness flicker</td>
-			</tr>
-			<tr>
-				<td>202</td>
-				<td>Light Strobes (very fast)</td>
-				<td>Very bright light flashes very quickly</td>
-			</tr>
-			<tr>
-				<td>204</td>
-				<td>Light Strobes (slow)</td>
-				<td>Very bright light flashes slowly</td>
-			</tr>
-			<tr>
-				<td>205</td>
-				<td>Sequence Starter</td>
-				<td>Starts a sequence of glowing lights.</td>
-			</tr>
-			<tr>
-				<td>206</td>
-				<td>Light Blinks (2 sec)</td>
-				<td>Light which brightens every two seconds</td>
-			</tr>
-			<tr>
-				<td>208</td>
-				<td>Light Strobes (fast)</td>
-				<td>Very bright light flashes quickly</td>
-			</tr>
-			<tr>
-				<td>666</td>
-				<td>Instant Kill (linedef special 141)</td>
-				<td>Instantly kills any thing which gets crushed</td>
-			</tr>
-		</tbody>
-		</table>
-		
-		<h3>Sequenced Lights (205)</h3>
-		
-		<p>Sequenced lights are used in Staging Area and Altar of Pain of the original Doom 64 campaign. These are the "rotating" glowing light effects. To construct this light sequence, the first sector is an un-tagged sector with one of the light specials (glowing/strobing/flickering). The next adjoining sector is a sector with a tag and the 205 Sequence Starter special; this is the start of the light sequence. The subsequent adjoining sectors have incrementally increasing tags (no specials required) for which then the effect propigates. After 16 sectors (including the sequence starter), the effect repeats. See this <a href="sectors\sequencedlights.wad">example WAD</a> to see it in action.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Flag Bit</th>
+					<th>Editor Setting</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>Normal</td>
+					<td>(default) No special effect</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Light Blinks (randomly)</td>
+					<td>Consistent additive light which dims randomly</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Light Blinks (0.5 sec)</td>
+					<td>Light which brightens every half-second</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Light Blinks (1 sec)</td>
+					<td>Light which brightens every second</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Light Glows (normal)</td>
+					<td>Light which fades in and out</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Light Glows (slow)</td>
+					<td>Light which fades in and out slowly</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Light Glows (randomly)</td>
+					<td>Light which fades in and out randomly</td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>Light Flickers (randomly)</td>
+					<td>Random light brightness flicker</td>
+				</tr>
+				<tr>
+					<td>202</td>
+					<td>Light Strobes (very fast)</td>
+					<td>Very bright light flashes very quickly</td>
+				</tr>
+				<tr>
+					<td>204</td>
+					<td>Light Strobes (slow)</td>
+					<td>Very bright light flashes slowly</td>
+				</tr>
+				<tr>
+					<td>205</td>
+					<td>Sequence Starter</td>
+					<td>Starts a sequence of glowing lights.</td>
+				</tr>
+				<tr>
+					<td>206</td>
+					<td>Light Blinks (2 sec)</td>
+					<td>Light which brightens every two seconds</td>
+				</tr>
+				<tr>
+					<td>208</td>
+					<td>Light Strobes (fast)</td>
+					<td>Very bright light flashes quickly</td>
+				</tr>
+				<tr>
+					<td>666</td>
+					<td>Instant Kill (linedef special 141)</td>
+					<td>Instantly kills any thing which gets crushed</td>
+				</tr>
+			</tbody>
+			</table>
+			
+			<h3>Sequenced Lights (205)</h3>
+			
+			<p>Sequenced lights are used in Staging Area and Altar of Pain of the original Doom 64 campaign. These are the "rotating" glowing light effects. To construct this light sequence, the first sector is an un-tagged sector with one of the light specials (glowing/strobing/flickering). The next adjoining sector is a sector with a tag and the 205 Sequence Starter special; this is the start of the light sequence. The subsequent adjoining sectors have incrementally increasing tags (no specials required) for which then the effect propigates. After 16 sectors (including the sequence starter), the effect repeats. See this <a href="sectors\sequencedlights.wad">example WAD</a> to see it in action.</p>
 
 	</div>
 
