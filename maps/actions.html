@@ -21,15 +21,17 @@
 	<div id="content">
 		<h1>Actions</h1>
 		
-		<p>Doom 64 has various actions which cause levels to transform, doors to operate, lights to change, and other events. These actions can be assigned to linedefs and activated in many ways such as crossing, shooting, the use button, or another type of trigger. Monsters will be able to activate most linedefs they cross if those linedefs have the "Trigger By Dead Thing" flag; this does not work on the original Doom 64 EX.</p>
+		<p>Doom 64 has various actions which cause levels to transform, doors to operate, lights to change, and other events. These actions can be assigned to linedefs and activated in many ways such as crossing, shooting, the use button, or another type of trigger. Monsters will be able to activate most linedefs they cross if those linedefs have the "Trigger By Dead Thing" flag (this does not work on the original Doom 64 EX). If you are using linedefs to trigger actions, they will appear yellow on the player's automap. To hide this, you can check the "secret" box on the lindef properties and they will appear as a normal linedef. This can also be a good way to hide secret doors.</p>
 		
 		<p>Additionally, macros are used to execute a multiple actions with just a single linedef activation. The actions can happen all at once or delays can be added between them to create a sequence. Only one macro can be run at a time within the engine - all other macros will be blocked until the current macro is finished. Initially not all macro actions were understood, so the names in which the compiler has refered to them has changed over time. For convenience of looking at older macros, additional names are included.
 		
 		<p>The majority of actions target a specific line, sector, or thing with a specified <i>tag</i>. Additional properties are sometimes assigned via action 204, which sets the global integer / macro integer. Macros which have two inputs are, in reality, a combination of actions where action 204 happens first, followed by another action for the specific effect.</p>
 		
+		<p>Whichever linedef is tagged 999 will be activated upon map startup. Thus any action or associated macro this linedef points to will execute. This is how the intro sequence for Doom 64 is activated right from the start which happens on map33.</p>
+		
 		<p>Many of the actions are labeled as "(undefined)" when they are not specifically defined for use in Doom Builder 64, but they can still be used. For linedefs, you just need to type in the corresponding number of an undefined action to use it. For macros, at the top of the script, you will use the "#define" property, followed by the name you want to use as the macro, then the macro number and its value. For example this is how the simple door open action is defined: "#define Door_Open(tag) 2:tag".</p>
 		
-		<p>Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector if using a macro.</p>
+		<p>There are some limits to moving sectors. Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector if using a macro. Further, the Doom 64 Remaster can’t have more than 30 moving ceilings and floors at the same time while EX based ports can have more.</p>
 
 		<h2>Doors</h2>
 			<table><thead>
