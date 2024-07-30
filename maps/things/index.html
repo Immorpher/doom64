@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Things</title>
+	<meta property="og:title" content="Things" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+		<h1>Things</h1>
+		
+			<p>"Things" are objects, monsters, items, and decorations which function in levels but are not level geometry. This includes the player start position, which all maps require. All in-level sprites are things but not all things have sprites. Below links to a list of all of the things in Doom 64.</p>
+
+			<ul>
+				<li><a href="list.html">Thing List</a></li>
+			</ul>
+		
+		<h2>Editor Flags</h2>
+		
+			<p>Here are properties assignable to any thing in Doom 64 within a Doom map editor. However not all properties will have an effect on all things. There are a set of new flags added to more modern Doom 64 engines. For example Doom 64 EX introduced the "Nightmare Creature" flag which gives enemies a combat boost and green color. For other things, they will only inherit the green color. These new flags are supported on Doom 64 EX, EX+, Remaster, Complete Edition, and XE. Doom 64 also experimented with multiplayer in the past and present, but in both cases it never was finished. Thus, even though the multiplayer flags exist, these flags have no effect in game.</p>
+			
+			<table>
+			<thead>
+				<tr><th>Flag Bit</th><th>Editor Setting</th><th>Description</th><th>Support</th></tr>
+			</thead><tbody>
+				<tr><td>0x1</td><td>Easy Difficulty</td><td>Thing is on skill levels 1 & 2 (Be Gentle and Bring It On)</td><td>Original</td></tr>
+				<tr><td>0x2</td><td>Medium Difficulty</td><td>Thing is on skill level 3 (I Own Doom)</td><td>Original</td></tr>
+				<tr><td>0x4</td><td>Hard Difficulty</td><td>Thing is on skill levels 4 & 5 (Watch Me Die and harder)</td><td>Original (Unused)</td></tr>
+				<tr><td>0x8</td><td>Ambush Players</td><td>Do not react to player attack sound (deaf)</td><td>Original</td></tr>
+				<tr><td>0x10</td><td>Multiplayer Only</td><td>Thing is not in single player</td><td>Original</td></tr>
+				<tr><td>0x20</td><td>Spawned by Special</td><td>Don't spawn until triggered with action or macro</td><td>Original</td></tr>
+				<tr><td>0x40</td><td>Trigger On Pick Up</td><td>Trigger tagged linedef with matching TID when picked up</td><td>Original</td></tr>
+				<tr><td>0x80</td><td>Trigger On Death</td><td>Trigger tagged linedef with matching TID when killed</td><td>Original</td></tr>
+				<tr><td>0x100</td><td>Count Secret On Pick Up</td><td>Count as secret for intermission when picked up</td><td>Original</td></tr>
+				<tr><td>0x200</td><td>No Infighting</td><td>Never fight other monsters</td><td>Original</td></tr>
+				<tr><td>0x400</td><td>No Spawn in Deathmatch</td><td>Do not spawn thing in deathmatch mode</td><td>Modern (Unused)</td></tr>
+				<tr><td>0x800</td><td>No Spawn in Multiplayer</td><td>Do not spawn thing in any multiplayer mode</td><td>Modern (Unused)</td></tr>
+				<tr><td>0x1000</td><td>Nightmare Creature</td><td>Give monster double health, fast speed, and green color</td><td>Modern</td></tr>
+			</tbody>
+			</table>
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
