@@ -15,9 +15,7 @@ function layout(depth) {
 		<a href="'+depth+'links/index.html">Links</a>\
 	';
 	
-	let footdata = '\
-		<p>The Doom 64 Compendum is collaboratively constructed by the <a href="'+depth+'contributors/index.html">contributors</a>.</p>\
-	';
+	let footdata = 'The Doom 64 Compendum is collaboratively constructed by the <a href="'+depth+'contributors/index.html">contributors</a>.';
 	
 	// Add the doom 64 compendium title to pages which need it
 	var titleid = document.getElementById("title");
@@ -27,6 +25,6 @@ function layout(depth) {
 	
 	//Process the document to add the layout
 	document.getElementById("navigation").innerHTML = navdata;
-	document.getElementById("footer").innerHTML = footdata;
+	document.getElementById("footer").innerHTML =  "<p>" + footdata + document.getElementById("footer").innerHTML + "</p>";
 	return;
 }

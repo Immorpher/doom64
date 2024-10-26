@@ -30,6 +30,14 @@
 
 		<p>The Nintendo 64 engines are a bit more liberal with occlusion than PC engines. Sectors with an upper sky texture will not render the upper wall textures of adjoining lines. Also if the top of a sky sector meets a corner of a floor sector, any geometry behind will not render (use no occlusion setting on linedefs in this case).</p>
 		
+		<h2>Line of Sight</h2>
+		
+		<p>As noted, too much geometry rendering on screen can cause slowdowns particularly on Nintendo 64 ports. Even on PC, too much geometry will result in slowdown on some systems, and even can cause an overflow error where sprites will not render. To remedy this occlusion is needed which will break the player's line of sight by blocking it with a wall. One option is to introduce "void sectors", that is draw a sector on your map and delete it. This will be a void and will appear as a wall or a pillar that reaches all the way up to the ceiling.</p>
+		
+		<img src="lineofsight.svg" alt="Line of Sight Diagram" style="width: 25rem; height: 25rem;" />
+		
+		<p>In the above diagram, the player's field of view is given by the aqua dashed line; geometry in this area will be sent to render unless it is occluded. The dark sector with the white outline is a void sector.  Geometry behind this sector that is outside the player's view (red shaded area) will not be sent to render. Breaking the player's line of sight like this can remedy slowdowns and rendering overflow errors.</p>
+		
 		<h2>Sky Occlusion</h2>
 		
 		<p>If there are no sky sectors in the player's view, the sky will not be rendered. Typically, in such cases, this causes no visual issues as there tends to be geometry always obstructing the player's view. However if there a voids in the geometry, due to the "blank" texture or distance occlusion, visual glitches can occur. On PC engines a black void will appear while on the Nintendo 64 a "hall of mirrors" effect will happen.</p>
@@ -38,7 +46,7 @@
 		
 	</div>
 
-	<div id="footer"></div>
+	<div id="footer"></br>Specific page contributions by Immorpher and agony ZENITH.</div>
 	<script>
 	layout("../");
 	</script>
