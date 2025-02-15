@@ -31,7 +31,7 @@
 		
 		<h2>Map Building</h2>
 		
-			<p>You can make maps too! The Doom 64 level format is an iteration of the original Doom format with additional features for enhanced 3D rendering, colored lighting, and scripting. The latest iteration of Doom Builder 64, by Kovic, supports the official Doom 64 Remaster, Doom 64 EX, Doom 64 EX+, Super EX+, and the various Doom 64 engines targetting original Nintendo 64 hardware.</p>
+			<p>You can make maps too! The Doom 64 level format is an iteration of the original Doom format with additional features for enhanced 3D rendering, colored lighting, and scripting. The latest iteration of Doom Builder 64, by Kovic, supports the official Doom 64 Remaster, Doom 64 EX, Doom 64 EX+, Super EX+, and the various Doom 64 engines targeting original Nintendo 64 hardware.</p>
 			
 			<ul>
 				<li><a href="https://github.com/thekovic/DoomBuilder64/releases/">Doom Builder 64</a></li>
@@ -75,6 +75,11 @@
 			</p>The fundamental difference with the Nintendo 64 format is that the textures are referred to by their order in the WAD rather than hash representations of the texture names. Both Doom Builder 64 and d64tool handle this conversion process automatically.</p>
 			
 			<p>The base Doom 64 engine on the Nintendo 64, like Doom 64 RE, has limits in terms of how much geometry can be shown on screen at once and the size of maps it can load (about 900 kb in size maximum). However, later forks on the modern SDK drastically raise one or both of these limits.</p>
+			
+			
+		<h2>Size Limits</h2>
+			
+			<p>The primary factor limiting the size of maps on Doom 64 engines is the blockmap data structure. This is used to aid in collision calculations during gameplay. The blockmap is limited to 65534 bytes in size, although there are some examples of maps slightly exceeding this size (such as Jetx_121's Map Not Found for Ethereal Breakdown). When this limit is breached, either the map will not load or the player can start clipping through walls. Diema's node builder has incorporated some of ZokumBSP's ability to exclude linedefs from blockmap calculations which reduces blockmap size for larger maps. Also the Doom 64 EX+ branch has extended map size limits.</p>
 		
 	</div>
 
