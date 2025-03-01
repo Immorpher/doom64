@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Node Builder</title>
+	<meta property="og:title" content="Node Builder" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Node Builder</h1>
+		
+			<p>Typically included with map builders (such as Doom Builder 64), the node builder compiles extra lumps which improve engine speed during gameplay. These are the NODES, SEGS, SSECTORS, REJECT, BLOCKMAP, and LEAFS lumps. These lumps save on processing as they pre-calculate values used for rendering (binary space partitioning) and gameplay logic. The default nodebuilder which comes with Doom Builder 64 is called D64BSP, which additionally renders the LEAFS lump (from GLBSP) that aids in polygon rendering and is required for Doom 64.</p>
+		
+		<h2>DMA-BSP64</h2>
+		
+			<p><a href="https://github.com/darkhaven3/dma-bsp64/releases/">DMA-BSP64</a> an iteration of D64BSP which takes inspiration from ZokumBSP's ability to manipulate the BLOCKMAP. The BLOCKMAP is used for collision detection during gameplay and for many Doom 64 engines it is limited to 65534 bytes in size. DMA-BSP64 allows the mapper to exclude chosen linedefs from BLOCKMAP calculations, allowing for larger than typical maps, and some other mapping techniques, on these engines.</p>
+		
+		<h3>Installation</h3>
+		
+			<p>First download DMA-BSP64 from its <a href="https://github.com/darkhaven3/dma-bsp64/releases/">github page</a>. Then extract the contents and put the ".cfg" and ".exe" files in the Doom Builder 64 node builders folder: for example "Doom Builder 64\Compilers\Nodebuilders". Now open Doom Builder 64 and in the "Tools" menu open "Game Configurations". Select the engine of your choice and then go to the "Nodebuilder" tab. Here you can select "dma-bsp64 - Normal" for both the saving and testing configurations.</p>
+			
+			<img src="gameconfiguration.png" alt="Node Builder Configuration" style="width: 832px; height: 496px;" />
+			
+			<p>After clicking "OK", this will allow you to use advanced blockmap techniques to optimize your maps as described in the following section.</p>
+		
+		<h3>Usage</h3>
+		
+			<p>There are two ways to signify lines to be excluded from the BLOCKMAP. The first method is to enable both the "Never Show on Automap" and "Always Show on Automap" flag on the linedef. The "Never Show on Automap" flag takes precedence, so this linedef will be excluded from both the BLOCKMAP and the automap. The second method is to use the tags between 32768 and 65535 (the "negative" tags) on the linedef, which will also exclude the linedef from the BLOCKMAP but it will still appear on the automap (and can be targeted by macros).</p>
+		
+			<p>Linedefs excluded from the BLOCKMAP will not have collisions and cannot activate actions via thing crossing. For linedefs that separate sectors of equal heights (or small height differences), no collisions are required so they can be safely excluded from the BLOCKMAP. If linedefs on the edge of the map are excluded, things and the player can exit the normal playable area. Interestingly, this technique also allows monsters to ignore high ledges, allowing them to fall off of them. However, this also allows the player to partially clip into ledges, so a second smaller ledge (also excluded from the BLOCKMAP) can be used to prevent the player from getting too close to the higher ledge.</p>
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
