@@ -58,6 +58,8 @@ macro 2
 			<p>The link below leads to a tutorial on how to build and debug macros. The following sections will describe macros more in depth which can help with the tutorial.</p>
 			
 			<ul><li><a href="macrotutorial.html">Macro Tutorial</a></li></ul>
+			
+			<p>Proper macro ordering has macros increasing incrementally without skipping a number. Putting two macros with the same number twice in a row (for example a macro 3 followed another macro 3) will not cause an error, but only the last macro with the same number will be used. It is as if the previous macro with the same number did not exist.</p>
 
 		<h2>Structure of a Macro</h2>
 
@@ -149,6 +151,39 @@ macro 1
 </pre>
 
 			<p>When using a block comment 'always' make sure not to forget the "*/" at the end, or the entire rest of the script will get ignored.</p>
+			
+		<h2>Custom Macro Actions</h2>
+		
+			<p>Any line action in Doom 64 can be used in a macro, even if it is not a pre-defined macro action in Doom Builder 64. The general way to define a custom macro action is below.</p>
+			
+<pre>
+#define name(value)  lineaction:value
+</pre>
+
+			<p>Where "name" is whatever you want to name the macro, "value" is a number you want to use (which can be a tag or macro integer), and then "lineaction" is the line action number. For example, the definition and macro below allows one of the artifact switch lines to be activated from a macro (this <a href="artifactmacro.zip">map</a> has it in action).</p>
+			
+<pre>
+#include "common.txt"
+
+// Custom macro action definition
+#define Orange_Artifact_Open(tag)  90:tag
+
+macro 1
+{
+    
+    // activate the artifact linedef, which is actually tagged 10
+    Orange_Artifact_Open(9);
+    
+}
+</pre>
+
+			<p>You can also combine multiple line actions into one referenced macro action. This is how the macro actions which require two values are created. For example, below is how the "Line_CopyTextures" macro action is defined.</p>
+			
+<pre>
+#define Line_CopyTextures(dsttag, srctag)  PushVar(srctag); 219:dsttag
+</pre>
+
+			<p>The full list of pre-defined macro actions are in the "common.txt" file which comes with Doom Builder 64. You could also modify this or create a custom version of this text file to add your own definitions.</p>
 
 		<h2>Decompiling a Macro</h2>
 
@@ -174,7 +209,7 @@ START cmd /c "blam.exe macros.lmp macros.01.txt -d"</pre>
 
 	</div>
 
-	<div id="footer"></div>
+	<div id="footer"></br>Specific page contributions by Immorpher and Scwiba.</div>
 	<script>
 	layout("../../");
 	</script>
