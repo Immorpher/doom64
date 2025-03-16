@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Macro Decompiling</title>
+	<meta property="og:title" content="Macro Decompiling" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Macro Decompiling</h1>
+
+			<p>Although macros require compiling to be ran in the Doom 64 engine, it is also possible to do the reverse and decompile them. For your convenience, decompiled macros from maps of the original Doom 64 campaign can be downloaded <a href="decompiled.zip">here</a>.</p>
+
+			<p>The first step to decompiling is to extract the MACROS lump from the map where <a href="http://slade.mancubus.net/">Slade</a> is recommended. The extracted MACROS.lmp is not easily editable, but decompiling it will result in easier to understand <a href="../../actions.html">macro actions</a>.</p>
+
+			<p>Blam.exe from Doom Builder 64 is used to decompile a macros lump into editable text. Within the Doom Builder 64 directory, blam.exe is found in the same folder as common.txt: "(install path)\Doom Builder 64\Compilers\Doom64". Now put MACROS.lmp into that folder. From here, there is a couple ways to decompile the lump.</p>
+
+		<h3>Using a Batch file</h3>
+
+			<p>Download the .bat file found <a href="decompile.bat">here</a> and place it in the folder with blam.exe. When you run this file, it will look for macros.lmp in the same directory and output the decompiled macro as a text file. Alternatively you can create a new text file (in the same folder as blam.exe and the macros.lmp) and open it. Copy this into the text file:</p>
+
+<pre>cd /d %~dp0
+
+START cmd /c "blam.exe macros.lmp macros.01.txt -d"</pre>
+
+			<p>After saving, rename the text file to "decompile.bat". Running the batch file (it can be double clicked to run) should now decompile macros.lmp to the "macros.01.txt" file.</p>
+
+		<h3>Creating a Shortcut</h3>
+
+			<p>Create a shortcut to blam.exe (right click and choose "create shortcut"). Then right click the shortcut and choose "properties". In the properties window that comes up, select the "Shortcut" tab, if it isn't already. In the "Target:" field, go to the end (after where it says "...\blam.exe") and type " macros.lmp macros.txt -d" (minus the quotes). Then hit "Okay". Running the shortcut with "macros.lmp" in the folder should now decompile the script to the "macros.txt" file.</p>
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../../");
+	</script>
+</body>
+</html>

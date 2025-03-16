@@ -22,15 +22,17 @@
 	<div id="content">
 
 		<h1>Macros</h1>
-			<p>Macros are a unique scripting system used in Doom 64 which allow the you to script events to make the gameplay more dynamic. Macros are a series of actions executed in batches which can transform geometry, modify walls, and spawn or remove actors. Only one macro can be executed at a time.</p>
+			<p>Macros are a unique scripting system used in Doom 64 which allow the you to script events to make the gameplay more dynamic. Macros are a series of actions executed in batches which can transform geometry, modify walls, and spawn or remove actors.</p>
 
-			<p>BLAM is used to compile macros into a executable format for Doom 64. It is included with and automatically used by Doom Builder 64. The page icon on Doom Builder 64 will open the script editor where you can add macros. This script editor can also be found from the "View" menu. In the script editor, the page icon with the lightning bolt will compile the macro scripts. All available macro actions can be found on the page below, along with the types of values they take (height, thing tag, etc).</p>
+			<p>BLAM is used to compile macros into a executable format for Doom 64 (in a format similar to BASIC). It is included with and automatically used by Doom Builder 64. The page icon on Doom Builder 64 will open the script editor where you can add macros. This script editor can also be found from the "View" menu. In the script editor, the page icon with the lightning bolt will compile the macro scripts. All available macro actions can be found on the page below, along with the types of values they take (height, thing tag, etc).</p>
 			
 			<ul><li><a href="../actions.html">Action List</a></li></ul>
 			
-			<p>Each macro action corresponds to a line action. When referencing a macro from a line action, that macro must exist (even if it has no actions within) or a map can crash while loading. There is an undetermined maxmimum for the number of actions that one macro can have on some engines; it is somewhere above 100. After this point macros tend to lose predictability. If you are worried your macros are too long, or if you want to trigger a macro from a macro, you can set one macro to trigger another macro by crushing a barrel at the end. The barrel's delayed "death" triggers the second macro which ensures the original macro isn’t active when the second one is triggered.</p>
+			<p>Each macro action corresponds to a line action. When referencing a macro from a line action, that macro must exist (even if it has no actions within) or a map can crash while loading. Only one macro can be executed at a time, but if you want to trigger a macro from a macro, you can set one macro to trigger another macro by crushing a barrel at the end. The barrel's delayed "death" triggers the second macro which ensures the original macro isn’t active when the second one is triggered.</p>
 			
-			<p>Decompiled macros from maps of the original Doom 64 campaign can be downloaded <a href="decompiled.zip">here</a>.</p>
+			<p>It's possible to decompile already compiled macros from a map using BLAM as described in the page below.</p>
+			
+			<ul><li><a href="decompiling/index.html">Macro Decompiling</a></li></ul>
 
 		<h2>Macro Basics</h2>
 
@@ -160,7 +162,7 @@ macro 1
 #define name(value)  lineaction:value
 </pre>
 
-			<p>Where "name" is whatever you want to name the macro, "value" is a number you want to use (which can be a tag or macro integer), and then "lineaction" is the line action number. For example, the definition and macro below allows one of the artifact switch lines to be activated from a macro (this <a href="artifactmacro.zip">map</a> has it in action).</p>
+			<p>Where "name" is whatever you want to name the macro, "value" is a number you want to use (which can be a tag or macro integer), and then "lineaction" is the line action number. For example, the definition and macro below allows one of the artifact switch lines to be activated from a macro (this <a href="artifactmacro.wad">map</a> has it in action).</p>
 			
 <pre>
 #include "common.txt"
@@ -184,28 +186,6 @@ macro 1
 </pre>
 
 			<p>The full list of pre-defined macro actions are in the "common.txt" file which comes with Doom Builder 64. You could also modify this or create a custom version of this text file to add your own definitions.</p>
-
-		<h2>Decompiling a Macro</h2>
-
-			<p>It's possible to decompile already compiled macros from a map.</p>
-
-			<p>The first step is to extract the MACROS lump from the map where <a href="http://slade.mancubus.net/">Slade</a> is recommended. The extracted MACROS.lmp will not be editable text, so it must be decompiled to make it a script which can be edited.</p>
-
-			<p>Blam.exe is used to decompile a macros lump into editable text. Blam is found in the same folder as common.txt: "(install path)\Doom Builder 64\Compilers\Doom64". Now put MACROS.lmp into that folder. From here, there's a couple ways to make blam.exe decompile the lump.</p>
-
-		<h3>Using a Batch file</h3>
-
-			<p>Create a new text file (in the same folder as blam.exe and the macros.lmp) and open it. Copy this into the text file:</p>
-
-<pre>cd /d %~dp0
-
-START cmd /c "blam.exe macros.lmp macros.01.txt -d"</pre>
-
-			<p>After saving, rename the text file to "decompile.bat". Running the batch file (it can be double clicked to run) should now decompile macros.lmp to the "macros.01.txt" file.</p>
-
-		<h3>Creating a Shortcut</h3>
-
-			<p>Create a shortcut to blam.exe (right click and choose "create shortcut"). Then right click the shortcut and choose "properties". In the properties window that comes up, select the "Shortcut" tab, if it isn't already. In the "Target:" field, go to the end (after where it says "...\blam.exe") and type " macros.lmp macros.txt -d" (minus the quotes). Then hit "Okay". Running the shortcut with "macros.lmp" in the folder should now decompile the script to the "macros.txt" file.</p>
 
 	</div>
 
