@@ -195,15 +195,15 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>201</td><td>Camera Set</td><td>Camera_Set(<i>tid</i>)</td><td>Set camera view to camera with <i>tid</i>.</td></tr>
-				<tr><td>243</td><td>Camera Move</td><td>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>)</td><td>Start moving camera at "Camera_Set" position and aim view at thing with <i>tid</i>.  <i>nexttid</i> is not used.</td></tr>
-				<tr><td>200</td><td>Camera Clear</td><td>Camera_Clear(<i>tid</i>)</td><td>Aim camera at thing with <i>tid</i>.</td></tr>
+				<tr><td>201</td><td>Camera Set</td><td>Camera_Set(<i>tid</i>)</td><td>Set camera view and angle to the camera (or thing) tagged with <i>tid</i>.</td></tr>
+				<tr><td>200</td><td>Camera Clear</td><td>Camera_Clear(<i>tid</i>)</td><td>Set camera view to the camera (or thing) tagged with <i>tid</i> and aim at player.</td></tr>
+				<tr><td>243</td><td>Camera Move</td><td>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>)</td><td>Aim camera view at camera (or thing) tagged with <i>tid</i> and gradually move camera to camera (or thing) tagged with <i>tid + 1</i>. Once the camera reaches thing tagged with <i>tid + 1</i> it will keep moving to things with sequentially higher tags until the next thing tag is missing. <i>nexttid</i> is not used.</td></tr>
 				<tr><td>225</td><td>Quake (Tag = Tics)</td><td>Quake(<i>tics</i>)</td><td>Shakes the screen for the specified number of tics (30 tics = 1 second) with sound. This sound can bug out if it is playing during a level exit.</td></tr>
 				<tr><td>204</td><td>Set Global Integer<br/>Macro Integer (value = tag)</td><td>PushVar(<i>var</i>)</td><td>Used in combination with other actions and sets the value used in them.</td></tr>
 				<tr><td>240</td><td>Trigger Line Group<br/>(Pick random of group)</td><td>Line_TriggerRandomLinesByTag(<i>tag</i>)</td><td>Will trigger a random line out of a set of lines with the same tag. This is not compatible with the "Trigger By Dead Thing" flag on the Doom 64 Remaster.</td></tr>
 			</tbody></table>
 
-			<p>When using the camera actions, to change to a new target being looked at, a new Camera_MoveAndAim must be used, with the new target <i>tid</i>. Technically, <i>tid</i> can be any type of <i>thing</i>, not just cameras. Using a moving monster or the player as a target will often end up freezing/crashing the game. It will move around whatever <i>thing</i> is used for the target, as if the thing itself was a camera. That means using a key as a target, the key will get to where the camera stops at the very end.</p>
+			<p>When using action 243 (Camera Move) it will move around the <i>thing</i> used for the target, as if the thing itself was a camera. That means using a key as a target, the key will end up where the camera stops at the very end. However if the moved thing collides with its prior position it will crash the game; which is a potential problem for players and monsters. When the camera is set to a monster, the camera's height will be at the bottom of the monster. For flying monsters this is not an issue, however for other monsters it can partially clip through the floor.</p>
 
 		<h2>Additional Sector Properties</h2>
 			<table><thead>
