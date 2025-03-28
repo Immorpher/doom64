@@ -222,7 +222,7 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>218</td><td>(undefined)</td><td>Line_CopyFlags(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies flags from one linedef to another. For example: Impassable, Block Sound, etc. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
+				<tr><td>218</td><td>(undefined)</td><td>Line_CopyFlags(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies flags from one linedef to another. For example: Impassable, Block Sound, etc. If used as a line action, use action 204 to set the <i>dsttag</i>. When copying flags to enable or disable scrolls, only lines which have a scroll "thinker" spawned at the start of the map will be affected. This is fine for linedefs already scrolling that you want to stop. But if you want to start a linedef scrolling that is not, then you need to have the linedef scrolling when the map loads initially, then stop it, and then restart it again when you want it moving again.</td></tr>
 				<tr><td>219</td><td>(undefined)</td><td>Line_CopyTextures(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies upper, middle, and lower textures from one linedef to another. On some Nintendo 64 ports, it only copies the texture of the front sides. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
 				<tr><td>230</td><td>(undefined)</td><td>Line_CopySpecials(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies the Action Special (Door Open, Floor Lower, etc.), Activation Type (Use, Cross, Blue Key, etc.), and Switch Setup properties from one linedef to another. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
 			</tbody></table>
