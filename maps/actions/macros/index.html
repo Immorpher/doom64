@@ -12,9 +12,9 @@
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<script src="../../scripts.js" type="text/JavaScript"></script>
-	<link rel="stylesheet" href="../../style.css" />
-	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+	<script src="../../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../../favicon.svg" />
 </head>
 <body>
 	<div id="navigation"></div>
@@ -26,9 +26,9 @@
 
 			<p>BLAM is used to compile macros into a executable format for Doom 64 (in a format similar to BASIC). It is included with and automatically used by Doom Builder 64. The page icon on Doom Builder 64 will open the script editor where you can add macros. This script editor can also be found from the "View" menu. In the script editor, the page icon with the lightning bolt will compile the macro scripts. All available macro actions can be found on the page below, along with the types of values they take (height, thing tag, etc).</p>
 			
-			<ul><li><a href="../actions.html">Action List</a></li></ul>
+			<ul><li><a href="../list.html">Action List</a></li></ul>
 			
-			<p>Each macro action corresponds to a line action. When referencing a macro from a line action, that macro must exist (even if it has no actions within) or a map can crash while loading. Only one macro can be executed at a time, but if you want to trigger a macro from a macro, you can set one macro to trigger another macro by crushing a barrel at the end. The barrel's delayed "death" triggers the second macro which ensures the original macro isn’t active when the second one is triggered. Also <a href="../monstertunnels/index.html">monster tunnels</a> can replace many macros and multiple can be executed at once.</p>
+			<p>Each macro action corresponds to a line action. When referencing a macro from a line action, that macro must exist (even if it has no actions within) or a map can crash while loading. Only one macro can be executed at a time, but if you want to trigger a macro from a macro, you can set one macro to trigger another macro by crushing a barrel at the end. The barrel's delayed "death" triggers the second macro which ensures the original macro isn’t active when the second one is triggered. Also <a href="../actions/monstertunnels/index.html">monster tunnels</a> can replace many macros and multiple can be executed at once.</p>
 			
 			<p>It's possible to decompile already compiled macros from a map using BLAM as described in the page below.</p>
 			
@@ -191,7 +191,7 @@ macro 1
 
 	<div id="footer"></br>Specific page contributions by Immorpher and Scwiba.</div>
 	<script>
-	layout("../../");
+	layout("../../../");
 	</script>
 </body>
 </html>
