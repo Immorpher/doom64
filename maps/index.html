@@ -77,9 +77,15 @@
 			<p>The base Doom 64 engine on the Nintendo 64, like Doom 64 RE, has limits in terms of how much geometry can be shown on screen at once and the size of maps it can load (about 900 kb in size maximum). However, later forks on the modern SDK drastically raise one or both of these limits.</p>
 			
 			
-		<h2>Size Limits</h2>
+		<h2>Limits</h2>
 			
-			<p>The primary factor limiting the size of maps on Doom 64 engines is the blockmap data structure. This is used to aid in collision calculations during gameplay. The BLOCKMAP is limited to 65534 bytes in size, although there are some examples of maps slightly exceeding this size (such as Jetx_121's Map Not Found for Ethereal Breakdown). When this limit is breached, either the map will not load or the player can start clipping through walls. <a href="https://github.com/darkhaven3/dma-bsp64/releases/">DMA-BSP64</a> has incorporated some of ZokumBSP's ability to exclude linedefs from blockmap calculations which reduces blockmap size for larger maps. Also the Doom 64 EX+ branch has extended map size limits.</p>
+			<p>The primary factor limiting the size of maps on Doom 64 engines is the blockmap data structure. This is used to aid in collision calculations during gameplay. The BLOCKMAP is limited to 65534 bytes in size, although there are some examples of maps slightly exceeding this size (such as Jetx_121's Map Not Found for Ethereal Breakdown). When this limit is breached, either the map will not load or the player can start clipping through walls. <a href="https://github.com/darkhaven3/dma-bsp64/releases/">DMA-BSP64</a> nodebuilder has incorporated some of ZokumBSP's ability to exclude linedefs from blockmap calculations which reduces blockmap size for larger maps.<p>
+			
+			<p>Although, not as common as reaching a blockmap limit, the number of total sidedefs are limited to 32,768. Each linedef of a map references a sidedef. Sidedefs contain texture, offset, and sector orientation information. Thus not all sidedefs are unique, so <a href="https://github.com/darkhaven3/dma-bsp64/releases/">DMA-BSP64</a> nodebuilder has incorporated ZokumBSP's ability to remove identical sidedefs and re-assign linedef references. This "sidedef compression" does not change how the map is redenered.</p>
+			
+			<p>There is a distance rendering limit of 3808 map units (pixels). All geometry beyond this point will be clipped and the sky will show through. Besides limiting visible spaces to 3808 map units, masking the sky with the same color as the fog color can hide geometry clipping. This is simpler with "void" skies of one color that can be set to the fog color. For other skies, a silhouette of a mountain range can be made which matches the color of the fog.</p>
+			
+			</p>The Doom 64 EX branch has extended many of these limits, particularly with Doom 64 EX+.</p>
 		
 	</div>
 
