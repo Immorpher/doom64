@@ -199,7 +199,7 @@
 
 			<p>When using action 243 (Camera Move) it will move around the <i>thing</i> used for the target, as if the thing itself was a camera. That means using a key as a target, the key will end up where the camera stops at the very end. However if the moved thing collides with its prior position it will crash the game; which is a potential problem for players and monsters. When the camera is set to a monster, the camera's height will be at the bottom of the monster. For flying monsters this is not an issue, however for other monsters it can partially clip through the floor.</p>
 			
-			<p>Re-activating a moving camera sequence can result in a bugged camera position. Styd051 discovered for the Vehemence project that the camera position can be reset by using the "Thing Fade Out" and "Thing Spawn" on the camera things, which fixes this bug.</p>
+			<p>Since the "Camera Move" action moves the position of the camera target <i>things</i>, reactivating a moving camera sequence will have the cameras in incorrect positions. Styd051 discovered for the Vehemence project that the camera position can be reset by using the "Thing Fade Out" and "Thing Spawn" on the camera things, which fixes this bug.</p>
 
 		<h2>Additional Sector Properties</h2>
 			<table><thead>
