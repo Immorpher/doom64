@@ -23,13 +23,32 @@
 	
 		<h1>Sky Graphics</h1>
 		
-			<p>On PC engines the <a href="../../structures/skydefs.html">SKYDEFS text lump</a> holds the definitions for all skies in the wad. Only the SKYDEFS from the last loaded wad will be used. If you want to use some new skies and some of the original skies in the same wad, you must include the definitions for the original skies in your SKYDEFS. The diagram below shows how the sky and background graphics are positioned on the screen.</p>
+			<p>On PC engines the <a href="../../structures/skydefs.html">SKYDEFS text lump</a> holds the definitions for all skies in the wad. Only the SKYDEFS from the last loaded wad will be used. If you want to use some new skies and some of the original skies in the same wad, you must include the definitions for the original skies in your SKYDEFS. On console engines, the skies are hardcoded into the engine. The diagram below shows how the sky and background graphics are positioned on the screen.</p>
 
 			<img src="skyguide.png" alt="Sky Guide" style="width: 640px; height: 480px;" />
 			
 			<p>Doom 64 originally rendered at 320 pixels by 240 pixels, thus the above diagram is pixel-accurate to that resolution. At higher screen resolutions, the pixel area covered is larger. However when designing new background graphics, the pixel sizes remain true to this diagram.</p>
 
 			<p>Each sky requires its own unique texture to be included in the wad. It doesn't matter what image the texture contains, as the texture is only used to assign the sky to the ceiling/floor of sectors. Assigning a sky texture to a ceiling or floor is what determines which sky will be used in that map. There can only be one sky used per map unless you are using an engine like EX+, which has a special <a href="../../maps/actions/list.html">linedef action</a> to change the sky.</p>
+			
+		<h2>Original Sky Definitions</h2>
+		
+			<p>Doom 64 used eleven different skies associated with the textures below.</p>
+			
+			<ul>
+				<li>F_SKYA - Violet colored clouds with thunder</li>
+				<li>F_SKYB - Red colored clouds</li>
+				<li>F_SKYC - Orange colored clouds with mountain backdrop</li>
+				<li>F_SKYD - Yellow and red fire sky</li>
+				<li>F_SKYE - Orange colored clouds with heavy fog</li>
+				<li>F_SKYF - Space backdrop</li>
+				<li>F_SKYG - Space backdrop with Doom 64 logo (used for intro)</li>
+				<li>F_SKYH - Foggy teal void sky</li>
+				<li>F_SKYI - Green fire sky</li>
+				<li>F_SKYJ - Violet colored clouds with thunder and mountain backdrop</li>
+				<li>F_SKYK - Space and mountain backdrop</li>
+
+			</ul>
 			
 		<h2>Custom Sky Definitions</h2>
 		

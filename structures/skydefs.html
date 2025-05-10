@@ -32,6 +32,8 @@
 			
 			<p>&lt;texturename&gt; is the name of the corresponding sky texture used in a level. When a ceiling or floor uses that texture, it will draw the sky.</p>
 			
+			<p>Two forward slashes, //, is used to designate comments in the lump.</p>
+			
 		<h2>Properties</h2>
 			<p>Here are properties which can be assigned to each sky.</p>
 			
@@ -71,28 +73,12 @@
 			<ul><li><b>fadeinbackground</b></li></ul>
 			<dl><dd>Sets the "pic" graphic to the bottom of the screen and allows linedef action type 254 to fade it with the "backpic" graphic.</dd></dl>
 			
-		<h2>Original Sky Definitions</h2>
+		<h2>Original Examples</h2>
 		
-			<p>Doom 64 used eleven different skies associated with the textures below.</p>
-			
-			<ul>
-				<li>F_SKYA - Violet colored clouds with thunder</li>
-				<li>F_SKYB - Red colored clouds</li>
-				<li>F_SKYC - Orange colored clouds with mountain backdrop</li>
-				<li>F_SKYD - Yellow and red fire sky</li>
-				<li>F_SKYE - Orange colored clouds with heavy fog</li>
-				<li>F_SKYF - Space backdrop</li>
-				<li>F_SKYG - Space backdrop with Doom 64 logo (used for intro)</li>
-				<li>F_SKYH - Foggy teal void sky</li>
-				<li>F_SKYI - Green fire sky</li>
-				<li>F_SKYJ - Violet colored clouds with thunder and mountain backdrop</li>
-				<li>F_SKYK - Space and mountain backdrop</li>
-
-			</ul>
-			
-		<h2>Examples</h2>
+		<p>Below are how the original Doom 64 skies are defined in the SKYDEFS lump.</p>
 		
-<pre>sky "F_SKYA"
+<pre>// Violet colored clouds with thunder
+sky "F_SKYA"
 {
     pic = "CLOUD"
     fogcolor = 0 0 0
@@ -102,8 +88,82 @@
     cloud
     thunder
     fogfactor = 985
-}</pre>
-<pre>sky "F_SKYH"
+}
+
+// Red colored clouds
+sky "F_SKYB"
+{
+    pic = "CLOUD"
+    fogcolor = 0 0 0
+    basecolor = ff 30 30
+    highcolor = 10 0 0
+    lowcolor = 10 0 0
+    cloud
+    fogfactor = 985
+}
+
+// Orange colored clouds with mountain backdrop
+sky "F_SKYC"
+{
+    pic = "CLOUD"
+    backpic = "MOUNTB"
+    fogcolor = 0 0 0
+    basecolor = d0 70 40
+    highcolor = 0 0 0
+    lowcolor = 40 10 0
+    cloud
+    fogfactor = 985
+}
+
+// Yellow and red fire sky
+sky "F_SKYD"
+{
+    fogcolor = 0 0 0
+    basecolor = 0 0 0
+    highcolor = ff 0 0
+    lowcolor = ff 60 0
+    fire
+    fogfactor = 985
+}
+
+// Orange colored clouds with heavy fog
+sky "F_SKYE"
+{
+    pic = "CLOUD"
+    fogcolor = 30 10 8
+    basecolor = d0 70 40
+    highcolor = 0 0 0
+    lowcolor = 40 10 0
+    cloud
+    fogfactor = 975
+}
+
+// Space backdrop
+sky "F_SKYF"
+{
+    pic = "SPACE"
+    fogcolor = 0 0 0
+    basecolor = 0 0 0
+    highcolor = 0 0 0
+    lowcolor = 0 0 0
+    fogfactor = 985
+}
+
+// Space backdrop with triggered Doom 64 logo (used for intro)
+sky "F_SKYG"
+{
+    pic = "SPACE"
+    backpic = "EVIL"
+    fogcolor = 0 0 0
+    basecolor = 0 0 0
+    highcolor = 0 0 0
+    lowcolor = 0 0 0
+    fadeinbackground
+    fogfactor = 995
+}
+
+// Foggy teal void sky
+sky "F_SKYH"
 {
     fogcolor = 0 40 40
     basecolor = 0 38 38
@@ -111,6 +171,43 @@
     lowcolor = 0 0 0
     void
     fogfactor = 975
+}
+
+// Green fire sky
+sky "F_SKYI"
+{
+    fogcolor = 0 0 0
+    basecolor = 0 0 0
+    highcolor = 0 ff 0
+    lowcolor = 70 70 0
+    fire
+    fogfactor = 985
+}
+
+// Violet colored clouds with thunder and mountain backdrop
+sky "F_SKYJ"
+{
+    pic = "CLOUD"
+    backpic = "MOUNTC"
+    fogcolor = 0 0 0
+    basecolor = b0 80 ff
+    highcolor = 0 0 0
+    lowcolor = 0 0 15
+    cloud
+    thunder
+    fogfactor = 985
+}
+
+// Space and mountain backdrop
+sky "F_SKYK"
+{
+    pic = "SPACE"
+    backpic = "MOUNTA"
+    fogcolor = 0 0 0
+    basecolor = 0 0 0
+    highcolor = 0 0 0
+    lowcolor = 0 0 0
+    fogfactor = 985
 }</pre>
 
 		<h2>Sky Rendering Bugs</h2>
