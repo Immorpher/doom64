@@ -1,0 +1,29 @@
+<svg width="100mm" height="130mm" version="1.1" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<linearGradient id="f" x1="50" x2="50" y1="120" y2="110" gradientTransform="translate(4.869e-5)" gradientUnits="userSpaceOnUse" xlink:href="#b"/>
+		<linearGradient id="b">
+			<stop stop-color="#bfbfbf" offset="0"/>
+			<stop stop-color="#404040" offset="1"/>
+		</linearGradient>
+		<linearGradient id="c" x1="110" x2="110" y1="120" y2="50" gradientTransform="rotate(180 75 75)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+		<linearGradient id="a">
+			<stop stop-color="#404040" offset="0"/>
+			<stop stop-color="#bfbfbf" offset="1"/>
+		</linearGradient>
+		<linearGradient id="e" x1="50" x2="50" y1="120" y2="110" gradientTransform="translate(10 -20)" gradientUnits="userSpaceOnUse" xlink:href="#b"/>
+		<linearGradient id="g" x1="95.592" x2="95.591" y1="141" y2="31" gradientTransform="rotate(180 47.796 75.5)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+		<linearGradient id="d" x1="95.592" x2="95.591" y1="141" y2="31" gradientTransform="matrix(1 -2.2689e-6 -2.2689e-6 -1 4.4086 151)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+	</defs>
+	<g stroke="#000" stroke-linejoin="round">
+		<path d="m70 30-40-4e-5 -20-20 80 1.391e-4z" fill="#404040"/>
+		<path d="m30 100-20 20 4.9e-5 -110 20 20z" fill="url(#g)"/>
+		<path d="m70 100 20 20-4.9e-5 -110-20 20z" fill="url(#d)"/>
+		<path d="m10 110h80l-1.61e-4 10-80-9e-5z" fill="url(#f)"/>
+		<path d="m70 100-40-4e-5 2.36e-4 -70 40 4e-5z" fill="url(#c)"/>
+		<g>
+			<path d="m20 90h60v10h-60z" fill="url(#e)"/>
+			<path d="m20 100 60-7e-5 10 10h-80z" fill="#808080"/>
+			<path d="m30 82.5h40l10 7.5h-60z" fill="#808080"/>
+		</g>
+	</g>
+</svg>
