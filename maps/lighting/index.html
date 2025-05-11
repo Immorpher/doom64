@@ -23,7 +23,7 @@
 	
 		<h1>Lighting Guide</h1>
 		
-			<p>There is an unique look to Doom 64 that comes from its expanded lighting system called gradient colored lighting. Each sector has its own set of five colors defined. These five colors are the ceiling, upper half wall, lower half wall, floor, and a separate "thing" color. The thing color is what defines the color on the player, sprites, and enemies in that sector, so it is independent from the level geometry coloring. In this way the textures can be colored differently where gray bricks can be made into red or even green bricks.</p>
+			<p>There is an unique look to Doom 64 that comes from its expanded lighting system called gradient colored lighting. Each sector has its own set of five colors defined. These five colors are the ceiling, upper half wall, lower half wall, floor, and a separate "thing" color. The thing color is what defines the color on the player, sprites, enemies, and even switches in that sector, so it is independent from the level geometry coloring. In this way the textures can be colored differently where gray bricks can be made into red or even green bricks.</p>
 		
 			<img src="lightdiagram.svg" alt="The Five Sector Lights" style="width: 320px; height: 400px;" />
 
@@ -71,7 +71,7 @@
 			
 		<h2>Advanced Lighting</h2>
 		
-			<p>Triangular sectors can be used to separate specific walls from adjoining walls. This can be used to shade that wall differently than its neighbors. For example, this technique may be used on steps to create ambient occlusion where the light source of the room would have larger walls with a different gradient direction.</p>
+			<p>Triangular sectors can be used to separate specific walls from adjoining walls. This can be used to shade that wall differently than its neighbors. For example, you may want to shade steps along a wall differently than the adjoining wall.</p>
 			
 			<p>"Flip Upper Pegged Color" will reverse the gradient direction of the upper wall compared to the lower wall. By allowing the upper or lower walls meet, with "Peg Upper Wall Color" and "Peg Lower Wall Color", the use of "Flip Upper Pegged Color" can allow the wall to be bright in the middle. Having a bright middle walls can be useful for torches attached to these walls.</p>
 
