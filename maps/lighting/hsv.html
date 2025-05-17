@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">HSV Boosting</title>
+	<meta property="og:title" content="HSV Boosting" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	<script type="text/javascript" src="hsv.js"></script>
+	<style>
+		label {margin-right: 0; margin-left: 0.5rem;}
+		input {margin-right: 0rem;}
+		width {width: auto;}
+		form {display: inline-block;}
+	</style>
+	
+	<div id="content">
+	
+		<h1>HSV Boosting</h1>
+		
+			<p>Doom 64 boosts the brightness of levels by adjusting the sector colors. Here the game converts the colors in the red-green-blue, RGB, space to the hue-saturation-value, HSV, space and increases the value component. Although related to the hue-saturation-lightness (HSL) color space, the value component (sometimes called brightness) behaves differently than the lightness component. In HSL, boosting the lightness component will eventually cause all colors to become white. In contrast, in HSV, the value component will never turn a saturated color to white, rather it will retain its color. In most Doom 64 ports, this is a slider labeled as "Brightness", while the Doom 64 Remaster labels this as "Environmental Brightness". The Doom 64 Remaster adds an additional brigntess slider called "Overall Brightness", which also uses the HSV method to boost brightness, however it acts on on-screen pixels which effectively boosts the texture and sky brightness too. To avoid confusion, the more-common map brightness boost will be refered to as "Environmental Brightness".</p>
+			
+			<img src="hsv.svg" alt="HSV Color Cylinder" style="width: 360px; height: 330px;" />
+			
+		<h2>HSV Calculator</h2>
+
+			<form method="get" action="javascript:void(0);" onreset="" onsubmit="" name="pwform" id="pwform">
+			
+				<fieldset id="gamesettings">
+					<legend>Game Settings</legend>
+					<label for="brightness">Environmental Brightness: </abel>
+						<input type="number" value="0" name="brightness" id="brightness" min="0" step="1" max="100" oninput="ColorProcess();" />
+					<label for="lightamp">Light Amplification Goggles: </label>
+						<input type="checkbox" id="lightamp" name="lightamp" oninput="ColorProcess();" />
+				</fieldset>
+			
+				<span class="sidestack">
+				<fieldset id="mapcolor">
+					<legend>Map Color (<span id="warning">Bright</span>)</legend>
+					<label for="color">Color: </label>
+						<input type="color" id="color" name="color" value="#808080" oninput="ColorProcess();" style="padding: 0;" />
+					<label for="hex">Hex: </label>
+						<input type="text" value="#808080" name="hex" id="hex" style="width: 5rem;" onchange="HexProcess();" /><br/>
+					
+					<span class="sidestack">
+					<div>
+						<label for="red">R: </label>
+							<input type="number" value="128" name="red" id="red" min="0" step="1" max="255" oninput="RGBProcess();" /><br/>
+						<label for="green">G: </label>
+							<input type="number" value="128" name="green" id="green" min="0" step="1" max="255" oninput="RGBProcess();" /><br/>
+						<label for="blue">B: </label>
+							<input type="number" value="128" name="blue" id="blue" min="0" step="1" max="255" oninput="RGBProcess();" /><br/>
+					</div>
+					
+					<div>
+						<label for="hue">H: </label>
+							<input type="number" value="0" name="hue" id="hue" min="0" step="1" max="255" onchange="HSVProcess();" /><br/>
+						<label for="sat">S: </label>
+							<input type="number" value="0" name="sat" id="sat" min="0" step="1" max="255" onchange="HSVProcess();" /><br/>
+						<label for="value">V: </label>
+							<input type="number" value="128" name="value" id="value" min="0" step="1" max="255" onchange="HSVProcess();" /><br/>
+					</div>
+					</span>
+					
+				</fieldset>
+				
+				<fieldset id="gamecolor">
+					<legend>In Game Color (<span id="warninggame">Normal</span>)</legend>
+					<label for="colorgame">Color: </label>
+						<input type="color" id="colorgame" name="colorgame" value="#808080" oninput="ColorProcessGame();" style="padding: 0;" />
+					<label for="hexgame">Hex: </label>
+						<input type="text" value="#808080" name="hexgame" id="hexgame" style="width: 5rem;" onchange="HexProcessGame();" /><br/>
+					
+					<span class="sidestack">
+					<div>
+						<label for="redgame">R: </label>
+							<input type="number" value="128" name="redgame" id="redgame" min="0" step="1" max="255" oninput="RGBProcessGame();" /><br/>
+						<label for="greengame">G: </label>
+							<input type="number" value="128" name="greengame" id="greengame" min="0" step="1" max="255" oninput="RGBProcessGame();" /><br/>
+						<label for="bluegame">B: </label>
+							<input type="number" value="128" name="bluegame" id="bluegame" min="0" step="1" max="255" oninput="RGBProcessGame();" /><br/>
+					</div>
+					
+					<div>
+						<label for="huegame">H: </label>
+							<input type="number" value="0" name="huegame" id="huegame" min="0" step="1" max="255" onchange="HSVProcessGame();" /><br/>
+						<label for="satgame">S: </label>
+							<input type="number" value="0" name="satgame" id="satgame" min="0" step="1" max="255" onchange="HSVProcessGame();" /><br/>
+						<label for="valuegame">V: </label>
+							<input type="number" value="128" name="valuegame" id="valuegame" min="0" step="1" max="255" onchange="HSVProcessGame();" /><br/>
+					</div>
+					</span>
+					
+				</fieldset>
+				</span>
+	
+			
+			</form>
+		
+
+			<p>The environmental brightness slider effectively multiplies the HSV value of the sector colors. If the brightness is set to 0, the HSV value will be unchanged, if the brightness value is 100 then the HSV value is doubled. Then if the player has the light amplification goggles the HSV value is quadrupled. Thus if the HSV value is greater than 64, the shade is considered bright as it will achieve maximum brightness (255) with the light amplification goggles. And if the HSV value is greater than 128, the shade is considered overbright as it will achieve maximum brightness when the brightness is set to 100. Overbright shades at maximum environmental brightness are unaffected by light amplification goggles.</p>
+
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title id="title">Lighting Guide</title>
-	<meta property="og:title" content="Lighting Guide" />
+	<title id="title">Sector Lighting</title>
+	<meta property="og:title" content="Sector Lighting" />
 	<meta property="og:site_name" content="Doom 64 Compendium" />
 	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
 	<meta property="og:type" content="website" />
@@ -21,15 +21,20 @@
 	
 	<div id="content">
 	
-		<h1>Lighting Guide</h1>
+		<h1>Sector Lighting</h1>
 		
-			<p>There is an unique look to Doom 64 that comes from its expanded lighting system called gradient colored lighting. Each sector has its own set of five colors defined. These five colors are the ceiling, upper half wall, lower half wall, floor, and a separate "thing" color. The thing color is what defines the color on the player, sprites, enemies, and even switches in that sector, so it is independent from the level geometry coloring. In this way the textures can be colored differently where gray bricks can be made into red or even green bricks.</p>
+			<p>There is an unique look to Doom 64 that comes from its expanded lighting system called gradient colored lighting. Each sector has its own set of five colors defined. These five colors are the ceiling, upper half wall, lower half wall, floor, and a separate "thing" color. The thing color is what defines the color on the player, sprites, enemies, and even switches in that sector, so it is independent from the level geometry coloring. In this way the textures can be colored differently where gray bricks can be made into red or even green bricks. The top half wall and bottom half wall colors are interpolated along the wall to create a gradient.</p>
 		
 			<img src="lightdiagram.svg" alt="The Five Sector Lights" style="width: 320px; height: 400px;" />
 
-			<p>The top half wall and bottom half wall colors are interpolated along the wall to create a gradient. There are no absolute rules on how to set these colors, but there are some techniques to achieve natural looking or stylized lighting.</p>
+			<p>Additionally Doom 64 has a brightness setting which boosts the sector color. It uses the hue-saturation-value (HSV) method which does not desaturate colors. However certain brightness values can get maxed out depending on the brightness setting and if the player has the light amplification goggles. The following page describes the HSV boosting method and has a color calculator.</p>
 			
-			<p>In Doom Builder 64, in visual mode (the W key), you can turn lights mode (the V key) and there you can see what kind of lighting you are applying to each sector without textures. This is good to set brightnesses and coloring independent of texturing.</p>
+			<ul>
+				<li><a href="hsv.html">HSV Boosting</a></li>
+			</ul>
+		
+			
+			<p>In Doom Builder 64, in visual mode (the W key), you can turn lights mode (the V key) and there you can see what kind of lighting you are applying to each sector without textures. This is good to set brightnesses and coloring independent of texturing. There are no absolute rules on how to set these colors, but there are some techniques to achieve natural looking or stylized lighting as described in the following section.</p>
 			
 		<h2>Naturalistic Lighting</h2>
 		
