@@ -23,13 +23,18 @@
 	
 		<h1>Sky Graphics</h1>
 		
+			<p>Doom 64 is known for its dynamic and colorful skies. Its sky types are split into four categories: static, cloud, fire and void. Static skies are skies with a non-animated graphic that scrolls along the screen as the player turns. Cloud skies have scrolling clouds above the player, which rotate as the player turns. Then fire skies have an algorithmically-generated animated-fire graphic. And finally void skies are a solid color, which was showcased on the "In The Void" level of the original game. For many of these sky types, an overlay graphic can be added which was used to overlay mountains on some of these skies in the original game.</p>
+			
+			<p>Each sky requires its own unique texture to be included in the wad. It doesn't matter what image the texture contains, as the texture is only used to assign the sky to the ceiling/floor of sectors. Assigning a sky texture to a ceiling or floor is what determines which sky will be used in that map. There can only be one sky used per map unless you are using an engine like EX+, which has a special <a href="../../maps/actions/list.html">linedef action</a> to change the sky. With the console engines, sectors will not render upper textures if the ceiling texture is a sky texture.</p>
+			
+			<p>Unless a sector sky texture is in view of the player, the sky will not render. This saved computational time on the console but can result in some glitches. For example, if the ceiling is a grate texture, which should show the sky behind it, but if there is no sky texture in view, then no sky will be rendered behind the grate. It will appear black on the PC ports, while on the console it will have a "hall of mirrors" effect. To remedy this, small triangular sectors with sky textures can be placed in "empty" grate spots. Also levels with void skies and thick colored fog, if there is no sky ceiling in the player's view, the black or "hall of mirrors" will show up in far distances. Here a sector with the sky texture can be hidden behind a wall, just make sure to make the wall impassible and hide the inaccessible sectors and lines from the automap.</p>
+		
 			<p>On PC engines the <a href="../../structures/skydefs.html">SKYDEFS text lump</a> holds the definitions for all skies in the wad. Only the SKYDEFS from the last loaded wad will be used. If you want to use some new skies and some of the original skies in the same wad, you must include the definitions for the original skies in your SKYDEFS. On console engines, the skies are hardcoded into the engine. The diagram below shows how the sky and background graphics are positioned on the screen.</p>
 
 			<img src="skyguide.png" alt="Sky Guide" style="width: 640px; height: 480px;" />
 			
 			<p>Doom 64 originally rendered at 320 pixels by 240 pixels, thus the above diagram is pixel-accurate to that resolution. At higher screen resolutions, the pixel area covered is larger. However when designing new background graphics, the pixel sizes remain true to this diagram.</p>
 
-			<p>Each sky requires its own unique texture to be included in the wad. It doesn't matter what image the texture contains, as the texture is only used to assign the sky to the ceiling/floor of sectors. Assigning a sky texture to a ceiling or floor is what determines which sky will be used in that map. There can only be one sky used per map unless you are using an engine like EX+, which has a special <a href="../../maps/actions/list.html">linedef action</a> to change the sky.</p>
 			
 		<h2>Original Sky Definitions</h2>
 		
