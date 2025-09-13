@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">WAD File</title>
+	<meta property="og:title" content="WAD File" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>WAD File</h1>
+		
+			<p>WAD ("Where's All the Data?") is a file format used by all of the Doom engine games. Its primary purpose is to store the assets for the game, which includes in-game graphics and maps. Depending on which port of Doom 64, music, sounds, and information may or may not appear in the WAD file.</p>
+		
+		<h2>WAD Structure</h2>
+			
+			<p>For the PC Engines, WADs can be made and opened with any Doom WAD editor such as <a href="https://slade.mancubus.net/">Slade</a>, and the file structure is very similar to the other Doom games. Here asset types are stored in lumps designated by markers, and each map is in its own lump. For Doom 64, maps can also be stored in WADs and placed into the main WAD. One of the more popular WAD editors for this is Slade.</p>
+			
+			<p>The Nintendo 64 format of the WAD file is very similar to the PC format. However, the algorithm used for loading data from the catridge into memory requires assets and lumps of a specific length (divisible by 2 bytes). This means these assets must be padded, and the aforementioned N64 WAD utilities will do this.</p>
+			
+		<h3>Text Lumps (PC Engines)</h3>
+		
+			<p>Text lumps were introduced by Doom 64 EX to define texture animations (ANIMDEFS), map properties (MAPINFO), and sky effect properties (SKYDEFS). These have been utilized in all other PC engines of Doom 64. The pages below define which properties can be used.</p>
+			
+			<ul>
+				<li><a href="wad/animdefs.html">ANIMDEFS Lump</a></li>
+				<li><a href="wad/mapinfo.html">MAPINFO Lump</a></li>
+				<li><a href="wad/skydefs.html">SKYDEFS Lump</a></li>
+			</ul>
+						
+		<h2>Nintendo 64 Compression</h2>
+		
+			<p>The Doom 64 engines for the Nintendo 64 come with a utility to rip a assets from the Doom 64 ROM. Although general Doom WAD editors can open up this WAD, they cannot view and properly save the assets. This is because these assets are compressed to save space and are padded for Nintendo 64 loading purposes (must to be divisible by two bytes). To decompress assets, you can either use Kovic's <a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a> or Erick194's <a href="https://github.com/Erick194/D64TOOL/releases/">d64tool</a>.</p>
+			
+			<p>Interestingly the Doom 64 engines can load uncompressed assets. So it is not required to recompress the assets. However most flashcarts can't load N64 ROMs above 64 MB, so it may be helpful to recompress the assets. Erick194's <a href="https://github.com/Erick194/D64TOOL/releases/">d64tool</a> can do this recompression; it can reduce the WAD size by nearly a half of its original size in many cases.</p>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>

@@ -29,7 +29,7 @@
 			
 			<p>Unless a sector sky texture is in view of the player, the sky will not render. This saved computational time on the console but can result in some glitches. For example, if the ceiling is a grate texture, which should show the sky behind it, but if there is no sky texture in view, then no sky will be rendered behind the grate. It will appear black on the PC ports, while on the console it will have a "hall of mirrors" effect. To remedy this, small triangular sectors with sky textures can be placed in "empty" grate spots. Also levels with void skies and thick colored fog, if there is no sky ceiling in the player's view, the black or "hall of mirrors" will show up in far distances. Here a sector with the sky texture can be hidden behind a wall, just make sure to make the wall impassible and hide the inaccessible sectors and lines from the automap.</p>
 		
-			<p>On PC engines the <a href="../../structures/skydefs.html">SKYDEFS text lump</a> holds the definitions for all skies in the wad. Only the SKYDEFS from the last loaded wad will be used. If you want to use some new skies and some of the original skies in the same wad, you must include the definitions for the original skies in your SKYDEFS. On console engines, the skies are hardcoded into the engine. The diagram below shows how the sky and background graphics are positioned on the screen.</p>
+			<p>On PC engines the <a href="../../structures/wad/skydefs.html">SKYDEFS text lump</a> holds the definitions for all skies in the wad. Only the SKYDEFS from the last loaded wad will be used. If you want to use some new skies and some of the original skies in the same wad, you must include the definitions for the original skies in your SKYDEFS. On console engines, the skies are hardcoded into the engine. The diagram below shows how the sky and background graphics are positioned on the screen.</p>
 
 			<img src="skyguide.png" alt="Sky Guide" style="width: 640px; height: 480px;" />
 			
@@ -57,10 +57,10 @@
 			
 		<h2>Custom Sky Definitions</h2>
 		
-			<p>Settings and options for skies can be found on the <a href="../../structures/skydefs.html">SKYDEFS text lump</a> page. Many of these settings allow you to change the colors of the sky without changing the graphics. Use the following steps to define a custom sky.</p>
+			<p>Settings and options for skies can be found on the <a href="../../structures/wad/skydefs.html">SKYDEFS text lump</a> page. Many of these settings allow you to change the colors of the sky without changing the graphics. Use the following steps to define a custom sky.</p>
 
 			<ul>
-				<li>Set up your <a href="../../structures/skydefs.html">SKYDEFS text lump</a> and add it to the wad with <a href="http://slade.mancubus.net/">Slade</a>.</li>
+				<li>Set up your <a href="../../structures/wad/skydefs.html">SKYDEFS text lump</a> and add it to the wad with <a href="http://slade.mancubus.net/">Slade</a>.</li>
 				<li>Add a <a href="../textures/index.html">custom texture</a> to the wad with the texture name you used in the SKYDEFS.</li>
 				<li>Use that texture on a floor/ceiling of your map.</li>
 			</ul>
