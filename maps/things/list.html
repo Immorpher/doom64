@@ -112,6 +112,8 @@
 					<tr><td>Resurrector (Mother Demon)</td><td>3013</td><td>5000</td><td>8</td><td>50</td><td>30</td><td>80</td><td>150</td><td>1000</td><td>0</td><td>S|X|G|D|K</td><td>0</td><td>255</td></tr>
 				</tbody></table>
 				
+				<p>The Marine Bots will attack other monsters upon sight but not the player. However they will attack the player if alerted by sound (gun shot). They can drop down cliffs of any height.</p>
+				
 				<p>The Titlemap Cyberdemon will constantly shoot rockets at anything one tag higher than its own tag. So if the Titlemap Cyberdmon is tagged 99, it will constantly attack the thing with tag 100. After that thing dies, it will keep attacking that spot. It does not have a death animation, it just vanishes, and it cannot trigger linedefs upon death.</p>
 				
 			<h3>Items</h3>
@@ -214,7 +216,10 @@
 					<tr><td>Hanging White Meat</td><td>1047</td><td>1000</td><td>20</td><td>64</td><td>100</td><td>C|U</td><td>255</td></tr>
 					<tr><td>Hanging Head</td><td>1048</td><td>1000</td><td>20</td><td>60</td><td>100</td><td>C|U</td><td>255</td></tr>
 					<tr><td>Hanging Ribs</td><td>1049</td><td>1000</td><td>20</td><td>98</td><td>100</td><td>C|U</td><td>255</td></tr>
+					<tr><td>Static Marine</td><td>65535</td><td>100</td><td>19</td><td>64</td><td>100</td><td>S|X|G|D</td><td>255</td></tr>
 				</tbody></table>
+				
+				<p>The Static Marine was discovered by HeadshotTAS; it is presumably a result of an integer overflow bug that inherits many of the player spawn properties, thus it looks like a marine. It cannot move on its own, nor attack, and does not count as an enemy, thus it is more of a decorative entity. It can be moved when damaged and killed, like a barrel, but it cannot trigger any linedefs. Although it cannot be alerted by normal means, when alerted by an action it will run in place.</p>
 				
 			<h3>Other</h3>
 				<table>
@@ -251,7 +256,7 @@
 		
 		<h2>Non-Map Things</h2>
 			
-			<p>These thing do not have corresponding map editor numbers as they arent placeable in maps, but are projectiles and the player position.</p>
+			<p>These things do not have corresponding map editor numbers as they arent placeable in maps, but are projectiles and the player position.</p>
 		
 			<table>
 			<thead>
