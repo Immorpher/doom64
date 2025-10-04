@@ -219,7 +219,7 @@
 					<tr><td>Static Marine</td><td>65535</td><td>100</td><td>19</td><td>64</td><td>100</td><td>S|X|G|D</td><td>255</td></tr>
 				</tbody></table>
 				
-				<p>The Static Marine was discovered by HeadshotTAS; it is presumably a result of an integer overflow bug that inherits many of the player spawn properties, thus it looks like a marine. It cannot move on its own, nor attack, and does not count as an enemy, thus it is more of a decorative entity. It can be moved when damaged and killed, like a barrel, but it cannot trigger any linedefs. Although it cannot be alerted by normal means, when alerted by an action it will run in place.</p>
+				<p>The Static Marine was discovered by Potatosqrk; by using the editor number of 65535 it overflows to -1 which corresponds to the player id number. It inherits many of the player spawn properties, thus it looks like a marine. It cannot move on its own, nor attack, and does not count as an enemy, thus it is more of a decorative entity. It can be moved when damaged and killed, like a barrel, but it cannot trigger any linedefs. Although it cannot be alerted by normal means, when alerted by an action it will run in place.</p>
 				
 			<h3>Other</h3>
 				<table>
