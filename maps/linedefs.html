@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title id="title">Line Flags</title>
-	<meta property="og:title" content="Line Flags" />
+	<title id="title">Linedefs</title>
+	<meta property="og:title" content="Linedefs" />
 	<meta property="og:site_name" content="Doom 64 Compendium" />
 	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
 	<meta property="og:type" content="website" />
@@ -20,7 +20,11 @@
 	<div id="navigation"></div>
 	
 	<div id="content">
-		<h1>Line Flags</h1>
+		<h1>Linedefs</h1>
+		
+		<p>A linedef (line definition) is a wall shared by two vertices. It references a sidedef (or two sidedefs if it is double sided) which contains the wall texture data for each linedef. Since not all sidedefs are unique, theoretically multiple linedefs can refer to a singular sidedef, which allows for <a href="nodebuilder/index.html">compression routines</a>. Sectors are formed by connected and enclosed linedefs. Additionally linedefs are used to trigger actions, which make levels more dynamic.</p>
+	
+		<h2>Line Flags</h2>
 		
 		<p>Line flags are settings and properties you can apply to linedefs. These change how the textures are rendered and how players, monsters, and projectiles interact with them. For certain flags, such as the texture scrolls, they only work on the front side of the lindef.</p>
 
@@ -44,7 +48,7 @@
 			<tr><td>0x200</td><td>Render Middle Texture</td><td>Show middle texture (good for windows and cages)</td></tr>
 			<tr><td>0x400</td><td>No Occlusion</td><td>Explicitly allow geometry behind linedef to be rendered</td></tr>
 			<tr><td>0x800</td><td>Block Projectiles</td><td>Block all projectiles, but not hitscans, from passing</td></tr>
-			<tr><td>0x1000</td><td>Trigger By Dead Thing</td><td>Activate lineaction by monster death or sometimes monster crossing</td></tr>
+			<tr><td>0x1000</td><td>Trigger By Dead Thing</td><td>Activate line action by monster death, monster line crossing, or monster interaction</td></tr>
 			<tr><td>0x2000</td><td>Switch Flag 1</td><td>Activated when setting up switches</td></tr>
 			<tr><td>0x4000</td><td>Switch Flag 2</td><td>Activated when setting up switches</td></tr>
 			<tr><td>0x8000</td><td>Switch Flag 3</td><td>Activated when setting up switches</td></tr>
@@ -63,8 +67,35 @@
 			<tr><td>0x40000000</td><td>Mirror Texture Horizontal</td><td>Mirror every other texture tile horizontally</td></tr>
 			<tr><td>0x80000000</td><td>Mirror Texture Vertical</td><td>Flip every other texture tile vertically</td></tr>
 		</tbody></table>
+		
+		<p>Combinations of the switch flags are what ends up where the switches are shown (switch display) and where there textures are stored (switch position).</p>
 
+		<h2>Activation Type (Specials)</h2>
+		
+		<p>In addition to flags, linedefs have special properties which change how they can activate actions.</p>
 
+		<table>
+			<thead>
+			<tr>
+				<th>Flag Bit</th>
+				<th>Editor Setting</th>
+				<th>Description</th>
+			</td></tr>
+			</thead><tbody>
+			<tr><td>0x0 – 0xFF</td><td>Actions 0 to 255</td><td>These are the normal actions (<a href="actions/index.html">doors, floors, ect...</a>)</td></tr>
+			<tr><td>0x100 – 0x1FF</td><td>Actions 256 to 511</td><td>These are the actions which reference macros</td></tr>
+			<tr><td>0x200</td><td>Red Key</td><td>Requires a red key to activate</td></tr>
+			<tr><td>0x400</td><td>Blue Key</td><td>Requires a blue key to activate</td></tr>
+			<tr><td>0x800</td><td>Yellow Key</td><td>Requires a yellow key to activate</td></tr>
+			<tr><td>0x1000</td><td>Cross</td><td>Activated by crossing the linedef</td></tr>
+			<tr><td>0x2000</td><td>Shoot</td><td>Activated by shooting with a hitscan weapon</td></tr>
+			<tr><td>0x4000</td><td>Use</td><td>Activated by the player's use action</td></tr>
+			<tr><td>0x8000</td><td>Repeatable</td><td>Can be activated repeatably</td></tr>
+		</tbody></table>
+		
+		<h2>Sidedefs</h2>
+		
+		<p>As sidedefs (side definitions) require an associated linedef to be displayed within a map, editing their properties typically occurs with linedefs options themselves in editors. Each sidedef contains three texture settings (top, middle, bottom), vertical and horizontal offsets and the number of the sector it faces. A linedef will have one or two sidedefs depending if it is flagged single sided or double sided respectfully. Veritcal and horizontal offsets will also offset the position of any switches, thus allowing for switch positioning. Since not all sidedefs contain unique information in a map, it is possible to reduce the number of them with a <a href="nodebuilder/index.html">compression routine</a>.</p>
 		
 	</div>
 
