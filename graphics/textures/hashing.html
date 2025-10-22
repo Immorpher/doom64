@@ -21,7 +21,6 @@
 	
 	<div id="content">
 	
-	<script type="text/javascript" src="d64hash.js"></script>
 	
 		<h1>Texture Hashing</h1>
 		
@@ -44,6 +43,14 @@
 						<button name="reset" id="reset" type="reset">Reset</button>
 					</fieldset>
 				</form>
+				
+			<h2>Duplicate Hash Checker</h2>
+			
+				<p>You can select multiple files below to calculate their hash numbers via their names and check for hash duplicates.</p>
+				
+				<input type="file" name="file" id="file" multiple></br>
+
+				<div id="output"></div>
 			
 			<h2>Original Texture Referencing</h2>
 				<p>Below is the list of textures used on the original Doom 64 arranged by their WAD order, their texture name, and hash number on PC.</p>
@@ -557,6 +564,8 @@
 	</div>
 
 	<div id="footer"></div>
+	
+	<script type="text/javascript" src="d64hash.js"></script>
 	<script>
 	layout("../../");
 	</script>
