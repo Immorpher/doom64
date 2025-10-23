@@ -25,7 +25,7 @@
 		<h1>Texture Hashing</h1>
 		
 			
-			<p>On the Nintendo 64, Doom 64 maps refered to the textures by number in the order they appeared in the WAD. This is not particularly convenient when working with custom textures on PC as the order can change. Thus, on PC engines, the texture names are hashed into a number which the map references to. This simplifies the use of custom textures and the order of them no longer matters. Unfortunately not all hash numbers are unique, so multiple textures can result into the same hash number. This increasingly becomes a problem when large amount of textures are being used. If two textures share the same hash number, the later loaded texture will be shown for all textures of that hash number. To remedy this, one of the textures must have its name changed to represent a different hash number.</p>
+			<p>On the Nintendo 64, Doom 64 maps refered to the textures by number in the order they appeared in the WAD. This is not particularly convenient when working with custom textures on PC as the order can change and it would require all of the maps that used them to be retextured. Thus, on PC engines, the texture names are hashed into a number which the map references to. This simplifies the use of custom textures and the order of them no longer matters. Unfortunately not all hash numbers are unique, so multiple textures can result into the same hash number. This increasingly becomes a problem when large amount of textures are being used. If two textures share the same hash number, the later loaded texture will be shown for all textures of that hash number. To remedy this, one of the textures must have its name changed to represent a different hash number.</p>
 			
 			<h2>Texture Hash Generator</h2>
 			
@@ -46,7 +46,7 @@
 				
 			<h2>Duplicate Hash Checker</h2>
 			
-				<p>You can select multiple files below to calculate their hash numbers via their names and check for hash duplicates.</p>
+				<p>You can select multiple files below to calculate their hash numbers via their names and check for hash duplicates. Use CTRL+A to select all of the files in a directory.</p>
 				
 				<input type="file" name="file" id="file" multiple></br>
 
