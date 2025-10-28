@@ -31,9 +31,7 @@
 		<table>
 			<thead>
 			<tr>
-				<th>Flag Bit</th>
-				<th>Editor Setting</th>
-				<th>Description</th>
+				<th>Flag Bit</th><th>Editor Setting</th><th>Description</th>
 			</td></tr>
 			</thead><tbody>
 			<tr><td>0x1</td><td>Impassable</td><td>Monsters, players, and projectiles can't cross</td></tr>
@@ -49,10 +47,6 @@
 			<tr><td>0x400</td><td>No Occlusion</td><td>Explicitly allow geometry behind linedef to be rendered</td></tr>
 			<tr><td>0x800</td><td>Block Projectiles</td><td>Block all projectiles, but not hitscans, from passing</td></tr>
 			<tr><td>0x1000</td><td>Trigger By Dead Thing</td><td>Activate line action by monster death, monster line crossing, or monster interaction</td></tr>
-			<tr><td>0x2000</td><td>Switch Flag 1</td><td>Activated when setting up switches</td></tr>
-			<tr><td>0x4000</td><td>Switch Flag 2</td><td>Activated when setting up switches</td></tr>
-			<tr><td>0x8000</td><td>Switch Flag 3</td><td>Activated when setting up switches</td></tr>
-			<tr><td>0x10000</td><td>Switch Check Height</td><td>Enable linedef to behave as a switch</td></tr>
 			<tr><td>0x20000</td><td>Scroll Left</td><td>Scroll texture to the left</td></tr>
 			<tr><td>0x40000</td><td>Scroll Right</td><td>Scroll texture to the right</td></tr>
 			<tr><td>0x80000</td><td>Scroll Up</td><td>Scroll texture upward</td></tr>
@@ -68,7 +62,20 @@
 			<tr><td>0x80000000</td><td>Mirror Texture Vertical</td><td>Flip every other texture tile vertically</td></tr>
 		</tbody></table>
 		
-		<p>Combinations of the switch flags are what ends up where the switches are shown (switch display) and where there textures are stored (switch position).</p>
+		<h3>Additional Switch Flags</h3>
+		<p>The way switches work in Doom 64 is unlike other engines, thus it was misunderstood how its switch flags for line definitions behave. Because of this map editors do not always directly edit Doom 64's switch flags, rather they have options which indirectly edit them in various ways. And sometimes flags are mislabeled as "Switch Check Height". Engine-side, however, Doom 64 has four switch flags: two to determine which texture slot the graphic is displayed on and two to determine which texture the switch will be displayed over. Each set of two flags is either for upper or lower texture, and to designate the middle texture both flags are enabled at the same time.</p>
+		<table>
+			<thead>
+			<tr>
+				<th>Flag Bit</th><th>Name</th><th>Description</th>
+			</td></tr>
+			</thead><tbody>
+			<tr><td>0x2000</td><td>Switch Decal in Upper</td><td>This signifies the switch graphic is in upper texture spot</td></tr>
+			<tr><td>0x4000</td><td>Switch Decal in Lower</td><td>This signifies the switch graphic is in lower texture spot</td></tr>
+			<tr><td>0x8000</td><td>Switch Display in Upper</td><td>This signifies the switch graphic is displayed on the upper texture</td></tr>
+			<tr><td>0x10000</td><td>Switch Display in Upper</td><td>This signifies the switch graphic is displayed on the lower texture</td></tr>
+		</tbody></table>
+		
 
 		<h2>Activation Type (Specials)</h2>
 		
