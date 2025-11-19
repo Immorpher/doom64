@@ -211,6 +211,8 @@
 				<tr><td>214</td><td>(undefined)</td><td>Elevator_MoveBy(<i>tag</i>, <i>value</i>)<br/>Elevator_MoveByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor and ceiling in the tagged sector in the same direction at the same time by the amount specified in <i>value</i> or global integer (action 204). Positive values raise, negative values lower.</td></tr>
 				<tr><td>241</td><td>(undefined)</td><td>Pillar_OpenBy(<i>tag</i>, <i>value</i>)<br/>Pillar_OpenByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor and ceiling in the tagged sector in opposite directions at the same time by the amount specified in <i>value</i> or global integer (action 204). Positive values move the floor and the ceiling apart, negative values move them closer together.</td></tr>
 			</tbody></table>
+			
+			<p>On the Remaster, when using action 220 (Sector Copy Flags) to copy flags from a secret sector to a non-secret sector, the non-secret sector will inherit the secret flag but the total number of secrets do not change. However, the secret will still trigger potentially causing the number of secrets on the stats screen to exceed 100%. If the player activates the secret before the flag is copied over, the secret flag will not copy over.</p>
 
 		<h2>Linedef Properties</h2>
 		
