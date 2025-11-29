@@ -34,7 +34,7 @@
 		
 			<p>Note that, when making switches how it was done originally in Doom 64, the switch graphics do not show up properly in Doom Builder 64. But when tested in game it will work as originally intended. This is because switches are displayed as decals and not textures, which Doom Builder 64 has not implemented yet.</p>
 			
-			<p>You can find the options to make switches in the "Edit Linedef" panel. In general enabling the "Switch Check Height" setting is required for switches to display properly in the most Doom 64 engines. Then depending on what you want the switch to do, whether it be a door action, floor action or a macro script, select the appropriate option in "Action". This will apply to the sector with the corresponding number in "Identification". In "Activation Type" you can select "Use" if you want the player’s use action to activate it, and/or you can select "Shoot" if you also want a shootable switch. This switch will only work once, but if you further select "Repeatable" then the switch can be used multiple times.</p>
+			<p>You can find the options to make switches in the "Edit Linedef" panel. Then depending on what you want the switch to do, whether it be a door action, floor action or a macro script, select the appropriate option in "Action". This will apply to the sector with the corresponding number in "Identification". In "Activation Type" you can select "Use" if you want the player’s use action to activate it, and/or you can select "Shoot" if you also want a shootable switch. This switch will only work once, but if you further select "Repeatable" then the switch can be used multiple times.</p>
 			
 			</p>The "Switch Setup" section allows you to determine how the switch should be displayed to the player. First, the "Switch Display" option determines which vertical portion of the linedef (Upper, Middle, or Lower) the switch graphic will attach to. If you want to add a switch to a wall of a lowered ceiling, then select "Upper". Then if you want to add a switch between a ceiling and a floor to a wall select "Middle". And then if you want to add a switch to the side of a raised floor select "Lower". If your desired surface is missing a texture, the switch will not show up, but this surface can be any texture. This allows you to overlay the switch over various textures to create interesting looking switches. Then "Switch Texture" is to set which surface you plan on selecting the switch texture. This surface should be one that is not visible to the player, so if you don’t have a lowered ceiling put it in "Upper", and if you don’t have a raised floor put it in "Lower"<p>
 			
@@ -52,25 +52,20 @@
 			
 			<img src="insetswitch02.png" alt="Inset Switch Sector Properties" style="width: 477px; height: 583px;  image-rendering: pixelated;" />
 			
-			<p>Now for the very top of the linedef (the most inset line), which the switch should lie on, you can set these properties. First in Settings check "Switch Check Height", this is required for the switch to work on most engines. Then for this switch in particular, it is opening a sector door tagged 2, but you can change it to whatever you need the switch to do. This switch is set to activate on use so "Use" is checked and it is intended to be used more than once, so "Repeatable" is checked. Since it is a one sided line-def the Switch Display set to "Middle". Then Switch Texture to "upper" as that is where the switch decal will be defined for this switch. Here the "SWXSAA" texture is chosen for the switch. It will automatically switch to "SWXSAB" when the player uses it. Since switches are always offset from the edge by 16 units, this inset requires a -16 Y texture offset to display correctly.</p>
+			<p>Now for the very top of the linedef (the most inset line), which the switch should lie on, you can set these properties. For this switch in particular, it is opening a sector door tagged 2, but you can change it to whatever you need the switch to do. This switch is set to activate on use so "Use" is checked and it is intended to be used more than once, so "Repeatable" is checked. Since it is a one sided line-def the Switch Display set to "Middle". Then Switch Texture to "upper" as that is where the switch decal will be defined for this switch. Here the "SWXSAA" texture is chosen for the switch. It will automatically switch to "SWXSAB" when the player uses it. Since switches are always offset from the edge by 16 units, this inset requires a -16 Y texture offset to display correctly.</p>
 			
-			<img src="insetswitch03.png" alt="Inset Switch Linedef Properties" style="width: 1149px; height: 679px;  image-rendering: pixelated;" />
+			<img src="insetswitch03.png" alt="Inset Switch Linedef Properties" style="width: 1193px; height: 596px;  image-rendering: pixelated;" />
 			
 			<p>That is all you need for this type of inset switch! The image below shows what the switch looks like in Doom Builder 64 (left) and the Doom 64 Remaster (right). Notice that due to our offset, for inset switches the texture in Doom Builder 64 is offset downard and further it does not show the switch. But in the Doom 64 Remaster, the switch shows up just fine.</p>
 			
-			<img src="insetswitch04.png" alt="Inset Switch Linedef Properties" style="width: 800px; height: 400px;  image-rendering: pixelated;" />
+			<img src="insetswitch04.png" alt="Inset Switch in Game" style="width: 800px; height: 400px;  image-rendering: pixelated;" />
 			
 			
 		<h2>Engine Specific Differences</h2>
 		
 			<p>For most Doom 64 engines, except for Doom 64 EX, the player's activation distance can pass through single-sided linedefs (walls). This means that, if the activating linedef is not far enough away, a player can activate a switch or a door through a thin wall. A remedy to this is to make the wall thicker. Depending on the angle, the "Trigger Only Front Side" flag can be used to prevent the player from activating a backside of a linedef as well.</p>
 		
-			<p>On the Nintendo 64 and Doom 64 Remaster, despite the implications of "Switch Check Height", switches can be activated from any height when shot unless a sector of sufficienct size blocks the hitscan. Even if the switch is embedded into the floor, if a player's shot can cross the linedef, it will be activated. However a raised sector can be used to block shots from activating linedefs; particularly inset switches solve this problem.</p>
-			
-			<p>Doom 64 EX is less stringent on how switches are built. Flags such as "Switch Check Height" aren't required.</p>
-			
-			<p></p>
-		
+			<p>On the Nintendo 64 and Doom 64 Remaster, switches can be activated from any height when shot unless a sector of sufficienct size blocks the hitscan. Even if the switch is embedded into the floor, if a player's shot can cross the linedef, it will be activated. However a raised sector can be used to block shots from activating linedefs; particularly inset switches solve this problem.</p>
 		
 	</div>
 

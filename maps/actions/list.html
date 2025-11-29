@@ -119,7 +119,7 @@
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
 				<tr><td>39</td><td>Teleport</td><td>Teleport_Normal(<i>tid</i>)<br/>Teleport_ToDest(<i>tid</i>)</td><td>Teleports the activating thing normally (with sound and green glow) to tagged destination. On the Doom 64 Remaster you can not teleport via a switch.</td></tr>
-				<tr><td>125</td><td>Teleport (monsters only)</td><td>(undefined)</td><td>Teleports monsters only (with sound and green glow) to tagged destination.</td></tr>
+				<tr><td>125</td><td>Teleport (monsters only)</td><td>Teleport_Monster_Only(<i>tid</i>)</td><td>Teleports monsters only (with sound and green glow) to tagged destination.</td></tr>
 				<tr><td>249</td><td>Silent Teleport</td><td>Teleport_Silent(<i>tid</i>)<br/>Teleport_Stomp(<i>tid</i>)</td><td>Teleports the activating thing without any sound and glow to tagged destination. On the Doom 64 Remaster you can not use this via a switch if it is a single action but it works with a macro. Originally thought to be player-only, monsters can activate this too if "Trigger By Dead Thing" is set on the referencing linedef.</td></tr>
 			</tbody></table>
 
@@ -144,7 +144,7 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>17</td><td>Start Light Strobing</td><td>(undefined)</td><td>Starts a light which brightens every second on the tagged sector which matches the linedef <i>tag</i>.</td></tr>
+				<tr><td>17</td><td>Start Light Strobing</td><td>Start_Light_Strobing(<i>tag</i>)</td><td>Starts a light which brightens every second on the tagged sector which matches the linedef <i>tag</i>.</td></tr>
 				<tr><td>222</td><td>Copy All Lights from Global Integer</td><td>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>)</td><td>Instantly copies the lights to the sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>234</td><td>Copy Upper Light from Global Integer</td><td>SetLightID(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly blends upper wall and ceiling lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>235</td><td>Smoothly Copy All Lights from Global Integer</td><td>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly transitions the lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204). This action operates on the "LIGHTS" lump and will change the color of any sector that has the same color as the destination tag. Therefore, it is recommended to give the destination sector a unique sector color.</td></tr>
@@ -229,9 +229,9 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>90</td><td>Artifact Switch 1 (Orange)</td><td>(undefined)</td><td>Will check if player has the orange artifact and will activate line with the tag one higher than the current line.</td></tr>
-				<tr><td>91</td><td>Artifact Switch 2 (Blue)</td><td>(undefined)</td><td>Will check if player has the blue artifact and will activate line with the tag one higher than the current line.</td></tr>
-				<tr><td>92</td><td>Artifact Switch 3 (Purple)</td><td>(undefined)</td><td>Will check if player has the purple artifact and will activate line with the tag one higher than the current line.</td></tr>
+				<tr><td>90</td><td>Artifact Switch 1 (Orange)</td><td>Orange_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the orange artifact and will activate line with the tag one higher than the current line.</td></tr>
+				<tr><td>91</td><td>Artifact Switch 2 (Blue)</td><td>Blue_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the blue artifact and will activate line with the tag one higher than the current line.</td></tr>
+				<tr><td>92</td><td>Artifact Switch 3 (Purple)</td><td>Purple_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the purple artifact and will activate line with the tag one higher than the current line.</td></tr>
 			</tbody></table>
 
 		<h2>Exits</h2>
