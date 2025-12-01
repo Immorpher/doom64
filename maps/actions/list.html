@@ -148,11 +148,11 @@
 				<tr><td>222</td><td>Copy All Lights from Global Integer</td><td>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>)</td><td>Instantly copies the lights to the sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>234</td><td>Copy Upper Light from Global Integer</td><td>SetLightID(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly blends upper wall and ceiling lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>235</td><td>Smoothly Copy All Lights from Global Integer</td><td>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly transitions the lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204). This action operates on the "LIGHTS" lump and will change the color of any sector that has the same color as the destination tag. Therefore, it is recommended to give the destination sector a unique sector color.</td></tr>
-				<tr><td>205</td><td>(undefined)</td><td>Sector_SetFloorColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector floor color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>206</td><td>(undefined)</td><td>Sector_SetCeilingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector ceiling color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>207</td><td>(undefined)</td><td>Sector_SetThingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector thing color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>208</td><td>(undefined)</td><td>Sector_SetUpperWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector upper wall color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>209</td><td>(undefined)</td><td>Sector_SetLowerWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector lower wall color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
+				<tr><td>205</td><td>Set Floor Light ID from Global Integer</td><td>Sector_SetFloorColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector floor color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
+				<tr><td>206</td><td>Set Ceiling Light ID from Global Integer</td><td>Sector_SetCeilingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector ceiling color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
+				<tr><td>207</td><td>Set Thing Light ID from Global Integer</td><td>Sector_SetThingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector thing color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
+				<tr><td>208</td><td>Set Upper Wall Light ID from Global Integer</td><td>Sector_SetUpperWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector upper wall color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
+				<tr><td>209</td><td>Set Lower Wall Light ID from Global Integer</td><td>Sector_SetLowerWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector lower wall color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
 			</tbody></table>
 			<p>The light <i>id</i>, as opposed to the tag, refers to a specific light index. The first set of lights (0 to 255) are grayscale from black to white. The subsequent light indices refer directly to the lights lump, that is built in the map WAD, where the first light begins at 256. It can be hard to tell which light you are referring to just in a map editor, however you can look at the lights lump in a program like <a href="https://slade.mancubus.net/">Slade</a> to determine which lights are in which order.</p>
 					
@@ -252,7 +252,7 @@
 				<tr><td>216</td><td>Change Music (Tag = Music#)</td><td>Music_Change(<i>id</i>)</td><td>(Doom 64 EX+) Plays music track corresponding to MUSAMB##</td></tr>
 				<tr><td>217</td><td>Change Sky (Tag = Sky#)</td><td>Sky_Change(<i>id</i>)</td><td>(Doom 64 EX+) Changes sky based on sky load order in SKYDEFS</td></tr>
 				<tr><td>253</td><td>Unlock Cheat Menu</td><td>UnlockCheatMenu</td><td>Unlock the "features" cheat menu</td></tr>
-				<tr><td>254</td><td>Draw D64 Logo on F_SKYG flat</td><td>DisplaySkyLogo</td><td>Displays the backpic graphic on the sky. This only works on skies with the "fadeinbackground" designation.</td></tr>
+				<tr><td>254</td><td>Display Backpic on Sky</td><td>DisplaySkyLogo</td><td>Displays the backpic graphic on the sky. This only works on skies with the "fadeinbackground" designation.</td></tr>
 			</tbody></table>
 			
 		
