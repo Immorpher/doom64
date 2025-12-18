@@ -25,19 +25,25 @@
 		
 			<p>How in-game sounds are handled varies between engines, see the <a href="../../structures/index.html">structures section</a>. The original engine sound-rate operated at 22.05 kHz and played back sounds at this rate. However, the sample rate of the sounds on the Doom 64 cart are actually sampled at 11.025 kHz. Thus the sounds are stored at 22.05 kHz on the N64 cart, then they are interpolated at half-speed with nearest-neighbor interpolation down to 11.025 kHz.</p>
 			
-		<h2>Doom 64 Remaster</h2>
+			<ul>
+				<li><a href="#Remaster">Doom 64 Remaster</a></li>
+				<li><a href="#Doom64EX">Doom 64 EX Engines</a></li>
+				<li><a href="#Nintendo64">Nintendo 64</a></li>
+			</ul>
+			
+		<h2 id="Remaster">Doom 64 Remaster</h2>
 		
 			<p>Unlike the <a href="../music/index.html">music</a>, the in-game sound effects are stored on the WAD in the DS lump. Also unlike other Doom 64 engines, the sounds are not stored at double the rate, rather they are already interpolated to play back at the proper rate. As the Doom 64 Remaster uses the FMOD sound engine, it supports a wide variety of sample rates and file formats. Make sure the sound names correspond to those of the original ones you wish to replace with.</p>
 			
 			<p>There is a sound-ordering bug with the Doom 64 Remaster. If only some of the sounds are replaced in a custom WAD, the sound effects can be disordered and play back incorrectly within the game. To remedy this, replace every soundeffect the game uses, even if its replacing the original effects with identical sounds.</p>
 			
-		<h2>Doom 64 EX Engines</h2>
+		<h2 id="Doom64EX">Doom 64 EX Engines</h2>
 		
 			<p>The engines based on Doom 64 EX use the FluidSynth sound engine. Here the sounds are stored into a soundfont, and are stored at twice their intended playback rate (just like the original N64 engine). If you want to replace the original sound effects, you need to use a soundfont editor (such as <a href="https://www.polyphone-soundfonts.com/">Polyphone</a>) and edit the doomsnd.sf2 file. You will need to use the WAV sound format and it supports various sample and bit rates. However you will need to change its sample rate to twice the intended play-back rate for it to play back at the right pitch.</p>
 
 			<p>It is recommended that you make a back up of the doomsnd.sf2 file to revert back to the original sound effects when needed.</p>
 			
-		<h2>Nintendo 64 Engines</h2>
+		<h2 id="Nintendo64">Nintendo 64 Engines</h2>
 		
 			<p>Now <a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a> can convert soundfonts to formats compatible with the Nintendo 64. None of these assets are stored in the WAD on the Nintendo 64, rather they are stored in three files for the WESS sound system.</p>
 			

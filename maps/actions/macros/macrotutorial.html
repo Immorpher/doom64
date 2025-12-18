@@ -24,14 +24,20 @@
 		<h1>Macro Tutorial</h1>
 
 				<p>This tutorial will help you get started with Doom 64's macro scripting. Here we'll take the example macro from the <a href="index.html">macros page</a>, put it into a map, and make sure the script is compiling and running correctly.</p>
+				
+				<ul>
+					<li><a href="#Map">Making the Map</a></li>
+					<li><a href="#Macro">Adding the Macro</a></li>
+					<li><a href="#Compiling">Compiling the Script</a></li>
+				</ul>
 
-			<h2>Making the Map</h2>
+			<h2 id="Map">Making the Map</h2>
 
 				<p>Start a new map in Doom Builder 64. Make a room for a tech base with the Player 1 Start in it. Now, make a closed door leading out of the room. Behind that make a short hallway, followed by another closed door. Make an area behind the second door with some zombies or imps. Add some ammo and a weapon in the starting room. Now run the game and play it.</p>
 
 				<p>It's all very standard for Doom, of course. But macro scripting could add some uniqueness to even such a small area.</p>
 
-			<h2>Adding the Macro</h2>
+			<h2 id="Macro">Adding the Macro</h2>
 
 			<h3>Setting up the Map</h3>
 
@@ -64,7 +70,7 @@ macro 1
 
 				<p>There is one thing you probably have to change right now in your script, however. If you have Doom Builder 64 installed somewhere else than is listed in the #setdir line of the macro, you will have to change that line to the correct path for your installation. Otherwise you will get an error when you try to compile the script.</p>
 
-			<h2>Compiling the Script</h2>
+			<h2 id="Compiling">Compiling the Script</h2>
 
 				<p>The macro script you write can be read by a person, but not by Doom 64 itself. It needs to be translated to something that Doom 64 can understand, which is what compiling does. Compiling will also tell you if there's errors in the syntax (scripting grammar) of your script.</p>
 

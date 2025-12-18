@@ -22,12 +22,32 @@
 	<div id="content">
 		<h1>Thing List</h1>
 			<p>Below is a list of all things found in Doom 64 and Doom 64 EX+. This includes things used in maps and things used for game logic. Additionally each thing can have flags assigned to it to give it properties as described below.</p>
+							
+			<ul>
+				<li><a href="#Flags">Thing Flags</a>
+					<ul>
+						<li><a href="#Intrinsic">Intrinsic Flags</a></li>
+						<li><a href="#Logic">Logic Flags</a></li>
+					</ul></li>
+				<li><a href="#Map">Map Things</a>
+					<ul>
+						<li><a href="#Enemies">Enemies</a></li>
+						<li><a href="#Items">Items</a></li>
+						<li><a href="#Decorations">Decorations</a></li>
+						<li><a href="#Other">Other</a></li>
+						<li><a href="#EX+Map">EX+ Additional Map Things</a></li>
+					</ul></li>
+				<li><a href="#Non-Map">Non-Map Things</a>
+					<ul>
+						<li><a href="#EX+Non-Map">EX+ Additional Non-Map Things</a></li>
+					</ul></li>
+			</ul>
 		
-		<h2>Thing Flags</h2>
+		<h2 id="Flags">Thing Flags</h2>
 		
 			<p>As opposed to "Editor Flags", "Thing Flags" are not changeable by the level editor although some will inherit properties from the "Editor Flags". These flags are either permanently given to things or are changeable within engine situations for artificial intelligence. However these do give things specific properties which define their behavior and sometimes appearance.</p>
 			
-			<h3>Intrinsic Flags</h3>
+			<h3 id="Intrinsic">Intrinsic Flags</h3>
 				<p>These flags are initial properties given to things, which distinguish thing types.</p>
 				
 				<table>
@@ -55,7 +75,7 @@
 				</tbody>
 				</table>
 				
-			<h3>Logic Flags</h3>
+			<h3 id="Logic">Logic Flags</h3>
 				<p>These are logic flags which guide the thing's artificial intelligence or they inherit properties from the level designer's chosen "editor flags".</p>
 				
 				<table>
@@ -80,11 +100,11 @@
 				</tbody>
 				</table>
 				
-		<h2>Map Things</h2>
+		<h2 id="Map">Map Things</h2>
 		
 			<p>These things can be placed into maps with a map editor and thus they all have a doom editor number.</p>
 		
-			<h3>Enemies</h3>
+			<h3 id="Enemies">Enemies</h3>
 				<p>The only enemy which has a "projectile damage" value is the Lost Soul. It has an attack where its "MF_SKULLFLY" flag becomes active and essentially the enemy behaves like a projectile, thus it delivers a projectile damage when it collides with a thing that is shootable.</p>
 				<table>
 				<thead>
@@ -116,7 +136,7 @@
 				
 				<p>The Titlemap Cyberdemon will constantly shoot rockets at anything one tag higher than its own tag. So if the Titlemap Cyberdmon is tagged 99, it will constantly attack the thing with tag 100. After that thing dies, it will keep attacking that spot. It does not have a death animation, it just vanishes, and it cannot trigger linedefs upon death.</p>
 				
-			<h3>Items</h3>
+			<h3 id="Items">Items</h3>
 				<p>All items have the "MF_SPECIAL" which allows players to pick them up.</p>
 			
 				<table>
@@ -166,7 +186,7 @@
 					<tr><td>Laser Weapon (Unmaker)</td><td>84</td><td>1000</td><td>20</td><td>16</td><td>100</td><td>P</td><td>255</td></tr>
 				</tbody></table>
 			
-			<h3>Decorations</h3>
+			<h3 id="Decorations">Decorations</h3>
 				<p>These things all reference a sprite which is used to decorate levels.</p>
 				<table>
 				<thead>
@@ -221,7 +241,7 @@
 				
 				<p>The Static Marine was discovered by Potatosqrk; by using the editor number of 65535 it overflows to -1 which corresponds to the player id number. It inherits many of the player spawn properties, thus it looks like a marine. It cannot move on its own, nor attack, and does not count as an enemy, thus it is more of a decorative entity. It can be moved when damaged and killed, like a barrel, but it cannot trigger any linedefs. Although it cannot be alerted by normal means, when alerted by an action it will run in place.</p>
 				
-			<h3>Other</h3>
+			<h3 id="Other">Other</h3>
 				<table>
 				<thead>
 					<tr><th>Name</th><th>Editor<br/>Number</th><th>Health</th><th>Width</th><th>Height</th><th>Mass</th><th>Flags</th><th>Opacity</th></tr>
@@ -239,7 +259,7 @@
 					<tr><td>Laser Marker</td><td>90</td><td>1000</td><td>20</td><td>16</td><td>100</td><td>C|L</td><td>255</td></tr>
 				</tbody></table>
 				
-			<h3>EX+ Additional Map Things</h3>
+			<h3 id="EX+Map">EX+ Additional Map Things</h3>
 				<p>Doom 64 EX+, and engines based on it, has 40 additional miscellaneous decorative things for level decorations. These can be swapped for new graphics to provide more level details. There are additional enemies as well which mostly represent the Doom 2 enemies that were not found in the original Doom 64. The exception being is TESTA0 which is based upon a placeholder sprite found in the Doom 64 Alpha. This entity is meant to be edited by modding to fit custom projects.</p>
 				<table>
 				<thead>
@@ -254,7 +274,7 @@
 					<tr><td>TESTA0</td><td>9005</td><td>800</td><td>8</td><td>128</td><td>12</td><td>55</td><td>90</td><td>500</td><td>0</td><td>S|X|F|K</td><td>0</td><td>255</td></tr>
 				</tbody></table>
 		
-		<h2>Non-Map Things</h2>
+		<h2 id="Non-Map">Non-Map Things</h2>
 			
 			<p>These things do not have corresponding map editor numbers as they arent placeable in maps, but are projectiles and the player position.</p>
 		
@@ -289,7 +309,7 @@
 				<tr><td>Explosion 2</td><td>1000</td><td>0</td><td>20</td><td>16</td><td>100</td><td>0</td><td>C</td><td>80</td></tr>
 			</tbody></table>
 			
-			<h3>EX+ Additional Non-Map Things</h3>
+			<h3 id="EX+Non-Map">EX+ Additional Non-Map Things</h3>
 				<p>Doom 64 EX+ added additional non-map things to add attacks for the new enemies and additional blood colors.</p>
 				<table>
 				<thead>

@@ -22,13 +22,31 @@
 	<div id="content">
 		<h1>Action List</h1>
 		
-		<p>Here is a list of all of the actions available in Doom 64. Many of the actions are labeled as "(undefined)" when they are not specifically defined for use in Doom Builder 64, but they can still be used. For linedefs, you just need to type in the corresponding number of an undefined action to use it. For macros, at the top of the script, you will use the "#define" property, followed by the name you want to use as the macro, then the macro number and its value. For example this is how the simple door open action is defined: "#define Door_Open(tag) 2:tag".</p>
-		
-		<p>The majority of actions target a specific line, sector, or thing with a specified tag. Additional properties are sometimes assigned via action 204, which sets the global integer / macro integer. Macro actions which have two inputs are, in reality, a combination of actions where action 204 happens first, followed by another action for the specific effect.</p>
-		
-		<p>There are some limits to moving sectors. Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector if using a macro. Further, the Doom 64 Remaster can’t have more than 30 moving ceilings and floors at the same time while EX based ports can have more.</p>
+			<p>Here is a list of all of the actions available in Doom 64. Many of the actions are labeled as "(undefined)" when they are not specifically defined for use in Doom Builder 64, but they can still be used. For linedefs, you just need to type in the corresponding number of an undefined action to use it. For macros, at the top of the script, you will use the "#define" property, followed by the name you want to use as the macro, then the macro number and its value. For example this is how the simple door open action is defined: "#define Door_Open(tag) 2:tag".</p>
+			
+			<p>The majority of actions target a specific line, sector, or thing with a specified tag. Additional properties are sometimes assigned via action 204, which sets the global integer / macro integer. Macro actions which have two inputs are, in reality, a combination of actions where action 204 happens first, followed by another action for the specific effect.</p>
+			
+			<p>There are some limits to moving sectors. Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector if using a macro. Further, the Doom 64 Remaster can’t have more than 30 moving ceilings and floors at the same time while EX based ports can have more.</p>
+							
+			<ul>
+				<li><a href="#Doors">Doors</a></li>
+				<li><a href="#Floors">Floors</a></li>
+				<li><a href="#Ceilings">Ceilings</a></li>
+				<li><a href="#Platforms">Platforms</a></li>
+				<li><a href="#Stairs">Stairs</a></li>
+				<li><a href="#Teleports">Teleports</a></li>
+				<li><a href="#Things">Thing Specials</a></li>
+				<li><a href="#Lights">Lights</a></li>
+				<li><a href="#Macros">Macro Control</a></li>
+				<li><a href="#Specials">Specials</a></li>
+				<li><a href="#Sectors">Sector Properties</a></li>
+				<li><a href="#Lindefs">Linedef Properties</a></li>
+				<li><a href="#Artifact">Artifact Switches</a></li>
+				<li><a href="#Exits">Exits</a></li>
+				<li><a href="#Miscellaneous">Miscellaneous</a></li>
+			</ul>
 
-		<h2>Doors</h2>
+		<h2 id="Doors">Doors</h2>
 			<p>Some doors can be opened by monsters by default, and the others can still be opened by monsters if "Trigger By Dead Thing" tag is set on the linedef. If this tag is used, monsters will be able to open doors requiring keys too.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
@@ -46,7 +64,7 @@
 				<tr><td>118</td><td>Door (Split) Fast Open</td><td>(undefined)</td><td>Opens a split door of adjoining sector. The door won't close by itself.</td></tr>
 			</tbody></table>
 
-		<h2>Floors</h2>
+		<h2 id="Floors">Floors</h2>
 			<p>Any sector that is set to an action that can crush will instantly kill anything in sectors with special 666. There is a limit to the number of floors that can be moved at the exact same time.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
@@ -70,7 +88,7 @@
 				<tr><td>244</td><td>Floor Move to Global Integer Instant</td><td>Floor_Set(<i>tag</i>, <i>height</i>)<br/>Floor_SetHeight(<i>tag</i>, <i>height</i>)</td><td>Same as above, but the floor moves instantly. Effectively sets the floor's height value.</td></tr>
 			</tbody></table>
 
-		<h2>Ceilings</h2>
+		<h2 id="Ceilings">Ceilings</h2>
 			<p>Any sector that is set to an action that can crush will instantly kill anything in sectors with special 666. Once a ceiling is activated as a crusher, it will no longer respond to other ceiling actions even if stopped; it can only be restarted as a crusher. There is an upper limit to the number of crushers in Doom 64, however the EX versions have a higher upper limit.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
@@ -89,7 +107,7 @@
 				<tr><td>245</td><td>Ceiling Move to Global Integer Instant</td><td>Ceiling_Set(<i>tag</i>, <i>height</i>)<br/>Ceiling_SetHeight(<i>tag</i>, <i>height</i>)</td><td>Same as above, but the ceiling moves instantly. Effectively sets the ceiling's height value.</td></tr>
 			</tbody></table>
 		
-		<h2>Platforms</h2>
+		<h2 id="Platforms">Platforms</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -105,7 +123,7 @@
 				<tr><td>239</td><td>Plat Up Wait Down by Global Integer Fast</td><td>Plat_UpWaitDownFastBy(<i>tag</i>, <i>value</i>)<br/>Plat_UpDownFastByValue(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the platform moves at turbo speed.</td></tr>
 			</tbody></table>
 
-		<h2>Stairs</h2>
+		<h2 id="Stairs">Stairs</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -113,7 +131,7 @@
 				<tr><td>100</td><td>Stairs Build 16 Units Fast</td><td>Stairs_BuildSixteenFast(<i>tag</i>)<br/>Stairs_BuildFast(<i>tag</i>)</td><td>Builds steps 16 units high, starting from tagged sector. The building process moves at turbo speed.</td></tr>
 			</tbody></table>
 
-		<h2>Teleports</h2>
+		<h2 id="Teleports">Teleports</h2>
 			<p>These actions can only teleport the thing which activates them (with some caveats). Here <i>tid</i> is the teleport destination's tag number. On the Doom 64 Remaster, only one teleport action per macro is permitted on the player.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
@@ -123,7 +141,7 @@
 				<tr><td>249</td><td>Silent Teleport</td><td>Teleport_Silent(<i>tid</i>)<br/>Teleport_Stomp(<i>tid</i>)</td><td>Teleports the activating thing without any sound and glow to tagged destination. On the Doom 64 Remaster you can not use this via a switch if it is a single action but it works with a macro. Originally thought to be player-only, monsters can activate this too if "Trigger By Dead Thing" is set on the referencing linedef.</td></tr>
 			</tbody></table>
 
-		<h2>Thing Specials</h2>
+		<h2 id="Things">Thing Specials</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -140,7 +158,7 @@
 			
 			<p>"Ghost things" can be created if the "Thing Spawn" process is interupted by a "Thing Fade Out". Ghost enemies will not take any damage and ghost items cannot be picked up. The <a href="../things/ghost/index.html"/>ghost things page</a> demonstrates how they are created and used.</p>
 
-		<h2>Lights</h2>
+		<h2 id="Lights">Lights</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -156,7 +174,7 @@
 			</tbody></table>
 			<p>The light <i>id</i>, as opposed to the tag, refers to a specific light index. The first set of lights (0 to 255) are grayscale from black to white. The subsequent light indices refer directly to the lights lump, that is built in the map WAD, where the first light begins at 256. It can be hard to tell which light you are referring to just in a map editor, however you can look at the lights lump in a program like <a href="https://slade.mancubus.net/">Slade</a> to determine which lights are in which order.</p>
 					
-		<h2>Macro Control</h2>
+		<h2 id="Macros">Macro Control</h2>
 			
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
@@ -185,7 +203,7 @@
   non looping action;
 } //end of macro</pre>
 
-		<h2>Specials</h2>
+		<h2 id="Specials">Specials</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -201,7 +219,7 @@
 			
 			<p>Since the "Camera Move" action moves the position of the camera target <i>things</i>, reactivating a moving camera sequence will have the cameras in incorrect positions. Styd051 discovered for the Vehemence project that the camera position can be reset by using the "Thing Fade Out" and "Thing Spawn" on the camera things, which fixes this bug.</p>
 
-		<h2>Additional Sector Properties</h2>
+		<h2 id="Sectors">Sector Properties</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -214,7 +232,7 @@
 			
 			<p>On the Remaster, when using action 220 (Sector Copy Flags) to copy flags from a secret sector to a non-secret sector, the non-secret sector will inherit the secret flag but the total number of secrets do not change. However, the secret will still trigger potentially causing the number of secrets on the stats screen to exceed 100%. If the player activates the secret before the flag is copied over, the secret flag will not copy over.</p>
 
-		<h2>Linedef Properties</h2>
+		<h2 id="Lindefs">Linedef Properties</h2>
 		
 			<p>Copying attributes, settings, and textures between single-sided and double-sided linedefs will cause most engines to crash, sometimes unpredictably.</p>
 			<table><thead>
@@ -225,7 +243,7 @@
 				<tr><td>230</td><td>Copy Line Specials from Global Integer</td><td>Line_CopySpecials(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies the Action Special (Door Open, Floor Lower, etc.), Activation Type (Use, Cross, Blue Key, etc.), and Switch Setup properties from one linedef to another. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
 			</tbody></table>
 
-		<h2>Artifact Switches</h2>
+		<h2 id="Artifact">Artifact Switches</h2>
 		
 			<p>Setting an artifact switch to be activatable by monsters (Trigger By Dead Thing) will cause the game to crash when the monster attempts to activate it.</p>
 			<table><thead>
@@ -236,7 +254,7 @@
 				<tr><td>92</td><td>Artifact Switch 3 (Purple)</td><td>Purple_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the purple artifact and will activate line with the tag one higher than the current line.</td></tr>
 			</tbody></table>
 
-		<h2>Exits</h2>
+		<h2 id="Exits">Exits</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -244,7 +262,7 @@
 				<tr><td>124</td><td>Exit to Level (Tag = Map#)</td><td>ExitToLevel(<i>map</i>)</td><td>Exit to level number defined by the tag</td></tr>
 			</tbody></table>
 
-		<h2>Miscellaneous</h2>
+		<h2 id="Miscellaneous">Miscellaneous</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>

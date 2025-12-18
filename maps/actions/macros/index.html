@@ -22,7 +22,7 @@
 	<div id="content">
 
 		<h1>Macros</h1>
-			<p>Macros are a unique scripting system used in Doom 64 which allow the you to script events to make the gameplay more dynamic. Macros are a series of actions executed in batches which can transform geometry, modify walls, and spawn or remove actors.</p>
+			<p>Macros are a unique scripting system used in Doom 64 which allow the you to script events to make the gameplay more dynamic. Macros are a series of actions executed in batches which can transform geometry, modify walls, spawn things or remove things.</p>
 
 			<p>BLAM is used to compile macros into a executable format for Doom 64 (in a format similar to BASIC). It is included with and automatically used by Doom Builder 64. The page icon on Doom Builder 64 will open the script editor where you can add macros. This script editor can also be found from the "View" menu. In the script editor, the page icon with the lightning bolt will compile the macro scripts. All available macro actions can be found on the page below, along with the types of values they take (height, thing tag, etc).</p>
 			
@@ -33,8 +33,18 @@
 			<p>It's possible to decompile already compiled macros from a map using BLAM as described in the page below.</p>
 			
 			<ul><li><a href="decompiling/index.html">Macro Decompiling</a></li></ul>
+			
+			<p>The following sections describe how macros are built with the BLAM compiler in mind.</p>
+			
+			<ul>
+				<li><a href="#Basics">Macro Basics</a></li>
+				<li><a href="#Structure">Macro Structure</a></li>
+				<li><a href="#Comments">Comments</a></li>
+				<li><a href="#CustomActions">Custom Macro Actions</a></li>
+			</ul>
 
-		<h2>Macro Basics</h2>
+
+		<h2 id="Basics">Macro Basics</h2>
 
 			<p>A macro script has three parts: the "includes" at the start, the "macros" themselves, and the "actions" within each macro. Macros are referenced numerically, i.e. "macro 1", "macro 2", and ect. In EX-based engines, macros must be sequential without skipping any numbers. In Remaster-based engines, macros can skip numbers. </p>
 
@@ -63,7 +73,7 @@ macro 2
 			
 			<p>Proper macro ordering has macros increasing incrementally without skipping a number. Putting two macros with the same number twice in a row (for example a macro 3 followed another macro 3) will not cause an error, but only the last macro with the same number will be used. It is as if the previous macro with the same number did not exist.</p>
 
-		<h2>Structure of a Macro</h2>
+		<h2 id="Structure">Macro Structure</h2>
 
 			<p>A basic macro script in looks something like this:</p>
 <pre>
@@ -124,7 +134,7 @@ macro 1
 
 			<p>And this closing bracket is the end of the macro definition. The macro is now complete.</p>
 
-		<h2>Comments</h2>
+		<h2 id="Comments">Comments</h2>
 
 			<p>Comments are parts of the macro script which are ignored by the script compiler (aka BLAM). They simply do nothing. Their purpose is to allow macro writers to insert notes, descriptions, or reminders into their scripts.</p>
 
@@ -154,7 +164,7 @@ macro 1
 
 			<p>When using a block comment 'always' make sure not to forget the "*/" at the end, or the entire rest of the script will get ignored.</p>
 			
-		<h2>Custom Macro Actions</h2>
+		<h2 id="CustomActions">Custom Macro Actions</h2>
 		
 			<p>Any line action in Doom 64 can be used in a macro, even if it is not a pre-defined macro action in Doom Builder 64. The general way to define a custom macro action is below.</p>
 			

@@ -24,13 +24,26 @@
 		<h1>MAPINFO Text Lump</h1>
 		
 			<p>MAPINFO is used to define properties of a map and is used to define text screens as well for the PC engines of Doom 64. It is defined as a text file, specifically "MAPINFO.txt".</p>
+								
+			<ul>
+				<li><a href="#Map">Map Definitions</a>
+					<ul>
+						<li><a href="#MapProperties">Properties</a></li>
+						<li><a href="#MapExamples">Examples</a></li>
+					</ul></li>
+				<li><a href="#Cluster">Cluster Definitions</a>
+					<ul>
+						<li><a href="#ClusterProperties">Properties</a></li>
+						<li><a href="#ClusterExamples">Examples</a></li>
+					</ul></li>
+			</ul>
 	
-		<h2>Map Definitions</h2>
+		<h2 id="Map">Map Definitions</h2>
 		
 			<p>A map definition begins with the keyword "map", followed by the map lump name, actual name of level and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for a map.</p>
 			<dl><dd>Example: <b>map &lt;maplump&gt; &lt;name&gt; { properties }</b></dd></dl>
 			
-		<h3>Properties</h3>
+		<h3 id="MapProperties">Properties</h3>
 			<p>Here are properties which can be assigned to each map.</p>
 			
 			<ul><li><b>levelnum = &lt;levelnumber&gt;</b></li></ul>
@@ -68,7 +81,7 @@
 			<ul><li><b>compat_collision = &lt;boolean&gt;</b></li></ul>
 			<dl><dd>(Unused) If 1 is set, then Doom64 EX will force collision compatibility to true, even if the user tries to disable it. Visa versa if 0 is set, collision compatibility will be forced to stay as false.</dd></dl>
 			
-		<h3>Examples</h3>
+		<h3 id="MapExamples">Examples</h3>
 		
 <pre>map MAP01 "Staging Area"
 {
@@ -93,13 +106,13 @@
 }
 </pre>
 
-		<h2>Cluster Definitions</h2>
+		<h2 id="Cluster">Cluster Definitions</h2>
 			<p>A cluster definition begins with the keyword "cluster". Clusters are used to display text screens when moving between maps.</p>
 			
 			<dl><dd>Example: <b>cluster &lt;value&gt; { properties }</b>
 			</dd><dd>&lt;value&gt; is the cluster number that this definition defines.</dd></dl>
 			
-		<h3>Properties</h3>
+		<h3 id="ClusterProperties">Properties</h3>
 			
 			<p>The following properties are supported within a cluster definition:</p>
 			
@@ -127,7 +140,7 @@
 			<ul><li><b>scrolltextend</b></li></ul>
 			<dl><dd>After entertext or exittext is displayed, it will scroll off screen</dd></dl>
 			
-		<h3>Examples</h3>
+		<h3 id="ClusterExamples">Examples</h3>
 <pre>cluster 2
 {
    pic = "EVIL"

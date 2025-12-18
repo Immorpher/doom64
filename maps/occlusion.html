@@ -22,27 +22,32 @@
 
 		<h1>Occlusion</h1>
 
-		<p>An important aspect of Doom 64 rendering is occlusion. By default the engine will not attempt to render any level geometry it suspects the player cannot see; it becomes occluded. This is particularly important for high frame rates and is one of the reasons why Doom 64 ran relatively smoothly on the Nintendo 64, when it was known that other games did not.</p>
+			<p>An important aspect of Doom 64 rendering is occlusion. By default the engine will not attempt to render any level geometry it suspects the player cannot see; it becomes occluded. This is particularly important for high frame rates and is one of the reasons why Doom 64 ran relatively smoothly on the Nintendo 64, when it was known that other games did not.</p>
 
-		<p>One consequence to this is even when sky textures or the "blank" texture is used, geometry behind it may not be rendered. This can cause missing and flickering geometry above bridges, beams, and at distant towers. To remedy this, you can set the linedefs for any objects which may occlude the player's view with the setting of "no occlusion". Although not much of an issue for modern PCs, the use of the "no occlusion" setting will result in more graphical processing that can produce noticeable slowdowns on the Nintendo 64 if overused.</p>
+			<p>One consequence to this is even when sky textures or the "blank" texture is used, geometry behind it may not be rendered. This can cause missing and flickering geometry above bridges, beams, and at distant towers. To remedy this, you can set the linedefs for any objects which may occlude the player's view with the setting of "no occlusion". Although not much of an issue for modern PCs, the use of the "no occlusion" setting will result in more graphical processing that can produce noticeable slowdowns on the Nintendo 64 if overused.</p>
 
-		<p>Another consequence of occlusion is that geometry at far off distances will not be rendered. Even with the "no occlusion" setting, far-off geometry will not render. Thus, for large maps, sometimes you can see geometry pop in at the far distance. A solution to this is to make the fog color the same color as the lower part of the sky. Thus when the distant geometry pops in it will match the sky and will be unnoticed.</p>
+			<p>Another consequence of occlusion is that geometry at far off distances will not be rendered. Even with the "no occlusion" setting, far-off geometry will not render. Thus, for large maps, sometimes you can see geometry pop in at the far distance. A solution to this is to make the fog color the same color as the lower part of the sky. Thus when the distant geometry pops in it will match the sky and will be unnoticed.</p>
 
-		<p>The Nintendo 64 engines are a bit more liberal with occlusion than PC engines. Sectors with an upper sky texture will not render the upper wall textures of adjoining lines. Also if the top of a sky sector meets a corner of a floor sector, any geometry behind will not render (use no occlusion setting on linedefs in this case).</p>
+			<p>The Nintendo 64 engines are a bit more liberal with occlusion than PC engines. Sectors with an upper sky texture will not render the upper wall textures of adjoining lines. Also if the top of a sky sector meets a corner of a floor sector, any geometry behind will not render (use no occlusion setting on linedefs in this case).</p>
+								
+			<ul>
+				<li><a href="#Sight">Line of Sight</a></li>
+				<li><a href="#Sky">Sky Occlusion</a></li>
+			</ul>
 		
-		<h2>Line of Sight</h2>
+		<h2 id="Sight">Line of Sight</h2>
 		
-		<p>As noted, too much geometry rendering on screen can cause slowdowns particularly on Nintendo 64 ports. Even on PC, too much geometry will result in slowdown on some systems, and even can cause an overflow error where sprites will not render. To remedy this occlusion is needed which will break the player's line of sight by blocking it with a wall. One option is to introduce "void sectors", that is draw a sector on your map and delete it. This will be a void and will appear as a wall or a pillar that reaches all the way up to the ceiling.</p>
+			<p>As noted, too much geometry rendering on screen can cause slowdowns particularly on Nintendo 64 ports. Even on PC, too much geometry will result in slowdown on some systems, and even can cause an overflow error where sprites will not render. To remedy this occlusion is needed which will break the player's line of sight by blocking it with a wall. One option is to introduce "void sectors", that is draw a sector on your map and delete it. This will be a void and will appear as a wall or a pillar that reaches all the way up to the ceiling.</p>
+			
+			<img src="lineofsight.svg" alt="Line of Sight Diagram" style="width: 25rem; height: 25rem;" />
+			
+			<p>In the above diagram, the player's field of view is given by the aqua dashed line; geometry in this area will be sent to render unless it is occluded. The dark sector with the white outline is a void sector.  Geometry behind this sector that is outside the player's view (red shaded area) will not be sent to render. Breaking the player's line of sight like this can remedy slowdowns and rendering overflow errors.</p>
 		
-		<img src="lineofsight.svg" alt="Line of Sight Diagram" style="width: 25rem; height: 25rem;" />
+		<h2 id="Sky">Sky Occlusion</h2>
 		
-		<p>In the above diagram, the player's field of view is given by the aqua dashed line; geometry in this area will be sent to render unless it is occluded. The dark sector with the white outline is a void sector.  Geometry behind this sector that is outside the player's view (red shaded area) will not be sent to render. Breaking the player's line of sight like this can remedy slowdowns and rendering overflow errors.</p>
-		
-		<h2>Sky Occlusion</h2>
-		
-		<p>If there are no sky sectors in the player's view, the sky will not be rendered. Typically, in such cases, this causes no visual issues as there tends to be geometry always obstructing the player's view. However if there a voids in the geometry, due to the "blank" texture or distance occlusion, visual glitches can occur. On PC engines a black void will appear while on the Nintendo 64 a "hall of mirrors" effect will happen.</p>
-		
-		<p>By setting a sector in the player's view with a sky texture at the top will cause the sky to render. Even if the sky sector is one map unit square, it will render. It is possible to hide these sky sectors in walls as well, by assigning the wall in front of the sky sector with the "Render Middle Texture", "Block Sound", and "Impassible" settings.</p>
+			<p>If there are no sky sectors in the player's view, the sky will not be rendered. Typically, in such cases, this causes no visual issues as there tends to be geometry always obstructing the player's view. However if there a voids in the geometry, due to the "blank" texture or distance occlusion, visual glitches can occur. On PC engines a black void will appear while on the Nintendo 64 a "hall of mirrors" effect will happen.</p>
+			
+			<p>By setting a sector in the player's view with a sky texture at the top will cause the sky to render. Even if the sky sector is one map unit square, it will render. It is possible to hide these sky sectors in walls as well, by assigning the wall in front of the sky sector with the "Render Middle Texture", "Block Sound", and "Impassible" settings.</p>
 		
 	</div>
 

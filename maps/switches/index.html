@@ -29,8 +29,14 @@
 			<img src="switchdiagram.png" alt="Switch Diagram" style="width: 256px; height: 288px;  image-rendering: pixelated;" />
 			
 			<p>Switches can be set up to be activated in different ways, such as the "use" button and/or shooting. Switches that can be shot can only be activated with hitscan weapons such as: pistol, chaingun, chainsaw, and the two shotguns. Projectile weapons (plasma and rockets) cannot activate shootable switches. When the player uses the use command on a switch, there is a check to see if the player is the right height. It checks if the player's feet are between the middle of the switch and 64 units below the middle of the switch. Given that the players view centers at 56 units above the player's feet, the player can activate the switch 40 units below the middle of the switch and 24 units above the middle of the switch from the player's point of view. When sectors are hit by a hitscan weapon, this check is ignored and switches can be activated from any height (sectors can be used to block hitscans).</p>
+							
+			<ul>
+				<li><a href="#Basics">Doom Builder 64 Basics</a></li>
+				<li><a href="#Inset">Inset Switch Example</a></li>
+				<li><a href="#Differences">Engine Specific Differences</a></li>
+			</ul>
 		
-		<h2>Doom Builder 64 Basics</h2>
+		<h2 id="Basics">Doom Builder 64 Basics</h2>
 		
 			<p>Note that, when making switches how it was done originally in Doom 64, the switch graphics do not show up properly in Doom Builder 64. But when tested in game it will work as originally intended. This is because switches are displayed as decals and not textures, which Doom Builder 64 has not implemented yet.</p>
 			
@@ -42,7 +48,7 @@
 			
 			<p>The "Sidedefs" tab allows you to choose the textures you want on the switch and the wall behind it as mentioned in the previous paragraphic. So if you selected "Lower" for "Switch Texture" this will be where you select the switch you want to use. If you want a switch that turns on, then select the switch texture which ends with an "A". When the player uses that switch, it will automatically switch to the version of the texture which ends with "B". You can select the "B" version of the switch if it is one you want to turn off and the engine will handle the switch to "A" for you when the player uses it.</p>
 			
-		<h2>Inset Switch Example</h2>
+		<h2 id="Inset">Inset Switch Example</h2>
 		
 			<p>Inset switches are embedded into walls and typically are made with a sector that is 32 units wide and 32 units in height, which matches the size of a switch texture. They should be 32 units above the nearby floor so they are a good height for a player to activate them. However other heights can be used for shootable switches and such.</p>
 			
@@ -61,7 +67,7 @@
 			<img src="insetswitch04.png" alt="Inset Switch in Game" style="width: 800px; height: 400px;  image-rendering: pixelated;" />
 			
 			
-		<h2>Engine Specific Differences</h2>
+		<h2 id="Differences">Engine Specific Differences</h2>
 		
 			<p>For most Doom 64 engines, except for Doom 64 EX, the player's activation distance can pass through single-sided linedefs (walls). This means that, if the activating linedef is not far enough away, a player can activate a switch or a door through a thin wall. A remedy to this is to make the wall thicker. Depending on the angle, the "Trigger Only Front Side" flag can be used to prevent the player from activating a backside of a linedef as well.</p>
 		

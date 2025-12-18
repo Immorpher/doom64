@@ -24,13 +24,19 @@
 		<h1>ANIMDEFS Text Lump</h1>
 		
 			<p>ANIMDEFS is used to define the animated textures for the PC engines of Doom 64. It is defined as a text file, specifically "ANIMDEFS.txt". Each animation frame in the sequence must have a sequential character such as: "ANIMA", "ANIMB", "ANIMC", and ect. However palette animations work differently as described below.</p>
+								
+			<ul>
+				<li><a href="#Definitions">Animation Definitions</a></li>
+				<li><a href="#Properties">Properties</a></li>
+				<li><a href="#Examples">Examples</a></li>
+			</ul>
 	
-		<h2>Animation Definitions</h2>
+		<h2 id="Definitions">Animation Definitions</h2>
 		
 			<p>An animation definition begins with the keyword "animpic", followed by the animation first frame texture name, and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for an animation.</p>
 			<dl><dd>Example: <b>animpic "&lt;texture&gt;" { properties }</b></dd></dl>
 			
-		<h2>Properties</h2>
+		<h2 id="Properties">Properties</h2>
 			<p>Here are properties which can be assigned to each animation.</p>
 			
 			<ul><li><b>frames = "&lt;number&gt;"</b></li></ul>
@@ -48,7 +54,7 @@
 			<ul><li><b>cyclepalettes</b></li></ul>
 			<dl><dd>This uses the internal palette of the texture for animation by swapping out sets of 16 colors</dd></dl>
 			
-		<h2>Examples</h2>
+		<h2 id="Examples">Examples</h2>
 		
 <pre>animpic "CFACEA"
 {

@@ -33,10 +33,15 @@
 				<li><a href="hsv.html">HSV Boosting and Lighting Calculator</a></li>
 			</ul>
 		
-			
 			<p>In Doom Builder 64, in visual mode (the W key), you can turn lights mode (the V key) and there you can see what kind of lighting you are applying to each sector without textures. This is good to set brightnesses and coloring independent of texturing. Sometimes sector lights can appear black in game when a tag is removed from a sector. It is unknown why this bug exists, but adding a tag back to the sector can fix it. There are no absolute rules on how to set the sector colors, but there are some techniques to achieve natural looking or stylized lighting as described in the following section.</p>
+							
+			<ul>
+				<li><a href="#Naturalistic">Naturalistic Lighting</a></li>
+				<li><a href="#Stylized">Stylized Lighting</a></li>
+				<li><a href="#Advanced">Advanced Lighting</a></li>
+			</ul>
 			
-		<h2>Naturalistic Lighting</h2>
+		<h2 id="Naturalistic">Naturalistic Lighting</h2>
 		
 			<p>To achieve a more "natural" look to a level's visuals, it's useful to think of where the light source originates in a sector and which parts of the walls are closer to that light source. Theoretically corners of a room tend to be the furthest from light sources and are darker; this is the principle of ambient occlusion.</p>
 			
@@ -54,7 +59,7 @@
 			
 			<img src="insetfloorglow.svg" alt="Inset Floor Lighting" style="width: 480px; height: 480px;" />
 			
-		<h2>Stylized Lighting</h2>
+		<h2 id="Stylized">Stylized Lighting</h2>
 		
 			<p>While naturalistic lighting can give a more smooth look, stylized lighting has a more striking appearance. And in some situations, deviating from a light source based approach may look better.</p>
 			
@@ -74,7 +79,7 @@
 			
 			<p>Even though this may not be very natural, it clearly shows the navigatable floor area which allows the player to quickly see forks in paths and different routes.</p>
 			
-		<h2>Advanced Lighting</h2>
+		<h2 id="Advanced">Advanced Lighting</h2>
 		
 			<p>Triangular sectors can be used to separate specific walls from adjoining walls. This can be used to shade that wall differently than its neighbors. For example, you may want to shade steps along a wall differently than the adjoining wall.</p>
 			

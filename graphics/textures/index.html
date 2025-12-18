@@ -27,7 +27,14 @@
 			
 			<ul><li><a href="list.html">Texture List</a></li></ul>
 			
-		<h2>Texture Rendering</h2>
+			<p>Originally the maximum size of textures were limited to an area of 4096 (64&times;64) square pixels due to Nintendo 64 hardware limitations for 4-bit textures. On PC engines, the textures can be much larger.</p>
+			
+			<ul>
+				<li><a href="#Rendering">Texture Rendering</a></li>
+				<li><a href="#Custom">Custom Textures</a></li>
+			</ul>
+			
+		<h2 id="Rendering">Texture Rendering</h2>
 			
 			<p>Although the Doom engine originally made a distinction between textures used on the walls and the floors/ceilings, the same textures can be used for either in Doom 64. There are rendering differences however.</p>
 			
@@ -65,7 +72,7 @@
 			
 			<ul><li><a href="bleed/index.html">Texure Bleed</a></li></ul>
 			
-		<h2>Custom Textures</h2>
+		<h2 id="Custom">Custom Textures</h2>
 		
 			<p>For all Doom 64 engines, textures are added to WAD files between the markers <i>T_START</i> and <i>T_END</i>. Due to the legacy of hardware rendering, the texture pixel sizes must be in a power of 2. This means they can be sizes of 2 pixels, 4 pixels, 8, 16, 32, 64, 128, 256, and so on. For all engines, the textures must be made in the PNG format initially.</p>
 			

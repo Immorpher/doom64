@@ -24,8 +24,15 @@
 		<h1>SKYDEFS Text Lump</h1>
 		
 			<p>SKYDEFS is used to define properties of a sky background for the PC engines of Doom 64. It is defined as a text file, specifically "SKYDEFS.txt". Each sky definition must have a corresponding texture of the same name to be usable in-game. The contents of the texture is not important.</p>
+								
+			<ul>
+				<li><a href="#Definitions">Sky Definitions</a></li>
+				<li><a href="#Properties">Properties</a></li>
+				<li><a href="#Examples">Original Examples</a></li>
+				<li><a href="#Bugs">Rendering Bugs</a></li>
+			</ul>
 	
-		<h2>Sky Definitions</h2>
+		<h2 id="Definitions">Sky Definitions</h2>
 		
 			<p>A sky definition begins with the keyword "sky", followed by the sky texture name, and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for a sky.</p>
 			<dl><dd>Example: <b>sky "&lt;texturename&gt;" { properties }</b></dd></dl>
@@ -34,7 +41,7 @@
 			
 			<p>Two forward slashes, //, is used to designate comments in the lump.</p>
 			
-		<h2>Properties</h2>
+		<h2 id="Properties">Properties</h2>
 			<p>Here are properties which can be assigned to each sky.</p>
 			
 			<ul><li><b>pic = "&lt;graphic&gt;"</b></li></ul>
@@ -73,7 +80,7 @@
 			<ul><li><b>fadeinbackground</b></li></ul>
 			<dl><dd>Sets the "pic" graphic to the bottom of the screen and allows linedef action type 254 to fade it with the "backpic" graphic. On the Doom 64 Remaster, any sky definition that has fadeinbackground will disable resolution scaling.</dd></dl>
 			
-		<h2>Original Examples</h2>
+		<h2 id="Examples">Original Examples</h2>
 		
 		<p>Below are how the original Doom 64 skies are defined in the SKYDEFS lump.</p>
 		
@@ -210,7 +217,7 @@ sky "F_SKYK"
     fogfactor = 985
 }</pre>
 
-		<h2>Sky Rendering Bugs</h2>
+		<h2 id="Bugs">Rendering Bugs</h2>
 		
 		<h3>Doom 64 Remaster Color Bug</h3>
 		

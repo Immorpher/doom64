@@ -23,11 +23,19 @@
 	
 		<h1>Animated Textures</h1>
 
-			<p>For simple scrolling textures, these animations can be defined in the linedef and sector properties. For more complicated animations, they must be built with individual frames. These type of animations are defined with the ANIMDEFS text lump for the PC engines of Doom 64.</p>
+			<p>In Doom 64 there are multiple types of animations and different ways to define them. With the exception of procedural animations, on the Nintendo 64 animations are hardcoded into the Doom 64 engine, however PC engines use the ANIMDEFS text lump. </p>
 			
 			<ul><li><a href="../../structures/wad/animdefs.html">ANIMDEFS text lump</a></li></ul>
+			
+			<p>In general, there are three types of animations available in Doom 64: procedural, sequential, and palette.</p>
+			
+			<ul>
+				<li><a href="#Procedural">Procedural Animations</a></li>
+				<li><a href="#Sequential">Sequential Animations</a></li>
+				<li><a href="#Palette">Palette Animations</a></li>
+			</ul>
 
-		<h2>Inbuilt Animations</h2>
+		<h2 id="Procedural">Procedural Animations</h2>
 
 			<p>In built into the engine is a set of texture scrolling animations that can be activated by setting the appropriate flags on the linedef or sector. This allows any texture to be scrolled without having to define it in the <a href="../../structures/wad/animdefs.html">ANIMDEFS</a> text lump (PC engines) or source code (N64 engines). This is particularly good for waterfalls and flowing liquids, but can be used for other hellish effects.</p>
 
@@ -43,18 +51,9 @@
 
 			<p>The "Liquid Effect" is a special flag for a sector. This effect is created in game by taking two sequential textures from the wad, superimposing them over each other, and scrolling them in different directions. This means that when adding new liquid textures, they must be located next to each other in the wad. The names do not matter, only the texture order within the wad. As the liquid effect can only used on floors, liquid textures will be stretched to fit into 64 by 64 map units.</p>
 
-		<h2>ANIMDEFS Examples</h2>
+		<h2 id="Sequential">Sequential Animations</h2>
 
-			<p>Only the ANIMDEFS from the "last loaded" wad will be used. If you want to use some new animations and some of the original animations in the same wad, you must include the definitions for the original animations in your ANIMDEFS.</p>
-
-			<p>There are two types of animations that can be defined in Doom 64.</p>
-
-			<ol>
-				<li>Sequential animations which require that the textures to be animated are located one after another in the wad, just like in the original Doom.</li>
-				<li>Palette animations which cycle the palette within the texture itself to make the animation. Only one texture is used per palette animation.</li>
-			</ol>
-
-			<p>Textures can be used in more than one animation.</p>
+			<p>Sequential animations which require that the textures to be animated are located one after another in the wad, just like in the original Doom. Only the ANIMDEFS from the "last loaded" wad will be used. If you want to use some new animations and some of the original animations in the same wad, you must include the definitions for the original animations in your ANIMDEFS. Textures can be used in more than one animation. The following shows some ANIMDEF code examples.</p>
 
 		<h3>Basic Example</h3>
 		
@@ -123,9 +122,9 @@ animpic "WATERFLC"
 
 			<p>In this <a href="animadvanced.wad">advanced example wad</a> there are five textures present: WATERFLA, WATERFLB, WATERFLC, WATERFLD, and WATERFLE, in that order. When you run the map this is also the order the textures are shown before you. Animated textures can also be used with the <i>liquid effect</i> sector flag. In the example map there are some pools where the center pool is the original water liquid effect. The four pools along the back edge of the map are the new textures used in combination with the <i>liquid effect</i> sector flag. From right to left these are using (animated) WATERFLA, WATERFLB, WATERFLC, and (not animated) WATERFLD. The first three have only subtle differences from each other, as they all use animated textures. Then the rightmost one, WATERFLD, shows what the effect is like without the animation.</p>
 
-		<h2>Palette Animations</h2>
+		<h2 id="Palette">Palette Animations</h2>
 
-			<p>Palette animations are enabled by the <i>cyclepalettes</i> definition. This was used as a memory saving technique for Doom 64 to save space on the ROM cartridge. As memory tends to be not an issue with Doom 64 anymore, engines like Doom 64 EX+ no longer support palette animations. Below is the animation used for some teleports found in the hell levels.</p>
+			<p>Palette animations which cycle the palette within the texture itself to make the animation. Only one texture is used per palette animation.Palette animations are enabled by the <i>cyclepalettes</i> definition. This was used as a memory saving technique for Doom 64 to save space on the ROM cartridge. As memory tends to be not an issue with Doom 64 anymore, engines like Doom 64 EX+ no longer support palette animations. Below is the animation used for some teleports found in the hell levels.</p>
 			
 <pre>animpic "CTEL"
 {

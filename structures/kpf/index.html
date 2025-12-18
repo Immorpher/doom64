@@ -24,19 +24,30 @@
 		<h1>KPF File</h1>
 			
 			<p>The 2020 rereleas of Doom 64 introduced the KPF ("KEX program file") file format to store extra engine assets and some high-resolution game assets. These are compressed archives using the Deflate compression method. Any program which can decompress ZIP archives, such as <a href="https://slade.mancubus.net/">Slade</a> or <a href="https://github.com/atsb/KPU/releases">KPF Patching Utility</a>, can open and decompress these files for modification. There are two main KPF files: "Doom64.kpf" and "BNet.kpf".</p>
+								
+			<ul>
+				<li><a href="#Modification">Modification</a></li>
+				<li><a href="#Doom64">Doom64.kpf</a>
+					<ul>
+						<li><a href="#Graphics">Fonts and Graphics</a></li>
+						<li><a href="#Text">Text</a></li>
+						<li><a href="#Other">Other</a></li>
+					</ul></li>
+				<li><a href="#BNet">BNet.kpf</a></li>
+			</ul>
 			
 			
-		<h2>Modification</h2>
+		<h2 id="Modification">Modification</h2>
 		
 			<p>This version of the KEX engine cannot load KPF files directly, thus the existing KPF files have to be modified directly if customizations are wanted. Since KPF files can vary between platforms it is recommended to extract their contents, replace contents with modified files, and then re-compress the archive. On Windows this is frequently done with a batch file and a light-weight compression utility such as <a href="https://www.7-zip.org/">7-Zip</a> or <a href="https://github.com/atsb/KPU/releases">KPF Patching Utility</a>.</p>
 			
 			<p>The graphics can be any resolution and they will be resized in-engine to match the aspect ratio of the original images, however paletted graphics are not supported by the engine.</p>
 		
-		<h2>Doom64.kpf</h2>
+		<h2 id="Doom64">Doom64.kpf</h2>
 		
 			<p>The "Doom64.kpf" file contains most of the KEX engine assets needed to assist gameplay.</p>
 		
-		<h3>Fonts and Graphics</h3>
+		<h3 id="Graphics">Fonts and Graphics</h3>
 		
 			<p>Some of the fonts used by the engine are stored in the "fonts" folder. There is a "confont.tga" file which is a bitmap graphics file for font but it does not seem to be used in the game. The true type font of "FreeUniversal-Regular.ttf" is used in the game console which is accessed by the ` key during gameplay.</p>
 		
@@ -44,19 +55,19 @@
 			
 			<p>The "progs" folder has all of the shaders in it, including the antialiasing shaders and the texture filtering shaders.</p>
 			
-		<h3>Text</h3>
+		<h3 id="Text">Text</h3>
 		
 			<p>The localization folder has the text files for all of the languages the game supports. Each of these files has all of the text the game uses. It supports entities such as "\n" for line breaks.</p>
 
 			<p>Here are some notable texts to be found in these files. The "// m_menus" category, has two options: "DOOM 64" and "The Lost Levels". "DOOM 64" refers to levels 33 and under and then "The Lost Levels" are for levels 34 and above. There is a specific line which says "Quit DOOM?" in the "// m_menus" category. Under the "// f_finale" section there is a list of all of the monster names such as "Zombieman". Then under the "// p_inter" section, there is all of the status text during gameplay such as "You pick up a blue keycard." It also has the names of the weapons and the demon keys too. And under the "// p_user" are the mock texts which display after the player dies, such as "LOOK AT ME! I'M FLAT!" And then under the "// Achievement strings" has the text for when the player gets achievements. If the player has already recieved these before, they won’t show up again. Also these files there is text for the options menu, such as "Weapon 0" up to 9. Then there are also the level names and intermission texts too in various languages. The level names and intermissions can also be edited in the WAD's <a href="../wad/mapinfo.html">MAPINFO Lump</a>. These are just some of the texts to be found in these files.</p>
 
-		<h3>Other</h3>
+		<h3 id="Other">Other</h3>
 		
 			</p>In the main directory there is a "default.cfg", which contains the the default bindings and settings that will load for the player. If the player has already played Doom 64, editing this will have no effect. There is also a game controller database and a sine table lump included here.</p>
 		
 			<p>In the "tactile" folder there is a bunch of "bnvib" files, which are the HD vibration files for the nintendo switch. They mostly tie to the weapons and sound effects in the WAD of the same name.</p>
 			
-		<h2>BNet.kpf</h2>
+		<h2 id="BNet">BNet.kpf</h2>
 		
 			<p>This KPF file has files related to Bethesda and distribution platform interfacing. There are additional fonts and graphics folders here. In particular there are graphics for all of the achievements. Which has color and black and white versions. There is also the "spinner.png" graphic which is a white square. This shows up when loading or saving games.</p>
 						
