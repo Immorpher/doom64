@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Nintendo 64</title>
+	<meta property="og:title" content="Nintendo 64" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Nintendo 64</h1>
+	
+			<p>Doom 64 began as a project by Williams Entertainment, which merged with Midway Games during its development, and was originally released for the Nintendo 64. The source code for Doom 64 was never officially released nor found publicly (although it exists in the id Software archives). Thus new Doom 64 engines for the Nintendo 64 did not occur until the game was fully reverse-engineered in 2020, when Doom 64 RE was released. This has provided a base for all other console engines for Doom 64. Below is a list of the various Nintendo 64 engines for Doom 64 that currently exist.</p>
+		
+			<ul>
+				<li><a href="https://github.com/Erick194/DOOM64-RE/">Doom 64 RE</a></li>
+				<li><a href="https://github.com/jnmartin84/Doom-64-Merciless-Edition/">Doom 64 Merciless Edition</a></li>
+				<li><a href="https://github.com/azamorapl/doom64-complete-edition/releases/">Doom 64 Complete Edition</a></li>
+				<li><a href="https://github.com/Immorpher/DOOM64XE/releases/">Doom 64 XE</a></li>
+				<li><a href="https://github.com/thekovic/doom64ultra/">Doom 64 Ultra</a></li>
+			</ul>
+			
+			<p>To make custom Nintendo 64 mods for Doom 64, requires compiling the engine of your choosing. The following section provides a starting point for this.</p>
+	
+		<h2>Compiling</h2>
+		
+			<p>Compiling the Nintendo 64 engines for Doom 64 requires a SDK for the Nintendo 64. Some ports are based on the original SDK provided by Nintendo, while others are based upon a modern update to this SDK.</p>
+			
+		<h3>Nintendo 64 SDK</h3>
+		
+			<p>The following codebases compile with the original Nintendo 64 SDK which can be found on <a href="https://n64.dev/">n64.dev</a>. In particular the "N64 SDK Easy Install CD" is recommended to install the Nintendo 64 Compiler.</p>
+			
+			<ul>
+				<li><a href="https://github.com/Erick194/DOOM64-RE">Doom 64 RE</a></li>
+				<li><a href="https://github.com/jnmartin84/Doom-64-Merciless-Edition/">Doom 64 Merciless Edition</a></li>
+			</ul>
+			
+			<p>The Nintendo 64 SDK only runs on Windows 98 to Windows XP. To run Windows XP on a more modern computer you can use <a href="https://www.virtualbox.org/">Virtual Box</a> and you can find the Windows XP installation data on <a href="https://archive.org/details/WinXPProSP3x86">archive.org.</a></p>
+			
+		<h3>Modern SDK</h3>
+		
+			<p>The <a href="https://crashoveride95.github.io/modernsdk/index.html">Modern SDK</a> updates the Nintendo 64 SDK with the latest GCC compiler and runs on modern operating systems. This allows for much better optimizations when compiling for the Nintendo 64. It was through the initial efforts by JNMartin which allowed Doom 64 to be compiled with the modern SDK. The following codebases compile with the Modern SDK.</p>
+
+			<ul>
+				<li><a href="https://github.com/azamorapl/doom64-complete-edition/releases/">Doom 64 Complete Edition</a></li>
+				<li><a href="https://github.com/Immorpher/DOOM64XE/releases/">Doom 64 XE</a></li>
+				<li><a href="https://github.com/thekovic/doom64ultra/">Doom 64 Ultra</a></li>
+			</ul>
+
+			<p>The Modern SDK runs on Linux distros such as <a href="https://ubuntu.com/">Ubuntu</a> and on modern Windows via <a href="https://learn.microsoft.com/en-us/windows/wsl/install">WSL2</a>.</p>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
