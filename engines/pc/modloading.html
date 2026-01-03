@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Mod Loading</title>
+	<meta property="og:title" content="Mod Loading" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Mod Loading</h1>
+		
+			<p>So you want to play some Doom 64 mods on your PC? This page will give you a few different ways to make that happen. All Doom 64 mods will have a WAD file which contains the main gameplay data. There may also be additional KPF data that isn't needed for the gameplay, but provides some extra menu graphics and text. Also keep in mind loading saves from different mods than the one running will cause most engines to freeze and crash.</p>
+			
+			<p>If the mod does not come with a batch autoloader, you will need to know where your Doom 64 installation directory is. Below is a few common directories for the Doom 64 remaster.</p>
+						
+			<ul>
+				<li>C:\Program Files\GOG Galaxy\Games\DOOM 64\</li>
+				<li>C:\Program Files\Steam\steamapps\common\Doom 64\</li>
+				<li>C:\Program Files\Epic Games\DOOM64\</li>
+				<li>C:\XboxGames\DOOM 64\Content\</li>
+			</ul>
+			
+			<p>Below are various ways to load Doom 64 mods.</p>
+			
+			<ul>
+				<li><a href="#Batch">Batch Autoloader</a></li>
+				<li><a href="#Launchers">Launchers</a></li>
+				<li><a href="#Platform">Platform Load Options</a></li>
+				<li><a href="#Shortcut">Shortcut Link</a></li>
+				<li><a href="#Command">Command Prompt</a></li>
+				<li><a href="#Manual">Manual KPF Installation</a></li>
+			</ul>
+			
+
+		<h2 id="Batch">Batch Autoloader</h2>
+		
+			<p>Many Doom 64 mods will come with a batch file that ends in ".bat" that typically begins with "#RUN". This will automatically search for your Doom 64 Remaster installation (whether it is Steam, GOG, Epic, or Game Pass) and launch it with the mod. You may get a prompt from your whether you would like to launch your game with this mod. If it can't find your Doom 64 Remaster installation, but you know where it is at, you can move the all the contents of the mod folder into the same directory and run the batch file again. You will need to run this batch file each time you want to play the mod.</p>
+			
+			<p>With some platforms the mod will uninstall automatically. For some other platforms, when you exit the Doom 64 Remaster, you will see a window saying "Press any key to continue" and pressing any key in that window will uninstall the mod. Also these mods will come with a batch file, typically beginning with "#UNINSTALL" which will uninstall the mod.</p>
+
+		<h2 id="Launchers">Launchers</h2>
+		
+			<p>There are additional programs that will help you load mods called launchers. For these you will need to find your Doom 64 installation, whether remaster, EX, or EX+ derivatives. Below are some launchers for Doom 64 specifically.</p>
+			
+			<ul>
+				<li><a href="https://github.com/atsb/DOOM64-EX-Plus-Launcher/releases/">Doom 64 EX+ Launcher</a></li>
+				<li><a href="https://github.com/atsb/DOOM64-Remaster-Launcher/releases/">KEX Doom 64 Launcher</a></li>
+			</ul>
+			
+			<p>The KEX Doom 64 Launcher is for the Doom 64 Remaster, while Doom 64 EX+ launcher is for Doom 64 EX+ and its forks. These launchers need to be copied into the installation directory of these games. The benefit of these launchers is they let you load extra KPF data for the Doom 64 Remaster and DeHackED64 for Doom 64 EX+.</p>
+			
+			<p>Additionally you can use general Doom engine launchers as listed below.</p>
+			
+			<ul>
+				<li><a href="https://gitlab.com/accensi/acecorp-launcher/-/releases">AceCorp Launcher</a></li>
+				<li><a href="https://github.com/nstlaurent/DoomLauncher/releases">Doom Launcher</a></li>
+				<li><a href="https://github.com/Youda008/DoomRunner/releases">Doom Runner</a></li>
+				<li><a href="https://github.com/lcferrum/qzdl/releases/">ZDL</a></li>
+			</ul>
+			
+			<p>You can only load the Doom 64 WAD file with these, so custom graphics and texts from the KPF files will be missing, but the mod will still be fully playable. The step-by-step procedure below describes how to setup custom mod loading for ZDL which is similar to other launchers listed.</p>
+			
+			<ol>
+				<li>In ZDL's Source ports section of the "General settings" tab, use the "Add items (+)" button to add the Doom 64 executeable from the Doom 64 installation folder as a source port.</li>
+				<li>In the IWADs section of the "General settings" tab, use the "Add items (+)" button to add DOOM64.wad from the Doom 64 folder as an IWAD.</li>
+				<li>In the "Launch config" tab, either drag and drop the wad in the "External files" section or use the "Add items (+)" button to add it.</li>
+				<li>Then in the "Source port" section, select the source port you added previously, and in the "IWADs" section select the recently added IWAD.</li>
+				<li>Click on the "Launch" button to run the mod.</li>
+			</ol>
+		
+		<h2 id="Platform">Platform Load Options</h2>
+		
+			<p>Many of the platforms which provide the Doom 64 Remaster will let you change the launch options for the game. Also many of these platforms will allow you to add other engines like Doom 64 EX+ too. The following is step by step instructions for changing the launch parameters for the Steam platform.</p>
+			
+			<ol>
+				<li>Open the desktop version of Steam and go to your Library.</li>
+				<li>Right-click on Doom 64 and select "Properties..."</li>
+				<li>In the "General" section, click in the "Launch Options" field and add "-file '[location]\[wad name].wad'" without the double quotes, replacing [location] with the mod location, and replacing [wad name] with the WAD name you want to load.</li>
+				<li>When you run Doom 64 from Steam it will now automatically load the mod.</li>
+			</ol>
+			
+		<h2 id="Shortcut">Shortcut Link</h2>
+		
+			<p>You can also create a shortcut link to run mods, which will let you quickly run a mod each time you want to run it. These shortcut links can be moved anywhere. Below is a step-by-step procedure for doing this in Windows.</p>
+		
+			<ol>
+				<li>Press the Windows key + E to open Windows Explorer.</li>
+				<li>Navigate to your Doom 64 installation directory.</li>
+				<li>Right-click and drag the Doom 64 executable file to another location (ideally your desktop) and select "Create shortcuts here".</li>
+				<li>Right-click on that shortcut and go to Properties.</li>
+				<li>In the field that says Target, add "-file [wad name].wad" without quotes and replacing [wad name] is the name of the WAD after the quotation marks that are already there.</li>
+				<li>The entire field should now read (for example): "[location]\[engine name].exe" -file [wad name].wad, where [location] is the engine location, [engine name] is the name of the engine, and [wad name] is the name of the WAD.</li>
+				<li>Double-click the shortcut to run the mod.</li>
+			</ol>
+			
+		<h2 id="Command">Command Prompt</h2>
+		
+			<p>If you're one to enjoy command windows and typing in commmands, then you can also load mods via a command prompt. The step-by-step guide below describes how to do it in Windows.</p>
+		
+			<ol>
+				<li>Via the command prompt.</li>
+				<li>Press the Windows key + R and then run "cmd".</li>
+				<li>Navigate to your Doom 64 directory by typing (for example) "cd '[location]'" without quotes and replacing [location] with the location of the Doom 64 installation.</li>
+				<li>Type "[engine name].exe -file '[location]\[wad name].wad'", without quotes, replacing the [engine name] with the engine executible (.exe) in the directory, replacing [location] with the mod location, and replacing [wad name] with the WAD name you want to load.</li>
+				<li>You will need to do this each time you want to play the mod.</li>
+			</ol>
+			
+		<h2 id="Manual">Manual KPF Installation</h2>
+		
+			<p>Many of the aforementioned ways of loading mods will not load the KPF data. These KPF files are not required but sometimes they provide extra graphics and custom text. If you would like this extra stuff, first make sure the mod has a "kpf" folder which contains this extra data. In the Doom 64 installation directory make backups of Doom64.kpf and BNet.kpf files. Then you will need to use <a href="https://slade.mancubus.net/index.php?page=downloads">Slade</a> or a zip file editor to copy the contents of "kpf\Doom64" and "kpf\BNet" into the respective Doom64.kpf and BNet.kpf files to replace the existing contents.</p>
+		
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../");
+	</script>
+</body>
+</html>
