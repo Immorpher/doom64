@@ -23,7 +23,7 @@
 	
 		<h1>Nintendo 64</h1>
 	
-			<p>Doom 64 began as a project by Williams Entertainment, which merged with Midway Games during its development, and was originally released for the Nintendo 64. The source code for Doom 64 was never officially released nor found publicly (although it exists in the id Software archives). Thus new Doom 64 engines for the Nintendo 64 did not occur until the game was fully reverse-engineered in 2020, when Doom 64 RE was released. This has provided a base for all other console engines for Doom 64. Below is a list of the various Nintendo 64 engines for Doom 64 that currently exist.</p>
+			<p>Doom 64 began as a project by Williams Entertainment, which merged with Midway Games during its development, and was originally released for the Nintendo 64. The source code for Doom 64 was never officially released nor found publicly (although it exists in the id Software archives). Thus new Doom 64 engines for the Nintendo 64 did not occur until the game was fully reverse-engineered in 2020, when Doom 64 RE was released. This has provided a base for all other console engines for Doom 64. Below is a list of the various Nintendo 64 engines for Doom 64 that currently exist in open source.</p>
 		
 			<ul>
 				<li><a href="https://github.com/Erick194/DOOM64-RE/">Doom 64 RE</a></li>
@@ -33,9 +33,33 @@
 				<li><a href="https://github.com/thekovic/doom64ultra/">Doom 64 Ultra</a></li>
 			</ul>
 			
-			<p>To make custom Nintendo 64 mods for Doom 64, requires compiling the engine of your choosing. The following section provides a starting point for this.</p>
+			<p>The follow sections describe more about the Doom 64 engines on the Nintendo 64.</p>
+			
+			<ul>
+				<li><a href="#Original">Original Versions</a></li>
+				<li><a href="#Compiling">Compiling</a></li>
+			</ul>
+			
+		<h2 id="Original">Original Versions</h2>
+		
+			<p>After the original release of Doom 64, there was one update (called the 1.1 version) and regional releases. The 1.1 version of Doom 64 primarily changed three things as listed below.</p>
+			
+			<ul>
+				<li>An extra check is done in P_RefreshBrightness around P_SetLightFactor, which fixes a potential menu freeze.</li>
+				<li>An unused PLLEGAL lump is present in the IWAD.</li>
+				<li>The N64 the preNMI handler will reset the screen position from any changes due to the "center display" option.</li>
+			</ul>
+			
+			<p>European and Japanese versions of Doom 64 are based on the 1.1 version of Doom 64, but also contain additional changes. Both of these versions increase the default brightness, but do not increase the maximum brightness. Further the European version contains changes to various engine tic rate values to get it to run at the same speed on PAL (50 Hz) video format as opposed to its original NTSC (60 Hz) video format. Both regions have an exta thing type for green blood, however Europe retains the red blood while Japan uses green blood. The Japanese version of Doom 64 contains the following additional changes.</p>
+			
+			
+			<ul>
+				<li>Exta functions have been added to display Japanese fonts in the HUD and the controller pak menu.</li>
+				<li>The mocking death text has been removed.</li>
+				<li>It was compiled with a later compiler compared to the US and Europe versions.</li>
+			</ul>
 	
-		<h2>Compiling</h2>
+		<h2 id="Compiling">Compiling</h2>
 		
 			<p>Compiling the Nintendo 64 engines for Doom 64 requires a SDK for the Nintendo 64. Some ports are based on the original SDK provided by Nintendo, while others are based upon a modern update to this SDK.</p>
 			
