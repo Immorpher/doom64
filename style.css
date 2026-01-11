@@ -63,7 +63,6 @@ body {
     font-family: var(--font-family);
     line-height: var(--line-height);
     margin: 0rem;
-    overflow-x: hidden;
     padding: 0rem;
 }
 
@@ -399,7 +398,6 @@ blockquote footer {
 	width: 11rem;
 	background-image: linear-gradient(var(--color-bg-secondary), var(--color-bg-tertiary));
 	position: fixed;
-	overflow: hidden;
 	border-radius: 2rem;
 }
 
@@ -424,20 +422,18 @@ blockquote footer {
 #content {
 	padding: 0rem 1rem 0rem 1rem;
 	margin: 0rem 0rem 0rem 12rem;
-	overflow: hidden;
+	overflow: auto;
 }
 
 /*Footer content*/
 #footer {
 	margin-left: 11rem;
 	padding: 0rem 0rem;
-	overflow: hidden;
 }
 
 #footer p {
 	text-align: center;
 	padding: 0rem 0rem;
-	overflow: hidden;
 	color: var(--color-footer);
 }
 
@@ -479,13 +475,11 @@ blockquote footer {
 	#content {
 		margin-left: 0rem;
 		padding: 0rem 0.5rem 0rem 0.5rem;
-		overflow: hidden;
 	}
 	
 	#footer {
 		margin-left: 0rem;
 		padding: 0rem 0rem;
-		overflow: hidden;
 	}
 	
 	#navgraphic {
