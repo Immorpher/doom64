@@ -12,6 +12,7 @@
     --color-link: #118bee;
     --color-link-accent: #54a97f;
     --color-link-tertiary: #a0904f;
+	--color-link-quaternary: #a14f4f;
     --color-secondary: #920de9;
     --color-secondary-accent: #920de90b;
     --color-shadow: #f4f4f4;
@@ -114,11 +115,6 @@ h4 {
 	margin: 1rem 0rem 0rem 0rem;
 }
 
-ol li,
-ul li {
-    padding: 0.2rem 0;
-}
-
 p {
     margin: 0.5rem 0;
     padding: 0;
@@ -186,12 +182,32 @@ input[type="submit"] {
     padding: 0.25rem 0.5rem;
 }
 
+ul {
+	list-style-type: square;
+}
+
+ul ul {
+	list-style-type: disc;
+}
+
+ul ul ul {
+	list-style-type: circle;
+}
+
+li {
+    padding: 0.2rem 0;
+}
+
 li li a {
     color: var(--color-link-accent);
 }
 
 li li li a {
     color: var(--color-link-tertiary);
+}
+
+li li li li a {
+    color: var(--color-link-quaternary);
 }
 
 button,

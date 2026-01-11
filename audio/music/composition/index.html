@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Music Composition</title>
+	<meta property="og:title" content="Music Composition" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Music Composition</h1>
+		
+			<p>Similar to the Doom games that preceded Doom 64, the music is in the MIDI format. However Doom 64 does not use the General MIDI soundset, rather it used a custom set of sounds for its music (a sound bank). Thus composing Doom 64 style MIDIs requires a custom soundset to be loaded, either by the MIDI composition software itself, or a program such as <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtual MIDI Synth</a>.
+			
+			<ul>
+				<li><a href="#SoundBank">Sound Bank</a></li>
+				<li><a href="#MIDISoftware">MIDI Software</a></li>
+				<li><a href="#TrackerSoftware">Tracker Software</a></li>
+				<li><a href="#InstrumentDesignations">Instrument Designations</a></li>
+			</ul>
+			
+		<h2 id="SoundBank">Sound Bank</h2>
+			
+			To obtain the Doom 64 sound bank, you can use the wadgen utility from <a href="https://doom64ex.wordpress.com/">Doom 64 EX</a> or <a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a> to extract the Doom 64 sound bank in the SF2 format from the Nintendo 64 ROM. Alternatively the Doom 64 Remaster comes with a "DOOMSND.DLS" file which is also a sound bank, however the DLS format is not very common. Below are two BPS patches to convert the DLS format to the more common SF2 format and the Furnace format.</p>
+			
+			<ul>
+				<li><a href="sf2patch.zip">DLS to SF2 Patch</a></li>
+				<li><a href="furpatch.zip">DLS to FUR Patch</a></li>
+			</ul>
+			
+			<p>Follow the included instructions in the files to convert the DLS file to the format of your choice. The SF2 format is common for MIDI composition and will work with Virtual MIDI Synth. The FUR format is for the <a href="https://tildearrow.org/furnace/">Furnace chiptune music software</a> that supports various console formats.</p>
+			
+		<h2 id="MIDISoftware">MIDI Software</h2>
+			
+			<p>To compose Doom 64 music in the MIDI format you will need to have the SF2 sound bank. Composition software like <a href="http://www.synthfont.com/">SynthFont1</a> can load SF2 files directly. However most MIDI software will require you to load the soundfont via <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtual MIDI Synth</a>. Below is a list of common MIDI software.</p>
+		
+			<ul>
+				<li><a href="https://ariamaestosa.github.io/ariamaestosa/docs/">Aria Maestosa</a></li>
+				<li><a href="https://www.anvilstudio.com/">Anvil Studio</a></li>
+				<li><a href="https://openmidiproject.osdn.jp/Sekaiju_en.html">Sekaiju</a></li>
+				<li><a href="http://www.synthfont.com/">SynthFont1</a></li>
+			</ul>
+			
+			<p>Also some Digital Audio Workstations (DAW) also have MIDI format capabilities.</p>
+			
+			<ul>
+				<li><a href="https://www.cakewalk.com/">Cakewalk</a></li>
+				<li><a href="https://www.image-line.com/">FL Studio</a></li>
+			</ul>
+			
+			<p>However when using a DAW a plugin is often required to load or convert sound banks.</p>
+			
+		<h2 id="TrackerSoftware">Tracker Software</h2>
+		
+			<p>Although Doom 64 did not original utilize music in the tracker format, modern ports of Doom 64 such as the Doom 64 Remaster and Doom 64 EX+ support the impulse tracker (IT) format. Also many Doom 64 adaptations are on the Zandronum, GZDoom, and UZDoom engines also support there impulse tracker format, where it is simpler than loading a custom soundfont for the player. Below is a list of some tracker software.</p>
+			
+			<ul>
+				<li><a href="https://tildearrow.org/furnace/">Furnace</a></li>
+				<li><a href="https://openmpt.org/">OpenMPT</a></li>
+			</ul>
+			
+			<p>The Furnace software requires the sound bank in the FUR format and is primarily for composing chiptune music not compatible with most Doom ports. OpenMPT supports the SF2 format for sound banks and can export music in the impulse tracker format.</p>
+			
+		<h2 id="InstrumentDesignations">Instrument Designations</h2>
+			
+			<p>In general software will not have the Doom 64 instruments listed by default. Most MIDI programs default to the General MIDI instrument list which does not correspond to the Doom 64 instruments. The following page lists the Doom 64 instruments, with descriptions, and how they correspond to General MIDI.</p>
+			
+			<ul><li><a href="instruments.html">Instrument List</a></li></ul>
+			
+			<p>Below is an instrument defnition file which can be used for Sekaiju and Cakewalk SONAR to display the MIDI instruments with their Doom 64 descriptions.</p>
+			
+			<ul>
+				<li><a href="inst_defs.zip">Instrument Definition File</a></li>
+			</ul>
+			
+	</div>
+
+	<div id="footer"></br>Specific page contributions by Immorpher and Sun Rays.</div>
+	<script>
+	layout("../../../");
+	</script>
+</body>
+</html>

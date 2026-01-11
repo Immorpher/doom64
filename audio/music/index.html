@@ -23,53 +23,37 @@
 	
 		<h1>Music</h1>
 		
-			<p>The original Doom 64 music is in a MIDI format but uses a custom soundset. The link below lists the original tracks and how they are referenced to in most engines.</p>
+			<p>The original Doom 64 music is in a MIDI format but uses a custom soundset. The link below lists the original tracks and how they are referenced in most engines.</p>
 			
 			<ul>
 				<li><a href="musiclist.html">Original Music List</a></li>
 			</ul>
 			
-			<p>On PC ports of Doom 64, specific tracks can be assigned to levels with the <a href="../structures/wad/mapinfo.html">MAPINFO text lump</a>. On console ports, the track assignments are hard coded into the engine code. An archive of custom Doom 64 MIDIs can be found below.</p>
-		
+			<p>On PC ports of Doom 64, specific tracks can be assigned to levels with the <a href="../structures/wad/mapinfo.html">MAPINFO text lump</a>. On console ports, the track assignments are hard coded into the engine code. It is possible to compose custom music for Doom 64 where a <a href="https://www.dropbox.com/sh/b96qzg6r4sow4uz/AAArv5qzvMQIQxLXEzAJr40Fa">Doom 64 MIDI Archive</a> exists. The page below describes how to compose music for Doom 64 and lists useful software.</p>
+			
 			<ul>
-				<li><a href="https://www.dropbox.com/sh/b96qzg6r4sow4uz/AAArv5qzvMQIQxLXEzAJr40Fa">Doom 64 MIDI Archive</a></li>
+				<li><a href="composition/index.html">Music Composition</a></li>
 			</ul>
 			
-			<p>MIDIs are added to different files depending on the engine used as described below.</p>
+			<p>The various Doom 64 engines have different music format requirements as described in the following sections.</p>
 			
 			<ul>
-				<li><a href="#MIDIComposition">MIDI Composition</a></li>
-				<li><a href="#Remaster">Doom 64 Remaster</a></li>
+				<li><a href="#RemasterEXplus">Doom 64 Remaster and EX+</a></li>
 				<li><a href="#Doom64EX">Doom 64 EX Engines</a></li>
 				<li><a href="#Nintendo64">Nintendo64</a></li>
 			</ul>
 			
-		<h2 id="MIDIComposition">MIDI Composition</h2>
+		<h2 id="RemasterEXplus">Doom 64 Remaster and EX+</h2>
 		
-			<p>Composing MIDI requires a custom soundset to be loaded where <a href="https://coolsoft.altervista.org/en/virtualmidisynth">Virtual MIDI Synth</a> can be used to load a soundfont. You can use the wadgen utility from <a href="https://doom64ex.wordpress.com/">Doom 64 EX</a> or <a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a> to extract the Doom 64 soundfont from the Doom 64 ROM. Once you obtain the soundfont you can use the programs below to compose MIDIs for Doom 64.</p>
-		
-			<ul>
-				<li><a href="https://openmidiproject.osdn.jp/Sekaiju_en.html">Sekaiju</a></li>
-				<li><a href="http://www.synthfont.com/">SynthFont1</a></li>
-			</ul>
+			<p>The official Doom 64 Remaster and EX+ are based on the FMOD sound effects engine. This allows these engines to load other music formats such as MP3, OGG, Impulse Tracker and others. The caveat is the MIDI music is based around the DLS format which has lost the stereo panning of the original Doom 64 Soundset. This can be remedied by adding the stereo information to the MIDI files themselves. When replacing music on the Doom 64 Remaster, replacing single tracks (such as MUSDONE) can cause a bug where music gets played out of order or simple is not replaced. However, replacing the entire soundtrack seems to remedy this bug. And adding new music to custom WAD does not seem to cause this bug. Custom music can be placed between "DM_START" and "DM_END" markers in both of these engines.</p>
 			
-			<p>Most MIDI programs default to the General MIDI instrument list which does not correspond to the Doom 64 instruments. The following page lists the Doom 64 instruments, with descriptions, and how they correspond to General MIDI.</p>
+			<p>If you wish to use MIDI style music with custom sounds, it is recommended that you use tracker formats. <a href="https://openmpt.org/">Open MPT</a> is software in which you can compose tracker music, but perhaps more importantly, you can convert MIDIs into tracker music with custom soundfonts. In particular, these engines support the impulse tracker (IT) format.</p>
 			
-			<ul><li><a href="instruments.html">Instrument List</a></li></ul>
-			
-			<p>Some engines can load these MIDIs directly in appropriate lumps, however other engines require these MIDIs to be futher formatted as described in the following sections.</p>
-			
-		<h2 id="Remaster">Doom 64 Remaster</h2>
-		
-			<p>The official Doom 64 Remaster is based on the FMOD sound effects engine. This allows this engine to load other music formats such as MP3, OGG, Impulse Tracker and others. The caveat is the MIDI music is based around the DLS format which has lost the stereo panning of the original Doom 64 Soundset. This can be remedied by adding the stereo information to the MIDI files themselves. When replacing music on the Doom 64 Remaster, replacing single tracks (such as MUSDONE) can cause a bug where music gets played out of order or simple is not replaced. However, replacing the entire soundtrack seems to remedy this bug. And adding new music to custom WAD does not seem to cause this bug. Custom music can be placed between "DM_START" and "DM_END" markers.</p>
-			
-			<p>If you wish to use MIDI style music with custom sounds, it is recommended that you use tracker formats. <a href="https://openmpt.org/">Open MPT</a> is software in which you can compose tracker music, but perhaps more importantly, you can convert MIDIs into tracker music with custom soundfonts. In particular, the Doom 64 Remaster supports the impulse tracker (IT) format.</p>
-			
-			<p>It is possible to edit the Doom 64 Remaster soundfont for custom music. In particular the DOOMSND.DLS file is the soundfont. This is in the somewhat obscure DLS (downloadable sound) format, however, it is the only soundfont that the FMOD sound effects engine currently supports. Aging and expensive software such as <a href="https://www.fmjsoft.com/awavestudio.html">Awave Studio</a> can edit this file.</p>
+			<p>It is possible to edit the "DOOMSND.DLS" sound bank file for custom music. This is in the somewhat obscure DLS (downloadable sound) format, however, it is the only soundfont that the FMOD sound effects engine currently supports. Aging and expensive software such as <a href="https://www.fmjsoft.com/awavestudio.html">Awave Studio</a> can edit this file.</p>
 			
 		<h2 id="Doom64EX">Doom 64 EX Engines</h2>
 		
-			<p>The sound system for Doom 64 EX based engines utilize the FluidSynth sound system. Fundamentally this system is based upon MIDI architecture and all of its music and in-game sounds are in a soundfont. These engines only support MIDI music. For Doom 64 EX+, music can be placed between "DM_START" and "DM_END" markers, while for the original Doom EX, music is placed between the "DS_START" and "DS_END" markers, of a custom WAD.</p>
+			<p>The sound system for Doom 64 EX based engines utilize the FluidSynth sound system. Fundamentally this system is based upon MIDI architecture and all of its music and in-game sounds are in a soundfont. This engine only supports MIDI music. Here music is placed between the "DS_START" and "DS_END" markers of a custom WAD.</p>
 
 			<p>The original Doom 64 EX requires additional formatting which can be done with the <a href="https://www.doomworld.com/forum/topic/121602/">MIDI 64nicator</a>. This is due to many MIDI events causing the engine to crash and must be cleaned from the files. This engine also suffers from tracks going out of sync when a high density of midi events occur, however this is not noticeable with low-density ambient tracks.</p>
 			
