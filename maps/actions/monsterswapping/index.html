@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Monster Swapping</title>
+	<meta property="og:title" content="Monster Swapping" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Monster Swapping</h1>
+		
+			<p>Monster swapping allows the bonus monsters of Doom EX+ to be spawned in place of vanilla Doom 64 spawns. The concept was originally developed by Jetx, and allows maps to be build simultaneously compatible with the Doom 64 Remaster, EX+, and some Nintendo 64 engines while utilizing the expanded EX+ monster roster. With this technique consideration of the monster speeds and triggering line placement is needed. There are configurations where a monster can skip triggering a line, which can result in the lines being triggered out of order or the vanilla monster triggering the line first. Below are the three general techniques for monster swapping.</p>
+			
+			<ul>
+				<li><a href="#Overlapping">Overlapping</a></li>
+				<li><a href="#ClosetSpawning">Closet Spawning</a></li>
+				<li><a href="#ClosetTeleporting">Closet Teleporting</a></li>
+			</ul>
+			
+		<h2 id="Overlapping">Overlapping</h2>
+			
+			<p>The original design of the monster swapper spawns the EX+ monster then after a vanilla monster on the same spot. If the EX+ monster successfully spawns first, it will spawn block the vanilla monster. On engines that don't have EX+ monsters, no EX+ monster will spawn, and the vanilla monster will spawn again. This can be done with normal monster placements as well if they are overlapped, as long as the EX+ monster is placed first. Since a monster is spawn blocked on EX+, this method will prevent the player from achieving 100% kills. Below are example WADs of this technique.</p>
+			
+			<ul>
+				<li><a href="overlappedspawning.wad">Overlapped Spawning WAD</a></li>
+				<li><a href="overlappedplacement.wad">Overlapped Placement WAD</a></li>
+			</ul>
+			
+		<h2 id="ClosetSpawning">Closet Spawning</h2>
+			
+			<p>To allow for 100% kills on EX+, another method is to place the EX+ monster and the vanilla monster in a monster closet outside of the normal playable area. In this closet exists a linedef crossing trigger which activates a macro or monster tunnel which teleports the monster crossing it outside of the closet and causes the closet to crush anything remaining. The trigger has the "trigger by dead thing" flag and the closet has the 666 special for instakill. If the EX+ monster is set to reach this line crossing first, when both monsters are alerted, it will crush the vanilla monster as it teleports out. This allows the player to achieve 100% kills at the expense of increasing the total kill count on EX+. Example WADs of both techniques are shown below.</p>
+			
+			<ul>
+				<li><a href="closetspawnmacro.wad">Closet Spawning Macro WAD</a></li>
+				<li><a href="closetspawntunnel.wad">Closet Spawning Tunnel WAD</a></li>
+			</ul>
+			
+		<h2 id="ClosetTeleporting">Closet Teleporting</h2>
+			
+			<p>The prior method can be reconfigured for teleporting monsters as well. Where here instead of triggering a monster to spawn, the triggering monster will be teleported to the player. As the Doom 64 Remaster does not allow for monsters to be teleported via macros, only the monster tunnel method will work. In this case only a single tunnel outside of the map is needed. Where the EX+ monster is placed in front of the vanilla monster. Once alerted, the EX+ monster will trigger the teleport first (set to non-repeatable). Then the subsequent vanilla monster won't be able to trigger the teleport, rather it walks past and triggers a crusher which kills the vanilla monster, enabling the possibility of 100% kills. The example WAD below shows this in action.</p>
+			
+			<ul>
+				<li><a href="closetteleporting.wad">Closet Teleporting WAD</a></li>
+			</ul>
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../../");
+	</script>
+</body>
+</html>
