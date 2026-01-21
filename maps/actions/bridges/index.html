@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Bridges</title>
+	<meta property="og:title" content="Bridges" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Bridges</h1>
+		
+			<p>Doom 64's expanded action system allowed the creation of bridges, where players could go underneath and traverse across. These bridges are made with typical sectors, but the actions reconfigure the structure of the bridge when the view of the bridge is obscured. Then the 3D rendering features of Doom 64 futher allow geometry to render behind the bridge, visually completing the feature. The following sections describe the basic structure of Doom 64 styled bridges.</p>
+			
+			<ul>
+				<li><a href="#Sectors">Sectors</a></li>
+				<li><a href="#Macros">Macros</a></li>
+				<li><a href="#Examples">Examples</a></li>
+			</ul>
+			
+		<h2 id="Sectors">Sectors</h2>
+			
+			<p>Bridges have three sector types that each perform a different function.</p>
+			
+			<ol>
+				<li>Path</li>
+				<li>Railing</li>
+				<li>Trim</li>
+			</ol>
+			
+			<img src="bridgesectors.svg" alt="Bridge Sectors" style="width: 21rem; height: 20rem;" />
+			
+			<p>The path sector is the sector which the player uses to cross the bridge. Then the railing sector prevents the player from falling off the bridge (which can break the bridge's function). And finally the trim sector, trims the view of the bridge as viewed from a low angle. Then linedefs which comprise the bridge are flagged with the "No Occlusion" flag which allows geometry to render behind them. Either the sectors which comprise the bridge have the 666 special (instant kill) or its linedefs have monster blocking flags to prevent monsters from interfering with bridge operation.</p>
+			
+		<h2 id="Macros">Macros</h2>
+			
+			<p>Two macros are required to control the function of the bridge. One lowers the bridge, allowing the player to walk underneath it. And the other raises the bridge, allowing the player to walk across it. If this configuration change is done outside of the view of the player, then its change is mostly unnoticeable. Only the potentially crushed enemies or texture changes in the automap will hint at the change.</p>
+			
+			<p>The bridge lowering macro operates with the following steps.</p>
+			
+			<ol>
+				<li>Lower the path and railing floors to the lowest point so the player can go under the bridge.</li>
+				<li>Lower the path, railing, and trim ceilings to generate the under-bridge view</li>
+				<li>Swap the path and railing ceiling textures to a solid under-bridge texture.</li>
+			</ol>
+			
+			<p>Here the floors are lowered before the ceilings to reduce the potential of things being crushed. The ceilings are lowered before the sky texture is changed as this is less visually noticeable. However the order of these operations can be changed.</p>
+			
+			<p>Then the bridge raising macro operates with the following steps.</p>
+			
+			<ol>
+				<li>Swap the path and railing ceiling textures to a sky texture.</li>
+				<li>Raise the path, railing, and trim ceilings to the sky.</li>
+				<li>Raise the path and railing floors to form a railing and a transversable bridge.</li>
+			</ol>
+			
+			<p>The order here is in reverse of the lowering macro, although it doesn't need to be. This is also to prevent things from being crushed and to make the ceiling texture swap less noticeable.</p>
+			
+			<p>The prior two macros are usually done in a section or behind a barrier which blocks the player's view of the bridge. Originally they are done with linedef crossings, but sometimes linedef crossings can be easy for the player to skip if they are running fast enough, thus triggers are often added to reinforce these linedef crossings.</p>
+			
+		<h2 id="Examples">Examples</h2>
+			
+			<p>For illustrative purposes, the following WADs shows the bridge section detached and attached from the adjoining structures.</p>
+			
+			<ul>
+				<li><a href="bridgedetached.wad">Bridge Detached</a></li>
+				<li><a href="bridgenormal.wad">Bridge Normal</a></li>
+			</ul>
+			
+			<p>Typically monsters are blocked from entering the bridge section, or the bridge section does not become active until monsters are killed. This is to prevent monsters from getting stuck upon the railing. By removing the railing side linedefs from the blockmap, monsters are able to navigate off of the railing. This allows monsters to transverse under the bridge safely as long as there is enough height above the bridge to fit their hitbox. Monsters can still be crushed where the top of the bridge connects to the adjoining sectors. So to create a monster safe bridge, linedefs can be set to block monsters at the entrance to the adjoining sectors. However allowing monsters to access this area is mostly safe unless the player happens to trigger the bridge at the right time. Below are example WADs of these to bridge types.</p>
+			
+			<ul>
+				<li><a href="bridgemonsafe.wad">Monster Safe Bridge</a></li>
+				<li><a href="bridgemostlysafe.wad">Mostly Safe Bridge</a></li>
+			</ul>
+			
+			<p>When removing the railing linedefs from the blockmap, the railings will need to be above 16 units thick to prevent the player from walking through them at high speeds.</p>
+			
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../../");
+	</script>
+</body>
+</html>
