@@ -45,6 +45,8 @@
 			
 			<p>The path sector is the sector which the player uses to cross the bridge. Then the railing sector prevents the player from falling off the bridge (which can break the bridge's function). And finally the trim sector, trims the view of the bridge as viewed from a low angle. Then linedefs which comprise the bridge are flagged with the "No Occlusion" flag which allows geometry to render behind them. Either the sectors which comprise the bridge have the 666 special (instant kill) or its linedefs have monster blocking flags to prevent monsters from interfering with bridge operation.</p>
 			
+			<p>Bridges are made around sectors which have sky or black ceilings. Otherwise when the bridge is in its lowered state, it can cause a hole to appear above the bridge.</p>
+			
 		<h2 id="Macros">Macros</h2>
 			
 			<p>Two macros are required to control the function of the bridge. One lowers the bridge, allowing the player to walk underneath it. And the other raises the bridge, allowing the player to walk across it. If this configuration change is done outside of the view of the player, then its change is mostly unnoticeable. Only the potentially crushed enemies or texture changes in the automap will hint at the change.</p>
