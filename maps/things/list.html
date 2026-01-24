@@ -105,6 +105,8 @@
 			<p>These things can be placed into maps with a map editor and thus they all have a doom editor number.</p>
 		
 			<h3 id="Enemies">Enemies</h3>
+				<p>These are enemies which can be placed in maps by the mapper. The reaction times are listed in terms of engine tics which progress at a rate of 30 tics per second. Upon recieving damage, a random number table (between 0 and 255) will be queried and if that number is less than the pain chance then the enemy will go into a pain state. The titlemap cyberdemon is the only enemy that will never go into a pain state and the lost soul is the only enemy which always will go into a pain state upon recieving damage.</p>
+				
 				<p>The only enemy which has a "projectile damage" value is the Lost Soul. It has an attack where its "MF_SKULLFLY" flag becomes active and essentially the enemy behaves like a projectile, thus it delivers a projectile damage when it collides with a thing that is shootable.</p>
 				<table>
 				<thead>
