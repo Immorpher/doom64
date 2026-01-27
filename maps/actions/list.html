@@ -162,7 +162,7 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>17</td><td>Start Light Strobing</td><td>Start_Light_Strobing(<i>tag</i>)</td><td>Starts a light which brightens every second on the tagged sector which matches the linedef <i>tag</i>.</td></tr>
+				<tr><td>17</td><td>Start Light Strobing</td><td>Start_Light_Strobing(<i>tag</i>)</td><td>Starts a light which brightens every second on the tagged sector which matches the linedef <i>tag</i>. This will stack and interact in different ways with other sector special light effects.</td></tr>
 				<tr><td>222</td><td>Copy All Lights from Global Integer</td><td>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>)</td><td>Instantly copies the lights to the sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>234</td><td>Copy Upper Light from Global Integer</td><td>SetLightID(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly blends upper wall and ceiling lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
 				<tr><td>235</td><td>Smoothly Copy All Lights from Global Integer</td><td>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly transitions the lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204). This action operates on the "LIGHTS" lump and will change the color of any sector that has the same color as the destination tag. Therefore, it is recommended to give the destination sector a unique sector color.</td></tr>
