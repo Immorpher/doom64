@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Additive Lighting</title>
+	<meta property="og:title" content="Additive Lighting" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../../../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../../../style.css" />
+	<link rel="icon" type="image/x-icon" href="../../../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Additive Lighting</h1>
+		
+			<p>The glowing, strobing, and flickering light effects of Doom 64 are defined by sector specials. These are additive lighting effects where the same value is added to each color channel and results in a grayscale brightening effect. Upon map loading a new thinker is defined for each sector that has a special with a lighting effect. Additional thinkers are added when certain actions that either define a new strobing light (action 17) or actions that copy sector specials.</p>
+			
+			<p>When the "Sync Specials" flag is used on sectors with the same special light sequence (destination sectors), they will sync to the lowest indexed sector of the same special without the "Sync Specials" flag (source sector). In Doom Builder 64, linedef properties will reveal which sector indices the linedef borders. It is often simpler to build a source sector first (sometimes outside of the playable map) which will have the special, without the "Sync Specials" flag, then afterwards build the sectors with the same specials and the "Sync Specials" flag. This ensures the source sector will have a lower sector index than the destination sectors.</p>
+										
+			<ul>
+				<li><a href="#Specials">Sector Specials</a></li>
+				<li><a href="#Sequenced">Sequenced Lights</a></li>
+				<li><a href="#Stacked">Stacked Lights</a></li>
+			</ul>
+
+			
+		<h2 id="Specials">Sector Specials</h2>
+			
+			<p>The table below lists all of the sector specials which define an additive light effect. Subsequent sections describe sequenced lighting and stacked lighting effect which are referenced to by some of the table's columns.</p>
+		
+			<table>
+			<thead>
+				<tr>
+					<th>Flag<br/>Bit</th>
+					<th>Editor Setting</th>
+					<th>Description</th>
+					<th><a href="#Sequenced">Seq.<br/>Sectors</a></th>
+					<th><a href="#Stacked">Source Stacking</a></th>
+					<th><a href="#Stacked">Destination Stacking</a></th>
+					<th><a href="#Stacked">Double Stacking</a></th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>Normal</td>
+					<td>(default) No special effect</td>
+					<td>n/a</td>
+					<td>Light strobe (1 sec)</td>
+					<td><a href="destinationstacking/0.wad">Light strobe (1 sec)</a></td>
+					<td><a href="doublestacking/0.wad">Light strobe (1 sec)</a></td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>Light Blinks (randomly)</td>
+					<td>Light which blinks (dims) randomly</td>
+					<td>17</td>
+					<td><a href="sourcestacking/1.wad">Light blink and flicker combo</a></td>
+					<td><a href="destinationstacking/1.wad">Light blinks rapidly</a></td>
+					<td><a href="doublestacking/1.wad">Rapid blick and flicker combo</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Light Strobe (0.5 sec)</td>
+					<td>Light which brightens every half-second</td>
+					<td>18</td>
+					<td><a href="sourcestacking/2.wad">Strobe pattern slow</a></td>
+					<td><a href="destinationstacking/2.wad">Strobe pattern fast</a></td>
+					<td><a href="doublestacking/2.wad">Flickering strobe pattern</a></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Light Strobe (1 sec)</td>
+					<td>Light which brightens every second</td>
+					<td>22</td>
+					<td><a href="sourcestacking/3.wad">Strobe pattern very slow</a></td>
+					<td><a href="destinationstacking/3.wad">Strobe pattern slow</a></td>
+					<td><a href="doublestacking/3.wad">Flickering strobe pattern slow</a></td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Light Glows (normal)</td>
+					<td>Light which fades in and out</td>
+					<td>17</td>
+					<td><a href="sourcestacking/8.wad">Light ramp</a></td>
+					<td><a href="destinationstacking/8.wad">Light glow with blink</a></td>
+					<td><a href="doublestacking/8.wad">Pulsed light ramp</a></td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Light Glows (slow)</td>
+					<td>Light which fades in and out slowly</td>
+					<td>17</td>
+					<td><a href="sourcestacking/9.wad">Light ramp</a></td>
+					<td><a href="destinationstacking/9.wad">Slow light glow with blink</a></td>
+					<td><a href="doublestacking/9.wad">Pulsed light ramp</a></td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>Light Glows (randomly)</td>
+					<td>Light which fades in and out randomly</td>
+					<td>17</td>
+					<td><a href="sourcestacking/11.wad">Light ramp</a></td>
+					<td><a href="destinationstacking/11.wad">Random light glow with blink</a></td>
+					<td><a href="doublestacking/11.wad">Light ramp flicker</a></td>
+				</tr>
+				<tr>
+					<td>17</td>
+					<td>Light Flickers (randomly)</td>
+					<td>Random light brightness flicker</td>
+					<td>17</td>
+					<td><a href="sourcestacking/17.wad">Heavy random flicker</a></td>
+					<td><a href="destinationstacking/17.wad">Rapid random flicker</a></td>
+					<td><a href="doublestacking/17.wad">Heavier random flicker</a></td>
+				</tr>
+				<tr>
+					<td>202</td>
+					<td>Bright Light Strobe (0.25 sec)</td>
+					<td>Very bright light flashes every quarter-second</td>
+					<td>17</td>
+					<td><a href="sourcestacking/202.wad">Dim rapid light strobe</a></td>
+					<td><a href="destinationstacking/202.wad">Fast bright light strobe with blink</a></td>
+					<td><a href="doublestacking/202.wad">Dim rapid light strobe</a></td>
+				</tr>
+				<tr>
+					<td>204</td>
+					<td>Light Strobe (0.25 sec)</td>
+					<td>Light which brightens every quarter-second</td>
+					<td>17</td>
+					<td><a href="sourcestacking/204.wad">Strobe pattern</a></td>
+					<td><a href="destinationstacking/204.wad">Strobe pattern very fast</a></td>
+					<td><a href="doublestacking/204.wad">Flickering pattern fast</a></td>
+				</tr>
+				<tr>
+					<td>205</td>
+					<td>Sequence Starter</td>
+					<td>Starts a sequence of glowing lights.</td>
+					<td>n/a</td>
+					<td>Light strobe (1 sec)</td>
+					<td>Light strobe (1 sec)</td>
+					<td>Light strobe (1 sec)</td>
+				</tr>
+				<tr>
+					<td>206</td>
+					<td>Light Strobe (2 sec)</td>
+					<td>Light which brightens every two seconds</td>
+					<td>30</td>
+					<td><a href="sourcestacking/206.wad">Strobe pattern slowest</a></td>
+					<td><a href="destinationstacking/206.wad">Alternating light strobe</a></td>
+					<td><a href="doublestacking/206.wad">Flickering pattern slow</a></td>
+				</tr>
+				<tr>
+					<td>208</td>
+					<td>Bright Light Strobe (0.5 sec)</td>
+					<td>Very bright light flashes every half-second</td>
+					<td>19</td>
+					<td><a href="sourcestacking/208.wad">Spaced bright light strobe</a></td>
+					<td><a href="destinationstacking/208.wad">Slow bright light strobe with blink</a></td>
+					<td><a href="doublestacking/208.wad">Spaced bright light strobe with blink</a></td>
+				</tr>
+				<tr>
+					<td>n/a</td>
+					<td>(Linedef Action 17)</td>
+					<td>Light which brightens every second</td>
+					<td>20 (av.)</td>
+					<td>Light strobe pattern stacked</td>
+					<td>Light strobe pattern stacked</td>
+					<td>Light strobe pattern stacked</td>
+				</tr>
+			</tbody>
+			</table>
+			
+		<h2 id="Sequenced">Sequenced Lights</h2>
+			
+			<p>Sequenced lights are used in Staging Area, Altar of Pain, and other levels of the original Doom 64 campaign. These are the traveling/rotating glowing light effects that appear to travel along sectors. To construct this light sequence, the first sector is a tagged sector with one of the light specials (glowing/strobing/flickering). The next adjoining sector is a sector with the same tag and the 205 Sequence Starter special; this is the start of the light sequence. The subsequent adjoining sectors have incrementally increasing tags (no specials required) where the effect propigates into. All of the double sided linedefs should be pointing towards the sector with the light special. The effect will repeat after traveling along a certain number of sectors. The number of sectors depends on the sector special used which can be referenced in the sector specials table above. The example WAD below uses the sector special 2, thus the light is set to travel along 18 sectors in accord with the table above.</p>
+			
+			<ul>
+				<li><a href="sequencedlights.wad">Sequenced Lights WAD</a></li>
+			</ul>
+			
+			<p>The strobing effect doesn't always need to perfectly match the number of sectors it ideally travels, and often a smaller number of sectors will still look fine. When the start light strobe action is used (action 17) on the source sector, the appearance of the light strobe affect can be controlled. Interestingly, when light strobe is created with this effect, the sectors it travels before it repeats varies over time, but on average it is 20. The example WAD below demonstrates how light strobing can be controlled with this action and a switch.</p>
+			
+			<ul>
+				<li><a href="controlledsequencedlights.wad">Controlled Sequenced Lights WAD</a></li>
+			</ul>
+			
+		<h2 id="Stacked">Stacked Lights</h2>
+					
+			<p>Initially discovered by Jetx_121, an additional light sequence thinker can be added to a sector which already has a light sequence when action number 17 (start light strobe) is invoked on that sector. When the linedef action number 17 is activated, a 1 second strobing effect is added to the sector of the same tag. This effect can stack multiple times and can be added to other light specials to create unique effects. When added to a sector light source sector with a lighting special it will affect the timing of the pattern and the brightness. If this light source sector synced to other sectors, the other sectors will also have the pattern of the source sector in sync. When added to a destination sectors only that sync to an (unaffected) source sector the timing wont be affected but the brightness will be affected. It is also possible to stack this special on both the source and destination syncing sectors at the same time to create a third lighting effect type. The sector specials table above has descriptions of these effects with example WADs.</p>
+
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../../../");
+	</script>
+</body>
+</html>

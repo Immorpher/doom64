@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title id="title">Sector Lighting</title>
-	<meta property="og:title" content="Sector Lighting" />
+	<title id="title">Lighting</title>
+	<meta property="og:title" content="Lighting" />
 	<meta property="og:site_name" content="Doom 64 Compendium" />
 	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
 	<meta property="og:type" content="website" />
@@ -21,69 +21,21 @@
 	
 	<div id="content">
 	
-		<h1>Sector Lighting</h1>
+		<h1>Lighting</h1>
 		
-			<p>There is an unique look to Doom 64 that comes from its expanded lighting system called gradient colored lighting. Each sector has its own set of five colors defined. These five colors are the ceiling, upper half wall, lower half wall, floor, and a separate "thing" color. The thing color is what defines the color on the player, sprites, enemies, and even switches in that sector, so it is independent from the level geometry coloring. In this way the textures can be colored differently where gray bricks can be made into red or even green bricks. The top half wall and bottom half wall colors are interpolated along the wall to create a gradient.</p>
-		
-			<img src="lightdiagram.svg" alt="The Five Sector Lights" style="width: 320px; height: 400px;" />
-
-			<p>Additionally Doom 64 has a brightness setting which boosts the sector color. It uses the hue-saturation-value (HSV) method which does not desaturate colors. However certain brightness values can get maxed out depending on the brightness setting and if the player has the light amplification goggles. The following page describes the HSV boosting method and has a color calculator.</p>
+			<p>What sets Doom 64 apart from other Doom games is its lighting system. In general lighting is defined at the sector-level. Then from here there are two types of lighting in Doom 64: gradient lighting and additive lighting.</p>
 			
-			<ul>
-				<li><a href="hsv.html">HSV Boosting and Lighting Calculator</a></li>
-			</ul>
-		
-			<p>In Doom Builder 64, in visual mode (the W key), you can turn lights mode (the V key) and there you can see what kind of lighting you are applying to each sector without textures. This is good to set brightnesses and coloring independent of texturing. Sometimes sector lights can appear black in game when a tag is removed from a sector. It is unknown why this bug exists, but adding a tag back to the sector can fix it. There are no absolute rules on how to set the sector colors, but there are some techniques to achieve natural looking or stylized lighting as described in the following section.</p>
+			<p>Doom 64's gradient lighting is based upon gouraud shading. Here color gradients are defined across polygon vertices and are multiplied against the textures. This allows the brightness along walls to be changed and texture color to be changed. Since it is color multiplicative process, the output ends up being darkened. Thus this is the root cause for Doom 64's notorious darkness. The page below describes gradient lighting in more detail.</p>
 							
 			<ul>
-				<li><a href="#Naturalistic">Naturalistic Lighting</a></li>
-				<li><a href="#Stylized">Stylized Lighting</a></li>
-				<li><a href="#Advanced">Advanced Lighting</a></li>
+				<li><a href="gradient/index.html">Gradient Lighting</a></li>
 			</ul>
 			
-		<h2 id="Naturalistic">Naturalistic Lighting</h2>
-		
-			<p>To achieve a more "natural" look to a level's visuals, it's useful to think of where the light source originates in a sector and which parts of the walls are closer to that light source. Theoretically corners of a room tend to be the furthest from light sources and are darker; this is the principle of ambient occlusion.</p>
+			<p>The second kind of lighting is additive lighting. As opposed to multiplicative lighting, greyscale color is added to the texture, thus brightening the texture. This lighting is animated in Doom 64 and results in the flickering, glowing, and strobing light effects in the game. The page below describes additive lighting in more detail.</p>
 			
-			<p>Let's say you place a "Tech Lamp Short Hanging" thing (which will automatically attach to the ceiling) on a sector. Theoretically a lamp will shine downwards, thus the floor and bottom half wall will be bright (where the light hits), but the ceiling and top half wall will be dark.</p>
-			
-			<img src="hanghalflight.svg" alt="Hanging Light Lighting" style="width: 400px; height: 520px;" />
-			
-			<p>A bright bottom wall also happens with glowing liquids (ooze or lava) and some floor lights. If there is a glowing liquid it is useful to set the bottom wall color to the hue that matches the liquid.</p>
-			
-			<p>This scenario of a hanging light is reversed if you are making a deep pit or crevice. Here it is less likely for the light to reach the bottom of the pit, where the bottom is shadowed by the walls, so the floor and bottom half wall should be dark.</p>
-
-			<img src="deeppit.svg" alt="Deep Pit Lighting" style="width: 320px; height: 760px;" />
-			
-			<p>If there is an inset light on the floor then the outer sector will have a bright ceiling and upper wall as well. However the wall gradient is reversed in the inner sector around the floor light.</p>
-			
-			<img src="insetfloorglow.svg" alt="Inset Floor Lighting" style="width: 480px; height: 480px;" />
-			
-		<h2 id="Stylized">Stylized Lighting</h2>
-		
-			<p>While naturalistic lighting can give a more smooth look, stylized lighting has a more striking appearance. And in some situations, deviating from a light source based approach may look better.</p>
-			
-			<p>Consider a shallow pit this time. Theoretically the principle of a deep pit would also apply. But in this case not as many shadows would cover the floor and direct light should hit it. Thus the floor should be much brighter than a deep pit.  A solution would be to have both the bottom and top half walls a similar bright shade. However darkening the top half wall gives contrast and makes the wall look less flat. Perhaps, in a way, corrosion over time has darkened the top wall.</p>
-
-			<img src="shallowpit.svg" alt="Shallow Pit Lighting" style="width: 640px; height: 520px;" />
-			
-			<p>The idea of darkening the tops of walls can also increase the contrast of steps, making them more visible. Here the flag of "Peg Lower Wall Color" should be checked on the step linedefs to maximize the contast over distance.</p>
-			
-			<img src="contrastedsteps.svg" alt="Contrasted Steps Lighting" style="width: 400px; height: 520px;" />
-			
-			<p>Conversely the principle of ambient occlusion could also be applied, where the bottom walls of the steps are darker.</p>
-			
-			<p>To have maximally contrasted lighting, the floors and ceilings can have the opposite brightness of the adjoining half walls. For example, you could have a dark bottom half wall with a bright floor and do the opposite with the upper sector.</p>
-			
-			<img src="contrasted.svg" alt="Contrasted Steps Lighting" style="width: 400px; height: 520px;"  />
-			
-			<p>Even though this may not be very natural, it clearly shows the navigatable floor area which allows the player to quickly see forks in paths and different routes.</p>
-			
-		<h2 id="Advanced">Advanced Lighting</h2>
-		
-			<p>Triangular sectors can be used to separate specific walls from adjoining walls. This can be used to shade that wall differently than its neighbors. For example, you may want to shade steps along a wall differently than the adjoining wall.</p>
-			
-			<p>"Flip Upper Pegged Color" will reverse the gradient direction of the upper wall compared to the lower wall. By allowing the upper or lower walls meet, with "Peg Upper Wall Color" and "Peg Lower Wall Color", the use of "Flip Upper Pegged Color" can allow the wall to be bright in the middle. Having a bright middle walls can be useful for torches attached to these walls.</p>
+			<ul>
+				<li><a href="additive/index.html">Additive Lighting</a></li>
+			</ul>
 
 	</div>
 
