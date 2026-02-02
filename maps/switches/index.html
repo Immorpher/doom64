@@ -33,6 +33,7 @@
 			<ul>
 				<li><a href="#Basics">Doom Builder 64 Basics</a></li>
 				<li><a href="#Inset">Inset Switch Example</a></li>
+				<li><a href="#Floating">Floating Switches</a></li>
 				<li><a href="#Differences">Engine Specific Differences</a></li>
 			</ul>
 		
@@ -66,7 +67,14 @@
 			
 			<img src="insetswitch04.png" alt="Inset Switch in Game" style="width: 800px; height: 400px;  image-rendering: pixelated;" />
 			
+		<h2 id="Floating">Floating Switches</h2>
+		
+			<p>Middle displayed switches cannot be activated by the use action on single sided lines, however they can be activated via hitscan shot if enabled by the appropriate flag. However, double sided lines can be used in the middle of sectors and not only on the edges. With these, players can activate these switches with the use action. Further, the blank texture can be used on double sided lines with textures to create a "floating switch". See the example WAD below.</p>	
 			
+			<ul>
+				<li><a href="floatingswitch.wad">Floating Switch Example</a></li>
+			</ul>
+						
 		<h2 id="Differences">Engine Specific Differences</h2>
 		
 			<p>For most Doom 64 engines, except for Doom 64 EX, the player's activation distance can pass through single-sided linedefs (walls). This means that, if the activating linedef is not far enough away, a player can activate a switch or a door through a thin wall. A remedy to this is to make the wall thicker. Depending on the angle, the "Trigger Only Front Side" flag can be used to prevent the player from activating a backside of a linedef as well.</p>
