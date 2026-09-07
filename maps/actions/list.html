@@ -24,7 +24,7 @@
 		
 			<p>Here is a list of all of the actions available in Doom 64. Many of the actions are labeled as "(undefined)" when they are not specifically defined for use in Doom Builder 64, but they can still be used. For linedefs, you just need to type in the corresponding number of an undefined action to use it. For macros, at the top of the script, you will use the "#define" property, followed by the name you want to use as the macro, then the macro number and its value. For example this is how the simple door open action is defined: "#define Door_Open(tag) 2:tag".</p>
 			
-			<p>The majority of actions target a specific line, sector, or thing with a specified tag. Additional properties are sometimes assigned via action 204, which sets the global integer / macro integer. Macro actions which have two inputs are, in reality, a combination of actions where action 204 happens first, followed by another action for the specific effect.</p>
+			<p>The majority of actions target a specific line, sector, or thing with a specified tag. Additional properties are sometimes assigned via action 204, which sets the argument / macro integer. Macro actions which have two inputs are, in reality, a combination of actions where action 204 happens first, followed by another action for the specific effect.</p>
 			
 			<p>There are some limits to moving sectors. Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector if using a macro. Further, the Doom 64 Remaster can’t have more than 30 moving ceilings and floors at the same time while EX based ports can have more.</p>
 							
@@ -35,12 +35,11 @@
 				<li><a href="#Platforms">Platforms</a></li>
 				<li><a href="#Stairs">Stairs</a></li>
 				<li><a href="#Teleports">Teleports</a></li>
-				<li><a href="#Things">Thing Specials</a></li>
+				<li><a href="#Things">Things</a></li>
 				<li><a href="#Lights">Lights</a></li>
 				<li><a href="#Macros">Macro Control</a></li>
-				<li><a href="#Specials">Specials</a></li>
 				<li><a href="#Sectors">Sector Properties</a></li>
-				<li><a href="#Lindefs">Linedef Properties</a></li>
+				<li><a href="#Linedefs">Linedef Properties</a></li>
 				<li><a href="#Artifact">Artifact Switches</a></li>
 				<li><a href="#Exits">Exits</a></li>
 				<li><a href="#Miscellaneous">Miscellaneous</a></li>
@@ -51,17 +50,17 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>1</td><td>Door Open Wait Close</td><td>(undefined)</td><td>Opens the door of adjoining sector, waits for a few seconds, and closes it again. Monsters can activate this by default.</td></tr>
-				<tr><td>31</td><td>Door Open</td><td>(undefined)</td><td>Opens the door of adjoining sector. The door won't close by itself.</td></tr>
-				<tr><td>4</td><td>Door (Classic) Open Wait Close Tagged</td><td>Door_OpenWaitClose(<i>tag</i>)<br/>Door_Raise(<i>tag</i>)</td><td>Opens the door of tagged sector, waits for a few seconds, and closes it again. Monsters can activate this by default.</td></tr>
-				<tr><td>2</td><td>Door (Classic) Open Tagged</td><td>Door_Open(<i>tag</i>)</td><td>Opens the door of tagged sector. The door won't close by itself. Monsters can activate this by default.</td></tr>
-				<tr><td>3</td><td>Door (Classic) Close Tagged</td><td>Door_Close(<i>tag</i>)</td><td>Closes the door of tagged sector. The door won't re-open by itself.</td></tr>
-				<tr><td>16</td><td>Door (Classic) Close Wait 30 Sec Open Tagged</td><td>Door_CloseWaitLongOpen(<i>tag</i>)<br/>Door_CloseWaitOpen(<i>tag</i>)</td><td>Closes the door of tagged sector, waits 30 seconds, and opens it again.</td></tr>
-				<tr><td>108</td><td>Door (Classic) Fast Open Wait Close Tagged</td><td>Door_OpenWaitCloseFast(<i>tag</i>)<br/>Door_RaiseFast(<i>tag</i>)</td><td>Quickly opens the door of tagged sector, waits for a few seconds, and closes it again.</td></tr>
-				<tr><td>109</td><td>Door (Classic) Fast Open Tagged</td><td>Door_OpenFast(<i>tag</i>)</td><td>Quickly opens the door of tagged sector. The door won't close by itself.</td></tr>
-				<tr><td>110</td><td>Door (Classic) Fast Close Tagged</td><td>Door_CloseFast(<i>tag</i>)</td><td>Quickly closes the door of tagged sector. The door won't re-open by itself.</td></tr>
-				<tr><td>117</td><td>Door (Split) Fast Open Wait Close</td><td>(undefined)</td><td>Opens a split door of adjoining sector, waits for a few seconds, and closes it again.</td></tr>
-				<tr><td>118</td><td>Door (Split) Fast Open</td><td>(undefined)</td><td>Opens a split door of adjoining sector. The door won't close by itself.</td></tr>
+				<tr><td>1</td><td>Door Open 4s Close (No Tag)</td><td>(undefined)</td><td>Opens the door of adjoining sector, waits 4 seconds, and closes it again. Monsters can activate this by default.</td></tr>
+				<tr><td>31</td><td>Door Stay Open (No Tag)</td><td>(undefined)</td><td>Opens the door of adjoining sector. The door won't close by itself.</td></tr>
+				<tr><td>4</td><td>Door Open 4s Close</td><td>Door_OpenWaitClose(<i>tag</i>)<br/>Door_Raise(<i>tag</i>)</td><td>Opens the door of tagged sector, waits 4 seconds, and closes it again. Monsters can activate this by default.</td></tr>
+				<tr><td>2</td><td>Door Stay Open</td><td>Door_Open(<i>tag</i>)</td><td>Opens the door of tagged sector. The door won't close by itself. Monsters can activate this by default.</td></tr>
+				<tr><td>3</td><td>Door Stay Closed</td><td>Door_Close(<i>tag</i>)</td><td>Closes the door of tagged sector. The door won't re-open by itself.</td></tr>
+				<tr><td>16</td><td>Door Close 30s Open</td><td>Door_CloseWaitLongOpen(<i>tag</i>)<br/>Door_CloseWaitOpen(<i>tag</i>)</td><td>Closes the door of tagged sector, waits 30 seconds, and opens it again.</td></tr>
+				<tr><td>108</td><td>Door Open 4s Close (Fast)</td><td>Door_OpenWaitCloseFast(<i>tag</i>)<br/>Door_RaiseFast(<i>tag</i>)</td><td>Quickly opens the door of tagged sector, waits 4 seconds, and closes it again.</td></tr>
+				<tr><td>109</td><td>Door Stay Open (Fast)</td><td>Door_OpenFast(<i>tag</i>)</td><td>Quickly opens the door of tagged sector. The door won't close by itself.</td></tr>
+				<tr><td>110</td><td>Door Stay Closed (Fast)</td><td>Door_CloseFast(<i>tag</i>)</td><td>Quickly closes the door of tagged sector. The door won't re-open by itself.</td></tr>
+				<tr><td>117</td><td>Door Split Open 4s Close (No Tag)</td><td>(undefined)</td><td>Opens a split door of adjoining sector, waits 4 seconds, and closes it again.</td></tr>
+				<tr><td>118</td><td>Door Split Stay Open (No Tag)</td><td>(undefined)</td><td>Opens a split door of adjoining sector. The door won't close by itself.</td></tr>
 			</tbody></table>
 
 		<h2 id="Floors">Floors</h2>
@@ -72,20 +71,18 @@
 				<tr><td>19</td><td>Floor Lower to Nearest</td><td>Floor_LowerToNearest(<i>tag</i>)<br/>Floor_Lower(<i>tag</i>)</td><td>Lowers the tagged floor to the height of the highest neighboring floor.</td></tr>
 				<tr><td>38</td><td>Floor Lower to Lowest</td><td>Floor_LowerToLowest(<i>tag</i>)</td><td>Lowers the tagged floor to the height of the lowest neighboring floor.</td></tr>
 				<tr><td>37</td><td>Floor Lower to Lowest and Change</td><td>Floor_LowerToLowestChange(<i>tag</i>)<br/>Floor_LowerChange(<i>tag</i>)</td><td>Lowers the floor to the height of the highest neighboring floor and changes the floor texture and sector special to match the neighboring sector.</td></tr>
-				<tr><td>36</td><td>Floor Lower to 8 Above Nearest Fast</td><td>Floor_LowerToNearestFast(<i>tag</i>)<br/>Floor_LowerFast(<i>tag</i>)</td><td>Lowers the floor at turbo speed to 8 units above the height of the highest neighboring floor.</td></tr>
-				<tr><td>119</td><td>Floor Raise to Nearest</td><td>Floor_RaiseToNearest(<i>tag</i>)</td><td>Raises tagged floor to the height of the lowest neighboring floor.</td></tr>
+				<tr><td>36</td><td>Floor Lower to 8 Above Nearest (Fast)</td><td>Floor_LowerToNearestFast(<i>tag</i>)<br/>Floor_LowerFast(<i>tag</i>)</td><td>Lowers the floor at turbo speed to 8 units above the height of the highest neighboring floor.</td></tr>
+				<tr><td>119</td><td>Floor Raise to Nearest</td><td>Floor_RaiseToNearest2(<i>tag</i>)</td><td>Raises tagged floor to the height of the lowest neighboring floor.</td></tr>
 				<tr><td>5</td><td>Floor Raise to Ceiling</td><td>Floor_RaiseToCeiling(<i>tag</i>)<br/>Floor_Raise(<i>tag</i>)</td><td>Raises the tagged floor to the height of the lowest neighboring ceiling.</td></tr>
-				<tr><td>56</td><td>Floor Raise to 8 Below Ceiling Crush</td><td>Floor_RaiseCrush(<i>tag</i>)</td><td>Raises the tagged floor to 8 units below the height of the lowest neighboring ceiling. Things are allowed to be crushed by this movement.</td></tr>
+				<tr><td>56</td><td>Floor Raise to 8 Below Ceiling</td><td>Floor_RaiseCrush(<i>tag</i>)</td><td>Raises the tagged floor to 8 units below the height of the lowest neighboring ceiling. Things are allowed to be crushed by this movement.</td></tr>
 				<tr><td>58</td><td>Floor Raise by 24</td><td>Floor_RaiseTwentyFour(<i>tag</i>)</td><td>Raises the tagged floor by 24 units.</td></tr>
 				<tr><td>59</td><td>Floor Raise by 24 and Change</td><td>Floor_RaiseTwentyFourChange(<i>tag</i>)</td><td>Raises the tagged floor by 24 units and changes the floor texture and sector special to match the sector adjacent to the front side of the linedef that triggered this action.</td></tr>
-				<tr><td>22</td><td>Floor Raise to Nearest and Change</td><td>Floor_RaiseToNearestChangeSlow(<i>tag</i>)<br/>Plat_RaiseChange(<i>tag</i>)</td><td>Changes the tagged floor texture to that of the neighboring floor and raises the floor to the highest neighboring floor.</td></tr>
-				<tr><td>66</td><td>Floor Raise by 24 Slow and Change</td><td>Floor_RaiseTwentyFourChangeSlow(<i>tag</i>)<br/>Plat_RaiseByTwentyFourChange(<i>tag</i>)</td><td>Changes the tagged floor texture to that of the neighboring floor and raises the floor by 24 map units.</td></tr>
-				<tr><td>67</td><td>Floor Raise by 32 Slow and Change</td><td>Floor_RaiseThirtyTwoChangeSlow(<i>tag</i>)<br/>Plat_RaiseByThirtyTwoChange(<i>tag</i>)</td><td>Changes the tagged floor texture to that of the neighboring floor and raises the floor by 32 map units.</td></tr>
-				<tr><td>212</td><td>Floor Move by Global Integer</td><td>Floor_MoveBy(<i>tag</i>, <i>value</i>)<br/>Floor_MoveByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor by the amount specified by the <i>value</i> or global integer (action 204). Positive values raise the floor, negative values lower it.</td></tr>
-				<tr><td>228</td><td>Floor Move by Global Integer Fast</td><td>Floor_MoveByFast(<i>tag</i>, <i>value</i>)<br/>Floor_MoveByValueFast(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the floor moves at turbo speed.</td></tr>
-				<tr><td>229</td><td>Floor Move by Global Integer Instant</td><td>Floor_MoveByInstant(<i>tag</i>, <i>value</i>)<br/>Floor_MoveByValueInstant(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the floor moves instantly.</td></tr>
-				<tr><td>247</td><td>Floor Move to Global Integer</td><td>Floor_MoveTo(<i>tag</i>, <i>height</i>)<br/>Floor_MoveByHeight(<i>tag</i>, <i>height</i>)</td><td>Moves the floor to a specific <i>height</i> or global integer (action 204). Direction of the movement depends on the floor's starting height.</td></tr>
-				<tr><td>244</td><td>Floor Move to Global Integer Instant</td><td>Floor_Set(<i>tag</i>, <i>height</i>)<br/>Floor_SetHeight(<i>tag</i>, <i>height</i>)</td><td>Same as above, but the floor moves instantly. Effectively sets the floor's height value.</td></tr>
+				<tr><td>30</td><td>Floor Move Sound / Raise to Nearest</td><td>Floor_RaiseToNearest(<i>tag</i>)</td><td>This is a holdover from PS1 Doom meant to raise the floor to the lowest nearby sector but only makes a floor move sound at the tagged sector as the engine is missing its code.</td></tr>
+				<tr><td>212</td><td>Floor Move by Argument</td><td>Floor_MoveBy(<i>tag</i>, <i>value</i>)<br/>Floor_MoveByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor by the amount specified by the <i>value</i> or argument (action 204). Positive values raise the floor, negative values lower it.</td></tr>
+				<tr><td>228</td><td>Floor Move by Argument (Fast)</td><td>Floor_MoveByFast(<i>tag</i>, <i>value</i>)<br/>Floor_MoveByValueFast(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the floor moves at turbo speed.</td></tr>
+				<tr><td>229</td><td>Floor Move by Argument (Instant)</td><td>Floor_MoveByInstant(<i>tag</i>, <i>value</i>)<br/>Floor_MoveByValueInstant(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the floor moves instantly.</td></tr>
+				<tr><td>247</td><td>Floor Move to Argument</td><td>Floor_MoveTo(<i>tag</i>, <i>height</i>)<br/>Floor_MoveByHeight(<i>tag</i>, <i>height</i>)</td><td>Moves the floor to a specific <i>height</i> or argument (action 204). Direction of the movement depends on the floor's starting height.</td></tr>
+				<tr><td>244</td><td>Floor Move to Argument (Instant)</td><td>Floor_Set(<i>tag</i>, <i>height</i>)<br/>Floor_SetHeight(<i>tag</i>, <i>height</i>)</td><td>Same as above, but the floor moves instantly. Effectively sets the floor's height value.</td></tr>
 			</tbody></table>
 
 		<h2 id="Ceilings">Ceilings</h2>
@@ -94,41 +91,44 @@
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
 				<tr><td>43</td><td>Ceiling Lower to Floor</td><td>Ceiling_LowerToFloor(<i>tag</i>)</td><td>Lowers the tagged ceiling to the height of the floor.</td></tr>
-				<tr><td>44</td><td>Ceiling Lower to Floor<br/>(and Crush, if available)</td><td>Ceiling_LowerToFloorTwo(<i>tag</i>)<br/>Ceiling_RaiseCrushTwo(<i>tag</i>)</td><td>Lowers the tagged ceiling to the height of the floor and crushes.</td></tr>
-				<tr><td>6</td><td>Ceiling Crush Fast Loop</td><td>Ceiling_CrushFastLoop(<i>tag</i>)<br/>Ceiling_RaiseCrush(<i>tag</i>)</td><td>Activates fast crusher moving up and down on tagged sector. Won't stop by itself.</td></tr>
-				<tr><td>25</td><td>Ceiling Crush Slow Loop</td><td>Ceiling_CrushSlowLoop(<i>tag</i>)<br/>Ceiling_RaiseCrushOnce(<i>tag</i>)</td><td>Activates slow crusher moving up and down on tagged sector. Won't stop by itself.</td></tr>
-				<tr><td>57</td><td>Ceiling Stop Crusher</td><td>Ceiling_StopCrusher(<i>tag</i>)</td><td>Stops the current crusher in the tagged sector, if applicable</td></tr>
-				<tr><td>141</td><td>Silent Crusher</td><td>Ceiling_InstantKill(<i>tag</i>)<br/>Ceiling_SilentCrusher(<i>tag</i>)</td><td>Activates a silent ceiling crusher on tagged sector which perpetually moves.</td></tr>
-				<tr><td>232</td><td>Ceiling Crush and Raise Fast Once</td><td>Ceiling_CrushRaiseFastOnce(<i>tag</i>)<br/>Ceiling_RaiseCrushOnceFast(<i>tag</i>)</td><td>Performs one cycle of a fast crusher on tagged sector, then stops.</td></tr>
-				<tr><td>210</td><td>Ceiling Move by Global Integer</td><td>Ceiling_MoveBy(<i>tag</i>, <i>value</i>)<br/>Ceiling_MoveByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the ceiling by the amount specified by the <i>value</i> or global integer (action 204). Positive values raise the ceiling, negative values lower it.</td></tr>
-				<tr><td>226</td><td>Ceiling Move by Global Integer Fast</td><td>Ceiling_MoveByFast(<i>tag</i>, <i>value</i>)<br/>Ceiling_MoveByValueFast(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the ceiling moves at turbo speed.</td></tr>
-				<tr><td>227</td><td>Ceiling Move by Global Integer Instant</td><td>Ceiling_MoveByInstant(<i>tag</i>, <i>value</i>)<br/>Ceiling_MoveByValueInstant(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the ceiling moves instantly.</td></tr>
-				<tr><td>252</td><td>Ceiling Move to Global Integer</td><td>Ceiling_MoveTo(<i>tag</i>, <i>height</i>)<br/>Ceiling_MoveByHeight(<i>tag</i>, <i>height</i>)</td><td>Moves the ceiling to a specific <i>height</i> or global integer (action 204). Direction of the movement depends on the ceiling's starting height.</td></tr>
-				<tr><td>245</td><td>Ceiling Move to Global Integer Instant</td><td>Ceiling_Set(<i>tag</i>, <i>height</i>)<br/>Ceiling_SetHeight(<i>tag</i>, <i>height</i>)</td><td>Same as above, but the ceiling moves instantly. Effectively sets the ceiling's height value.</td></tr>
+				<tr><td>44</td><td>Ceiling Lower to 8 Above Floor</td><td>Ceiling_LowerToFloorTwo(<i>tag</i>)<br/>Ceiling_RaiseCrushTwo(<i>tag</i>)</td><td>Lowers the tagged ceiling to the height of the floor and crushes.</td></tr>
+				<tr><td>6</td><td>Ceiling Start Crusher Loop (Fast)</td><td>Ceiling_CrushFastLoop(<i>tag</i>)<br/>Ceiling_RaiseCrush(<i>tag</i>)</td><td>Activates fast crusher moving up and down on tagged sector. Won't stop by itself.</td></tr>
+				<tr><td>25</td><td>Ceiling Start Crusher Loop (Slow)</td><td>Ceiling_CrushSlowLoop(<i>tag</i>)<br/>Ceiling_RaiseCrushOnce(<i>tag</i>)</td><td>Activates slow crusher moving up and down on tagged sector. Won't stop by itself.</td></tr>
+				<tr><td>141</td><td>Ceiling Start Silent Crusher Loop (Fast)</td><td>Ceiling_InstantKill(<i>tag</i>)<br/>Ceiling_SilentCrusher(<i>tag</i>)</td><td>Activates a silent ceiling crusher on tagged sector which perpetually moves.</td></tr>
+				<tr><td>57</td><td>Ceiling Stop Crusher Loop</td><td>Ceiling_StopCrusher(<i>tag</i>)</td><td>Stops the current crusher in the tagged sector, if applicable</td></tr>
+				<tr><td>232</td><td>Ceiling Lower and Raise (Fast)</td><td>Ceiling_CrushRaiseFastOnce(<i>tag</i>)<br/>Ceiling_RaiseCrushOnceFast(<i>tag</i>)</td><td>Performs one cycle of a fast crusher on tagged sector, then stops.</td></tr>
+				<tr><td>210</td><td>Ceiling Move by Argument</td><td>Ceiling_MoveBy(<i>tag</i>, <i>value</i>)<br/>Ceiling_MoveByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the ceiling by the amount specified by the <i>value</i> or argument (action 204). Positive values raise the ceiling, negative values lower it.</td></tr>
+				<tr><td>226</td><td>Ceiling Move by Argument (Fast)</td><td>Ceiling_MoveByFast(<i>tag</i>, <i>value</i>)<br/>Ceiling_MoveByValueFast(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the ceiling moves at turbo speed.</td></tr>
+				<tr><td>227</td><td>Ceiling Move by Argument (Instant)</td><td>Ceiling_MoveByInstant(<i>tag</i>, <i>value</i>)<br/>Ceiling_MoveByValueInstant(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the ceiling moves instantly.</td></tr>
+				<tr><td>252</td><td>Ceiling Move to Argument</td><td>Ceiling_MoveTo(<i>tag</i>, <i>height</i>)<br/>Ceiling_MoveByHeight(<i>tag</i>, <i>height</i>)</td><td>Moves the ceiling to a specific <i>height</i> or argument (action 204). Direction of the movement depends on the ceiling's starting height.</td></tr>
+				<tr><td>245</td><td>Ceiling Move to Argument (Instant)</td><td>Ceiling_Set(<i>tag</i>, <i>height</i>)<br/>Ceiling_SetHeight(<i>tag</i>, <i>height</i>)</td><td>Same as above, but the ceiling moves instantly. Effectively sets the ceiling's height value.</td></tr>
 			</tbody></table>
 		
 		<h2 id="Platforms">Platforms</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>10</td><td>Plat Down Wait Up</td><td>Plat_DownWaitUp(<i>tag</i>)</td><td>Lowers the tagged floor to the lowest neighboring floor, waits for 3 seconds, and raises back up. Monsters can activate this by default.</td></tr>
-				<tr><td>121</td><td>Plat Down Wait Up Fast</td><td>Plat_UpWaitDownFast(<i>tag</i>)</td><td>Quickly lowers the tagged floor to the lowest neighboring floor, waits for 3 seconds, and raises back up.</td></tr>
-				<tr><td>53</td><td>Plat Down Wait Up Loop</td><td>Plat_DownWaitUpLoop(<i>tag</i>)<br/>Plat_PerpetualRaise(<i>tag</i>)</td><td>Lowers the tagged floor to the lowest neighboring floor at slow speed, waits for 3 seconds, and raises back up. Then, repeats forever.</td></tr>
+				<tr><td>10</td><td>Plat Lower 3s Raise</td><td>Plat_DownWaitUp(<i>tag</i>)</td><td>Lowers the tagged floor to the lowest neighboring floor, waits for 3 seconds, and raises back up. Monsters can activate this by default.</td></tr>
+				<tr><td>121</td><td>Plat Lower 3s Raise (Fast)</td><td>Plat_UpWaitDownFast(<i>tag</i>)</td><td>Quickly lowers the tagged floor to the lowest neighboring floor, waits for 3 seconds, and raises back up.</td></tr>
+				<tr><td>53</td><td>Plat Down Wait Up 5s Loop</td><td>Plat_DownWaitUpLoop(<i>tag</i>)<br/>Plat_PerpetualRaise(<i>tag</i>)</td><td>Lowers the tagged floor to the lowest neighboring floor at slow speed, waits for 3 seconds, and raises back up. Then, repeats forever.</td></tr>
 				<tr><td>54</td><td>Plat Stop Moving</td><td>Plat_Stop(<i>tag</i>)</td><td>Stops the tagged platform, if it is moving.</td></tr>
-				<tr><td>122</td><td>Plat Up Wait Down</td><td>Plat_UpWaitDown(<i>tag</i>)</td><td>Raises the tagged floor to the highest neighboring floor, waits for 3 seconds, and lowers back down.</td></tr>
-				<tr><td>123</td><td>Plat Up Wait Down Fast</td><td>Plat_DownWaitUpFast(<i>tag</i>)</td><td>Quickly raises the tagged floor to the highest neighboring floor, waits for 3 seconds, and lowers back down.</td></tr>
-				<tr><td>236</td><td>Plat Down Wait Up by Global Integer</td><td>Plat_DownWaitUpBy(<i>tag</i>, <i>value</i>)<br/>Plat_DownUpByValue(<i>tag</i>, <i>value</i>)</td><td>Lowers the floor by the amount specified by the <i>value</i> or global integer (action 204), waits for 3 seconds, and raises back up. Negative values will cause undefined behaviour.</td></tr>
-				<tr><td>237</td><td>Plat Down Wait Up by Global Integer Fast</td><td>Plat_DownWaitUpFastBy(<i>tag</i>, <i>value</i>)<br/>Plat_DownUpFastByValue(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the platform moves at turbo speed.</td></tr>
-				<tr><td>238</td><td>Plat Up Wait Down by Global Integer</td><td>Plat_UpWaitDownBy(<i>tag</i>, <i>value</i>)<br/>Plat_UpDownByValue(<i>tag</i>, <i>value</i>)</td><td>Raises the floor by the amount specified by the <i>value</i> or global integer (action 204), waits for 3 seconds, and lowers back up. Negative values will cause undefined behaviour.</td></tr>
-				<tr><td>239</td><td>Plat Up Wait Down by Global Integer Fast</td><td>Plat_UpWaitDownFastBy(<i>tag</i>, <i>value</i>)<br/>Plat_UpDownFastByValue(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the platform moves at turbo speed.</td></tr>
+				<tr><td>122</td><td>Plat Raise 3s Lower</td><td>Plat_UpWaitDown(<i>tag</i>)</td><td>Raises the tagged floor to the highest neighboring floor, waits for 3 seconds, and lowers back down.</td></tr>
+				<tr><td>123</td><td>Plat Raise 3s Lower (Fast)</td><td>Plat_DownWaitUpFast(<i>tag</i>)</td><td>Quickly raises the tagged floor to the highest neighboring floor, waits for 3 seconds, and lowers back down.</td></tr>
+				<tr><td>22</td><td>Plat Raise to Nearest</td><td>Floor_RaiseToNearestChangeSlow(<i>tag</i>)<br/>Plat_RaiseChange(<i>tag</i>)</td><td>Changes the tagged floor texture to that of the neighboring floor and raises the floor to the highest neighboring floor.</td></tr>
+				<tr><td>66</td><td>Plat Raise by 24 and Change</td><td>Floor_RaiseTwentyFourChangeSlow(<i>tag</i>)<br/>Plat_RaiseByTwentyFourChange(<i>tag</i>)</td><td>Changes the tagged floor texture to that of the neighboring floor and raises the floor by 24 map units.</td></tr>
+				<tr><td>67</td><td>Plat Raise by 32 and Change</td><td>Floor_RaiseThirtyTwoChangeSlow(<i>tag</i>)<br/>Plat_RaiseByThirtyTwoChange(<i>tag</i>)</td><td>Changes the tagged floor texture to that of the neighboring floor and raises the floor by 32 map units.</td></tr>
+				<tr><td>236</td><td>Plat Lower 3s Raise by Argument</td><td>Plat_DownWaitUpBy(<i>tag</i>, <i>value</i>)<br/>Plat_DownUpByValue(<i>tag</i>, <i>value</i>)</td><td>Lowers the floor by the amount specified by the <i>value</i> or argument (action 204), waits for 3 seconds, and raises back up. Negative values will cause undefined behaviour.</td></tr>
+				<tr><td>237</td><td>Plat Lower 3s Raise by Argument (Fast)</td><td>Plat_DownWaitUpFastBy(<i>tag</i>, <i>value</i>)<br/>Plat_DownUpFastByValue(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the platform moves at turbo speed.</td></tr>
+				<tr><td>238</td><td>Plat Raise 3s Lower by Argument</td><td>Plat_UpWaitDownBy(<i>tag</i>, <i>value</i>)<br/>Plat_UpDownByValue(<i>tag</i>, <i>value</i>)</td><td>Raises the floor by the amount specified by the <i>value</i> or argument (action 204), waits for 3 seconds, and lowers back up. Negative values will cause undefined behaviour.</td></tr>
+				<tr><td>239</td><td>Plat Raise 3s Lower by Argument (Fast)</td><td>Plat_UpWaitDownFastBy(<i>tag</i>, <i>value</i>)<br/>Plat_UpDownFastByValue(<i>tag</i>, <i>value</i>)</td><td>Same as above, but the platform moves at turbo speed.</td></tr>
 			</tbody></table>
 
 		<h2 id="Stairs">Stairs</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>8</td><td>Stairs Build 8 Units Slow</td><td>Stairs_BuildEight(<i>tag</i>)<br/>Stairs_Build(<i>tag</i>)</td><td>Builds steps 8 units high, starting from tagged sector.</td></tr>
-				<tr><td>100</td><td>Stairs Build 16 Units Fast</td><td>Stairs_BuildSixteenFast(<i>tag</i>)<br/>Stairs_BuildFast(<i>tag</i>)</td><td>Builds steps 16 units high, starting from tagged sector. The building process moves at turbo speed.</td></tr>
+				<tr><td>8</td><td>Stairs Raise 8 (Slow)</td><td>Stairs_BuildEight(<i>tag</i>)<br/>Stairs_Build(<i>tag</i>)</td><td>Builds steps 8 units high, starting from tagged sector.</td></tr>
+				<tr><td>100</td><td>Stairs Raise 16 (Fast)</td><td>Stairs_BuildSixteenFast(<i>tag</i>)<br/>Stairs_BuildFast(<i>tag</i>)</td><td>Builds steps 16 units high, starting from tagged sector. The building process moves at turbo speed.</td></tr>
 			</tbody></table>
 
 		<h2 id="Teleports">Teleports</h2>
@@ -137,11 +137,11 @@
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
 				<tr><td>39</td><td>Teleport</td><td>Teleport_Normal(<i>tid</i>)<br/>Teleport_ToDest(<i>tid</i>)</td><td>Teleports the activating thing normally (with sound and green glow) to tagged destination. On the Doom 64 Remaster you can not teleport via a switch.</td></tr>
-				<tr><td>125</td><td>Teleport (monsters only)</td><td>Teleport_Monster_Only(<i>tid</i>)</td><td>Teleports monsters only (with sound and green glow) to tagged destination.</td></tr>
-				<tr><td>249</td><td>Silent Teleport</td><td>Teleport_Silent(<i>tid</i>)<br/>Teleport_Stomp(<i>tid</i>)</td><td>Teleports the activating thing without any sound and glow to tagged destination. On the Doom 64 Remaster you can not use this via a switch if it is a single action but it works with a macro. Originally thought to be player-only, monsters can activate this too if "Trigger By Dead Thing" is set on the referencing linedef.</td></tr>
+				<tr><td>125</td><td>Teleport Monsters</td><td>Teleport_Monster_Only(<i>tid</i>)</td><td>Teleports monsters only (with sound and green glow) to tagged destination.</td></tr>
+				<tr><td>249</td><td>Teleport Silently</td><td>Teleport_Silent(<i>tid</i>)<br/>Teleport_Stomp(<i>tid</i>)</td><td>Teleports the activating thing without any sound and glow to tagged destination. On the Doom 64 Remaster you can not use this via a switch if it is a single action but it works with a macro. Originally thought to be player-only, monsters can activate this too if "Trigger By Dead Thing" is set on the referencing linedef.</td></tr>
 			</tbody></table>
 
-		<h2 id="Things">Thing Specials</h2>
+		<h2 id="Things">Things</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -149,11 +149,11 @@
 				<tr><td>94</td><td>Thing Alert</td><td>Thing_Alert(<i>tid</i>)</td><td>Alerts all things with this tag toward the thing which activated this action. Can cause a crash in Doom 64 EX if a dead thing triggers this action.</td></tr>
 				<tr><td>93</td><td>Thing Disable Infighting</td><td>Thing_ModifyFlags(<i>tid</i>)</td><td>Stops monsters of same tag from infighting.</td></tr>
 				<tr><td>242</td><td>Thing Fade Out</td><td>Thing_FadeOut(<i>tid</i>)<br/>Thing_Dissolve(<i>tid</i>)</td><td>Tagged thing fades away and is removed. Most often used to remove corpses.</td></tr>
-				<tr><td>233</td><td>Freeze Player (Tag = Tics)</td><td>Player_Freeze(<i>tics</i>)<br/>Thing_SetReactionTime(<i>tics</i>)</td><td>Freezes the player or, if activated by a monster, delays their projectile/hitscan attacks for a specified number of tics (30 tics = 1 second). Player can still turn in the Doom 64 Remaster but can't turn in Doom 64 EX.</td></tr>
+				<tr><td>233</td><td>Freeze Player / Reaction Time (Tag = Tics)</td><td>Player_Freeze(<i>tics</i>)<br/>Thing_SetReactionTime(<i>tics</i>)</td><td>Freezes the player or, if activated by a monster, delays their projectile/hitscan attacks for a specified number of tics (30 tics = 1 second). Player can still turn in the Doom 64 Remaster but can't turn in Doom 64 EX.</td></tr>
 				<tr><td>202</td><td>Spawn Dart</td><td>Thing_SpawnDart(<i>tid</i>)</td><td> Tagged thing must be a Projectile Spot (thing type 2050) and must not have "Spawner" checked. Shoots a dart in the direction the projectile spot is facing.</td></tr>
 				<tr><td>231</td><td>Spawn Tracer</td><td>Thing_SpawnTracer(<i>tid</i>)</td><td>Tagged thing must be a Projectile Spot (thing type 2050) and must not have "Spawner" checked. Spawns an explosive projectile which homes in on the player.</td></tr>
 				<tr><td>211</td><td>Thing Spawn Silent</td><td>Thing_SpawnSilent(<i>tid</i>)<</td><td>(Doom 64 EX+) Spawns things of same tag without sound, they must have "Spawner" checked.</td></tr>
-				<tr><td>255</td><td>Spawn Projectile<br/>(Global Integer = Type#)</td><td>Thing_SpawnProjectile(<i>tid</i>, <i>type</i>)</td><td>(Doom 64 EX+) Use action 204 to set global integer, which will spawn that particular enemy projectile.</td></tr>
+				<tr><td>255</td><td>Spawn Projectile<br/>(argument = Type#)</td><td>Thing_SpawnProjectile(<i>tid</i>, <i>type</i>)</td><td>(Doom 64 EX+) Use action 204 to set argument, which will spawn that particular enemy projectile.</td></tr>
 			</tbody></table>
 			
 			<p>"Ghost things" can be created if the "Thing Spawn" process is interupted by a "Thing Fade Out". Ghost enemies will not take any damage and ghost items cannot be picked up. The <a href="../things/ghost/index.html"/>ghost things page</a> demonstrates how they are created and used.</p>
@@ -162,15 +162,15 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>17</td><td>Start Light Strobing</td><td>Start_Light_Strobing(<i>tag</i>)</td><td>Starts a light which brightens every second on the tagged sector which matches the linedef <i>tag</i>. This will stack and interact in different ways with other sector special light effects.</td></tr>
-				<tr><td>222</td><td>Copy All Lights from Global Integer</td><td>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>)</td><td>Instantly copies the lights to the sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204).</td></tr>
-				<tr><td>234</td><td>Smoothy Blend Tagged Light from Global Integer</td><td>SetLightID(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly blends the light tagged with <i>dsttag</i> with the light tagged with <i>srctag</i> or global integer (action 204). This only works on tagged lights which can be added with SLADE.</td></tr>
-				<tr><td>235</td><td>Smoothly Copy All Lights from Global Integer</td><td>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly transitions the lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or global integer (action 204). This action operates on the "LIGHTS" lump and will change the color of any sector that has the same color as the destination tag. Therefore, it is recommended to give the destination sector a unique sector color.</td></tr>
-				<tr><td>205</td><td>Set Floor Light ID from Global Integer</td><td>Sector_SetFloorColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector floor color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>206</td><td>Set Ceiling Light ID from Global Integer</td><td>Sector_SetCeilingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector ceiling color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>207</td><td>Set Thing Light ID from Global Integer</td><td>Sector_SetThingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector thing color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>208</td><td>Set Upper Wall Light ID from Global Integer</td><td>Sector_SetUpperWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector upper wall color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
-				<tr><td>209</td><td>Set Lower Wall Light ID from Global Integer</td><td>Sector_SetLowerWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector lower wall color to the light index given by the <i>id</i> or global integer (action 204).</td></tr>
+				<tr><td>17</td><td>Light Start Strobing</td><td>Start_Light_Strobing(<i>tag</i>)</td><td>Starts a light which brightens every second on the tagged sector which matches the linedef <i>tag</i>. This will stack and interact in different ways with other sector special light effects.</td></tr>
+				<tr><td>222</td><td>Light Copy from Sector Argument</td><td>Sector_CopyLights(<i>dsttag</i>, <i>srctag</i>)</td><td>Instantly copies the lights to the sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or argument (action 204).</td></tr>
+				<tr><td>234</td><td>Light Fade from Light Argument</td><td>SetLightID(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly blends the light tagged with <i>dsttag</i> with the light tagged with <i>srctag</i> or argument (action 204). This only works on tagged lights which can be added with SLADE.</td></tr>
+				<tr><td>235</td><td>Light Fade from Sector Argument</td><td>Sector_CopyLightsAndInterpolate(<i>dsttag</i>, <i>srctag</i>)</td><td>Smoothly transitions the lights at sector with the line tag / <i>dsttag</i>, from the sector with the tag defined by <i>srctag</i> or argument (action 204). This action operates on the "LIGHTS" lump and will change the color of any sector that has the same color as the destination tag. Therefore, it is recommended to give the destination sector a unique sector color.</td></tr>
+				<tr><td>205</td><td>Light Floor Copy from Index Argument</td><td>Sector_SetFloorColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector floor color to the light index given by the <i>id</i> or argument (action 204).</td></tr>
+				<tr><td>206</td><td>Light Ceiling Copy from Index Argument</td><td>Sector_SetCeilingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector ceiling color to the light index given by the <i>id</i> or argument (action 204).</td></tr>
+				<tr><td>207</td><td>Light Thing Copy from Index Argument</td><td>Sector_SetThingColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector thing color to the light index given by the <i>id</i> or argument (action 204).</td></tr>
+				<tr><td>208</td><td>Light Upper Copy from Index Argument</td><td>Sector_SetUpperWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector upper wall color to the light index given by the <i>id</i> or argument (action 204).</td></tr>
+				<tr><td>209</td><td>Light Lower Copy from Index Argument</td><td>Sector_SetLowerWallColorID(<i>tag</i>, <i>id</i>)</td><td>Changes the tagged sector lower wall color to the light index given by the <i>id</i> or argument (action 204).</td></tr>
 			</tbody></table>
 			<p>The light <i>id</i>, as opposed to the tag, refers to a specific light index. The first set of lights (0 to 255) are grayscale from black to white. The subsequent light indices refer directly to the lights lump, that is built in the map WAD, where the first light begins at 256. It can be hard to tell which light you are referring to just in a map editor, however you can look at the lights lump in a program like <a href="https://slade.mancubus.net/">Slade</a> to determine which lights are in which order.</p>
 					
@@ -179,13 +179,13 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>246</td><td>Macro Restart at Batch ID</td><td>loop(<i>times</i>){ }</td><td>In a macro this loops actions within the brackets a given amount of <i>times</i> (see the example). If used as a line action, the line <i>tag</i> will determine the number of <i>times</i> to loop, although it will not loop until this action is triggered again. Use action 204 to set the line of the macro to restart the macro in powers of 10. First set of actions is 10, then if a wait is used the the following actions begin at 20, and ect...</td></tr>
+				<tr><td>246</td><td>Macro Loop (Tag = Count, Argument = Step)</td><td>loop(<i>times</i>){ }</td><td>In a macro this loops actions within the brackets a given amount of <i>times</i> (see the example). If used as a line action, the line <i>tag</i> will determine the number of <i>times</i> to loop, although it will not loop until this action is triggered again. Use action 204 to set the line of the macro to restart the macro in powers of 10. First set of actions is 10, then if a wait is used the the following actions begin at 20, and ect...</td></tr>
 				<tr><td>248</td><td>Macro Suspend</td><td>Macro_Suspend(<i>id</i>)</td><td>Stops the macro that is currently active. Any actions that were started prior will still finish, such as camera movements. The <i>id</i> is not used.</td></tr>
-				<tr><td>250</td><td>Macro Toggle On</td><td>Macro_Enable(<i>id</i>)</td><td>Enables the macro referenced to by the <i>id</i> to be activated when triggered. By default this is the state the macros are in.</td></tr>
-				<tr><td>251</td><td>Macro Toggle Off</td><td>Macro_Disable(<i>id</i>)</td><td>Disables the macro referenced to by the <i>id</i> from being activated. Use action 250 to re-enable the macro.</td></tr>
+				<tr><td>250</td><td>Macro Enable</td><td>Macro_Enable(<i>id</i>)</td><td>Enables the macro referenced to by the <i>id</i> to be activated when triggered. By default this is the state the macros are in.</td></tr>
+				<tr><td>251</td><td>Macro Disable</td><td>Macro_Disable(<i>id</i>)</td><td>Disables the macro referenced to by the <i>id</i> from being activated. Use action 250 to re-enable the macro.</td></tr>
+				<tr><td>203</td><td>Macro Pause (Tag = Tics)</td><td>delay(<i>tics</i>)</td><td>If used in a macro, it will delay the start of the subsequent actions by <i>tics</i> (30 tics is 1 second) and set a new line of actions.</td></tr>
 				<tr><td>256 - 511</td><td>Macro #</td><td>(undefined)</td><td>Activate specific macro where the macro number added to 255. For example macro 1 is activated by action 256.</td></tr>
 				<tr><td>(none)</td><td>(not available)</td><td>wait</td><td>The macro will complete all preceding actions before continuing the subsequent actions when used. This is a macro-specific action which sets a new line of actions in a macro.</td></tr>
-				<tr><td>203</td><td>Delay (Tag = Tics)</td><td>delay(<i>tics</i>)</td><td>If used in a macro, it will delay the start of the subsequent actions by <i>tics</i> (30 tics is 1 second) and set a new line of actions.</td></tr>
 			</tbody></table>
 			<p>When controlling macros the <i>id</i> does not refer to the macro number itself but how it is referenced to in linedef actions, where 255 is added to the macro number. Thus the <i>id</i> for macro 1 would be 256. For linedef actions the <i>id</i> is set by the line <i>tag</i>.</p>
 			
@@ -203,44 +203,28 @@
   non looping action;
 } //end of macro</pre>
 
-		<h2 id="Specials">Specials</h2>
-			<table><thead>
-				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
-			</thead><tbody>
-				<tr><td>201</td><td>Camera Set</td><td>Camera_Set(<i>tid</i>)</td><td>Set camera view and angle to the camera (or thing) tagged with <i>tid</i>.</td></tr>
-				<tr><td>200</td><td>Camera Clear</td><td>Camera_Clear(<i>tid</i>)</td><td>Set camera view to the camera (or thing) tagged with <i>tid</i> and aim at player (<a href="../cameras/camerafollow.wad">click here for example</a>).</td></tr>
-				<tr><td>243</td><td>Camera Move</td><td>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>)</td><td>Aim current camera view at thing tagged with <i>tid</i> then gradually move camera position to camera (or thing) tagged with <i>tid + 1</i>. Once the camera reaches thing tagged with <i>tid + 1</i> it will keep moving to things with sequentially higher tags until the next thing tag is missing. <i>nexttid</i> is not used (<a href="../cameras/cameramove.wad">click here for example</a>).</td></tr>
-				<tr><td>225</td><td>Quake (Tag = Tics)</td><td>Quake(<i>tics</i>)</td><td>Shakes the screen for the specified number of tics (30 tics = 1 second) with sound. This sound can bug out if it is playing during a level exit.</td></tr>
-				<tr><td>204</td><td>Set Global Integer<br/>Macro Integer (value = tag)</td><td>PushVar(<i>var</i>)</td><td>Used in combination with other actions and sets the value used in them.</td></tr>
-				<tr><td>240</td><td>Trigger Line Group<br/>(Pick random of group)</td><td>Line_TriggerRandomLinesByTag(<i>tag</i>)</td><td>Will trigger a random line out of a set of lines with the same tag. This is not compatible with the "Trigger By Dead Thing" flag on the Doom 64 Remaster.</td></tr>
-			</tbody></table>
-
-			<p>When using action 243 (Camera Move) it will move around the <i>thing</i> used for the target, as if the thing itself was a camera. That means using a key as a target, the key will end up where the camera stops at the very end. However if the moved thing collides with its prior position it will crash the game; which is a potential problem for players and monsters. When the camera is set to a monster, the camera's height will be at the bottom of the monster. For flying monsters this is not an issue, however for other monsters it can partially clip through the floor.</p>
-			
-			<p>Since the "Camera Move" action moves the position of the camera target <i>things</i>, reactivating a moving camera sequence will have the cameras in incorrect positions. Styd051 discovered for the Vehemence project that the camera position can be reset by using the "Thing Fade Out" and "Thing Spawn" on the camera things, which fixes this bug.</p>
-
 		<h2 id="Sectors">Sector Properties</h2>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>220</td><td>Copy Sector Flags from Global Integer</td><td>Sector_CopyFlags(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies the flags from one sector to another one. In Doom Builder 64, the flags are the Settings checkboxes found on the Edit Sector Properties dialog. For example: Echo Effect, Liquid Effect, etc. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
-				<tr><td>221</td><td>Copy Sector Specials from Global Integer</td><td>Sector_CopySpecials(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies sector specials of one sector to another. For example: Light Blinks, Very Slow Pulse, etc. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
-				<tr><td>223</td><td>Copy Sector Textures from Global Integer</td><td>Sector_CopyTextures(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies floor and ceiling textures of one sector to another. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
-				<tr><td>214</td><td>Elevator Move by Global Integer</td><td>Elevator_MoveBy(<i>tag</i>, <i>value</i>)<br/>Elevator_MoveByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor and ceiling in the tagged sector in the same direction at the same time by the amount specified in <i>value</i> or global integer (action 204). Positive values raise, negative values lower.</td></tr>
-				<tr><td>241</td><td>Pillar Open by Global Integer</td><td>Pillar_OpenBy(<i>tag</i>, <i>value</i>)<br/>Pillar_OpenByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor and ceiling in the tagged sector in opposite directions at the same time by the amount specified in <i>value</i> or global integer (action 204). Positive values move the floor and the ceiling apart, negative values move them closer together.</td></tr>
+				<tr><td>220</td><td>Sector Copy Flags from Argument</td><td>Sector_CopyFlags(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies the flags from one sector to another one. In Doom Builder 64, the flags are the Settings checkboxes found on the Edit Sector Properties dialog. For example: Echo Effect, Liquid Effect, etc. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
+				<tr><td>221</td><td>Sector Copy Specials from Argument</td><td>Sector_CopySpecials(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies sector specials of one sector to another. For example: Light Blinks, Very Slow Pulse, etc. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
+				<tr><td>223</td><td>Sector Copy Textures from Argument</td><td>Sector_CopyTextures(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies floor and ceiling textures of one sector to another. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
+				<tr><td>214</td><td>Ceiling & Floor Move Together by Argument</td><td>Elevator_MoveBy(<i>tag</i>, <i>value</i>)<br/>Elevator_MoveByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor and ceiling in the tagged sector in the same direction at the same time by the amount specified in <i>value</i> or argument (action 204). Positive values raise, negative values lower.</td></tr>
+				<tr><td>241</td><td>Ceiling & Floor Move Opposing by Argument</td><td>Pillar_OpenBy(<i>tag</i>, <i>value</i>)<br/>Pillar_OpenByValue(<i>tag</i>, <i>value</i>)</td><td>Moves the floor and ceiling in the tagged sector in opposite directions at the same time by the amount specified in <i>value</i> or argument (action 204). Positive values move the floor and the ceiling apart, negative values move them closer together.</td></tr>
 			</tbody></table>
 			
 			<p>On the Remaster, when using action 220 (Sector Copy Flags) to copy flags from a secret sector to a non-secret sector, the non-secret sector will inherit the secret flag but the total number of secrets do not change. However, the secret will still trigger potentially causing the number of secrets on the stats screen to exceed 100%. If the player activates the secret before the flag is copied over, the secret flag will not copy over.</p>
 
-		<h2 id="Lindefs">Linedef Properties</h2>
+		<h2 id="Linedefs">Linedef Properties</h2>
 		
 			<p>Copying attributes, settings, and textures between single-sided and double-sided linedefs will cause most engines to crash, sometimes unpredictably.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>218</td><td>Copy Line Flags from Global Integer</td><td>Line_CopyFlags(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies flags from one linedef to another. For example: Impassable, Block Sound, etc. If used as a line action, use action 204 to set the <i>dsttag</i>. When copying flags to enable or disable scrolls, only lines which have a scroll "thinker" spawned at the start of the map will be affected. This is fine for linedefs already scrolling that you want to stop. But if you want to start a linedef scrolling that is not, then you need to have the linedef scrolling when the map loads initially, then stop it, and then restart it again when you want it moving again.</td></tr>
-				<tr><td>219</td><td>Copy Line Textures from Global Integer</td><td>Line_CopyTextures(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies upper, middle, and lower textures from one linedef to another. On some Nintendo 64 ports, it only copies the texture of the front sides. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
-				<tr><td>230</td><td>Copy Line Specials from Global Integer</td><td>Line_CopySpecials(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies the Action Special (Door Open, Floor Lower, etc.), Activation Type (Use, Cross, Blue Key, etc.), and Switch Setup properties from one linedef to another. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
+				<tr><td>218</td><td>Line Copy Flags from Argument</td><td>Line_CopyFlags(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies flags from one linedef to another. For example: Impassable, Block Sound, etc. If used as a line action, use action 204 to set the <i>dsttag</i>. When copying flags to enable or disable scrolls, only lines which have a scroll "thinker" spawned at the start of the map will be affected. This is fine for linedefs already scrolling that you want to stop. But if you want to start a linedef scrolling that is not, then you need to have the linedef scrolling when the map loads initially, then stop it, and then restart it again when you want it moving again.</td></tr>
+				<tr><td>219</td><td>Line Copy Textures from Argument</td><td>Line_CopyTextures(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies upper, middle, and lower textures from one linedef to another. On some Nintendo 64 ports, it only copies the texture of the front sides. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
+				<tr><td>230</td><td>Line Copy Specials from Argument</td><td>Line_CopySpecials(<i>dsttag</i>, <i>srctag</i>)</td><td>Copies the Action Special (Door Open, Floor Lower, etc.), Activation Type (Use, Cross, Blue Key, etc.), and Switch Setup properties from one linedef to another. If used as a line action, use action 204 to set the <i>dsttag</i>.</td></tr>
 			</tbody></table>
 
 		<h2 id="Artifact">Artifact Switches</h2>
@@ -249,9 +233,9 @@
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
-				<tr><td>90</td><td>Artifact Switch 1 (Orange)</td><td>Orange_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the orange artifact and will activate line with the tag one higher than the current line.</td></tr>
-				<tr><td>91</td><td>Artifact Switch 2 (Blue)</td><td>Blue_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the blue artifact and will activate line with the tag one higher than the current line.</td></tr>
-				<tr><td>92</td><td>Artifact Switch 3 (Purple)</td><td>Purple_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the purple artifact and will activate line with the tag one higher than the current line.</td></tr>
+				<tr><td>90</td><td>Artifact Orange Activate (Tag+1)</td><td>Orange_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the orange artifact and will activate line with the tag one higher than the current line.</td></tr>
+				<tr><td>91</td><td>Artifact Blue Activate (Tag+1)</td><td>Blue_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the blue artifact and will activate line with the tag one higher than the current line.</td></tr>
+				<tr><td>92</td><td>Artifact Purple Activae (Tag+1)</td><td>Purple_Artifact_Switch(<i>tag</i>)</td><td>Will check if player has the purple artifact and will activate line with the tag one higher than the current line.</td></tr>
 			</tbody></table>
 
 		<h2 id="Exits">Exits</h2>
@@ -267,13 +251,23 @@
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
 				<tr><td>0</td><td>(default) None</td><td>No_Op</td><td>No action</td></tr>
+				<tr><td>201</td><td>Camera Set Static</td><td>Camera_Set(<i>tid</i>)</td><td>Set camera view and angle to the camera (or thing) tagged with <i>tid</i>.</td></tr>
+				<tr><td>200</td><td>Camera Set Follow</td><td>Camera_Clear(<i>tid</i>)</td><td>Set camera view to the camera (or thing) tagged with <i>tid</i> and aim at player (<a href="../cameras/camerafollow.wad">click here for example</a>).</td></tr>
+				<tr><td>243</td><td>Camera Aim and Move</td><td>Camera_MoveAndAim(<i>tid</i>, <i>nexttid</i>)</td><td>Aim current camera view at thing tagged with <i>tid</i> then gradually move camera position to camera (or thing) tagged with <i>tid + 1</i>. Once the camera reaches thing tagged with <i>tid + 1</i> it will keep moving to things with sequentially higher tags until the next thing tag is missing. <i>nexttid</i> is not used (<a href="../cameras/cameramove.wad">click here for example</a>).</td></tr>
+				<tr><td>225</td><td>Quake (Tag = Tics)</td><td>Quake(<i>tics</i>)</td><td>Shakes the screen for the specified number of tics (30 tics = 1 second) with sound. This sound can bug out if it is playing during a level exit.</td></tr>
+				<tr><td>204</td><td>Set Argument (Tag = Value)</td><td>PushVar(<i>var</i>)</td><td>Sets a global integer (also called macro integer) which is used in combination with other actions and sets the value used in them.</td></tr>
+				<tr><td>240</td><td>Trigger Random Line Group<br/>(Pick random of group)</td><td>Line_TriggerRandomLinesByTag(<i>tag</i>)</td><td>Will trigger a random line out of a set of lines with the same tag. This is not compatible with the "Trigger By Dead Thing" flag on the Doom 64 Remaster.</td></tr>
 				<tr><td>213</td><td>Play Sound (Tag = Sound#)</td><td>Sound_Play(<i>id</i>)</td><td>(Doom 64 EX+) Play specific in-game sound effect based on sound load order</td></tr>
 				<tr><td>215</td><td>Stop Music</td><td>Music_Stop</td><td>(Doom 64 EX+) Stops the music currently playing</td></tr>
 				<tr><td>216</td><td>Change Music (Tag = Music#)</td><td>Music_Change(<i>id</i>)</td><td>(Doom 64 EX+) Plays music track corresponding to MUSAMB##</td></tr>
 				<tr><td>217</td><td>Change Sky (Tag = Sky#)</td><td>Sky_Change(<i>id</i>)</td><td>(Doom 64 EX+) Changes sky based on sky load order in SKYDEFS</td></tr>
-				<tr><td>253</td><td>Unlock Cheat Menu</td><td>UnlockCheatMenu</td><td>Unlock the "features" cheat menu</td></tr>
-				<tr><td>254</td><td>Display Backpic on Sky</td><td>DisplaySkyLogo</td><td>Displays the backpic graphic on the sky. This only works on skies with the "fadeinbackground" designation.</td></tr>
+				<tr><td>253</td><td>Enable Features Menu</td><td>UnlockCheatMenu</td><td>Unlock the "features" cheat menu</td></tr>
+				<tr><td>254</td><td>Sky Fade In Backpic</td><td>DisplaySkyLogo</td><td>Displays the backpic graphic on the sky. This only works on skies with the "fadeinbackground" designation.</td></tr>
 			</tbody></table>
+			
+			<p>When using action 243 (Camera Move) it will move around the <i>thing</i> used for the target, as if the thing itself was a camera. That means using a key as a target, the key will end up where the camera stops at the very end. However if the moved thing collides with its prior position it will crash the game; which is a potential problem for players and monsters. When the camera is set to a monster, the camera's height will be at the bottom of the monster. For flying monsters this is not an issue, however for other monsters it can partially clip through the floor.</p>
+			
+			<p>Since the "Camera Move" action moves the position of the camera target <i>things</i>, reactivating a moving camera sequence will have the cameras in incorrect positions. Styd051 discovered for the Vehemence project that the camera position can be reset by using the "Thing Fade Out" and "Thing Spawn" on the camera things, which fixes this bug.</p>
 			
 		
 	</div>
