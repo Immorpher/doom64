@@ -26,7 +26,9 @@
 			
 			<p>The majority of actions target a specific line, sector, or thing with a specified tag. Additional properties are sometimes assigned via action 204, which sets the argument / macro integer. Macro actions which have two inputs are, in reality, a combination of actions where action 204 happens first, followed by another action for the specific effect.</p>
 			
-			<p>There are some limits to moving sectors. Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector if using a macro. Further, the Doom 64 Remaster can’t have more than 30 moving ceilings and floors at the same time while EX based ports can have more.</p>
+			<p>There are some limits to moving sectors. Only one height-changing action can operate on a single sector at the same time. Therefore, it is recommended to use the <i>wait</i> action before doing another action on the same sector if using a macro.</p>
+			
+			<p>Any sector that is set to an action that can crush will instantly kill anything in sectors with special 666.</p>
 							
 			<ul>
 				<li><a href="#Doors">Doors</a></li>
@@ -64,7 +66,7 @@
 			</tbody></table>
 
 		<h2 id="Floors">Floors</h2>
-			<p>Any sector that is set to an action that can crush will instantly kill anything in sectors with special 666. There is a limit to the number of floors that can be moved at the exact same time.</p>
+			<p>Unlike platforms and ceilings, there is not a limit to the number of floors that can be moved at once.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -86,7 +88,7 @@
 			</tbody></table>
 
 		<h2 id="Ceilings">Ceilings</h2>
-			<p>Any sector that is set to an action that can crush will instantly kill anything in sectors with special 666. Once a ceiling is activated as a crusher, it will no longer respond to other ceiling actions even if stopped; it can only be restarted as a crusher. There is an upper limit to the number of crushers in Doom 64, however the EX versions have a higher upper limit.</p>
+			<p>Both on the N64 and Doom 64 Remaster the number of moving ceilings is limited to 30. Crusher loops will permanently take up one of these spots when activated regardless if they are triggered to stop moving. Once a ceiling is activated as a crusher, it will no longer respond to other ceiling actions even if stopped; it can only be restarted as a crusher.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
@@ -105,6 +107,7 @@
 			</tbody></table>
 		
 		<h2 id="Platforms">Platforms</h2>
+			<p>On the original Doom 64 the number of simultaneous platforms is limited to 30, but on the Doom 64 Remaster and EX it has been extended to 60. The looping action 53 will permanently take one of these spots once activated regardless if it is stopped.</p>
 			<table><thead>
 				<tr><th>Action #</th><th>Line Action</th><th>Macro Action</th><th>Description</th></tr>
 			</thead><tbody>
