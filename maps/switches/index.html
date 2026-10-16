@@ -80,6 +80,8 @@
 			<p>For most Doom 64 engines, except for Doom 64 EX, the player's activation distance can pass through single-sided linedefs (walls). This means that, if the activating linedef is not far enough away, a player can activate a switch or a door through a thin wall. A remedy to this is to make the wall thicker. Depending on the angle, the "Trigger Only Front Side" flag can be used to prevent the player from activating a backside of a linedef as well.</p>
 		
 			<p>On the Nintendo 64 and Doom 64 Remaster, switches can be activated from any height when shot unless a sector of sufficienct size blocks the hitscan. Even if the switch is embedded into the floor, if a player's shot can cross the linedef, it will be activated. However a raised sector can be used to block shots from activating linedefs; particularly inset switches solve this problem.</p>
+			
+			<p>Doom 64 Remaster has a bug which occurs when switches begin on a non-even load order position. When this occurs, a repeatable switch will not return back to the original switch texture, rather it goes to a third texture. The load order of textures is determined by the order of WADs loadeded, with the Doom 64 IWAD being first, and if any textures are replaced with a custom WAD. If an odd number of Doom 64 IWAD textures are replaced by a custom WAD before the textures beginning with "SWX" occur, this bug will happen. This bug can happen with custom switches too if they happen to lie on an odd load order number.</p>
 		
 	</div>
 
