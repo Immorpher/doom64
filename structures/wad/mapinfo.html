@@ -40,14 +40,14 @@
 	
 		<h2 id="Map">Map Definitions</h2>
 		
-			<p>A map definition begins with the keyword "map", followed by the map lump name, actual name of level and lastly, open and close brackets. Inside the brackets, properties can be entered to define settings for a map.</p>
+			<p>A map definition begins with the keyword "map", followed by a map lump label, the displayed name of the level, and lastly, open and close brackets (which contain properties). The lump label is only a placeholder for your convenience since the engine ignores it. The level the definition applies to is decided by the <b>levelnum</b>.</p>
 			<dl><dd>Example: <b>map &lt;maplump&gt; &lt;name&gt; { properties }</b></dd></dl>
 			
 		<h3 id="MapProperties">Properties</h3>
 			<p>Here are properties which can be assigned to each map.</p>
 			
 			<ul><li><b>levelnum = &lt;levelnumber&gt;</b></li></ul>
-			<dl><dd>This is the map's identification number. If the map's name is of the form MAPxx, then it will automatically have a levelnum of xx unless you specify differently. (i.e. MAP23's levelnum will be 23 unless you set it to something else.).</dd></dl>
+			<dl><dd>This is the map’s identification number, which you must explicitly set (it defaults to 1). The engine loads the map lump named MAPXX, where XX is this number, so set it to match the lump (i.e. set MAP23’s levelnum to 23).</dd></dl>
 			
 			<ul><li><b>music = "&lt;musiclump&gt;"</b></li></ul>
 			<dl><dd>&lt;musiclump&gt; is the name of the song to play while the player is playing the level</dd></dl>
