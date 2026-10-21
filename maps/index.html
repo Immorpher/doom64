@@ -28,8 +28,15 @@
 			<ul>
 				<li><a href="maplist.html">Custom Map List</a></li>
 			</ul>
+			
+			<p>The following sections describe how to build maps and the technical limitations.</p>
+						
+			<ul>
+				<li><a href="#Building">Map Building</a></li>
+				<li><a href="#Format">Map Format</a></li>
+			</ul>
 		
-		<h2>Map Building</h2>
+		<h2 id="Building">Map Building</h2>
 		
 			<p>You can make maps too! The Doom 64 level format is an iteration of the original Doom format with additional features for enhanced 3D rendering, colored lighting, and scripting. It was originally a fork of CodeImp's <a href="https://web.archive.org/web/20171126040531/http://www.doombuilder.com/">Doom Builder 2</a> by Kaiser and then updated by Kovic and others. The latest is Doom Builder 64 Enhanced is lead by Styd051 which supports the official Doom 64 Remaster, Doom 64 EX, Doom 64 EX+, Super EX+, and the various Doom 64 engines targeting original Nintendo 64 hardware.</p>
 			
@@ -86,7 +93,13 @@
 			<p>The base Doom 64 engine on the Nintendo 64, like Doom 64 RE, has limits in terms of how much geometry can be shown on screen at once and the size of maps it can load (about 900 kb in size maximum). However, later forks on the modern SDK drastically raise one or both of these limits.</p>
 			
 			
-		<h2>Limits</h2>
+		<h2 id="Format">Format and Limits</h2>
+		
+			<p>The page below describes the technical format of Doom 64 maps and limits for each aspect.</p>
+		
+			<ul>
+				<li><a href="format.html">Map Format</a></li>
+			</ul>
 			
 			<p>The primary factor limiting the size of maps on Doom 64 engines is the blockmap data structure. This is used to aid in collision calculations during gameplay. The BLOCKMAP is limited to 65534 bytes in size, although there are some examples of maps slightly exceeding this size (such as Jetx_121's Map Not Found for Ethereal Breakdown). When this limit is breached, either the map will not load or the player can start clipping through walls. Advanced nodebuilders, such as <a href="https://github.com/darkhaven3/dma-bsp64/releases/">DMA-BSP64</a> and <a href="https://github.com/Immorpher/BSP64Enhanced">BSP64 Enhanced</a>, have the ability to exclude linedefs from blockmap calculations (sometimes automatically) which reduces the blockmap size.<p>
 			

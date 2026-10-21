@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Map Format</title>
+	<meta property="og:title" content="Map Format" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+	<link rel="icon" type="image/x-icon" href="../favicon.svg" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+	
+		<h1>Map Format</h1>
+		
+			<p>Originally Doom 64 maps were separate WADs within the main WAD which helped with compression purposes. Each map contains 14 lumps, in specific order, which describe the map geometry, behavior, and contents. The format is the same for the Nintendo 64 engines and the PC engines, except the PC versions use number hashes for textures (see <a href="../graphics/textures/hashing.html">Texture Hashing</a>). All numbers are stored <b>little-endian</b>, and "int16" and "uint16" mean signed and unsigned 16-bit values. A "map unit" is one unit in the map editor. Heights and positions are plain whole numbers except for the vertices, which are 16.16 fixed point.</p>
+			
+			<ul>
+				<li><a href="#THINGS">THINGS</a></li>
+				<li><a href="#LINEDEFS">LINEDEFS</a></li>
+				<li><a href="#SIDEDEFS">SIDEDEFS</a></li>
+				<li><a href="#VERTEXES">VERTEXES</a></li>
+				<li><a href="#SEGS">SEGS</a></li>
+				<li><a href="#SSECTORS">SSECTORS</a></li>
+				<li><a href="#NODES">NODES</a></li>
+				<li><a href="#SECTORS">SECTORS</a></li>
+				<li><a href="#REJECT">REJECT</a></li>
+				<li><a href="#BLOCKMAP">BLOCKMAP</a></li>
+				<li><a href="#LEAFS">LEAFS</a></li>
+				<li><a href="#LIGHTS">LIGHTS</a></li>
+				<li><a href="#MACROS">MACROS</a></li>
+				<li><a href="#SCRIPTS">SCRIPTS</a></li>
+			</ul>
+	
+		<h2 id="THINGS">THINGS</h2>
+
+			<p>Things are sprites that appear in game which can be enemies, projectiles, and decorations. Each thing takes up 14 bytes. There are no limits to the number of things but only 256 things can be shown at once on screen.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>x</code></td>
+					<td>X position in map units.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>y</code></td>
+					<td>Y position in map units.</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>z</code></td>
+					<td>Height offset in map units.</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>angle</code></td>
+					<td>Facing angle in degrees however the engine only uses multiples of 45.</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>type</code></td>
+					<td>Thing type (doom editor number).</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>flags</code></td>
+					<td><a href="../maps/things/index.html">Things flags</a>.</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>tid</code></td>
+					<td>Thing tag.</td>
+				</tr>
+			</tbody></table>
+
+
+		<h2 id="LINEDEFS">LINEDEFS</h2>
+
+			<p>Line definitions (linedefs) define sector edges, walls, and sometimes activation points. Each linedef is 16 bytes. A maximum of 32,768 (524,288 bytes) linedefs are allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>v1</code></td>
+					<td>Index of the start vertex.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>v2</code></td>
+					<td>Index of the end vertex.</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>4</td>
+					<td>uint32</td>
+					<td><code>flags</code></td>
+					<td><a href="../../maps/linedefs.html#Flags">Line flags</a>.</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>special</code></td>
+					<td><a href="../maps/linedefs.html">Activation type (specials)</a>.</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>tag</code></td>
+					<td>Linedef tag.</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>sidenum[0]</code></td>
+					<td>Index of the front (right) sidedef. Every line has one.</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>sidenum[1]</code></td>
+					<td>Index of the back (left) sidedef, or &minus;1 (0xFFFF) if the line is one-sided.</td>
+				</tr>
+			</tbody></table>
+
+		<h2 id="SIDEDEFS">SIDEDEFS</h2>
+
+			<p>Sidedefs store texture references, offsets, and sector reference. Each sidedefs is 12 bytes. A maximum of 32,768 sidedefs (393,216 bytes) are allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>textureoffset</code></td>
+					<td>Horizontal texture offset in map units.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>rowoffset</code></td>
+					<td>Vertical texture offset in map units.</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>toptexture</code></td>
+					<td>Upper texture index or hash (PC).</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>bottomtexture</code></td>
+					<td>Lower texture index or hash (PC).</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>midtexture</code></td>
+					<td>Middle texture index or hash (PC).</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>sector</code></td>
+					<td>Index of the sector this side faces.</td>
+				</tr>
+			</tbody></table>
+
+		<h2 id="VERTEXES">VERTEXES</h2>
+
+			<p>Vertexes are map locations that linedefs and segs use for referencing. They are 8 bytes each. A maximum of 32,768 vertexes (262,144 bytes) are allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>4</td>
+					<td>int32</td>
+					<td><code>x</code></td>
+					<td>X coordinate in 16.16 fixed point (divide by 65536 for map units).</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>4</td>
+					<td>int32</td>
+					<td><code>y</code></td>
+					<td>Y coordinate in 16.16 fixed point (divide by 65536 for map units).</td>
+				</tr>
+			</tbody></table>
+
+
+		<h2 id="SEGS">SEGS</h2>
+
+			<p>A seg os a piece of a linedef created by the node builder when the map is split into subsectors. Each seg is 12 bytes. A maximum of 32,768 segs (393,216 bytes) are allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>v1</code></td>
+					<td>Index of the start vertex.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>v2</code></td>
+					<td>Index of the end vertex.</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>angle</code></td>
+					<td>Direction of the seg as a 16-bit angle (65536 = 360&deg;).</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>linedef</code></td>
+					<td>Index of the linedef this seg belongs to.</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>side</code></td>
+					<td>0 if it belongs to the linedef front side and 1 for linedef back side.</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>offset</code></td>
+					<td>Distance along the linedef to the start of the seg in map units.</td>
+				</tr>
+			</tbody></table>
+
+
+		<h2 id="SSECTORS">SSECTORS</h2>
+
+			<p>Subsectors are convex pieces of a sector used for rendering. Each subsector is 4 bytes. The number of subsectors must equal the number of leaves in LEAFS. A maximum of 32,768 subsectors (131,072 bytes) are allowed.</p>
+			<table>
+			
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>numsegs</code></td>
+					<td>Number of segs in this subsector.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>firstseg</code></td>
+					<td>Index of the first seg. The segs of a subsector are stored one after another.</td>
+				</tr>
+			</tbody></table>
+
+
+		<h2 id="NODES">NODES</h2>
+
+			<p>Nodes are the binary space partition (BSP) tree. Each node is one dividing line that splits an area of the map into two halves. Each nodes is 28 bytes. A maximum of 32,768 nodes (917,504 bytes) are allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>x</code></td>
+					<td>X of the partition line start in map units.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>y</code></td>
+					<td>Y of the partition line start in map units.</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>dx</code></td>
+					<td>Partition line X direction.</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>dy</code></td>
+					<td>Partition line Y direction.</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>8</td>
+					<td>4 &times; int16</td>
+					<td><code>bbox[0]</code></td>
+					<td>Bounding box of child 0 (right): top, bottom, left, right, in map units.</td>
+				</tr>
+				<tr>
+					<td>16</td>
+					<td>8</td>
+					<td>4 &times; int16</td>
+					<td><code>bbox[1]</code></td>
+					<td>Bounding box of child 1 (left): top, bottom, left, right, in map units.</td>
+				</tr>
+				<tr>
+					<td>24</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>children[0]</code></td>
+					<td>Right child: a node index, or a subsector index if bit 0x8000 is set.</td>
+				</tr>
+				<tr>
+					<td>26</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>children[1]</code></td>
+					<td>Left child: a node index, or a subsector index if bit 0x8000 is set.</td>
+				</tr>
+			</tbody></table>
+
+
+		<h2 id="SECTORS">SECTORS</h2>
+
+			<p>Subsectors define the rooms and areas of a map. Each sectors is 24 bytes. A maximum of 32,768 sectors (786,408 bytes) are allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>floorheight</code></td>
+					<td>Floor height in map units.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>ceilingheight</code></td>
+					<td>Ceiling height in map units.</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>floorpic</code></td>
+					<td>Floor texture index or hash (PC).</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>2</td>
+					<td>uint16</td>
+					<td><code>ceilingpic</code></td>
+					<td>Floor texture index or hash (PC).</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>10</td>
+					<td>5 &times; int16</td>
+					<td><code>colors[5]</code></td>
+					<td>Lights lump indices in order of floor, ceiling, thing, upper wall, lower wall.</td>
+				</tr>
+				<tr>
+					<td>18</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>special</code></td>
+					<td><a href="../maps/sectors.html#Specials">Sector special</a>.</td>
+				</tr>
+				<tr>
+					<td>20</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>tag</code></td>
+					<td>Sector tag.</td>
+				</tr>
+				<tr>
+					<td>22</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>flags</code></td>
+					<td><a href="../maps/sectors.html#Flags">Sector flags</a>.</td>
+				</tr>
+			</tbody></table>
+
+		<h2 id="REJECT">REJECT</h2>
+
+			<p>A table of which sector pairs can never see each other, used to skip line-of-sight checks. It has one bit per ordered pair of sectors, so its size is <code>ceil(numsectors &times; numsectors / 8)</code> bytes. This lump has a maximum of 134,209,537 bytes.</p>
+
+
+		<h2 id="BLOCKMAP">BLOCKMAP</h2>
+
+			<p>A grid of 128&times;128 map unit blocks listing the linedefs in each block, used for collision. Each block has variable size. A maximum of 65,534 bytes is allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Part</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>Header</td>
+					<td>8 bytes</td>
+					<td>int16</td>
+					<td>Four values: <code>originX</code>, <code>originY</code> (map units, lower left corner of the grid), <code>width</code> and <code>height</code> (in blocks).</td>
+				</tr>
+				<tr>
+					<td>Offsets</td>
+					<td><code>width &times; height &times; 2</code> bytes</td>
+					<td>int16</td>
+					<td>One offset per block, row by row from the bottom. Each is the position of that block's list, counted in 16-bit values from the start of the lump.</td>
+				</tr>
+				<tr>
+					<td>Lists</td>
+					<td>Variable</td>
+					<td>int16</td>
+					<td>One list per block (blocks with the same contents can share a list). Each list is the linedef indices followed by −1. Blocks with no lines share a list that is only −1.</td>
+				</tr>
+			</tbody></table>
+			<p>The whole lump is limited to 65,534 bytes because the offsets are 16-bit (see <a href="../maps/index.html">Maps</a>).</p>
+
+		<h2 id="LEAFS">LEAFS</h2>
+
+			<p>One leaf per subsector, in subsector order, listing the vertices of its convex polygon in order. This is similar to the GL nodes of other engines. A leaf takes <code>2 + 4 &times; count</code> bytes. The number of leaves must equal the number of subsectors. Only 3,072 vertexes from leaves can be drawn at once but there is no limit in lump size.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Part</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>count</td>
+					<td>2</td>
+					<td>int16</td>
+					<td>Number of vertices in the leaf.</td>
+				</tr>
+				<tr>
+					<td>vertex</td>
+					<td>2</td>
+					<td>int16</td>
+					<td>Vertex index (repeated <code>count</code> times, each followed by a seg).</td>
+				</tr>
+				<tr>
+					<td>seg</td>
+					<td>2</td>
+					<td>int16</td>
+					<td>Seg index that the edge starting at this vertex belongs to, or &minus;1 (0xFFFF) if the edge is not part of a seg (a miniseg created by the node builder).</td>
+				</tr>
+			</tbody></table>
+
+
+		<h2 id="LIGHTS">LIGHTS</h2>
+
+			<p>These are custom colors referenced by the sector colour indices. Each light is 6 bytes which are numbered from 256 (indices 0&ndash;255 are the built-in greys). A maximum of about 32,500 lights (195,072 bytes) are allowed.</p>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>1</td>
+					<td>uint8</td>
+					<td><code>r</code></td>
+					<td>Red.</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>uint8</td>
+					<td><code>g</code></td>
+					<td>Green.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>1</td>
+					<td>uint8</td>
+					<td><code>b</code></td>
+					<td>Blue.</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>1</td>
+					<td>uint8</td>
+					<td><code>a</code></td>
+					<td>Alpha (unused).</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>tag</code></td>
+					<td>Light tag.</td>
+				</tr>
+			</tbody></table>
+
+
+		<h2 id="MACROS">MACROS</h2>
+
+			<p>Macros are scripts which contain sequences of actions (linedef actions 256&ndash;511). The lump is a header followed by one block per macro. Macros vary in size and are limited to 256 macros in total and can only have a total (all macros) of 32,767 actions. The lump is limited to 198,654 bytes.</p>
+			
+			<h3>Lump Layout</h3>
+			<table>
+			<thead>
+				<tr>
+					<th>Part</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>Header: <code>nummacros</code></td>
+					<td>2</td>
+					<td>int16</td>
+					<td>Number of macros.</td>
+				</tr>
+				<tr>
+					<td>Header: <code>numactions</code></td>
+					<td>2</td>
+					<td>int16</td>
+					<td>Total number of actions in all macros.</td>
+				</tr>
+				<tr>
+					<td>Macro block: <code>count</code></td>
+					<td>2</td>
+					<td>int16</td>
+					<td>Number of actions in this macro. Repeated for each macro.</td>
+				</tr>
+				<tr>
+					<td>Macro block: action entries</td>
+					<td><code>(count + 1) &times; 6</code></td>
+					<td>3 &times; int16 per entry</td>
+					<td><code>count</code> action entries followed by one end entry. Each entry is three values: <code>id</code>, <code>tag</code> and <code>special</code>.</td>
+				</tr>
+			</tbody></table>
+			
+			<h3>Action Entry</h3>
+			<table>
+			<thead>
+				<tr>
+					<th>Offset</th>
+					<th>Size</th>
+					<th>Type</th>
+					<th>Field</th>
+					<th>Description</th>
+				</tr>
+			</thead><tbody>
+				<tr>
+					<td>0</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>id</code></td>
+					<td>Step number, usually in multiples of 10. Actions with the same id run together; the macro waits for a new id to continue (this is what the <i>wait</i> and <i>delay</i> keywords set up). An id of 0 ends the macro.</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>tag</code></td>
+					<td>Tag or argument for the action (may be negative).</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>2</td>
+					<td>int16</td>
+					<td><code>special</code></td>
+					<td>Line action number (see the <a href="../../maps/actions/list.html">Action List</a>).</td>
+				</tr>
+			</tbody></table>
+			<p>The end entry that follows each macro's actions is stored in the file as all zeros. The engine never runs it, since an id of 0 ends the macro. When a macro is disabled by the macro toggle actions, its first id is stored as a negative number at runtime.</p>
+
+
+		<h2 id="SCRIPTS">SCRIPTS (PC)</h2>
+			<p>On maps made on PC, you will often find an additional lump called scripts. This is a text entry which has uncompiled scripts that are compiled with BLAM. This does not exist on the original Nintendo 64 maps.</p>
+		
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
