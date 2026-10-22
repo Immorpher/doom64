@@ -1,5 +1,7 @@
 /* Modified from MVP.css v1.14 - https://github.com/andybrewer/mvp */
 
+/* 1. Colours and sizes */
+
 :root {
     --active-brightness: 0.85;
     --border-radius: 5px;
@@ -7,25 +9,20 @@
     --color-accent: #118bee15;
     --color-bg: #fff;
     --color-bg-secondary: #d0d0d0;
-	--color-bg-tertiary: #e0e0e0;
-	--color-footer: #999;
+    --color-bg-tertiary: #e0e0e0;
+    --color-footer: #999;
     --color-link: #118bee;
     --color-link-accent: #54a97f;
     --color-link-tertiary: #a0904f;
-	--color-link-quaternary: #a14f4f;
-    --color-secondary: #920de9;
-    --color-secondary-accent: #920de90b;
+    --color-link-quaternary: #a14f4f;
     --color-shadow: #f4f4f4;
     --color-table: #80C0ff;
     --color-text: #000;
     --color-text-secondary: #222;
     --font-family: Lato, sans-serif;
     --hover-brightness: 1.2;
-    --justify-important: center;
-    --justify-normal: left;
     --line-height: 1.5;
     --width-card: 285px;
-    --width-card-medium: 460px;
     --width-card-wide: 800px;
 }
 
@@ -35,16 +32,17 @@
         --color-bg: #101010;
         --color-bg-secondary: #303030;
         --color-bg-tertiary: #202020;
+        --color-footer: #555;
         --color-link: #88aaee;
-        --color-secondary: #e20de9;
-        --color-secondary-accent: #e20de94f;
         --color-shadow: #bbbbbb20;
-		--color-table: #102040;
+        --color-table: #102040;
         --color-text: #ddd;
         --color-text-secondary: #aaa;
-		--color-footer: #555;
     }
 }
+
+
+/* 2. Page basics */
 
 html {
     scroll-behavior: smooth;
@@ -56,63 +54,31 @@ html {
     }
 }
 
-/* Layout */
-
 body {
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-family);
     line-height: var(--line-height);
-    margin: 0rem;
-    padding: 0rem;
+    margin: 0;
+    padding: 0;
 }
 
-footer,
-header,
-main {
-    margin: 0 auto;
-    padding: 3rem 1rem;
-}
 
-hr {
-    background-color: var(--color-bg-secondary);
-    border: none;
-    height: 1px;
-    margin: 4rem 0;
-    width: 100%;
-}
-
-/* Typography */
-code,
-samp {
-    background-color: var(--color-accent);
-    border-radius: var(--border-radius);
-    color: var(--color-text);
-    display: inline-block;
-    margin: 0 0.1rem;
-    padding: 0 0.5rem;
-}
+/* 3. Text */
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
+h3 {
     line-height: var(--line-height);
-	margin: 0.5rem 0rem 0rem 0rem;
+    margin: 0.5rem 0 0 0;
 }
 
 h2 {
-	margin: 2rem 0rem 0rem 0rem;
+    margin-top: 2rem;
 }
 
 h3 {
-	margin: 1.5rem 0rem 0rem 0rem;
-}
-
-h4 {
-	margin: 1rem 0rem 0rem 0rem;
+    margin-top: 1.5rem;
 }
 
 p {
@@ -121,37 +87,31 @@ p {
     width: 100%;
 }
 
+code {
+    background-color: var(--color-accent);
+    border-radius: var(--border-radius);
+    color: var(--color-text);
+    display: inline-block;
+    margin: 0 0.1rem;
+    padding: 0 0.5rem;
+}
+
 pre {
     margin: 1rem 0;
     max-width: var(--width-card-wide);
     padding: 1rem 0;
 }
 
-pre code,
-pre samp {
+pre code {
     display: block;
     max-width: var(--width-card-wide);
     padding: 0.5rem 2rem;
     white-space: pre-wrap;
 }
 
-small {
-    color: var(--color-text-secondary);
-}
 
-sup {
-    background-color: var(--color-secondary);
-    border-radius: var(--border-radius);
-    color: var(--color-bg);
-    font-size: xx-small;
-    font-weight: bold;
-    margin: 0.2rem;
-    padding: 0.2rem 0.3rem;
-    position: relative;
-    top: -2px;
-}
+/* 4. Links and lists */
 
-/* Links */
 a {
     color: var(--color-link);
     display: inline-block;
@@ -167,37 +127,23 @@ a:hover {
     filter: brightness(var(--hover-brightness));
 }
 
-a b,
-a em,
-a i,
-a strong,
-button,
-input[type="submit"] {
-    border-radius: var(--border-radius);
-    display: inline-block;
-    font-size: medium;
-    font-weight: normal;
-    line-height: var(--line-height);
-    margin: 0.5rem 0;
-    padding: 0.25rem 0.5rem;
-}
-
 ul {
-	list-style-type: square;
+    list-style-type: square;
 }
 
 ul ul {
-	list-style-type: disc;
+    list-style-type: disc;
 }
 
 ul ul ul {
-	list-style-type: circle;
+    list-style-type: circle;
 }
 
 li {
     padding: 0.2rem 0;
 }
 
+/* Links in nested lists change colour with each level */
 li li a {
     color: var(--color-link-accent);
 }
@@ -210,53 +156,8 @@ li li li li a {
     color: var(--color-link-quaternary);
 }
 
-button,
-input[type="submit"] {
-    font-family: var(--font-family);
-}
 
-button:active,
-input[type="submit"]:active {
-    filter: brightness(var(--active-brightness));
-}
-
-button:hover,
-input[type="submit"]:hover {
-    cursor: pointer;
-    filter: brightness(var(--hover-brightness));
-}
-
-a b,
-a strong,
-button,
-input[type="submit"] {
-    background-color: var(--color-link);
-    border: 2px solid var(--color-link);
-    color: var(--color-bg);
-}
-
-a em,
-a i {
-    border: 2px solid var(--color-link);
-    border-radius: var(--border-radius);
-    color: var(--color-link);
-    display: inline-block;
-    padding: 1rem 2rem;
-}
-
-/* Forms */
-button:disabled,
-input:disabled {
-    background: var(--color-bg-secondary);
-    border-color: var(--color-bg-secondary);
-    color: var(--color-text-secondary);
-    cursor: not-allowed;
-}
-
-button[disabled]:hover,
-input[type="submit"][disabled]:hover {
-    filter: none;
-}
+/* 5. Forms and buttons */
 
 form {
     border: 1px solid var(--color-bg-secondary);
@@ -266,12 +167,7 @@ form {
     max-width: var(--width-card-wide);
     min-width: var(--width-card);
     padding: 0.5rem;
-    text-align: var(--justify-normal);
-}
-
-form header {
-    margin: 1.5rem 0;
-    padding: 1.5rem 0;
+    text-align: left;
 }
 
 legend {
@@ -280,57 +176,59 @@ legend {
 
 input,
 label,
-select,
-textarea {
+select {
     display: inline-block;
     font-size: inherit;
     max-width: var(--width-card-wide);
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-    display: inline-block;
-}
-
-input[type="checkbox"]+label,
-input[type="radio"]+label {
-    display: inline-block;
-    font-weight: normal;
-    position: relative;
-    top: 1px;
-}
-
-input[type="range"] {
-    padding: 0.4rem 0;
-}
-
 input,
-select,
-textarea {
+select {
     border: 1px solid var(--color-bg-secondary);
     border-radius: var(--border-radius);
     margin-bottom: 0.5rem;
     padding: 0.4rem 0.8rem;
 }
 
-input[type="text"],
-textarea {
+input[type="text"] {
     width: 13rem;
-    display: inline-block;
 }
 
-input[readonly],
-textarea[readonly] {
+input[readonly] {
     border: 0;
-	width: 2rem;
+    width: 2rem;
 }
 
 label {
-	margin: 0.3rem 2rem 0.4rem 0;
+    margin: 0.3rem 2rem 0.4rem 0;
+}
+
+button {
+    background-color: var(--color-link);
+    border: 2px solid var(--color-link);
+    border-radius: var(--border-radius);
+    color: var(--color-bg);
+    display: inline-block;
+    font-family: var(--font-family);
+    font-size: medium;
+    font-weight: normal;
+    line-height: var(--line-height);
+    margin: 0.5rem 0;
+    padding: 0.25rem 0.5rem;
+}
+
+button:active {
+    filter: brightness(var(--active-brightness));
+}
+
+button:hover {
+    cursor: pointer;
+    filter: brightness(var(--hover-brightness));
 }
 
 
-/* Tables */
+/* 6. Tables */
+
 table {
     border: 1px solid var(--color-bg-secondary);
     border-radius: var(--border-radius);
@@ -342,23 +240,18 @@ table {
 }
 
 table td,
-table th,
-table tr {
-    padding: 0.4rem 0.8rem;
-    text-align: var(--justify-important);
+table th {
     border: 1px solid var(--color-bg-secondary);
+    padding: 0.4rem 0.8rem;
+    text-align: center;
 }
 
 table td {
-	text-align: left;
+    text-align: left;
 }
 
 table thead {
     background-color: var(--color-table);
-    border-collapse: collapse;
-    border-radius: var(--border-radius);
-    margin: 0;
-    padding: 0;
 }
 
 table thead th:first-child {
@@ -371,144 +264,119 @@ table thead th:last-child {
 
 table thead th:first-child,
 table tr td:first-child {
-    text-align: var(--justify-normal);
+    text-align: left;
 }
 
 table tr:nth-child(even) {
     background-color: var(--color-accent);
 }
 
-/* Quotes */
-blockquote {
-    display: block;
-    font-size: x-large;
-    line-height: var(--line-height);
-    margin: 1rem auto;
-    max-width: var(--width-card-medium);
-    padding: 1.5rem 1rem;
-    text-align: var(--justify-important);
-}
 
-blockquote footer {
-    color: var(--color-text-secondary);
-    display: block;
-    font-size: small;
-    line-height: var(--line-height);
-    padding: 1.5rem 0;
-}
+/* 7. Page layout */
 
-
-/* Side stacking divs */
+/* Images or boxes placed side by side */
 .sidestack {
-  display: flex;
+    display: flex;
 }
 
 .sidestack div {
-  padding: 0rem 1rem 0rem 0rem;
+    padding: 0 1rem 0 0;
 }
 
-/* The side navigation menu */
+/* Side navigation menu */
 #navigation {
-	margin: 0.5rem;
-	padding: 0 0 1rem 0;
-	width: 11rem;
-	background-image: linear-gradient(var(--color-bg-secondary), var(--color-bg-tertiary));
-	position: fixed;
-	border-radius: 2rem;
+    background-image: linear-gradient(var(--color-bg-secondary), var(--color-bg-tertiary));
+    border-radius: 2rem;
+    margin: 0.5rem;
+    padding: 0 0 1rem 0;
+    position: fixed;
+    width: 11rem;
 }
 
-/* navigation links */
 #navigation a {
-	display: block;
-	color: var(--color-text);
-	padding: 0.6rem 1rem 0.4rem 1rem;
-	text-decoration: none;
-	font-size: large;
-	text-transform: uppercase;
-	border-radius: 1rem;
+    border-radius: 1rem;
+    color: var(--color-text);
+    display: block;
+    font-size: large;
+    padding: 0.6rem 1rem 0.4rem 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
-/* Links on mouse-over */
-#navigation a:hover:not(.active) {
-	background-color: var(--color-footer);
-	color: var(--color-text-secondary);
+#navigation a:hover {
+    background-color: var(--color-footer);
+    color: var(--color-text-secondary);
 }
 
-/* Page content. The value of the margin-left property should match the value of the navigation's width property */
-#content {
-	padding: 0rem 1rem 0rem 1rem;
-	margin: 0rem 0rem 0rem 12rem;
-	overflow: auto;
-}
-
-/*Footer content*/
-#footer {
-	margin-left: 11rem;
-	padding: 0rem 0rem;
-}
-
-#footer p {
-	text-align: center;
-	padding: 0rem 0rem;
-	color: var(--color-footer);
-}
-
-#footer a {
-	color: var(--color-footer);
-	font-weight: normal;
-}
-
-/* Navigation image */
-
+/* Logo at the top of the navigation menu */
 #navgraphic a {
-	margin: 0;
-	padding: 0.5rem 0.5rem 0rem 0.5rem;
+    margin: 0;
+    padding: 0.5rem 0.5rem 0 0.5rem;
 }
 
 #navgraphic img {
-	width: 10rem;
-	height: 9.5rem;
+    height: 9.5rem;
+    width: 10rem;
+}
+
+/* Page content. The left margin must match the width of the navigation. */
+#content {
+    margin: 0 0 0 12rem;
+    overflow: auto;
+    padding: 0 1rem;
+}
+
+#footer {
+    margin-left: 11rem;
+}
+
+#footer p {
+    color: var(--color-footer);
+    padding: 0;
+    text-align: center;
+}
+
+#footer a {
+    color: var(--color-footer);
+    font-weight: normal;
 }
 
 
-/* Vertical orientation */
+/* 8. Narrow and portrait screens: the navigation moves to the top */
+
 @media only screen and (orientation: portrait) {
 
     #navigation {
-		position: static;
-		height: auto;
-		width: auto;
-		min-height: 0;
-		margin: 0.5rem;
-		padding: 0;
-	}
-	
-	#navigation a {
-		display: inline-block;
-		padding: 0.3rem 0.5rem 0.1rem 0.5rem;
-	}
-	
-	#content {
-		margin-left: 0rem;
-		padding: 0rem 0.5rem 0rem 0.5rem;
-	}
-	
-	#footer {
-		margin-left: 0rem;
-		padding: 0rem 0rem;
-	}
-	
-	#navgraphic {
-		float: left;
-	}
-	
-	#navgraphic img {
-		width: 6rem;
-		height: 5.7rem;
-	}
+        margin: 0.5rem;
+        padding: 0;
+        position: static;
+        width: auto;
+    }
 
-	.sidestack {
-		display: inline;
-	}
+    #navigation a {
+        display: inline-block;
+        padding: 0.3rem 0.5rem 0.1rem 0.5rem;
+    }
 
+    #navgraphic {
+        float: left;
+    }
+
+    #navgraphic img {
+        height: 5.7rem;
+        width: 6rem;
+    }
+
+    #content {
+        margin-left: 0;
+        padding: 0 0.5rem;
+    }
+
+    #footer {
+        margin-left: 0;
+    }
+
+    .sidestack {
+        display: inline;
+    }
 }
