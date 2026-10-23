@@ -242,10 +242,10 @@
 					<tr><td>Hanging White Meat</td><td>1047</td><td>1000</td><td>20</td><td>64</td><td>100</td><td>C|U</td><td>255</td></tr>
 					<tr><td>Hanging Head</td><td>1048</td><td>1000</td><td>20</td><td>60</td><td>100</td><td>C|U</td><td>255</td></tr>
 					<tr><td>Hanging Ribs</td><td>1049</td><td>1000</td><td>20</td><td>98</td><td>100</td><td>C|U</td><td>255</td></tr>
-					<tr><td>Static Marine</td><td>65535</td><td>100</td><td>19</td><td>64</td><td>100</td><td>S|X|G|D</td><td>255</td></tr>
+					<tr><td>Static Marine</td><td>65535</td><td>100</td><td>19</td><td>64</td><td>100</td><td>S|X|G|D|A|M</td><td>255</td></tr>
 				</tbody></table>
 				
-				<p>The Static Marine was discovered by Potatosqrk; by using the editor number of 65535 it overflows to -1 which corresponds to the player id number. It inherits many of the player spawn properties, thus it looks like a marine. It cannot move on its own, nor attack, and does not count as an enemy, thus it is more of a decorative entity. It can be moved when damaged and killed, like a barrel, but it cannot trigger any linedefs. Although it cannot be alerted by normal means, when alerted by an action it will run in place.</p>
+				<p>The Static Marine was discovered by Potatosqrk; by using the editor number of 65535 it overflows to -1 which corresponds to the player id number. Therefore it inherits the player's definition (health, size, sprites, sounds, and flags), but it cannot move on its own, nor attack, and does not count as an enemy. It is shootable and will flinch every time it is hit. It cannot trigger any linedefs, and the "Trigger on death" thing flag has no effect on it. Although it has the "pick up items" flag, it cannot pick up anything. Although it cannot be alerted by normal means, when alerted by an action it will run in place.</p>
 				
 			<h3 id="Other">Other</h3>
 				<table>
