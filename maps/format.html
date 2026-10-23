@@ -109,7 +109,7 @@
 
 		<h2 id="LINEDEFS">LINEDEFS</h2>
 
-			<p>Line definitions (linedefs) define sector edges, walls, and sometimes activation points. Each linedef is 16 bytes. A maximum of 32,768 (524,288 bytes) linedefs are allowed.</p>
+			<p>Line definitions (linedefs) define sector edges, walls, and sometimes activation points. Each linedef is 16 bytes. A maximum of 32,768 linedefs (524,288 bytes) are allowed.</p>
 			<table>
 			<thead>
 				<tr>
@@ -497,7 +497,7 @@
 
 		<h2 id="BLOCKMAP">BLOCKMAP</h2>
 
-			<p>A grid of 128&times;128 map unit blocks listing the linedefs in each block, used for collision. Each block has variable size. A maximum of 65,534 bytes is allowed.</p>
+			<p>A grid of 128&times;128 map unit blocks listing the linedefs in each block, used for collision. Each block has variable size. A maximum of 65,534 bytes is allowed (see <a href="../maps/index.html">Maps</a>).</p>
 			<table>
 			<thead>
 				<tr>
@@ -526,7 +526,6 @@
 					<td>One list per block (blocks with the same contents can share a list). Each list is the linedef indices followed by −1. Blocks with no lines share a list that is only −1.</td>
 				</tr>
 			</tbody></table>
-			<p>The whole lump is limited to 65,534 bytes because the offsets are 16-bit (see <a href="../maps/index.html">Maps</a>).</p>
 
 		<h2 id="LEAFS">LEAFS</h2>
 
