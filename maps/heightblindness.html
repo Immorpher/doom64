@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="title">Height Blindness</title>
+	<meta property="og:title" content="Height Blindness" />
+	<meta property="og:site_name" content="Doom 64 Compendium" />
+	<meta property="og:description" content="Doom 64 Compendium documents the Doom 64 engine, its ports, and how to build content for them." />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://www.doom64.com/" />
+	<meta property="og:image" content="https://www.doom64.com/d64c.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<script src="../scripts.js" type="text/JavaScript"></script>
+	<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+	<div id="navigation"></div>
+	
+	<div id="content">
+
+		<h1>Height Blindness</h1>
+
+			<p>When tall sectors are in a specific height range, it can cause enemies within them to be blind to the player. These enemies can still react to sound and become alerted via actions; thus it is not always noticed by the player. This is due to to an overflow in the engine's line of sight calculation. Many of the original Doom 64 maps suffer from this bug, but due to sound activation it is only really noticed on "The Spiral".</p>
+			
+			<p>Enemies see the player by checking each two-sided line along the sight path. Lines whose front and back sectors have identical floor and ceiling heights are skipped. So even when a sector is in the height blindness range, the enemy will not be blind to the player in a neighboring sector if it is of the same height. For a line where the ceilings differ, even by 1 map unit, the engine works out a slope from the lower of the two ceilings to the monster's eye. If that lower ceiling is in the height blindness range above the monster's eye, the calculation overflows and the monster is blind through that line.</p>
+			
+			<p>If, during gameplay, the lower sector height is matched to the higher sector or into the "visible" band, the enemy will be able to see the player again. This could create some interesting gameplay scenarios without the need of reject map editing.</p>
+			
+		<h2 id="Equations">Equations</h2>
+
+			<p>Height blindness begins from the "eye" level of the enemy which is 3/4ths of its <a href="things/list.html">hitbox height</a>. Let <b>h</b> be the height of the enemy, <b>Z</b> be the vertical position of the enemy (some enemies float), and the eye height will then be:</p>
+
+			<pre>Eye = Z + 0.75 &times; h</pre>
+
+			<p>For a line where the ceilings differ, let <b>L</b> be the lower of the two ceilings, and then the heights where the lower ceiling blinds a monster are:</p>
+
+			<pre>Blind at: L = Eye + 512 + 1024 &times; k
+Seeing at: L = Eye + 1024 + 1024 &times; k</pre>
+
+			<p>Here <b>k</b> is any postive integer (0, 1, 2, ...). Thus monsters only become blind at certain bands of sector heights. The first blind point (<code>Eye + 512</code>) is exact. The point where sight returns is only approximate because there is some dependence on the distance between the enemy and the player.</p>
+			
+		<h2 id="Table">Heights Table</h2>
+
+			<p>This table is in reference above the monster's vertical position. The ceiling numbers are the lower ceiling of two neighboring sectors whose ceilings differ at all. The numbers are rounded up to whole map units. "Blind" starts at the given height and lasts until the next column.</p>
+
+			<table>
+				<thead>
+					<tr><th>Monster</th><th>Editor Number(s)</th><th>Height</th><th>Eye Height</th><th>Blind At</th><th>Sees Again At</th><th>Blind Again At</th><th>Sees Again At</th></tr>
+				</thead>
+				<tbody>
+					<tr><td>Lost Soul</td><td>3006</td><td>64</td><td>48</td><td>560</td><td>1072</td><td>1584</td><td>2096</td></tr>
+					<tr><td>Arachnotron</td><td>68</td><td>80</td><td>60</td><td>572</td><td>1084</td><td>1596</td><td>2108</td></tr>
+					<tr><td>Zombieman</td><td>3004</td><td>87</td><td>65.25</td><td>578</td><td>1090</td><td>1602</td><td>2114</td></tr>
+					<tr><td>Shotgun Guy</td><td>9</td><td>87</td><td>65.25</td><td>578</td><td>1090</td><td>1602</td><td>2114</td></tr>
+					<tr><td>Marine Bot</td><td>3008-3010</td><td>87</td><td>65.25</td><td>578</td><td>1090</td><td>1602</td><td>2114</td></tr>
+					<tr><td>Cacodemon</td><td>3005</td><td>90</td><td>67.5</td><td>580</td><td>1092</td><td>1604</td><td>2116</td></tr>
+					<tr><td>Imp / Nightmare Imp</td><td>3001, 3007</td><td>94</td><td>70.5</td><td>583</td><td>1095</td><td>1607</td><td>2119</td></tr>
+					<tr><td>Bull Demon / Spectre</td><td>3002, 58</td><td>100</td><td>75</td><td>587</td><td>1099</td><td>1611</td><td>2123</td></tr>
+					<tr><td>Baron of Hell / Hell Knight</td><td>3003, 69</td><td>100</td><td>75</td><td>587</td><td>1099</td><td>1611</td><td>2123</td></tr>
+					<tr><td>Mancubus</td><td>67</td><td>108</td><td>81</td><td>593</td><td>1105</td><td>1617</td><td>2129</td></tr>
+					<tr><td>Titlemap Cyberdemon</td><td>3014</td><td>110</td><td>82.5</td><td>595</td><td>1107</td><td>1619</td><td>2131</td></tr>
+					<tr><td>Pain Elemental</td><td>71</td><td>112</td><td>84</td><td>596</td><td>1108</td><td>1620</td><td>2132</td></tr>
+					<tr><td>Mother Demon</td><td>3013</td><td>150</td><td>112.5</td><td>625</td><td>1137</td><td>1649</td><td>2161</td></tr>
+					<tr><td>Cyberdemon</td><td>16</td><td>170</td><td>127.5</td><td>640</td><td>1152</td><td>1664</td><td>2176</td></tr>
+				</tbody>
+			</table>
+		
+	</div>
+
+	<div id="footer"></div>
+	<script>
+	layout("../");
+	</script>
+</body>
+</html>
