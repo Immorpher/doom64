@@ -2,6 +2,18 @@
 
 /* 1. Colours and sizes */
 
+@font-face {
+    font-family: 'DBIGFONT';
+    src: url('dbigfont.woff2') format('woff2'),
+        url('dbigfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+/* 1. Colours and sizes */
+
 :root {
     --active-brightness: 0.85;
     --border-radius: 5px;
@@ -71,6 +83,8 @@ h2,
 h3 {
     line-height: var(--line-height);
     margin: 0.5rem 0 0 0;
+	font-family: "DBIGFONT", sans-serif;
+	font-weight: normal;
 }
 
 h2 {
