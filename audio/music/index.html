@@ -66,14 +66,14 @@
 			<p>For the Nintendo 64 engines, none of the sound and music assets are stored in the WAD, rather they are stored in three files for the WESS/NESS sound system.</p>
 			
 			<ul>
-				<li>WDD - Audio files</li>
-				<li>WSD - Sound playback definitions</li>
-				<li>WMD - MIDI music</li>
+				<li>WDD - WESS Data Directory - Raw audio files</li>
+				<li>WMD - WESS Module Directory - Sound playback properties</li>
+				<li>WSD - WESS Sequence Directory - Sound sequences</li>
 			</ul>
 			
-			<p>These aren't standard formats, however <a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a> can convert MIDIs and soundfonts to these files. At the moment, it does seem that custom MIDIs do work, however not much testing has been done to see what limits there are.</p>
+			<p>These are formats originating from Williams Entertainment where <a href="https://github.com/thekovic/wadutil64/releases/">wadutil64</a> can convert MIDIs and soundfonts to these files. The WSD file contains the sound sequences which includes music but also intitiates gameplay sounds. On the Nintendo 64, these are entirely loaded in the system RAM where any changes to WSD also requires changes to the audio heap size.</p>
 			
-			<p>Although the original Doom 64 sounds are 11.025 kHz, 16 bit, the base engine supports 22.05 kHz, 16 bit. Also the engines themselves can be updated to go as high as 44.1 kHz, 16 bit at the cost of some performance.</p>
+			<p>The original Doom 64 sounds are 11.025 kHz, 16 bit, but are nearest-neighbor (square) interpolated to 22.05 kHz, 16 bit during playback.</p>
 			
 	</div>
 
