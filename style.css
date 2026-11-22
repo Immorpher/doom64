@@ -365,6 +365,7 @@ table tr:nth-child(even) {
         padding: 0;
         position: static;
         width: auto;
+        display: flow-root; /* Include the floated logo in the navigation height. */
     }
 
     #navigation a {
