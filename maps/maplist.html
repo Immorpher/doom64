@@ -13,6 +13,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<script src="../scripts.js" type="text/JavaScript"></script>
+	<script src="../filter.js" type="text/JavaScript" defer></script>
 	<link rel="stylesheet" href="../style.css" />
 	<link rel="icon" type="image/x-icon" href="../favicon.svg" />
 </head>
@@ -25,7 +26,10 @@
 		<p>Here is a list of maps and campaigns for Doom 64 engines and Doom 64-styled maps on other Doom engines. Links are provided to download each map and many are backed up in the <a href="https://www.dropbox.com/sh/wxaso2hjyymaw2l/AADVBTiokoz81onkl4ocDKSXa?dl=0">Doom 64 Map Archive</a>. Also the <a href="../engines/pc/modloading.html">mod loading guide for PC</a> can help you load the maps below depending on the engine.</p>
 			</ul>
 		
-		<table>
+		<label for="table-filter">Filter maps:</label>
+		<input type="search" id="table-filter" data-table-search="#map-table" placeholder="Enter a keyword..." autocomplete="on" /></br>
+			
+		<table id="map-table">
 		<thead>
 			<tr>
 				<th>Last Update</th>

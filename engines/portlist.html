@@ -13,6 +13,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<script src="../scripts.js" type="text/JavaScript"></script>
+	<script src="../filter.js" type="text/JavaScript" defer></script>
 	<link rel="stylesheet" href="../style.css" />
 	<link rel="icon" type="image/x-icon" href="../favicon.svg" />
 </head>
@@ -25,7 +26,10 @@
 		
 			<p>Here is a list of Doom 64 engines and adaptations of Doom 64 to other engines. Each engine and adaptation offers unique features, varied operating system support, and most can be modded with custom content.</p>
 
-			<table>
+			<label for="table-filter">Filter ports:</label>
+			<input type="search" id="table-filter" data-table-search="#port-table" placeholder="Enter a keyword..." autocomplete="on" /></br>
+		
+			<table id="port-table">
 			<thead>
 				<tr>
 					<th>Last Update</th>

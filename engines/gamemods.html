@@ -13,6 +13,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<script src="../scripts.js" type="text/JavaScript"></script>
+	<script src="../filter.js" type="text/JavaScript" defer></script>
 	<link rel="stylesheet" href="../style.css" />
 	<link rel="icon" type="image/x-icon" href="../favicon.svg" />
 </head>
@@ -25,7 +26,10 @@
 		
 			<p>Here is a list of mods which give some Doom 64 style to other engines and or modify Doom 64 itself.</p>
 
-			<table>
+			<label for="table-filter">Filter mods:</label>
+			<input type="search" id="table-filter" data-table-search="#mod-table" placeholder="Enter a keyword..." autocomplete="on" /></br>
+		
+			<table id="mod-table">
 				<thead><tr>
 					<th>Last Update</th>
 					<th>Name</th>
